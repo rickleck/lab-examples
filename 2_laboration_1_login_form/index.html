@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Log in</title>
+        <link rel="stylesheet" href="css/styles.css" />
+    </head>
+    <body>
+        <main>
+            <section class="login">
+                <header class="login__header">
+                    <svg
+                        class="login__header-icon"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 1024 1024"
+                    >
+                        <path
+                            d="M512 0a512 512 0 1 0 0 1024A512 512 0 1 0 512 0zm0 289h144.9c15 0 29.5 5.9 40.1 16.5s16.5 25 16.4 40v275.6c0 5.2-1.1 10.3-3.4 15-12.2 24.6-60.401 104-197.9 164.5V622c18.2 0 36.4-1.599 54.4-4.699L547.699 509.5c19-15 26.301-40.5 18.301-63.4-8.078-22.737-29.583-38.016-53.801-38v.4c-24.4-.1-46.2 15.4-54.1 38.4-8 23-.4 48.6 18.9 63.5l-18.801 107.299c17.8 3 35.801 4.5 53.801 4.4V801c-137.7-60.8-185.7-139.9-197.9-164.5-2.3-4.7-3.4-9.8-3.4-15V345.699c0-14.9 6-29.299 16.5-39.799A56.24 56.24 0 0 1 367 289.4h145v-.4z"
+                            fill="#fff"
+                        />
+                    </svg>
+                </header>
+                <form class="login__form" action="">
+                    <input
+                        class="login__form-input login__form-input-text"
+                        type="email"
+                        name="email"
+                        id="email"
+                        placeholder="Email"
+                        required
+                        tabindex="1"
+                    />
+                    <input
+                        class="login__form-input login__form-input-text"
+                        type="password"
+                        name="password"
+                        id="password"
+                        placeholder="Password"
+                        required
+                        tabindex="2"
+                    />
+                    <input class="login__form-input login__form-input-submit" type="submit" value="LOG IN" tabindex="3"/>
+                </form>
+                <footer class="login__footer">
+                    <p><a href="#" tabindex="4">Create an account</a></p>
+                    <p><a href="#" tabindex="5">Forgot your password?</a></p>
+                </footer>
+            </section>
+        </main>
+    </body>
+</html>

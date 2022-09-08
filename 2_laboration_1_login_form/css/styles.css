@@ -1,0 +1,127 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+*:focus {
+    outline: none !important;
+}
+
+:root {
+    --base-color: #2dcbfd;
+    --valid-color: #aafad2;
+    --hover-effect: grayscale(40%);
+    --focus-effect: grayscale(70%);
+}
+
+html,
+body {
+    height: 100%;
+    background-color: lightgray;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+input {
+    appearance: none;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+main {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 500px;
+    padding: 30px;
+    background-image: linear-gradient(0deg, white 0%, var(--base-color) 100%);
+    border-radius: 10px;
+    box-shadow: 4px 4px 15px -5px rgba(0, 0, 0, 0.5);
+}
+
+.login__header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.login__header-icon {
+    width: 150px;
+}
+
+.login__form {
+    flex-grow: 1;
+}
+
+.login__form-input {
+    width: 100%;
+    border-radius: 10px;
+    padding: 10px 16px;
+}
+
+.login__form-input-text {
+    margin-bottom: 16px;
+    border: 2px solid white;
+    background-color: white;
+}
+
+.login__form-input-text::placeholder {
+    color: var(--base-color);
+}
+
+.login__form-input-text:focus {
+    border: 2px solid var(--base-color);
+}
+
+.login__form-input-text:valid {
+    border: 2px solid var(--valid-color);
+}
+
+.login__form-input-submit {
+    border: none;
+    margin-top: 14px;
+    background-color: var(--base-color);
+    color: white;
+    font-weight: 900;
+    text-align: center;
+    cursor: pointer;
+    transition: all 150ms ease;
+}
+
+.login__form-input-submit:hover {
+    filter: var(--hover-effect);
+}
+
+.login__form-input-submit:focus {
+    filter: var(--focus-effect);
+}
+
+.login__footer {
+    text-align: right;
+    font-size: small;
+}
+
+.login__footer p:nth-child(2) {
+    margin-top: 6px;
+}
+
+.login__footer a,
+.login__footer a:visited {
+    text-decoration: none;
+    color: var(--base-color);
+}
+
+.login__footer a:hover {
+    filter: var(--hover-effect);
+}
+
+.login__footer a:focus {
+    filter: var(--focus-effect);
+}
