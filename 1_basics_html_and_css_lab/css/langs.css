@@ -1,11 +1,11 @@
 body {
-  background-color: #EEE;
-  font-size: 24pt;
+    background-color: #eee;
+    font-size: 24pt;
 }
 
 .lang {
-  border: 1px solid #AAA;
-  border-radius: 8px;
-  background-color: #CCC;
-  padding: 1px 8px;
+    border: 1px solid #aaa;
+    border-radius: 8px;
+    background-color: #ccc;
+    padding: 1px 8px;
 }
