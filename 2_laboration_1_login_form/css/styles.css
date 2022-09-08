@@ -110,7 +110,7 @@ main {
     font-size: small;
 }
 
-.login__footer p:nth-child(2) {
+.login__footer p {
     margin-top: 6px;
 }
 
