@@ -182,10 +182,7 @@ main {
     color: var(--base-color);
 }
 
-.login__footer a:hover {
-    text-decoration: underline;
-}
-
+.login__footer a:hover,
 .login__footer a:focus {
     text-decoration: underline;
 }
