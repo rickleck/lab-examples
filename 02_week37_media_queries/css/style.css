@@ -23,6 +23,14 @@ input {
     --focus-effect: grayscale(70%);
 }
 
+/* Color switch test
+@media screen and (min-width: 769px) {
+    :root {
+        --base-color: #2893d6d7;
+    }
+}
+*/
+
 /* Document */
 html {
     font-size: 62.5%;
@@ -73,6 +81,7 @@ main {
 
 .login__header-icon {
     width: 15rem;
+    transition: all 300ms ease-out;
 }
 
 @media screen and (min-width: 769px) {
