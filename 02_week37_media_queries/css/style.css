@@ -39,8 +39,9 @@ body {
 main {
     height: 100%;
     display: grid;
-    justify-content: center;
     align-items: center;
+    justify-items: center;
+    padding: 1rem;
 }
 
 /* Login box */
@@ -49,19 +50,18 @@ main {
     grid: auto / 100%;
     gap: 2.5rem 0;
     max-width: 50rem;
-    margin: 1rem;
     padding: 2.5rem;
     background-image: linear-gradient(0deg, white 0%, var(--base-color) 100%);
     border-radius: 10px;
     box-shadow: 4px 4px 15px -5px rgba(0, 0, 0, 0.5);
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 769px) {
     .login {
         grid: auto / 1fr 1fr;
         gap: 3rem 0;
-        max-width: none;
-        width: 75rem;
+        max-width: 90rem;
+        width: 100%;
         padding: 4rem;
     }
 }
@@ -75,7 +75,7 @@ main {
     width: 15rem;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 769px) {
     .login__header {
         text-align: left;
     }
@@ -133,7 +133,7 @@ main {
     filter: var(--focus-effect);
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 769px) {
     .login__form {
         grid-row-start: 2;
         grid-column-start: 1;
@@ -177,7 +177,7 @@ main {
     text-decoration: underline;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 769px) {
     .login__footer a,
     .login__footer a:visited {
         color: white;
