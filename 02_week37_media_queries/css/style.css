@@ -59,6 +59,7 @@ main {
     grid: auto / 100%;
     gap: 2.5rem 0;
     max-width: 50rem;
+    width: 100%;
     padding: 2.5rem;
     background: rgba(255, 255, 255, 0.2);
     border-radius: 10px;
@@ -78,11 +79,11 @@ main {
 /* Login header */
 .login__header {
     text-align: center;
+    filter: var(--dropshadow);
 }
 
 .login__header-icon {
     width: 15rem;
-    filter: var(--dropshadow);
     transition: width 300ms ease-out;
 }
 
@@ -98,6 +99,15 @@ main {
 /* Login form */
 .login__form {
     display: block;
+    filter: var(--dropshadow);
+}
+
+.login__form-label {
+    display: none;
+    color: var(--base-color);
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 0.6rem;
 }
 
 .login__form-input {
@@ -105,7 +115,6 @@ main {
     border-radius: 10px;
     padding: 1rem 1.6rem;
     font-size: 1.6rem;
-    filter: var(--dropshadow);
 }
 
 .login__form-input--text {
@@ -154,26 +163,31 @@ main {
         grid: auto / 1fr 1fr;
         gap: 0 1.5rem;
     }
-    .login__form-wrapper--submit {
+    .login__form-label {
+        display: block;
+    }
+    .login__form-input--text::placeholder {
+        color: white;
+    }
+    .login__form-wrapper-submit {
         grid-column: 2;
         text-align: right;
     }
     .login__form-input--submit {
         width: 50%;
-        margin-top: 2rem;
     }
 }
 
 /* Login footer */
 .login__footer {
     text-align: right;
+    filter: var(--dropshadow);
 }
 
 .login__footer p {
     margin-top: 0.5em;
     font-size: 1.6rem;
     font-weight: 600;
-    filter: var(--dropshadow);
 }
 
 .login__footer a,
