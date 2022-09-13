@@ -21,8 +21,6 @@ input {
     --bg-color-2: #92fe9d;
     --base-color: #00a6d4;
     --valid-color: #0eee24;
-    --hover-effect: grayscale(40%);
-    --focus-effect: grayscale(70%);
     --dropshadow: drop-shadow(4px 4px 5px rgba(0, 0, 0, 0.15));
 }
 
@@ -147,11 +145,11 @@ main {
 }
 
 .login__form-input--submit:hover {
-    filter: var(--hover-effect);
+    filter: grayscale(40%);
 }
 
 .login__form-input--submit:focus {
-    filter: var(--focus-effect);
+    filter: grayscale(70%);
 }
 
 @media screen and (min-width: 769px) {
