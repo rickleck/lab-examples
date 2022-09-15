@@ -1,6 +1,6 @@
  <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-color-1">
-    <div class="container">
-        <a class="navbar-brand ps-3" href="#">
+    <div class="container px-3">
+        <a class="navbar-brand" href="index.html">
             <?xml version="1.0" encoding="UTF-8" standalone="no"?>
             <svg
                 version="1.1"
@@ -35,15 +35,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav light">
+                {{#each pages}}
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Home</a>
+                    <a class="nav-link{{#if this.active}} active{{/if}}" href="{{this.url}}">{{this.name}}</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About Us</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
-                </li>
+                {{/each}}
             </ul>
         </div>
     </div>
