@@ -6,6 +6,3 @@ try {
     console.log("Could not add navigation template.");
     console.log(error);
 }
-
-//Bootstrap include
-import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js";
