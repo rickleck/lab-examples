@@ -4,7 +4,9 @@ Rickard
 Frontend Lab assignments<br>
 Lexicon
 
-<h3>Finished</h3>
+<h3>Results</h3>
+
+<h4>Finished</h4>
 
 <a href="https://leck-lex.github.io/labs/00_week36_basics_html_css">Week 36 Lab 0: Basics - HTML and CSS<a>
 <br>
