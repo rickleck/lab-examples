@@ -1,0 +1,23 @@
+/* Custom classes (prefix c-) */
+
+.c-bg-gradient {
+    background: linear-gradient(153deg, $color-2 7%, $color-4 21%, $color-5 76%) no-repeat center
+        center fixed;
+    background-size: cover;
+}
+
+.c-mt-main {
+    margin-top: 5.5rem;
+}
+
+.c-hero {
+    height: calc(100vh * 0.25);
+    @include media-breakpoint-up(lg) {
+        height: calc(100vh * 0.4);
+    }
+}
+
+.c-bg-img-fill {
+    background-size: cover;
+    background-position: center;
+}
