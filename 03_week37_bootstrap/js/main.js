@@ -1,9 +1,8 @@
+//Import handlebars templates
 import "./templates.js";
 
 //Check active page
-const isActivePage = (page) => {
-    return document.body.attributes["data-page"].value == page;
-};
+const isActivePage = (page) => document.body.attributes["data-page"].value == page;
 
 //Create navigation data
 const navData = {
