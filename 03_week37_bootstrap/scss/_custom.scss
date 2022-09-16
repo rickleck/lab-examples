@@ -9,10 +9,6 @@ As few custom classes as possible to learn the Bootstrap classes.
     background-size: cover;
 }
 
-.c-mt-main {
-    margin-top: 4rem;
-}
-
 .c-hero {
     height: calc(100vh * 0.25);
     @include media-breakpoint-up(lg) {

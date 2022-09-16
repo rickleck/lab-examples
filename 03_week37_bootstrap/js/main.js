@@ -1,8 +1,8 @@
 import "./templates.js";
 
 //Check active page
-const activePage = (url) => {
-    return window.location.href.includes(url);
+const isActivePage = (page) => {
+    return document.body.attributes["data-page"].value == page;
 };
 
 //Create navigation data
@@ -11,17 +11,17 @@ const navData = {
         {
             name: "Home",
             url: "index.html",
-            active: activePage("index.html"),
+            active: isActivePage("index"),
         },
         {
             name: "About Us",
             url: "about.html",
-            active: activePage("about.html"),
+            active: isActivePage("about"),
         },
         {
             name: "Contact",
             url: "contact.html",
-            active: activePage("contact.html"),
+            active: isActivePage("contact"),
         },
     ],
 };
@@ -29,8 +29,10 @@ const navData = {
 //Render navigation template
 try {
     const template = Handlebars.templates.navigation(navData);
-    document.querySelector("header").insertAdjacentHTML("afterbegin", template);
+    document.body.insertAdjacentHTML("afterbegin", template);
 } catch (error) {
     console.log("Could not add navigation template.");
     console.log(error);
 }
+
+console.log("data-page: " + document.body.attributes["data-page"].value);
