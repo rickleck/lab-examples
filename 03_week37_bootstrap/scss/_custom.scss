@@ -9,10 +9,10 @@ As few custom classes as possible to learn the Bootstrap classes.
     background-size: cover;
 }
 
-.c-hero {
-    height: calc(100vh * 0.25);
+.c-card-hero-body {
+    min-height: calc(100vh * 0.2);
     @include media-breakpoint-up(lg) {
-        height: calc(100vh * 0.4);
+        min-height: calc(100vh * 0.3);
     }
 }
 
