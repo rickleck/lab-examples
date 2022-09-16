@@ -21,4 +21,9 @@ As few custom classes as possible to learn the Bootstrap classes.
     background-position: center;
 }
 
-
+.c-bg-logo {
+    background-image: url(../assets/svg/logo-bg.svg);
+    background-repeat: no-repeat;
+    background-position: 115%;
+    background-size: 70%;
+}

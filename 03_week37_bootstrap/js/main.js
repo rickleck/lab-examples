@@ -34,5 +34,3 @@ try {
     console.log("Could not add navigation template.");
     console.log(error);
 }
-
-console.log("data-page: " + document.body.attributes["data-page"].value);
