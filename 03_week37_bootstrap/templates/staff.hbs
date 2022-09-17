@@ -1,0 +1,12 @@
+{{#each staff}}
+<div class="col-6 col-lg-3 order-lg">
+    <div class="card bg-white bg-opacity-25">
+        <img src="{{this.img}}" class="card-img-top pt-4 px-4 opacity-25" alt="Member of staff" />
+        <div class="card-body">
+            <strong>{{this.name}}</strong>
+            <br />
+            <small><em>{{this.title}}</em></small>
+        </div>
+    </div>
+</div>
+{{/each}}

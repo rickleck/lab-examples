@@ -1,29 +1,67 @@
-/* 
-Custom classes (prefix c-)
-As few custom classes as possible to learn the Bootstrap classes.
-*/
-
-.c-bg-gradient {
-    background: linear-gradient(153deg, $color-2 7%, $color-4 21%, $color-5 76%) no-repeat center
-        center fixed;
-    background-size: cover;
+body {
+    color: $color-1;
 }
 
-.c-card-hero-body {
-    min-height: calc(100vh * 0.2);
-    @include media-breakpoint-up(lg) {
-        min-height: calc(100vh * 0.3);
+header {
+    //Fill space before the navigation renders
+    height: $nav-logo-size + 1.6rem;
+    background-color: $color-1;
+    width: 100%;
+}
+
+/* Bootstrap overrides */
+
+.card {
+    background-color: rgba($color: white, $alpha: 0.5) !important;
+    border: none !important;
+}
+
+/* Custom classes (prefix c-)*/
+
+.c-bg {
+    &-body-gradient {
+        background: linear-gradient(153deg, $color-2 7%, $color-4 21%, $color-5 76%) no-repeat
+            center center fixed;
+        background-size: cover;
+    }
+
+    &-img-fill {
+        background-size: cover;
+        background-position: center;
+    }
+
+    &-logo {
+        background-image: url(../assets/svg/logo-bg.svg);
+        background-repeat: no-repeat;
+        background-size: 150%;
+        background-position: -20%;
+        @include media-breakpoint-up(md) {
+            background-size: 130%;
+            background-position: -50% center;
+        }
+        @include media-breakpoint-up(lg) {
+            background-position: -70%;
+        }
+        @include media-breakpoint-up(xl) {
+            background-position: -90%;
+        }
     }
 }
 
-.c-bg-img-fill {
-    background-size: cover;
-    background-position: center;
+.c-nav-logo {
+    height: $nav-logo-size;
 }
 
-.c-bg-logo {
-    background-image: url(../assets/svg/logo-bg.svg);
-    background-repeat: no-repeat;
-    background-position: 115%;
-    background-size: 70%;
+.c-card-hero-body {
+    min-height: 20vh;
+    @include media-breakpoint-up(lg) {
+        min-height: 30vh;
+    }
+}
+
+.c-img-about {
+    min-height: 30vh;
+    @include media-breakpoint-up(lg) {
+        min-height: 100%;
+    }
 }

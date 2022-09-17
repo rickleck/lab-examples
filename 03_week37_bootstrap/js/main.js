@@ -1,10 +1,11 @@
-//Import handlebars templates
+/*
+ * Simple script for rendering Handlebars templates
+ */
+
 import "./templates.js";
 
-//Check active page
 const isActivePage = (page) => document.body.attributes["data-page"].value == page;
 
-//Create navigation data
 const navData = {
     pages: [
         {
@@ -25,11 +26,17 @@ const navData = {
     ],
 };
 
-//Render navigation template
-try {
-    const template = Handlebars.templates.navigation(navData);
-    document.body.insertAdjacentHTML("afterbegin", template);
-} catch (error) {
-    console.log("Could not add navigation template.");
-    console.log(error);
+document.querySelector("header").innerHTML = Handlebars.templates.navigation(navData);
+
+if (isActivePage("about")) {
+    //Create dummy data for staff members
+    const staffData = { staff: [] };
+    for (let i = 0; i < 7; i++) {
+        staffData.staff.push({
+            img: "assets/images/staff-member.png",
+            name: "Firstname Lastname",
+            title: "Job title"
+        });
+    }
+    document.querySelector("#staff").innerHTML = Handlebars.templates.staff(staffData);
 }
