@@ -1,5 +1,8 @@
 body {
     color: $color-1;
+    background: linear-gradient(153deg, $color-2 7%, $color-4 21%, $color-5 76%) no-repeat center
+        center fixed;
+    background-size: cover;
 }
 
 header {
@@ -19,12 +22,6 @@ header {
 /* Custom classes (prefix c-)*/
 
 .c-bg {
-    &-body-gradient {
-        background: linear-gradient(153deg, $color-2 7%, $color-4 21%, $color-5 76%) no-repeat
-            center center fixed;
-        background-size: cover;
-    }
-
     &-img-fill {
         background-size: cover;
         background-position: center;
