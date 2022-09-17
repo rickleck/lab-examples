@@ -25,7 +25,7 @@ header {
     }
 }
 
-/* Custom classes (prefix c-)*/
+/* Custom classes (prefix c-) */
 
 .c-bg {
     &-img-fill {
@@ -61,7 +61,7 @@ header {
     }
 }
 
-.c-img-about {
+.c-about-img {
     min-height: 30vh;
     @include media-breakpoint-up(lg) {
         min-height: 100%;

@@ -37,7 +37,7 @@ templates['staff'] = template({"1":function(container,depth0,helpers,partials,da
         return undefined
     };
 
-  return "<div class=\"col-6 col-lg-3 order-lg\">\r\n    <div class=\"card bg-white bg-opacity-25\">\r\n        <img src=\""
+  return "<div class=\"col-6 col-lg-3 col-xl-2 order-lg\">\r\n    <div class=\"card bg-white bg-opacity-25\">\r\n        <img src=\""
     + alias2(alias1((depth0 != null ? lookupProperty(depth0,"img") : depth0), depth0))
     + "\" class=\"card-img-top pt-4 px-4 opacity-25\" alt=\"Member of staff\" />\r\n        <div class=\"card-body\">\r\n            <strong>"
     + alias2(alias1((depth0 != null ? lookupProperty(depth0,"name") : depth0), depth0))

@@ -31,7 +31,7 @@ document.querySelector("header").innerHTML = Handlebars.templates.navigation(nav
 if (isActivePage("about")) {
     //Create dummy data for staff members
     const staffData = { staff: [] };
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < 10; i++) {
         staffData.staff.push({
             img: "assets/images/staff-member.png",
             name: "Firstname Lastname",
