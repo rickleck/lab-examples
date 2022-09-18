@@ -18,7 +18,6 @@
   "devDependencies": {
     "@parcel/transformer-sass": "^2.7.0",
     "@partiellkorrekt/parcel-transformer-handlebars": "^1.0.2",
-    "@popperjs/core": "^2.11.6",
     "bootstrap": "^5.2.1",
     "handlebars-helpers": "^0.10.0",
     "parcel": "^2.7.0",
