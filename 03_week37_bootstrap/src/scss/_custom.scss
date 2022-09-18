@@ -6,14 +6,6 @@ body {
     padding-bottom: 1rem;
 }
 
-header {
-    //Fill space before the navigation renders
-    height: $nav-logo-size + 1.6rem;
-    background-color: $color-1;
-    width: 100%;
-    margin-bottom: 1rem;
-}
-
 /* Bootstrap overrides */
 
 .card {
@@ -22,6 +14,13 @@ header {
     &-footer {
         border: none !important;
         background: none !important;
+    }
+}
+
+.nav-link {
+    color: rgba($color: white, $alpha: 0.75);
+    &:hover {
+        color: rgba($color: white, $alpha: 1);
     }
 }
 
@@ -48,10 +47,6 @@ header {
             background-position: -90%;
         }
     }
-}
-
-.c-nav-logo {
-    height: $nav-logo-size;
 }
 
 .c-card-hero-body {

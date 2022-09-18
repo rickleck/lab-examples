@@ -1,0 +1,20 @@
+<header class="sticky-top mb-3">
+    <nav class="navbar navbar-dark navbar-expand-lg bg-color-1">
+        <div class="container px-3">
+            <a class="navbar-brand" href="index.hbs"><img height="50px" src="../assets/svg/logo.svg" alt="Logo"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav light">
+                    {{#each data.pages}}
+                    <li class="nav-item">
+                        <a class="nav-link{{#eq this.id ../page-id}} active{{/eq}}"
+                            href="{{this.url}}">{{this.name}}</a>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

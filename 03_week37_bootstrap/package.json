@@ -1,33 +1,28 @@
 {
   "name": "bootstrap-lab",
-  "description": "bootstrap, sass, handlebars",
-  "version": "0.0.0",
-  "private": true,
-  "stackblitz": {
-    "startCommand": "npm start"
-  },
+  "version": "1.0.0",
+  "description": "A Bootstrap exercise (including Parcel bundler and Handlebars template engine).",
   "scripts": {
-    "build": "npm-run-all css hbs",
-    "css-compile": "sass --style compressed --source-map --embed-sources --no-error-css --load-path=node_modules scss/:css/",
-    "css-prefix": "postcss --replace css/styles.css --use autoprefixer --map",
-    "css": "npm-run-all css-compile css-prefix",
-    "hbs": "handlebars templates -e hbs -f js/templates.js",
-    "server": "serve --listen 3000",
-    "start": "npm-run-all --parallel watch server",
-    "watch": "nodemon -e html,scss,hbs -x \"npm run build\""
+    "clean": "rimraf dist",
+    "start": "npm run clean && npx parcel src/markup/index.hbs",
+    "build": "npm run clean && npx parcel build src/markup/index.hbs --no-optimize --no-cache"
   },
-  "dependencies": {
-    "@popperjs/core": "^2.11.6",
-    "bootstrap": "^5.2.0",
-    "handlebars": "^4.7.7"
+  "author": "",
+  "license": "ISC",
+  "targets": {
+    "default": {
+      "publicUrl": "./",
+      "sourceMap": false
+    }
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.8",
-    "nodemon": "^2.0.19",
-    "npm-run-all": "^4.1.5",
-    "postcss": "^8.4.16",
-    "postcss-cli": "^9.1.0",
-    "sass": "^1.54.8",
-    "serve": "^14.0.1"
-  }
+    "@parcel/transformer-sass": "^2.7.0",
+    "@partiellkorrekt/parcel-transformer-handlebars": "^1.0.2",
+    "@popperjs/core": "^2.11.6",
+    "bootstrap": "^5.2.1",
+    "handlebars-helpers": "^0.10.0",
+    "parcel": "^2.7.0",
+    "rimraf": "^3.0.2"
+  },
+  "dependencies": {}
 }

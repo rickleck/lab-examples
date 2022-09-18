@@ -1,0 +1,66 @@
+{
+    "pages": [
+        {
+            "id": "index",
+            "name": "Home",
+            "url": "index.hbs"
+        },
+        {
+            "id": "about",
+            "name": "About Us",
+            "url": "about.hbs"
+        },
+        {
+            "id": "contact",
+            "name": "Contact",
+            "url": "contact.hbs"
+        }
+    ],
+    "staff": [
+        {
+            "name": "Firstname Lastname",
+            "title": "Job Title",
+            "img": "../assets/images/staff-member.png"
+        },
+        {
+            "name": "Firstname Lastname",
+            "title": "Job Title",
+            "img": "../assets/images/staff-member.png"
+        },
+        {
+            "name": "Firstname Lastname",
+            "title": "Job Title",
+            "img": "../assets/images/staff-member.png"
+        },
+        {
+            "name": "Firstname Lastname",
+            "title": "Job Title",
+            "img": "../assets/images/staff-member.png"
+        },
+        {
+            "name": "Firstname Lastname",
+            "title": "Job Title",
+            "img": "../assets/images/staff-member.png"
+        },
+        {
+            "name": "Firstname Lastname",
+            "title": "Job Title",
+            "img": "../assets/images/staff-member.png"
+        },
+        {
+            "name": "Firstname Lastname",
+            "title": "Job Title",
+            "img": "../assets/images/staff-member.png"
+        },
+        {
+            "name": "Firstname Lastname",
+            "title": "Job Title",
+            "img": "../assets/images/staff-member.png"
+        },
+        {
+            "name": "Firstname Lastname",
+            "title": "Job Title",
+            "img": "../assets/images/staff-member.png"
+        }
+    ]
+}
