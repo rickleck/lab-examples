@@ -16,4 +16,4 @@ Lexicon
 
 <h5>In Pogress</h5>
 
-<a href="https://leck-lex.github.io/labs/03_week37_bootstrap/">Week 37 Lab 3: Bootstrap - HTML and CSS<a>
+<a href="https://leck-lex.github.io/labs/03_week37_bootstrap/dist">Week 37 Lab 3: Bootstrap - HTML and CSS<a>
