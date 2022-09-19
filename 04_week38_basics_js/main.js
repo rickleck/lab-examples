@@ -9,9 +9,10 @@ function log(msg) {
 //Check if running in node or browser
 const isBrowser = typeof window !== "undefined";
 const randomNum = () => Math.floor(Math.random() * 100);
-const num1 = randomNum();
-const num2 = randomNum();
-const person = {
+
+let num1 = randomNum();
+let num2 = randomNum();
+let person = {
     fname: "Sven",
     lname: "Svensson",
     age: randomNum(),
