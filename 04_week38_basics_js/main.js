@@ -21,10 +21,11 @@ let person = {
 //Log to console/browser
 if (isBrowser) log("node main.js");
 log("*** Lab 4 Week 38: Basics - JavaScript ***");
-log(num1 + num2);
-log(num1 - num2);
-log(num1 * num2);
 log(num1 + " plus " + num2 + " är: " + (num1 + num2));
+log(num1 + " minus " + num2 + " är: " + (num1 - num2));
+
+log(num1 + " gånger " + num2 + " är: " + num1 * num2);
+
 log(
     "Hej, mitt namn är " +
         person.fname +
