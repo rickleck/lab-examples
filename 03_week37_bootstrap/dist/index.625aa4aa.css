@@ -16743,14 +16743,6 @@ body {
   padding-bottom: 1rem;
 }
 
-a {
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
 .card {
   background-color: #ffffff80 !important;
   border: none !important;
@@ -16767,7 +16759,6 @@ a:hover {
 
 .nav-link:hover {
   color: #fff;
-  text-decoration: none;
 }
 
 .ratio-map {
@@ -16784,6 +16775,15 @@ a:hover {
   .ratio-map {
     --bs-aspect-ratio: calc(9 / 21 * 100%);
   }
+}
+
+.c-link {
+  text-decoration: none;
+  transition: brightness .15s ease-out;
+}
+
+.c-link:hover {
+  filter: brightness(.5);
 }
 
 .c-bg-img-fill {
@@ -16835,9 +16835,5 @@ a:hover {
   .c-about-img {
     min-height: 100%;
   }
-}
-
-.c-contact-address {
-  list-style: none;
 }
 
