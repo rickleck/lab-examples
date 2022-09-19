@@ -4,7 +4,7 @@ Rickard
 Frontend Lab assignments<br>
 Lexicon
 
-<h3>Results</h3>
+<h3>Deployed Results</h3>
 
 <h5>Finished</h5>
 
