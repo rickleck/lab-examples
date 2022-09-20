@@ -3,7 +3,8 @@ import { MODES } from "./modes/modes.js";
 
 export class Printer {
     constructor() {
-        this.CURSOR = '<span class="blink">|</span>';
+        this._path = "";
+        this._cursor = '<span class="blink">|</span>';
         if (BROWSER) this._htmlConsole = document.querySelector("#console");
     }
     /**
@@ -38,11 +39,11 @@ export class Printer {
     }
 
     _addCursor() {
-        this._printToBrowser(this._path + this.CURSOR);
+        this._printToBrowser(this._path + this._cursor);
     }
 
     _removeCursor() {
-        this._htmlConsole.innerHTML = this._htmlConsole.innerHTML.replace(this.CURSOR, "");
+        this._htmlConsole.innerHTML = this._htmlConsole.innerHTML.replace(this._cursor, "");
     }
     /**
      * @param {string} msg
