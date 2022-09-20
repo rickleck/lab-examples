@@ -15,4 +15,4 @@ Lexicon
 - [Week 38 Lab 4: Basics - JavaScript](https://leck-lex.github.io/labs/04_week38_basics_js/) (press &#60;Enter&#62;)  
 
 ### In Progress
-- &#151;
+- &#150;
