@@ -2,9 +2,7 @@ import { Printer } from "./printer.js";
 
 export class PrinterLab4 extends Printer {
     constructor() {
-        super(
-            'PS D:&#92;Workspace&#92;labs&#92;04_week38_basics_js> <span class="node">node</span> js/main.js'
-        );
+        super();
     }
 
     _print() {
