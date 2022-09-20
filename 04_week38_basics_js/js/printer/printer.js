@@ -17,12 +17,6 @@ export class Printer {
     print() {
         this._log("// Override this function...");
     }
-
-    _run() {
-        this._removeCursor();
-        this.print();
-        this._addCursor();
-    }
     /**
      * @param {string} key
      */
@@ -30,6 +24,12 @@ export class Printer {
         document.addEventListener("keypress", (event) => {
             if (event.code.toLowerCase() === keyCode) this._run();
         });
+    }
+
+    _run() {
+        this._removeCursor();
+        this.print();
+        this._addCursor();
     }
 
     _reset() {
