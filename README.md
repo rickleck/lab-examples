@@ -1,7 +1,7 @@
 # labs
 Rickard
 
-Frontend Lab assignments<br>
+Frontend Lab Assignments<br>
 Lexicon
 
 ## Deployed Results
