@@ -3,12 +3,8 @@ import { MODES } from "./modes/modes.js";
 
 export class Printer {
     constructor() {
-        if (BROWSER) {
-            this.CURSOR = '<span class="blink">|</span>';
-            this._htmlConsole = document.querySelector("#console");
-        } else {
-            this.run();
-        }
+        this.CURSOR = '<span class="blink">|</span>';
+        if (BROWSER) this._htmlConsole = document.querySelector("#console");
     }
     /**
      * @param {string} id
@@ -17,27 +13,28 @@ export class Printer {
         this._path = MODES[id];
         this._reset();
     }
-    run() {
-        if (BROWSER) this._removeCursor();
-        this._print();
-        if (BROWSER) this._addCursor();
+
+    print() {
+        this._log("// Override this function...");
+    }
+
+    _run() {
+        this._removeCursor();
+        this.print();
+        this._addCursor();
     }
     /**
      * @param {string} key
      */
     listenForKeyPress(keyCode) {
         document.addEventListener("keypress", (event) => {
-            if (event.code.toLowerCase() === keyCode) this.run();
+            if (event.code.toLowerCase() === keyCode) this._run();
         });
     }
 
     _reset() {
         this._htmlConsole.innerHTML = "";
         this._addCursor();
-    }
-
-    _print() {
-        this._log("// Override this function...");
     }
 
     _addCursor() {

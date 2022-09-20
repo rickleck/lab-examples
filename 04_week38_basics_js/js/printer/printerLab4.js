@@ -5,7 +5,7 @@ export class PrinterLab4 extends Printer {
         super();
     }
 
-    _print() {
+    print() {
         const randomNum = () => Math.floor(Math.random() * 100);
         let num1 = randomNum();
         let num2 = randomNum();

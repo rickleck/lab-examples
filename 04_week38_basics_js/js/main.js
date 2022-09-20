@@ -14,4 +14,6 @@ if (BROWSER) {
         printer.mode = event.detail.id;
         navigation.active = event.detail.id;
     });
+} else {
+    printer.print();
 }
