@@ -8,6 +8,7 @@ let printer = new PrinterLab4();
 if (BROWSER) {
     let navigation = new Navigation();
     navigation.active = MODES_DEFAULT_KEY;
+    printer.mode = MODES_DEFAULT_KEY;
     printer.listenForKeyPress("enter");
     document.addEventListener(EVENT_NAV_CLICK, (event) => {
         printer.mode = event.detail.id;

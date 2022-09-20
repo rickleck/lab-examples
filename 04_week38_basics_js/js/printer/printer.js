@@ -1,26 +1,22 @@
 import { BROWSER } from "../utils/environment.js";
-import { MODES, MODES_DEFAULT_KEY } from "./modes/modes.js";
+import { MODES } from "./modes/modes.js";
 
 export class Printer {
     constructor() {
         if (BROWSER) {
             this.CURSOR = '<span class="blink">|</span>';
-            this._path = MODES[MODES_DEFAULT_KEY];
-            this._htmlConsole = BROWSER ? document.querySelector("#console") : undefined;
-            this._init();
+            this._htmlConsole = document.querySelector("#console");
         } else {
             this.run();
         }
     }
-
     /**
      * @param {string} id
      */
     set mode(id) {
         this._path = MODES[id];
-        this._init();
+        this._reset();
     }
-
     run() {
         if (BROWSER) this._removeCursor();
         this._print();
@@ -36,7 +32,7 @@ export class Printer {
         });
     }
 
-    _init() {
+    _reset() {
         this._htmlConsole.innerHTML = "";
         this._addCursor();
     }
