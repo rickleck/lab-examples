@@ -1,7 +1,11 @@
 body {
     background-color: black;
-    color: greenyellow;
+    color: white;
     font-family: "Courier New", Courier, monospace;
+}
+
+.node {
+    color: yellow;
 }
 
 .blink {
