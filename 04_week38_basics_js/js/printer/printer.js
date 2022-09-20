@@ -26,9 +26,8 @@ export class Printer {
      * @param {string} key
      */
     listenForKeyPress(keyCode) {
-        let ref = this;
         document.addEventListener("keypress", (event) => {
-            if (event.code.toLowerCase() === keyCode) ref.run();
+            if (event.code.toLowerCase() === keyCode) this.run();
         });
     }
 
