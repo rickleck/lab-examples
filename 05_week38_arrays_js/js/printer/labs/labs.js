@@ -6,7 +6,7 @@ export class Labs {
      * @param {string | number} order
      * @returns {Printer} Printer
      */
-    static getPrinter = (order) => {
+    static getPrinter(order) {
         let labClass;
         switch (parseInt(order)) {
             case 4:
@@ -19,5 +19,5 @@ export class Labs {
                 labClass = Lab5;
         }
         return new labClass();
-    };
+    }
 }
