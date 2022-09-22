@@ -30,8 +30,8 @@ export class Lab5 extends Printer {
      *
      */
     print() {
+        const prefix = this.lineBreak + "- ";
         let randomNames = this.#names.sort(() => 0.5 - Math.random());
-        let prefix = this.lineBreak + "- ";
 
         this.log(this.lineBreak + "*** Lab 5 Week 38: Arrays - JavaScript ***");
 
@@ -56,8 +56,7 @@ export class Lab5 extends Printer {
         this.log(output);
 
         this.log(prefix + 'Find index of "Joakim"');
-        let index = output.indexOf("Joakim");
-        this.log(index);
+        this.log(output.indexOf("Joakim"));
 
         this.log(prefix + 'Remove "Joakim"');
         output.splice(index, 1);
