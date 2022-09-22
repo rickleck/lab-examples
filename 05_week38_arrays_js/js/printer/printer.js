@@ -27,7 +27,7 @@ export class Printer {
      */
     set mode(id) {
         let mode = Modes.getMode(id);
-        this.#path = mode.path;
+        this.#path = mode.path[this.#order];
         this.#param = mode.param;
         this.#reset();
     }
