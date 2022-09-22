@@ -57,7 +57,7 @@ export class Lab5 extends Printer {
 
         this.log(prefix + 'Find index of "Joakim"');
         let index = output.indexOf("Joakim");
-        this.log();
+        this.log(index);
 
         this.log(prefix + 'Remove "Joakim"');
         output.splice(index, 1);
