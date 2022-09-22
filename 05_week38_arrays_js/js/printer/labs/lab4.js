@@ -20,12 +20,13 @@ export class Lab4 extends Printer {
             age: randomNum(),
         };
 
-        this.log("*** Lab 4 Week 38: Basics - JavaScript ***");
+        this.log(this.lineBreak + "*** Lab 4 Week 38: Basics - JavaScript ***" + this.lineBreak);
         this.log(num1 + " plus " + num2 + " är: " + (num1 + num2));
         this.log(num1 + " minus " + num2 + " är: " + (num1 - num2));
         this.log(num1 + " gånger " + num2 + " är: " + num1 * num2);
         this.log(
-            "Hej, mitt namn är " +
+            this.lineBreak +
+                "Hej, mitt namn är " +
                 person.fname +
                 " " +
                 person.lname +
@@ -33,6 +34,6 @@ export class Lab4 extends Printer {
                 person.age +
                 " år gammal."
         );
-        this.log("*** The End ***");
+        this.log(this.lineBreak + "*** The End ***" + this.lineBreak);
     }
 }

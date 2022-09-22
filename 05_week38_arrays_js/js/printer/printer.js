@@ -31,6 +31,12 @@ export class Printer {
         this.#reset();
     }
     /**
+     * @returns {string}
+     */
+    get lineBreak() {
+        return ENV.BROWSER ? "<br>" : "\n";
+    }
+    /**
      *
      */
     print() {

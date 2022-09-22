@@ -35,7 +35,7 @@ class App {
      */
     run() {
         this.#navLabs = new Navigation(this.#NAV_LABS_ID);
-        this.#setLab(4);
+        this.#setLab(5);
 
         this.#navModes = new Navigation(this.#NAV_MODES_ID);
         this.#setMode(Modes.MODES_DEFAULT_ID);
