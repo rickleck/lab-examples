@@ -3,10 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "type": "module",
-  "main": "js/terminal/app.js",
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "scripts": {
+    "start": "node js/terminal/app.js"
+  },
   "devDependencies": {
     "commander": "^9.4.0"
   }
