@@ -1,5 +1,4 @@
-import { Printer } from "../Printer.js";
-import { ENV } from "../../utils/env.js";
+import { Printer } from "../printer.js";
 
 export class Lab5 extends Printer {
     /** @type {array} */

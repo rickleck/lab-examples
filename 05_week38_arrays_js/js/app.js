@@ -1,5 +1,5 @@
 import { Navigation } from "./navigation/navigation.js";
-import { Modes } from "./printer/modes/Modes.js";
+import { Modes } from "./printer/modes/modes.js";
 import { Labs } from "./printer/labs/labs.js";
 /*
  * App browser version (terminal version in terminal/app.js)
