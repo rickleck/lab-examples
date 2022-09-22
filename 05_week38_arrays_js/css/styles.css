@@ -61,6 +61,14 @@ nav {
     color: turquoise;
 }
 
+.array-item {
+    color: rgb(0, 160, 0);
+}
+
+.number {
+    color: yellow;
+}
+
 .blink {
     animation: blink-animation 1000ms steps(2, start) infinite;
 }

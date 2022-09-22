@@ -1,4 +1,5 @@
 import { Printer } from "../printer.js";
+import { PrinterHelpers } from "../helpers/printerhelpers.js";
 
 export class Lab4 extends Printer {
     /**
@@ -20,12 +21,16 @@ export class Lab4 extends Printer {
             age: randomNum(),
         };
 
-        this.log(this.lineBreak + "*** Lab 4 Week 38: Basics - JavaScript ***" + this.lineBreak);
+        this.log(
+            PrinterHelpers.lineBreak +
+                "*** Lab 4 Week 38: Basics - JavaScript ***" +
+                PrinterHelpers.lineBreak
+        );
         this.log(num1 + " plus " + num2 + " är: " + (num1 + num2));
         this.log(num1 + " minus " + num2 + " är: " + (num1 - num2));
         this.log(num1 + " gånger " + num2 + " är: " + num1 * num2);
         this.log(
-            this.lineBreak +
+            PrinterHelpers.lineBreak +
                 "Hej, mitt namn är " +
                 person.fname +
                 " " +
@@ -34,6 +39,6 @@ export class Lab4 extends Printer {
                 person.age +
                 " år gammal."
         );
-        this.log(this.lineBreak + "*** The End ***" + this.lineBreak);
+        this.log(PrinterHelpers.lineBreak + "*** The End ***" + PrinterHelpers.lineBreak);
     }
 }

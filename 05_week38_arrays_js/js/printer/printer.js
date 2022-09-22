@@ -1,5 +1,6 @@
 import { ENV } from "../utils/env.js";
 import { Modes } from "./modes/modes.js";
+import { PrinterHelpers } from "./helpers/printerhelpers.js";
 
 export class Printer {
     /** @type {string} */
@@ -29,12 +30,6 @@ export class Printer {
         this.#path = mode.path;
         this.#param = mode.param;
         this.#reset();
-    }
-    /**
-     * @returns {string}
-     */
-    get lineBreak() {
-        return ENV.BROWSER ? "<br>" : "\n";
     }
     /**
      *
@@ -108,6 +103,6 @@ export class Printer {
      * @param {string} msg
      */
     #printToBrowser(msg) {
-        this.#htmlConsole.innerHTML += msg + this.lineBreak;
+        this.#htmlConsole.innerHTML += msg + PrinterHelpers.lineBreak;
     }
 }
