@@ -1,4 +1,4 @@
-import { Printer } from "../Printer.js";
+import { Printer } from "../printer.js";
 
 export class Lab4 extends Printer {
     /**
