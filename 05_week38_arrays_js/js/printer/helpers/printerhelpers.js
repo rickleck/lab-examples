@@ -17,7 +17,7 @@ export class PrinterHelpers {
             for (let i = 0; i < array.length; i++) {
                 output += '<span class="array-item">' + "'" + array[i] + "'" + "</span>";
                 if (i < array.length - 1) {
-                    output += " ,";
+                    output += ", ";
                 }
             }
             output += " ]";
