@@ -15,6 +15,8 @@ export class Labs {
             case 5:
                 labClass = Lab5;
                 break;
+            default:
+                labClass = Lab5;
         }
         return new labClass();
     }
