@@ -1,6 +1,6 @@
 import { Navigation } from "./navigation/navigation.js";
-import { Modes } from "./printer/modes/modes.js";
 import { Labs } from "./printer/labs/labs.js";
+import { Modes } from "./printer/modes/modes.js";
 /*
  * App browser version (terminal version in terminal/app.js)
  */
@@ -17,13 +17,10 @@ class App {
     #NAV_MODES_ID;
     /** @type {string} */
     #NAV_LABS_ID;
-    /**
-     * @constructor
-     */
-    constructor() {
-        this.#NAV_MODES_ID = "nav_modes";
-        this.#NAV_LABS_ID = "nav_labs";
-    }
+    /** @type {string} */
+    #DEFAULT_MODE;
+    /** @type {number} */
+    #DEFAULT_LAB;
     /**
      * @returns {App} App
      */
@@ -31,14 +28,23 @@ class App {
         return new App();
     }
     /**
+     * @constructor
+     */
+    constructor() {
+        this.#NAV_MODES_ID = "nav_modes";
+        this.#NAV_LABS_ID = "nav_labs";
+        this.#DEFAULT_LAB = 5;
+        this.#DEFAULT_MODE = Modes.MODE_GB;
+    }
+    /**
      *
      */
     run() {
         this.#navLabs = new Navigation(this.#NAV_LABS_ID);
-        this.#setLab(5);
+        this.#setLab(this.#DEFAULT_LAB);
 
         this.#navModes = new Navigation(this.#NAV_MODES_ID);
-        this.#setMode(Modes.MODES_DEFAULT_ID);
+        this.#setMode(this.#DEFAULT_MODE);
 
         window.addEventListener(Navigation.EVENT_CLICK, (event) => {
             switch (event.detail.navID) {
