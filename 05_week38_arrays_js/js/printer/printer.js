@@ -108,6 +108,6 @@ export class Printer {
      * @param {string} msg
      */
     #printToBrowser(msg) {
-        this.#htmlConsole.innerHTML += msg + "<br>";
+        this.#htmlConsole.innerHTML += msg + this.lineBreak;
     }
 }

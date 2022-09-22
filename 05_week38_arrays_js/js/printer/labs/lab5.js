@@ -10,6 +10,7 @@ export class Lab5 extends Printer {
         super(5);
         this.#names = [
             "Adam",
+            "Carl",
             "Christer A",
             "Christer S",
             "Erik N",
