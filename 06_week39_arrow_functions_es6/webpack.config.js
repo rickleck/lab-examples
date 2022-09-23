@@ -23,7 +23,6 @@ module.exports = {
     ],
     module: {
         rules: [
-            // CSS, PostCSS, and Sass
             {
                 test: /\.(scss|css)$/,
                 use: [
@@ -51,9 +50,14 @@ module.exports = {
     devServer: {
         historyApiFallback: true,
         static: path.resolve(__dirname, "dist"),
-        open: true,
-        compress: true,
         hot: true,
         port: 8080,
+        watchFiles: ["src/**/*.*"],
+        client: {
+            overlay: {
+                errors: true,
+                warnings: false,
+            },
+        },
     },
 };
