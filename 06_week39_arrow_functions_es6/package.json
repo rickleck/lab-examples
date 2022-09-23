@@ -1,7 +1,7 @@
 {
   "name": "06_week39_arrow_functions_es6",
   "version": "1.0.0",
-  "description": "Deploy: https://leck-lex.github.io/labs/06_week39_arrow_functions_es6/",
+  "description": "",
   "private": true,
   "scripts": {
     "build": "webpack --mode production",
