@@ -17,4 +17,4 @@ Lexicon
 
 ### In Progress
 
-- [Week 39 Lab 8: Arrow Functions - ES6](https://leck-lex.github.io/labs/06_week39_arrow_functions_es6/dist) 
+- [Week 39 Lab 6: Arrow Functions - ES6](https://leck-lex.github.io/labs/06_week39_arrow_functions_es6/dist) 
