@@ -13,6 +13,8 @@ export class Printer {
     #cursor;
     /** @type {HTMLElement} */
     #htmlConsole;
+    /** @type {HTMLElement} */
+    #btnEnter;
     /**
      * @constructor
      * @param {string} order
@@ -50,12 +52,22 @@ export class Printer {
     destroy() {
         this.#clear();
         window.removeEventListener("keypress", this);
+        this.#btnEnter.removeEventListener("click", this);
+        this.#htmlConsole = undefined;
+        this.#btnEnter = undefined;
     }
     /**
      * @param {Event} event
      */
     handleEvent(event) {
-        if (event.code.toLowerCase() === "enter") this.#run();
+        switch (event.type) {
+            case "keypress":
+                if (event.code.toLowerCase() === "enter") this.#run();
+                break;
+            case "click":
+                this.#run();
+                break;
+        }
     }
     /**
      * @param {string} order
@@ -64,7 +76,9 @@ export class Printer {
         this.#order = order;
         this.#cursor = '<span class="blink">|</span>';
         this.#htmlConsole = document.querySelector("#console");
+        this.#btnEnter = document.querySelector("#btn-enter");
         window.addEventListener("keypress", this);
+        this.#btnEnter.addEventListener("click", this);
     }
     /**
      *

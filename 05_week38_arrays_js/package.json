@@ -3,10 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "type": "module",
-  "scripts": {
-    "start": "node js/terminal/app.js"
-  },
-  "devDependencies": {
+  "dependencies": {
     "commander": "^9.4.0"
   }
 }

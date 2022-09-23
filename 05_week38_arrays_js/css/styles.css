@@ -7,6 +7,7 @@ body {
     color: white;
     font-family: "Courier New", Courier, monospace;
     padding: 1rem;
+    word-break: break-all;
 }
 
 nav {
@@ -35,6 +36,27 @@ nav {
 
 .btn.active:hover {
     color: black;
+}
+
+#btn-enter {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+    font-size: larger;
+    font-weight: 800;
+    padding: 1rem;
+    margin: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0);
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+}
+
+@media screen and (min-width: 769px) {
+    #btn-enter {
+        display: none;
+    }
 }
 
 .ps-param {
