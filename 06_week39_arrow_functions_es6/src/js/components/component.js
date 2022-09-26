@@ -1,7 +1,7 @@
 export class Component {
-    /** type {HTMLElement} */
+    /** @type {HTMLElement} */
     #element;
-    /** type {Object} */
+    /** @type {Object} */
     #config;
     /*
      * @constructor

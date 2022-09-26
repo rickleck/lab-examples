@@ -25,6 +25,7 @@ export class Layout {
 
         const container = document.createElement("div");
         container.classList.add("container");
+        container.innerHTML = "<h1>Laboration 6: Arrow Functions - ES6</h1>";
 
         this.#row = document.createElement("div");
         this.#row.classList.add("row", "g-4", "pb-4", "pb-lg-0");

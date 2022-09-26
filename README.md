@@ -13,8 +13,9 @@ Lexicon
 - [Week 37 Lab 2: Media Queries - HTML and CSS](https://leck-lex.github.io/labs/02_week37_media_queries/)  
 - [Week 37 Lab 3: Bootstrap - HTML and CSS](https://leck-lex.github.io/labs/03_week37_bootstrap/dist)  
 - [Week 38 Lab 4: Basics - JavaScript](https://leck-lex.github.io/labs/04_week38_basics_js/) (press &#60;Enter&#62;)
-- [Week 38 Lab 5: Arrays - JavaScript](https://leck-lex.github.io/labs/05_week38_arrays_js/) (press &#60;Enter&#62;) 
+- [Week 38 Lab 5: Arrays - JavaScript](https://leck-lex.github.io/labs/05_week38_arrays_js/) (press &#60;Enter&#62;)
+- [Week 39 Lab 6: Arrow Functions - ES6](https://leck-lex.github.io/labs/06_week39_arrow_functions_es6/dist) 
 
 ### In Progress
 
-- [Week 39 Lab 6: Arrow Functions - ES6](https://leck-lex.github.io/labs/06_week39_arrow_functions_es6/dist) 
+-
