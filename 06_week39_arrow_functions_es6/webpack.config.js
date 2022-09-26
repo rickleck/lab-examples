@@ -12,8 +12,8 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: "Laboration 6",
-            metaDesc: "Week 39 Laboration 6: Arrow functions in ES6.",
+            title: "Lab 6 Week 39: Arrow Functions - ES6.",
+            metaDesc: "Laboration 6, week 39. Arrow functions in ES6.",
             template: "./src/index.html",
             filename: "index.html",
         }),

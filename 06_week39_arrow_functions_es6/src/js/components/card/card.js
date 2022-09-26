@@ -14,7 +14,6 @@ export class Card extends Component {
     #body;
     /** @type {Component} */
     #footer;
-    #test;
     /*
      * @constructor
      */
