@@ -1,1 +1,0 @@
-(()=>{"use strict";document.body.appendChild(function(){const t=document.createElement("div");return t.innerHTML="<h1>Trying out a setup with Webpack bundler, Bootstrap and Sass.</h1>",t}())})();

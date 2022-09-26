@@ -1,9 +1,9 @@
 import "../scss/styles.scss";
+import { Card } from "./components/card/card";
+import { Layout } from "./layout/layout";
 
-function component() {
-    const element = document.createElement("div");
-    element.innerHTML = "<h1>Trying out a setup with Webpack bundler, Bootstrap and Sass.</h1>";
-    return element;
+const layout = new Layout();
+
+for (let i = 1; i <= 4; i++) {
+    layout.column.appendChild(new Card({ order: i }).element);
 }
-
-document.body.appendChild(component());
