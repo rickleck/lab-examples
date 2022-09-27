@@ -14,6 +14,6 @@ export class CardHeader extends Component {
     draw() {
         super.draw();
         this.element.classList.add("card-header");
-        this.element.innerHTML = "<h5 class='mb-1 mt-1'>" + this.config.title + "</h5>";
+        this.element.innerHTML = `<h5 class="mb-1 mt-1">${this.config.title}</h5>`;
     }
 }

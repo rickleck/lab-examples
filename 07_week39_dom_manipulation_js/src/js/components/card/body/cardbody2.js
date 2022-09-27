@@ -15,12 +15,9 @@ export class CardBody2 extends CardBody {
      */
     draw() {
         super.draw();
-        this.element.innerHTML =
-            '<p>This <a href="' +
-            this.#links[0] +
-            '" target="_blank">link</a> goes to <span>' +
-            this.#links[0] +
-            "</span>.</p>";
+        this.element.innerHTML = `<p>This <a href="${
+            this.#links[0]
+        }" target="_blank">link</a> goes to <span>${this.#links[0]}</span>.</p>`;
     }
     /**
      *

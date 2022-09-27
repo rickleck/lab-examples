@@ -25,9 +25,9 @@ export class Card extends Component {
      */
     draw() {
         super.draw();
-        this.element.classList.add("card", "card-" + this.config.order, "shadow");
+        this.element.classList.add("card", `card-${this.config.order}`, "shadow");
 
-        this.#header = new CardHeader({ title: "# " + this.config.order });
+        this.#header = new CardHeader({ title: `# ${this.config.order}` });
         this.element.appendChild(this.#header.element);
 
         this.#body = this.#getBody(this.config.order);
@@ -41,8 +41,7 @@ export class Card extends Component {
      * @param {Event} event
      */
     handleEvent(event) {
-        let id = event.target["id"];
-        if (id.includes("btn-footer-")) {
+        if (event.type === "click" && event.target.id.includes("btn-footer-")) {
             this.#body.onFooterButton();
         }
     }

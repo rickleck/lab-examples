@@ -15,7 +15,7 @@ export class CardBody1 extends CardBody {
      */
     draw() {
         super.draw();
-        this.element.innerHTML = "<p>" + this.#texts[0] + "</p>";
+        this.element.innerHTML = `<p>${this.#texts[0]}</p>`;
     }
     /**
      *

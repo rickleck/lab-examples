@@ -2,7 +2,7 @@ import "../scss/styles.scss";
 import { Card } from "./components/card/card";
 import { Layout } from "./layout/layout";
 
-const layout = new Layout();
+const layout = new Layout("Lab 7: DOM Manipulation");
 
 const config = [
     {
