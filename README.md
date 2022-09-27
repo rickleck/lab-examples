@@ -15,6 +15,7 @@ Lexicon
 - [Week 38 Lab 4: Basics - JavaScript](https://leck-lex.github.io/labs/04_week38_basics_js/) (press &#60;Enter&#62;)
 - [Week 38 Lab 5: Arrays - JavaScript](https://leck-lex.github.io/labs/05_week38_arrays_js/) (press &#60;Enter&#62;)
 - [Week 39 Lab 6: Arrow Functions - ES6](https://leck-lex.github.io/labs/06_week39_arrow_functions_es6/dist) 
+- [Week 39 Lab 7: DOM Manipulation - JavaScript](https://leck-lex.github.io/labs/07_week39_dom_manipulation_js/dist) 
 
 ### In Progress
 
