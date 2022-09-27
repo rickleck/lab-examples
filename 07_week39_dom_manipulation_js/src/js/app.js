@@ -30,6 +30,7 @@ const config = [
         },
     },
 ];
+
 for (let i = 0; i < 3; i++) {
     layout.getColumn(config[i].column).appendChild(new Card(config[i]).element);
 }
