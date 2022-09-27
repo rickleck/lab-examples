@@ -76,7 +76,7 @@ export class CardBody3 extends CardBody {
      */
     #reset() {
         const inputs = this.#form.getElementsByTagName("input");
-        for (const input of inputs) {
+        for (let input of inputs) {
             input.value = 0;
         }
         this.#calculate();
