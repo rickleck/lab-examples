@@ -1,0 +1,41 @@
+html {
+    font-family: -apple-system, BlinkMacSystemFont, “Segoe UI”, Roboto, Helvetica, Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+* {
+    &,
+    &::before,
+    &::after {
+        box-sizing: inherit;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hgroup,
+ul,
+ol,
+dd,
+p,
+figure,
+pre,
+table,
+fieldset,
+hr {
+    margin-top: 0;
+}
+
+a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+option,
+optgroup {
+    color: initial;
+}
