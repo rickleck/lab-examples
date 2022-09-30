@@ -102,15 +102,15 @@
         }
 
         &-select {
-            position: relative;
-            border: forms.$input-fields-border;
             padding: forms.$input-fields-padding;
             width: 100%;
-            background: white;
             padding-right: 30px;
+            background-color: white;
             background: url("data:image/svg+xml, #{icons.$icon-select-arrow-svg}") calc(100% - 4px)
                 center no-repeat;
             background-size: 30px;
+            border: forms.$input-fields-border;
+            cursor: pointer;
 
             &:focus {
                 border: forms.$input-fields-border--focus;
@@ -128,6 +128,7 @@
             background-color: white;
             border: 1px solid colors.$primary-color;
             transform: translateY(-0.075em);
+            cursor: pointer;
 
             &:focus {
                 border: forms.$input-fields-border--focus;
