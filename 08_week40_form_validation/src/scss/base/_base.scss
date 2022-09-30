@@ -1,0 +1,43 @@
+@use "../variables/layout";
+@use "../variables/colors";
+
+*:focus {
+    outline: none !important;
+}
+
+html {
+    height: 100%;
+    font-family: "Inter Tight", sans-serif;
+}
+
+body {
+    height: 100%;
+    background: colors.$body-bg-color;
+    color: colors.$primary-color;
+    padding: layout.$body-padding;
+    padding-right: calc(layout.$body-padding * 2);
+}
+
+main {
+    height: 100%;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+
+a {
+    font-weight: 700;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+input[type="text"],
+input[type="email"],
+input[type="checkbox"],
+select {
+    appearance: none;
+    font-family: inherit;
+    font-size: inherit;
+    background-image: none;
+}

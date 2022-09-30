@@ -1,0 +1,34 @@
+<div class="signup__image">-</div>
+<form class="signup__form" action="" novalidate>
+    <h2>Pick a course.</h2>
+    <h1>Sign up today!</h1>
+
+    <div class="signup__form-wrapper">
+        <label class="signup__form-label" for="fname">First Name</label>
+        <input class="signup__form-field" type="text" name="fname" id="fname" required tabindex="1">
+    </div>
+    <div class="signup__form-wrapper">
+        <label class="signup__form-label" for="lname">Last Name</label>
+        <input class="signup__form-field" type="text" name="lname" id="lname" required tabindex="2">
+    </div>
+    <div class="signup__form-wrapper">
+        <label class="signup__form-label" for="email">Email</label>
+        <input class="signup__form-field" type="email" name="email" id="email" required tabindex="3">
+    </div>
+    <div class="signup__form-wrapper--select">
+        <label class="signup__form-label" for="course">Pick a course</label>
+        <select class="signup__form-select" name="course" id="course" required tabindex="4">
+            <option value="">Select...</option>
+            <option value="html">HTML</option>
+            <option value="css">CSS</option>
+            <option value="js">JavaScript</option>
+        </select>
+    </div>
+    <div class="signup__form-wrapper--checkbox">
+        <input class="signup__form-checkbox" type="checkbox" name="terms" id="terms" required>
+        <label class="signup__form-label--checkbox" for="terms" tabindex="5">
+            I agree to the <a href="#">Terms & Conditions</a>.
+        </label>
+    </div>
+    <button class="signup__form-button" type="submit" tabindex="6">Submit</button>
+</form>

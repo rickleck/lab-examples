@@ -1,0 +1,155 @@
+@use "../../variables/forms";
+@use "../../variables/colors";
+@use "../../variables/layout";
+@use "../../common-gui/icons";
+@use "../../common-gui/buttons";
+@use "../../utils/breakpoints";
+
+.signup {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    background-color: white;
+
+    @include breakpoints.from-md {
+        display: grid;
+        grid: auto / 1fr 1fr;
+        max-width: 800px;
+    }
+
+    &::after {
+        content: "";
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        position: absolute;
+        left: layout.$body-padding;
+        top: layout.$body-padding;
+        z-index: -1;
+    }
+
+    &__image {
+        display: none;
+        position: relative;
+        overflow: hidden;
+
+        &::before {
+            content: "";
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -10%;
+            left: -40%;
+            background: url(../assets/images/javascript-code-bw.jpg) 0 0 no-repeat;
+            transform: rotate(-15deg);
+        }
+
+        @include breakpoints.from-md {
+            display: block;
+        }
+    }
+
+    &__form {
+        padding: 2rem;
+
+        h1 {
+            color: colors.$highlight-color;
+        }
+
+        h2 {
+            margin-top: 1rem;
+            margin-bottom: 0;
+            color: colors.$secondary-color;
+        }
+
+        .is-invalid {
+            border: forms.$input-fields-border--invalid;
+            outline: forms.$input-fields-border--invalid;
+        }
+
+        &-wrapper {
+            margin-bottom: 0.5rem;
+
+            &--select {
+                margin-bottom: 2rem;
+            }
+
+            &--checkbox {
+                display: flex;
+                margin-bottom: 0.5rem;
+            }
+        }
+
+        &-label {
+            font-weight: 700;
+            color: colors.$secondary-color;
+
+            &--checkbox {
+                font-size: small;
+            }
+        }
+
+        &-field {
+            border: forms.$input-fields-border;
+            padding: forms.$input-fields-padding;
+            width: 100%;
+            outline: none;
+
+            &:focus {
+                border: forms.$input-fields-border--focus;
+                outline: none;
+            }
+        }
+
+        &-select {
+            position: relative;
+            border: forms.$input-fields-border;
+            padding: forms.$input-fields-padding;
+            width: 100%;
+            background: white;
+            padding-right: 30px;
+            background: url("data:image/svg+xml, #{icons.$icon-select-arrow-svg}") calc(100% - 4px)
+                center no-repeat;
+            background-size: 30px;
+
+            &:focus {
+                border: forms.$input-fields-border--focus;
+            }
+        }
+
+        &-checkbox {
+            display: grid;
+            grid-template-columns: 1em auto;
+            gap: 0.5em;
+            margin: 0 0.5em 0 0;
+            color: colors.$primary-color;
+            width: 1.2em;
+            height: 1.2em;
+            background-color: white;
+            border: 1px solid colors.$primary-color;
+            transform: translateY(-0.075em);
+
+            &:focus {
+                border: forms.$input-fields-border--focus;
+            }
+
+            &::before {
+                content: "";
+                width: 1em;
+                height: 1em;
+                transform: scale(0);
+                transition: 50ms transform ease-in;
+                background-color: colors.$primary-color;
+                clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+            }
+
+            &:checked::before {
+                transform: scale(1);
+            }
+        }
+
+        &-button {
+            @extend .generic-button;
+        }
+    }
+}

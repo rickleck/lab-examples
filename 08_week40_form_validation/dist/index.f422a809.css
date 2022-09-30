@@ -1,0 +1,232 @@
+@import "https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;700&display=swap";
+html {
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, “Segoe UI”, Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+*, :before, :after {
+  box-sizing: inherit;
+}
+
+h1, h2, h3, h4, h5, h6, hgroup, ul, ol, dd, p, figure, pre, table, fieldset, hr {
+  margin-top: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+option, optgroup {
+  color: initial;
+}
+
+.generic-button, .signup__form-button {
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  background-color: #2b2d42;
+  border: 1px solid #2b2d42;
+  margin-top: .4rem;
+  padding: .5rem 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  transition: all .15s;
+}
+
+.generic-button:hover, .signup__form-button:hover {
+  background-color: #ee6c4d;
+  border: 1px solid #ee6c4d;
+}
+
+.generic-button:focus, .signup__form-button:focus {
+  border: 1px solid #ee6c4d;
+}
+
+:focus {
+  outline: none !important;
+}
+
+html {
+  height: 100%;
+  font-family: Inter Tight, sans-serif;
+}
+
+body {
+  height: 100%;
+  color: #2b2d42;
+  background: #8d99ae;
+  padding: 1.5rem 3rem 1.5rem 1.5rem;
+}
+
+main {
+  height: 100%;
+  place-items: center;
+  display: grid;
+}
+
+a {
+  font-weight: 700;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+input[type="text"], input[type="email"], input[type="checkbox"], select {
+  appearance: none;
+  font-family: inherit;
+  font-size: inherit;
+  background-image: none;
+}
+
+.signup {
+  width: 100%;
+  max-width: 500px;
+  background-color: #fff;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .signup {
+    max-width: 800px;
+    grid: auto / 1fr 1fr;
+    display: grid;
+  }
+}
+
+.signup:after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-color: #00000080;
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+}
+
+.signup__image {
+  display: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.signup__image:before {
+  content: "";
+  width: 200%;
+  height: 200%;
+  background: url("javascript-code-bw.1c5671c0.jpg") no-repeat;
+  position: absolute;
+  top: -10%;
+  left: -40%;
+  transform: rotate(-15deg);
+}
+
+@media (min-width: 768px) {
+  .signup__image {
+    display: block;
+  }
+}
+
+.signup__form {
+  padding: 2rem;
+}
+
+.signup__form h1 {
+  color: #ee6c4d;
+}
+
+.signup__form h2 {
+  color: #949494;
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+
+.signup__form .is-invalid {
+  border: 1px solid #d14545;
+  outline: 1px solid #d14545;
+}
+
+.signup__form-wrapper {
+  margin-bottom: .5rem;
+}
+
+.signup__form-wrapper--select {
+  margin-bottom: 2rem;
+}
+
+.signup__form-wrapper--checkbox {
+  margin-bottom: .5rem;
+  display: flex;
+}
+
+.signup__form-label {
+  color: #949494;
+  font-weight: 700;
+}
+
+.signup__form-label--checkbox {
+  font-size: small;
+}
+
+.signup__form-field {
+  width: 100%;
+  border: 1px solid #949494;
+  outline: none;
+  padding: .3rem;
+}
+
+.signup__form-field:focus {
+  border: 1px solid #ee6c4d;
+  outline: none;
+}
+
+.signup__form-select {
+  width: 100%;
+  background: url("data:image/svg+xml, <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"48\" width=\"48\"><path d=\"m24 30.75-12-12 2.15-2.15L24 26.5l9.85-9.85L36 18.8Z\"/></svg>") calc(100% - 4px) / 30px no-repeat;
+  border: 1px solid #949494;
+  padding: .3rem 30px .3rem .3rem;
+  position: relative;
+}
+
+.signup__form-select:focus {
+  border: 1px solid #ee6c4d;
+}
+
+.signup__form-checkbox {
+  color: #2b2d42;
+  width: 1.2em;
+  height: 1.2em;
+  background-color: #fff;
+  border: 1px solid #2b2d42;
+  grid-template-columns: 1em auto;
+  gap: .5em;
+  margin: 0 .5em 0 0;
+  display: grid;
+  transform: translateY(-.075em);
+}
+
+.signup__form-checkbox:focus {
+  border: 1px solid #ee6c4d;
+}
+
+.signup__form-checkbox:before {
+  content: "";
+  width: 1em;
+  height: 1em;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+  background-color: #2b2d42;
+  transition: transform 50ms ease-in;
+  transform: scale(0);
+}
+
+.signup__form-checkbox:checked:before {
+  transform: scale(1);
+}
+
