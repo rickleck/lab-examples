@@ -1,34 +1,53 @@
-<div class="signup__image">-</div>
-<form class="signup__form" action="" novalidate>
-    <h2>Pick a course.</h2>
-    <h1>Sign up today!</h1>
+<div class="signup__image"></div>
+<div class="signup__wrapper">
+    <form class="signup__form">
+        <h2>Pick a course.</h2>
+        <h1>Sign up today!</h1>
 
-    <div class="signup__form-wrapper">
-        <label class="signup__form-label" for="fname">First Name</label>
-        <input class="signup__form-field" type="text" name="fname" id="fname" required tabindex="1">
+        <div class="signup__form-wrapper">
+            <label class="signup__form-label" for="fname">First Name</label>
+            <input class="signup__form-input" type="text" name="fname" id="fname" data-tooltip-offset-y="-18" required
+                tabindex="1">
+        </div>
+        <div class="signup__form-wrapper">
+            <label class="signup__form-label" for="lname">Last Name</label>
+            <input class="signup__form-input" type="text" name="lname" id="lname" data-tooltip-offset-y="-18" required
+                tabindex="2">
+        </div>
+        <div class="signup__form-wrapper">
+            <label class="signup__form-label" for="email">Email</label>
+            <input class="signup__form-input" type="email" name="email" id="email" data-tooltip-offset-y="-18" required
+                tabindex="3">
+        </div>
+        <div class="signup__form-wrapper--select">
+            <label class="signup__form-label" for="course">Pick a course</label>
+            <select class="signup__form-select" name="course" id="course" data-tooltip-offset-y="-18" required
+                tabindex="4">
+                <option value="">Select...</option>
+                <option value="html">HTML</option>
+                <option value="css">CSS</option>
+                <option value="js">JavaScript</option>
+            </select>
+        </div>
+        <div class="signup__form-wrapper--checkbox">
+            <input class="signup__form-checkbox" type="checkbox" name="terms" id="terms" data-tooltip-offset-y="-25"
+                required tabindex="5">
+            <label class="signup__form-label--checkbox" for="terms">
+                I agree to the <a href="#">Terms & Conditions</a>.
+            </label>
+        </div>
+        <button class="signup__form-button" type="submit" tabindex="6">Submit</button>
+    </form>
+    <div class="signup__success">
+        <div class="signup__success-content">
+            <div class="signup__success-content-svg">
+                <div class="tooltip success show">Success!</div>
+                <svg id="icon-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                    <path class="bg-color"
+                        d="M8 0a8 8 0 0 0 0 16A8 8 0 0 0 8 0zm4.040178 3.959822l1.616072 1.616071-6.464286 6.464285-1.616072-1.616071L2.34375 7.191964l1.616072-1.616072 3.232143 3.232143z" />
+                </svg>
+            </div>
+        </div>
+        <button class="signup__success-button">Back</button>
     </div>
-    <div class="signup__form-wrapper">
-        <label class="signup__form-label" for="lname">Last Name</label>
-        <input class="signup__form-field" type="text" name="lname" id="lname" required tabindex="2">
-    </div>
-    <div class="signup__form-wrapper">
-        <label class="signup__form-label" for="email">Email</label>
-        <input class="signup__form-field" type="email" name="email" id="email" required tabindex="3">
-    </div>
-    <div class="signup__form-wrapper--select">
-        <label class="signup__form-label" for="course">Pick a course</label>
-        <select class="signup__form-select" name="course" id="course" required tabindex="4">
-            <option value="">Select...</option>
-            <option value="html">HTML</option>
-            <option value="css">CSS</option>
-            <option value="js">JavaScript</option>
-        </select>
-    </div>
-    <div class="signup__form-wrapper--checkbox">
-        <input class="signup__form-checkbox" type="checkbox" name="terms" id="terms" required>
-        <label class="signup__form-label--checkbox" for="terms" tabindex="5">
-            I agree to the <a href="#">Terms & Conditions</a>.
-        </label>
-    </div>
-    <button class="signup__form-button" type="submit" tabindex="6">Submit</button>
-</form>
+</div>

@@ -1,43 +1,49 @@
-import { ElementConfig } from "./elementconfig";
+import { ElementConfig } from "./config/elementconfig";
 
 export class AbstractElement extends HTMLElement {
     /** @type {ElementConfig} */
     #config;
+
     /**
      * @constructor
      * @param {ElementConfig} config optional
      */
     constructor(config) {
         super();
-        this.config = config ? config : this.createConfig();
-        this.#populateFromConfig();
+        this.config = config ? config : new ElementConfig();
+        this.validateConfig();
+        this.populateFromConfig();
     }
+
     /**
      * @param {ElementConfig} config
      */
     set config(config) {
         this.#config = config;
     }
+
     /**
      * @returns {ElementConfig}
      */
     get config() {
         return this.#config;
     }
+
     /**
-     *
-     * @returns {ElementConfig}
+     * @returns {object}
+     * @comment Override this getter to register default component id and classlist if needed
      */
-    createConfig() {
-        //Creates empty config if this method is not overridden
-        return new ElementConfig();
+    get defaults() {
+        return { id: "", classList: "" };
     }
+
     /**
      * @param {string} htmlString
      */
     render(htmlString) {
         this.innerHTML = htmlString;
     }
+
     /**
      * @param {HTMLElement} el
      * @returns {ElementBase}
@@ -46,6 +52,7 @@ export class AbstractElement extends HTMLElement {
         element.append(this);
         return this;
     }
+
     /**
      * @param {HTMLElement} el
      * @returns {ElementBase}
@@ -54,17 +61,20 @@ export class AbstractElement extends HTMLElement {
         element.prepend(this);
         return this;
     }
+
     /**
      *
      */
-    #populateFromConfig() {
-        if (this.config.id !== undefined) {
-            this.id = this.config.id;
-        }
-        if (this.config.classList !== undefined) {
-            for (const className of this.config.classList) {
-                this.classList.add(className);
-            }
-        }
+    validateConfig() {
+        this.config.id = this.config.id ? this.config.id : this.defaults.id;
+        this.config.appendClassList(this.defaults.classList);
+    }
+
+    /**
+     *
+     */
+    populateFromConfig() {
+        this.id = this.config.id;
+        for (const className of this.config.classList.split(" ")) this.classList.add(className);
     }
 }

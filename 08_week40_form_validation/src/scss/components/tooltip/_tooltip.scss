@@ -1,0 +1,51 @@
+@use "../../variables/colors";
+
+.tooltip {
+    display: block;
+    position: absolute;
+    font-weight: 700;
+    text-align: center;
+    padding: 1em;
+    color: white;
+    filter: drop-shadow(6px 6px 0px rgba(0, 0, 0, 0.5));
+    opacity: 0;
+    transition: 100ms opacity ease-in-out;
+
+    &::before {
+        position: absolute;
+        content: "";
+        width: 20px;
+        height: 20px;
+        left: 40px;
+        top: 100%;
+        clip-path: polygon(0 100%, 0 0, 100% 0);
+    }
+
+    &.info {
+        background-color: colors.$highlight-color;
+
+        &::before {
+            background-color: colors.$highlight-color;
+        }
+    }
+
+    &.success {
+        background-color: colors.$success-color;
+
+        &::before {
+            background-color: colors.$success-color;
+        }
+    }
+
+    &.error {
+        background-color: colors.$error-color;
+
+        &::before {
+            background-color: colors.$error-color;
+        }
+    }
+
+    &.show {
+        opacity: 100;
+    }
+}

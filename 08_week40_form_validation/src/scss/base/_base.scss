@@ -1,8 +1,19 @@
 @use "../variables/layout";
 @use "../variables/colors";
+@use "../utils/breakpoints";
 
 *:focus {
     outline: none !important;
+}
+
+input,
+select {
+    appearance: none;
+    font-family: inherit;
+    font-size: inherit;
+    background-image: none;
+    outline: none;
+    background-color: transparent;
 }
 
 html {
@@ -14,15 +25,28 @@ body {
     height: 100%;
     background: colors.$body-bg-color;
     color: colors.$primary-color;
-    padding: layout.$body-padding;
-    padding-right: calc(layout.$body-padding * 2);
 }
 
 main {
-    height: 100%;
+    padding: layout.$body-padding calc(layout.$body-padding * 2) calc(layout.$body-padding * 2)
+        layout.$body-padding;
+    @include breakpoints.from-md {
+        height: 100%;
+    }
+}
+
+#app-container {
     display: grid;
-    align-items: center;
+    grid-template-columns: 100%;
+    grid-template-rows: min-content min-content;
     justify-items: center;
+
+    @include breakpoints.from-md {
+        height: 100%;
+        align-items: center;
+        grid-template-columns: auto;
+        grid-template-rows: auto;
+    }
 }
 
 a {
@@ -30,16 +54,4 @@ a {
     &:hover {
         text-decoration: underline;
     }
-}
-
-input[type="text"],
-input[type="email"],
-input[type="checkbox"],
-select {
-    appearance: none;
-    font-family: inherit;
-    font-size: inherit;
-    background-image: none;
-    outline: none;
-    background-color: transparent;
 }
