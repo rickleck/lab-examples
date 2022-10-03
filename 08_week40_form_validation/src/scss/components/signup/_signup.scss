@@ -73,7 +73,6 @@
         .is-invalid {
             border: forms.$input-fields-border--invalid;
             outline: forms.$input-fields-outline--invalid;
-            animation-direction: alternate;
             animation: error-alert 200ms 4 alternate;
         }
 
