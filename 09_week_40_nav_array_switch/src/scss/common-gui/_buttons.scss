@@ -1,0 +1,22 @@
+@use "../variables/colors";
+@use "sass:color";
+.generic-button {
+    border: none;
+    margin-top: 0.4rem;
+    padding: 0.7rem 1.5rem;
+    background-color: colors.$primary-color;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 150ms ease;
+
+    &:hover {
+        background-color: colors.$highlight-color;
+    }
+
+    &:focus {
+        background-color: color.scale(colors.$highlight-color, $lightness: -20%);
+    }
+}

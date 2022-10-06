@@ -1,0 +1,25 @@
+{
+  "name": "nav-array-switch",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "clean": "rimraf dist",
+    "start": "npm run clean && npx parcel src/index.html",
+    "build": "npm run clean && npx parcel build src/index.html --no-optimize --no-cache"
+  },
+  "author": "",
+  "license": "ISC",
+  "targets": {
+    "default": {
+      "publicUrl": "./",
+      "sourceMap": false
+    }
+  },
+  "devDependencies": {
+    "@parcel/transformer-inline-string": "^2.7.0",
+    "@parcel/transformer-sass": "^2.7.0",
+    "parcel": "^2.7.0",
+    "rimraf": "^3.0.2"
+  },
+  "dependencies": {}
+}

@@ -1,0 +1,121 @@
+@use '../../variables/colors';
+@use '../../utils/breakpoints';
+
+.navigation {
+    display: block;
+    padding: 0.6rem 1.5rem 0 1.5rem;
+
+    a {
+        cursor: pointer;
+    }
+
+    nav {
+        display: flex;
+        flex-direction: column;
+
+        @include breakpoints.from-md {
+            flex-direction: row;
+            justify-content: space-between;
+            border-bottom: 2px solid colors.$primary-color;
+        }
+
+        .navigation__buttons {
+            display: flex;
+            justify-content: space-between;
+
+            border-bottom: 2px solid colors.$primary-color;
+
+            @include breakpoints.from-md {
+                border-bottom: none;
+            }
+
+            &-logo {
+                margin-bottom: 4px;
+                svg {
+                    pointer-events: none;
+                    .svg-text {
+                        fill: colors.$secondary-color;
+                        transition: fill 150ms ease-out;
+                    }
+
+                    .svg-depth {
+                        fill: colors.$primary-color;
+                    }
+                }
+
+                &:hover {
+                    .svg-text {
+                        fill: colors.$highlight-color;
+                    }
+                }
+            }
+
+            &-toggle {
+                margin-bottom: 10px;
+                padding: 12px;
+                background-color: colors.$secondary-color;
+
+                div {
+                    width: 35px;
+                    height: 5px;
+                    background-color: colors.$primary-color;
+                    &:nth-child(2) {
+                        margin: 6px 0;
+                    }
+                }
+
+                &:hover {
+                    div {
+                        background-color: colors.$highlight-color;
+                    }
+                }
+
+                @include breakpoints.from-md {
+                    display: none;
+                }
+            }
+        }
+
+        .navigation__list {
+            list-style: none;
+            padding: 0;
+
+            @include breakpoints.from-md {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+            }
+
+            li {
+                margin-top: 0.6rem;
+                color: colors.$primary-color;
+                font-weight: 700;
+
+                a {
+                    display: block;
+                    padding: 1rem;
+                    background: colors.$secondary-color;
+
+                    &:hover {
+                        text-decoration: underline;
+                        color: colors.$highlight-color;
+                    }
+
+                    &:disabled {
+                        color: colors.$highlight-color;
+                    }
+                }
+
+                @include breakpoints.from-md {
+                    margin-top: 0.3rem;
+                    margin-left: 2rem;
+
+                    a {
+                        padding: 0;
+                        background: none;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,33 @@
+@use "../variables/colors";
+@use "../utils/breakpoints";
+
+html {
+    font-family: "Inter Tight", sans-serif;
+}
+
+body {
+    background: colors.$body-bg-color;
+}
+
+.container-responsive {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+
+    @include breakpoints.from-md {
+        max-width: breakpoints.$bp-md;
+    }
+
+    @include breakpoints.from-lg {
+        max-width: breakpoints.$bp-lg;
+    }
+
+    @include breakpoints.from-xl {
+        max-width: breakpoints.$bp-xl;
+    }
+}
+
+button {
+    all: unset;
+    cursor: pointer;
+}

@@ -1,0 +1,251 @@
+@import "https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;700&display=swap";
+html {
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, “Segoe UI”, Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+*, :before, :after {
+  box-sizing: inherit;
+}
+
+h1, h2, h3, h4, h5, h6, hgroup, ul, ol, dd, p, figure, pre, table, fieldset, hr {
+  margin-top: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+option, optgroup {
+  color: initial;
+}
+
+.generic-button {
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  background-color: #293241;
+  border: none;
+  margin-top: .4rem;
+  padding: .7rem 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  transition: background-color .15s;
+}
+
+.generic-button:hover {
+  background-color: #ee6c4d;
+}
+
+.generic-button:focus {
+  background-color: #e63e16;
+}
+
+html {
+  font-family: Inter Tight, sans-serif;
+}
+
+body {
+  background: #e0fbfc;
+}
+
+.container-responsive {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 768px) {
+  .container-responsive {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container-responsive {
+    max-width: 992px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container-responsive {
+    max-width: 1200px;
+  }
+}
+
+button {
+  all: unset;
+  cursor: pointer;
+}
+
+.navigation {
+  padding: .6rem 1.5rem 0;
+  display: block;
+}
+
+.navigation a {
+  cursor: pointer;
+}
+
+.navigation nav {
+  flex-direction: column;
+  display: flex;
+}
+
+@media (min-width: 768px) {
+  .navigation nav {
+    border-bottom: 2px solid #293241;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.navigation nav .navigation__buttons {
+  border-bottom: 2px solid #293241;
+  justify-content: space-between;
+  display: flex;
+}
+
+@media (min-width: 768px) {
+  .navigation nav .navigation__buttons {
+    border-bottom: none;
+  }
+}
+
+.navigation nav .navigation__buttons-logo {
+  margin-bottom: 4px;
+}
+
+.navigation nav .navigation__buttons-logo svg {
+  pointer-events: none;
+}
+
+.navigation nav .navigation__buttons-logo svg .svg-text {
+  fill: #98c1d9;
+  transition: fill .15s ease-out;
+}
+
+.navigation nav .navigation__buttons-logo svg .svg-depth {
+  fill: #293241;
+}
+
+.navigation nav .navigation__buttons-logo:hover .svg-text {
+  fill: #ee6c4d;
+}
+
+.navigation nav .navigation__buttons-toggle {
+  background-color: #98c1d9;
+  margin-bottom: 10px;
+  padding: 12px;
+}
+
+.navigation nav .navigation__buttons-toggle div {
+  width: 35px;
+  height: 5px;
+  background-color: #293241;
+}
+
+.navigation nav .navigation__buttons-toggle div:nth-child(2) {
+  margin: 6px 0;
+}
+
+.navigation nav .navigation__buttons-toggle:hover div {
+  background-color: #ee6c4d;
+}
+
+@media (min-width: 768px) {
+  .navigation nav .navigation__buttons-toggle {
+    display: none;
+  }
+}
+
+.navigation nav .navigation__list {
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 768px) {
+  .navigation nav .navigation__list {
+    flex-direction: row;
+    align-items: center;
+    display: flex;
+  }
+}
+
+.navigation nav .navigation__list li {
+  color: #293241;
+  margin-top: .6rem;
+  font-weight: 700;
+}
+
+.navigation nav .navigation__list li a {
+  background: #98c1d9;
+  padding: 1rem;
+  display: block;
+}
+
+.navigation nav .navigation__list li a:hover {
+  color: #ee6c4d;
+  text-decoration: underline;
+}
+
+.navigation nav .navigation__list li a:disabled {
+  color: #ee6c4d;
+}
+
+@media (min-width: 768px) {
+  .navigation nav .navigation__list li {
+    margin-top: .3rem;
+    margin-left: 2rem;
+  }
+
+  .navigation nav .navigation__list li a {
+    background: none;
+    padding: 0;
+  }
+}
+
+.tooltip {
+  text-align: center;
+  color: #fff;
+  filter: drop-shadow(6px 6px #00000080);
+  opacity: 0;
+  padding: 1em;
+  font-weight: 700;
+  transition: opacity .1s ease-in-out;
+  display: block;
+  position: absolute;
+}
+
+.tooltip:before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  clip-path: polygon(0 100%, 0 0, 100% 0);
+  position: absolute;
+  top: 100%;
+  left: 40px;
+}
+
+.tooltip.info, .tooltip.info:before {
+  background-color: #ee6c4d;
+}
+
+.tooltip.success, .tooltip.success:before {
+  background-color: #2ecc71;
+}
+
+.tooltip.error, .tooltip.error:before {
+  background-color: #d14545;
+}
+
+.tooltip.show {
+  opacity: 100;
+}
+
