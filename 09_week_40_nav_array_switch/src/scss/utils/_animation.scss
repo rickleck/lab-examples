@@ -1,0 +1,6 @@
+@mixin with-delay($steps, $timeStep, $unit: 'ms') {
+    @for $i from 1 through $steps {
+        $delay: unquote(($timeStep * ($i - 1)) + $unit);
+        @content ($i, $delay);
+    }
+}

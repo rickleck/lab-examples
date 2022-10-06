@@ -1,5 +1,6 @@
 @use '../../variables/colors';
 @use '../../utils/breakpoints';
+@use '../../utils/animation';
 
 .navigation {
     display: block;
@@ -12,111 +13,133 @@
             justify-content: space-between;
             border-bottom: 2px solid colors.$primary-color;
         }
+    }
+}
 
-        .navigation__buttons {
-            display: flex;
-            justify-content: space-between;
-            border-bottom: 2px solid colors.$primary-color;
+.navigation__buttons {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid colors.$primary-color;
 
-            @include breakpoints.from-md {
-                border-bottom: none;
+    @include breakpoints.from-md {
+        border-bottom: none;
+    }
+
+    &-logo {
+        margin-bottom: 4px;
+        svg {
+            pointer-events: none;
+            .svg-text {
+                fill: colors.$secondary-color;
             }
 
-            &-logo {
-                margin-bottom: 4px;
-                svg {
-                    pointer-events: none;
-                    .svg-text {
-                        fill: colors.$secondary-color;
-                    }
-
-                    .svg-depth {
-                        fill: colors.$primary-color;
-                    }
-                }
-
-                &:hover {
-                    .svg-text {
-                        fill: colors.$highlight-color;
-                    }
-                }
-            }
-
-            &-toggle {
-                margin-bottom: 10px;
-                padding: 12px;
-                background: colors.$secondary-color;
-
-                div {
-                    width: 35px;
-                    height: 5px;
-                    background: colors.$primary-color;
-                    pointer-events: none;
-                    &:nth-child(2) {
-                        margin: 6px 0;
-                    }
-                }
-
-                &:hover {
-                    background: colors.$highlight-color;
-                }
-
-                @include breakpoints.from-md {
-                    display: none;
-                }
+            .svg-depth {
+                fill: colors.$primary-color;
             }
         }
 
-        .navigation__list {
-            list-style: none;
-            padding: 0;
+        &:hover {
+            .svg-text {
+                fill: colors.$highlight-color;
+            }
+        }
+    }
+
+    &-toggle {
+        margin-bottom: 10px;
+        padding: 12px;
+        background: colors.$secondary-color;
+
+        div {
+            width: 35px;
+            height: 5px;
+            background: colors.$primary-color;
+            pointer-events: none;
+            &:nth-child(2) {
+                margin: 6px 0;
+            }
+        }
+
+        &:hover {
+            background: colors.$highlight-color;
+        }
+
+        @include breakpoints.from-md {
             display: none;
+        }
+    }
+}
+
+.navigation__list {
+    position: relative;
+    display: none;
+    list-style: none;
+    padding: 0;
+
+    @include breakpoints.from-md {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    &-item {
+        position: relative;
+        margin-top: 0.6rem;
+        color: colors.$primary-color;
+        font-weight: 700;
+
+        @include breakpoints.from-md {
+            margin-top: 0.3rem;
+            margin-left: 2rem;
+        }
+
+        a {
+            display: block;
+            padding: 1rem;
+            background: colors.$secondary-color;
+
+            &:hover {
+                background: colors.$highlight-color;
+            }
+
+            &:disabled {
+                color: colors.$highlight-color;
+            }
 
             @include breakpoints.from-md {
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-            }
+                padding: 0;
+                background: none;
 
-            li {
-                margin-top: 0.6rem;
-                color: colors.$primary-color;
-                font-weight: 700;
-
-                @include breakpoints.from-md {
-                    margin-top: 0.3rem;
-                    margin-left: 2rem;
+                &:hover {
+                    text-decoration: underline;
+                    color: colors.$highlight-color;
+                    background: none;
                 }
-
-                a {
-                    display: block;
-                    padding: 1rem;
-                    background: colors.$secondary-color;
-
-                    &:hover {
-                        background: colors.$highlight-color;
-                    }
-
-                    &:disabled {
-                        color: colors.$highlight-color;
-                    }
-
-                    @include breakpoints.from-md {
-                        padding: 0;
-                        background: none;
-
-                        &:hover {
-                            text-decoration: underline;
-                            color: colors.$highlight-color;
-                            background: none;
-                        }
-                    }
-                }
-            }
-
-            &.is-open {
-                display: block;
             }
         }
+
+        .is-open & {
+            opacity: 0;
+            transform: translateX(-500px);
+        }
+
+        @include animation.with-delay(2, 50) using ($step, $delay) {
+            .is-open & {
+                &:nth-child(#{$step}) {
+                    animation: 200ms ease-in $delay forwards anim-item-in;
+                }
+            }
+        }
+    }
+
+    &.is-open {
+        display: block;
+    }
+}
+
+@keyframes anim-item-in {
+    to {
+        opacity: 1;
+        transform: translateX(0);
     }
 }
