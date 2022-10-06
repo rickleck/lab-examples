@@ -143,6 +143,7 @@ button {
 .navigation nav .navigation__buttons-toggle div {
   width: 35px;
   height: 5px;
+  pointer-events: none;
   background: #293241;
 }
 
@@ -163,6 +164,7 @@ button {
 .navigation nav .navigation__list {
   padding: 0;
   list-style: none;
+  display: none;
 }
 
 @media (min-width: 768px) {
@@ -209,6 +211,10 @@ button {
     background: none;
     text-decoration: underline;
   }
+}
+
+.navigation nav .navigation__list.is-open {
+  display: block;
 }
 
 .tooltip {

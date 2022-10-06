@@ -100,6 +100,8 @@ class $06463adbb96d13aa$export$d5345f74bf36d494 extends HTMLElement {
 
 
 class $489a32f8870ec4f2$export$b8a61e5c71402559 extends (0, $06463adbb96d13aa$export$d5345f74bf36d494) {
+    /**  @type {HTMLElement[]} */ #list;
+    /** @type {string} */ #listOpenClass = "is-open";
     /**  @type {HTMLElement[]} */ #items;
     /**
      * @constructor
@@ -125,10 +127,20 @@ class $489a32f8870ec4f2$export$b8a61e5c71402559 extends (0, $06463adbb96d13aa$ex
      *
      */ render() {
         super.render((0, (/*@__PURE__*/$parcel$interopDefault($3bb07def7debad7e$exports))));
+        this.#list = this.querySelector("ul");
         this.#items = this.querySelectorAll("li");
         this.addEventListener("click", (event)=>{
-            if (event.target.dataset.href) (0, $342d8b3f004474be$export$86fbec116b87613f).instance.reportNavigationClick(event.target.dataset.href);
+            if (event.target.id === "nav-toggle") this.#toggleList();
+            else if (event.target.dataset.href) (0, $342d8b3f004474be$export$86fbec116b87613f).instance.reportNavigationClick(event.target.dataset.href);
         }, true);
+        window.addEventListener("resize", ()=>{
+            if (window.innerWidth >= 768) this.#list.classList.remove(this.#listOpenClass);
+        });
+    }
+    /**
+     *
+     */  #toggleList() {
+        this.#list.classList.contains(this.#listOpenClass) ? this.#list.classList.remove(this.#listOpenClass) : this.#list.classList.add(this.#listOpenClass);
     }
 }
 /**
