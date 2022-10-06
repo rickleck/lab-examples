@@ -1,8 +1,8 @@
-@use "../variables/colors";
-@use "../utils/breakpoints";
+@use '../variables/colors';
+@use '../utils/breakpoints';
 
 html {
-    font-family: "Inter Tight", sans-serif;
+    font-family: 'Inter Tight', sans-serif;
 }
 
 body {
@@ -29,5 +29,9 @@ body {
 
 button {
     all: unset;
+    cursor: pointer;
+}
+
+a {
     cursor: pointer;
 }

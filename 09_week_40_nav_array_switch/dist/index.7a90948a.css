@@ -84,13 +84,13 @@ button {
   cursor: pointer;
 }
 
+a {
+  cursor: pointer;
+}
+
 .navigation {
   padding: .6rem 1.5rem 0;
   display: block;
-}
-
-.navigation a {
-  cursor: pointer;
 }
 
 @media (min-width: 768px) {
@@ -181,6 +181,13 @@ button {
   font-weight: 700;
 }
 
+@media (min-width: 768px) {
+  .navigation nav .navigation__list li {
+    margin-top: .3rem;
+    margin-left: 2rem;
+  }
+}
+
 .navigation nav .navigation__list li a {
   background: #98c1d9;
   padding: 1rem;
@@ -196,11 +203,6 @@ button {
 }
 
 @media (min-width: 768px) {
-  .navigation nav .navigation__list li {
-    margin-top: .3rem;
-    margin-left: 2rem;
-  }
-
   .navigation nav .navigation__list li a {
     background: none;
     padding: 0;

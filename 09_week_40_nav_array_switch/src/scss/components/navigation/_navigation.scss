@@ -5,10 +5,6 @@
     display: block;
     padding: 0.6rem 1.5rem 0 1.5rem;
 
-    a {
-        cursor: pointer;
-    }
-
     nav {
         @include breakpoints.from-md {
             display: flex;
@@ -20,7 +16,6 @@
         .navigation__buttons {
             display: flex;
             justify-content: space-between;
-
             border-bottom: 2px solid colors.$primary-color;
 
             @include breakpoints.from-md {
@@ -88,6 +83,11 @@
                 color: colors.$primary-color;
                 font-weight: 700;
 
+                @include breakpoints.from-md {
+                    margin-top: 0.3rem;
+                    margin-left: 2rem;
+                }
+
                 a {
                     display: block;
                     padding: 1rem;
@@ -100,13 +100,8 @@
                     &:disabled {
                         color: colors.$highlight-color;
                     }
-                }
 
-                @include breakpoints.from-md {
-                    margin-top: 0.3rem;
-                    margin-left: 2rem;
-
-                    a {
+                    @include breakpoints.from-md {
                         padding: 0;
                         background: none;
 
