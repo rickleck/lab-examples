@@ -71,7 +71,6 @@
 }
 
 .navigation__list {
-    position: relative;
     display: none;
     list-style: none;
     padding: 0;
@@ -83,7 +82,6 @@
     }
 
     &-item {
-        position: relative;
         margin-top: 0.6rem;
         color: colors.$primary-color;
         font-weight: 700;
