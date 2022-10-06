@@ -128,7 +128,6 @@ button {
 
 .navigation nav .navigation__buttons-logo svg .svg-text {
   fill: #98c1d9;
-  transition: fill .15s ease-out;
 }
 
 .navigation nav .navigation__buttons-logo svg .svg-depth {
@@ -140,7 +139,7 @@ button {
 }
 
 .navigation nav .navigation__buttons-toggle {
-  background-color: #98c1d9;
+  background: #98c1d9;
   margin-bottom: 10px;
   padding: 12px;
 }
@@ -148,15 +147,15 @@ button {
 .navigation nav .navigation__buttons-toggle div {
   width: 35px;
   height: 5px;
-  background-color: #293241;
+  background: #293241;
 }
 
 .navigation nav .navigation__buttons-toggle div:nth-child(2) {
   margin: 6px 0;
 }
 
-.navigation nav .navigation__buttons-toggle:hover div {
-  background-color: #ee6c4d;
+.navigation nav .navigation__buttons-toggle:hover {
+  background: #ee6c4d;
 }
 
 @media (min-width: 768px) {
@@ -191,8 +190,7 @@ button {
 }
 
 .navigation nav .navigation__list li a:hover {
-  color: #ee6c4d;
-  text-decoration: underline;
+  background: #ee6c4d;
 }
 
 .navigation nav .navigation__list li a:disabled {
@@ -208,6 +206,12 @@ button {
   .navigation nav .navigation__list li a {
     background: none;
     padding: 0;
+  }
+
+  .navigation nav .navigation__list li a:hover {
+    color: #ee6c4d;
+    background: none;
+    text-decoration: underline;
   }
 }
 

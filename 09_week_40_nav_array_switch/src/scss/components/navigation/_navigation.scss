@@ -35,7 +35,6 @@
                     pointer-events: none;
                     .svg-text {
                         fill: colors.$secondary-color;
-                        transition: fill 150ms ease-out;
                     }
 
                     .svg-depth {
@@ -53,21 +52,19 @@
             &-toggle {
                 margin-bottom: 10px;
                 padding: 12px;
-                background-color: colors.$secondary-color;
+                background: colors.$secondary-color;
 
                 div {
                     width: 35px;
                     height: 5px;
-                    background-color: colors.$primary-color;
+                    background: colors.$primary-color;
                     &:nth-child(2) {
                         margin: 6px 0;
                     }
                 }
 
                 &:hover {
-                    div {
-                        background-color: colors.$highlight-color;
-                    }
+                    background: colors.$highlight-color;
                 }
 
                 @include breakpoints.from-md {
@@ -97,8 +94,7 @@
                     background: colors.$secondary-color;
 
                     &:hover {
-                        text-decoration: underline;
-                        color: colors.$highlight-color;
+                        background: colors.$highlight-color;
                     }
 
                     &:disabled {
@@ -113,6 +109,12 @@
                     a {
                         padding: 0;
                         background: none;
+
+                        &:hover {
+                            text-decoration: underline;
+                            color: colors.$highlight-color;
+                            background: none;
+                        }
                     }
                 }
             }
