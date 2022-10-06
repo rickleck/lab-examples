@@ -4,8 +4,7 @@
 
 .navigation {
     display: block;
-    padding: 0.6rem 1.5rem 0 1.5rem;
-
+    padding-top: 0.6rem;
     nav {
         @include breakpoints.from-md {
             display: flex;
@@ -96,12 +95,13 @@
             padding: 1rem;
             background: colors.$secondary-color;
 
-            &:hover {
-                background: colors.$highlight-color;
+            &.is-active {
+                color: colors.$highlight-color;
             }
 
-            &:disabled {
-                color: colors.$highlight-color;
+            &:hover {
+                color: white;
+                background: colors.$highlight-color;
             }
 
             @include breakpoints.from-md {

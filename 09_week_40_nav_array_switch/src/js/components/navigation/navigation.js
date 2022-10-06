@@ -24,7 +24,10 @@ export class Navigation extends AbstractElement {
      * @param {string} value
      */
     set active(value) {
-        for (const item of this.#items) item.disabled = item.id === value;
+        for (const item of this.#items)
+            item.dataset.href === value
+                ? item.classList.add('is-active')
+                : item.classList.remove('is-active');
     }
 
     /**
@@ -40,7 +43,7 @@ export class Navigation extends AbstractElement {
     render() {
         super.render(HTMLTemplate);
         this.#list = this.querySelector('ul');
-        this.#items = this.querySelectorAll('li');
+        this.#items = this.#list.querySelectorAll('a');
         this.addEventListener(
             'click',
             (event) => {
@@ -48,6 +51,7 @@ export class Navigation extends AbstractElement {
                     this.#toggleList();
                 } else if (event.target.dataset.href) {
                     App.instance.reportNavigationClick(event.target.dataset.href);
+                    this.#toggleList(true);
                 }
             },
             true
@@ -59,10 +63,10 @@ export class Navigation extends AbstractElement {
     }
 
     /**
-     *
+     * @param {boolean} forceOff default false
      */
-    #toggleList() {
-        this.#list.classList.contains(this.#listOpenClass)
+    #toggleList(forceOff = false) {
+        this.#list.classList.contains(this.#listOpenClass) || forceOff
             ? this.#list.classList.remove(this.#listOpenClass)
             : this.#list.classList.add(this.#listOpenClass);
     }

@@ -53,6 +53,7 @@ html {
 
 body {
   background: #e0fbfc;
+  padding: 0 1.5rem 1.5rem;
 }
 
 .container-responsive {
@@ -89,7 +90,7 @@ a {
 }
 
 .navigation {
-  padding: .6rem 1.5rem 0;
+  padding-top: .6rem;
   display: block;
 }
 
@@ -194,12 +195,13 @@ a {
   display: block;
 }
 
-.navigation__list-item a:hover {
-  background: #ee6c4d;
+.navigation__list-item a.is-active {
+  color: #ee6c4d;
 }
 
-.navigation__list-item a:disabled {
-  color: #ee6c4d;
+.navigation__list-item a:hover {
+  color: #fff;
+  background: #ee6c4d;
 }
 
 @media (min-width: 768px) {
@@ -237,6 +239,11 @@ a {
     opacity: 1;
     transform: translateX(0);
   }
+}
+
+.page {
+  padding-top: 1rem;
+  display: block;
 }
 
 .tooltip {

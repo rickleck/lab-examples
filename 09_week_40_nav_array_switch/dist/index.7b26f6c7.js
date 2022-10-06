@@ -113,7 +113,7 @@ class $489a32f8870ec4f2$export$b8a61e5c71402559 extends (0, $06463adbb96d13aa$ex
     /**
      * @param {string} value
      */ set active(value) {
-        for (const item of this.#items)item.disabled = item.id === value;
+        for (const item of this.#items)item.dataset.href === value ? item.classList.add("is-active") : item.classList.remove("is-active");
     }
     /**
      * @returns {object}
@@ -128,24 +128,63 @@ class $489a32f8870ec4f2$export$b8a61e5c71402559 extends (0, $06463adbb96d13aa$ex
      */ render() {
         super.render((0, (/*@__PURE__*/$parcel$interopDefault($3bb07def7debad7e$exports))));
         this.#list = this.querySelector("ul");
-        this.#items = this.querySelectorAll("li");
+        this.#items = this.#list.querySelectorAll("a");
         this.addEventListener("click", (event)=>{
             if (event.target.id === "nav-toggle") this.#toggleList();
-            else if (event.target.dataset.href) (0, $342d8b3f004474be$export$86fbec116b87613f).instance.reportNavigationClick(event.target.dataset.href);
+            else if (event.target.dataset.href) {
+                (0, $342d8b3f004474be$export$86fbec116b87613f).instance.reportNavigationClick(event.target.dataset.href);
+                this.#toggleList(true);
+            }
         }, true);
         window.addEventListener("resize", ()=>{
             if (window.innerWidth >= 768) this.#list.classList.remove(this.#listOpenClass);
         });
     }
     /**
-     *
-     */  #toggleList() {
-        this.#list.classList.contains(this.#listOpenClass) ? this.#list.classList.remove(this.#listOpenClass) : this.#list.classList.add(this.#listOpenClass);
+     * @param {boolean} forceOff default false
+     */  #toggleList(forceOff = false) {
+        this.#list.classList.contains(this.#listOpenClass) || forceOff ? this.#list.classList.remove(this.#listOpenClass) : this.#list.classList.add(this.#listOpenClass);
     }
 }
 /**
  * @comment Register as custom html-element
  */ window.customElements.define("component-navigation", $489a32f8870ec4f2$export$b8a61e5c71402559);
+
+
+
+class $1c2b913514992058$export$6955bcca4cd3539f extends (0, $06463adbb96d13aa$export$d5345f74bf36d494) {
+    /**
+     * @constructor
+     * @param {ElementConfig} config
+     */ constructor(config){
+        super(config);
+        this.render();
+    }
+    /**
+     * @returns {object}
+     */ get defaults() {
+        return {
+            id: "page",
+            classList: "page"
+        };
+    }
+    /**
+     *
+     */ render(htmlString) {
+        if (!htmlString) super.render(`<h1>Page: ${this.id}</h1>`);
+        else super.render(htmlString);
+    //
+    }
+    /**
+     *
+     */ destroy() {
+        this.parentElement.removeChild(this);
+    }
+}
+/**
+ * @comment Register as custom html-element
+ */ window.customElements.define("component-page", $1c2b913514992058$export$6955bcca4cd3539f);
+
 
 
 class $342d8b3f004474be$export$86fbec116b87613f {
@@ -157,18 +196,35 @@ class $342d8b3f004474be$export$86fbec116b87613f {
         return this.#instance;
     }
     /** @type {Navigation} */ #navigation;
+    /** @type {Page} */ #currentPage;
     /**
      * @constructor
      */ constructor(){}
     /**
+     * @param {string} id
+     */ set activePage(id) {
+        this.#navigation.active = id;
+    }
+    /**
      *
      */ run() {
-        this.#navigation = new (0, $489a32f8870ec4f2$export$b8a61e5c71402559)().appendTo(document.body);
+        this.#navigation = new (0, $489a32f8870ec4f2$export$b8a61e5c71402559)().prependTo(document.body);
+        this.goToPage("array");
+    }
+    /**
+     *
+     */ goToPage(id) {
+        if (this.#currentPage) this.#currentPage.destroy();
+        this.#currentPage = new (0, $1c2b913514992058$export$6955bcca4cd3539f)(new (0, $bdb62bb55cd97d0c$export$763ea9d89dbce745)({
+            id: id
+        }));
+        document.querySelector("#page-container").appendChild(this.#currentPage);
+        this.activePage = id;
     }
     /**
      * @param {string} href
-     */ reportNavigationClick(href) {
-        console.log(href);
+     */ reportNavigationClick(id) {
+        this.goToPage(id);
     }
 }
 
