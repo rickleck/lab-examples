@@ -93,16 +93,12 @@ button {
   cursor: pointer;
 }
 
-.navigation nav {
-  flex-direction: column;
-  display: flex;
-}
-
 @media (min-width: 768px) {
   .navigation nav {
     border-bottom: 2px solid #293241;
     flex-direction: row;
     justify-content: space-between;
+    display: flex;
   }
 }
 

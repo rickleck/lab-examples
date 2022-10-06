@@ -10,10 +10,8 @@
     }
 
     nav {
-        display: flex;
-        flex-direction: column;
-
         @include breakpoints.from-md {
+            display: flex;
             flex-direction: row;
             justify-content: space-between;
             border-bottom: 2px solid colors.$primary-color;
