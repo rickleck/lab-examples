@@ -1,4 +1,4 @@
-import { ElementConfig } from "./config/elementconfig";
+import { ElementConfig } from './config/elementconfig';
 
 export class AbstractElement extends HTMLElement {
     /** @type {ElementConfig} */
@@ -34,7 +34,7 @@ export class AbstractElement extends HTMLElement {
      * @comment Override this getter to register default component id and classlist if needed
      */
     get defaults() {
-        return { id: "", classList: "" };
+        return { id: '', classList: '' };
     }
 
     /**
@@ -46,7 +46,7 @@ export class AbstractElement extends HTMLElement {
 
     /**
      * @param {HTMLElement} el
-     * @returns {ElementBase}
+     * @returns {AbstractElement}
      */
     appendTo(element) {
         element.append(this);
@@ -55,7 +55,7 @@ export class AbstractElement extends HTMLElement {
 
     /**
      * @param {HTMLElement} el
-     * @returns {ElementBase}
+     * @returns {AbstractElement}
      */
     prependTo(element) {
         element.prepend(this);
@@ -75,6 +75,6 @@ export class AbstractElement extends HTMLElement {
      */
     populateFromConfig() {
         this.id = this.config.id;
-        for (const className of this.config.classList.split(" ")) this.classList.add(className);
+        for (const className of this.config.classList.split(' ')) this.classList.add(className);
     }
 }
