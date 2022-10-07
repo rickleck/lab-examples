@@ -45,7 +45,7 @@ export class AbstractElement extends HTMLElement {
     }
 
     /**
-     * @param {HTMLElement} el
+     * @param {HTMLElement} element
      * @returns {AbstractElement}
      */
     appendTo(element) {
@@ -54,7 +54,7 @@ export class AbstractElement extends HTMLElement {
     }
 
     /**
-     * @param {HTMLElement} el
+     * @param {HTMLElement} element
      * @returns {AbstractElement}
      */
     prependTo(element) {
