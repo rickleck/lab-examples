@@ -1,9 +1,9 @@
-import HTMLTemplate from "bundle-text:./signup.html";
-import { App } from "../../core/app/app";
-import { AbstractElement } from "../../core/element/abstractelement";
-import { ElementConfig } from "../../core/element/config/elementconfig";
-import { TooltipConfig } from "../tooltip/config/tooltipconfig";
-import { Tooltip } from "../tooltip/tooltip";
+import HTMLTemplate from 'bundle-text:./signup.html';
+import { App } from '../../core/app/app';
+import { AbstractElement } from '../../core/element/abstractelement';
+import { ElementConfig } from '../../core/element/config/elementconfig';
+import { TooltipConfig } from '../tooltip/config/tooltipconfig';
+import { Tooltip } from '../tooltip/tooltip';
 
 export class SignUp extends AbstractElement {
     /** @type {HTMLFormElement} */
@@ -43,7 +43,7 @@ export class SignUp extends AbstractElement {
      * @returns {object}
      */
     get defaults() {
-        return { id: "signup", classList: "signup" };
+        return { id: 'signup', classList: 'signup' };
     }
 
     /**
@@ -51,9 +51,9 @@ export class SignUp extends AbstractElement {
      */
     render() {
         super.render(HTMLTemplate);
-        this.#form = this.querySelector(".signup__form");
-        this.#inputs = this.#form.querySelectorAll("input, select");
-        this.#success = this.querySelector(".signup__success");
+        this.#form = this.querySelector('.signup__form');
+        this.#inputs = this.#form.querySelectorAll('input, select');
+        this.#success = this.querySelector('.signup__success');
         this.#addListeners();
     }
 
@@ -61,17 +61,17 @@ export class SignUp extends AbstractElement {
      *
      */
     #addListeners() {
-        this.#form.addEventListener("submit", (event) => {
+        this.#form.addEventListener('submit', (event) => {
             event.preventDefault();
             if (this.#mode === App.MODE_CUSTOM) {
-                this.#form.querySelector("button").blur();
+                this.#form.querySelector('button').blur();
                 if (this.#validate()) this.#submitForm();
             } else {
                 this.#submitForm();
             }
         });
-        this.#form.addEventListener("input", () => this.#hideInputError(), true);
-        this.#success.querySelector("button").addEventListener("click", () => this.#hideSuccess());
+        this.#form.addEventListener('input', () => this.#hideInputError(), true);
+        this.#success.querySelector('button').addEventListener('click', () => this.#hideSuccess());
     }
 
     /**
@@ -101,15 +101,16 @@ export class SignUp extends AbstractElement {
      * @param {HTMLObjectElement} input
      */
     #showInputError(input) {
-        input.classList.add("is-invalid");
+        input.classList.add('is-invalid');
         this.#addErrorTooltip(input);
+        input.focus();
     }
 
     /**
      *
      */
     #hideInputError() {
-        for (const input of this.#inputs) input.classList.remove("is-invalid");
+        for (const input of this.#inputs) input.classList.remove('is-invalid');
         this.#removeTooltip();
     }
 
@@ -117,14 +118,14 @@ export class SignUp extends AbstractElement {
      *
      */
     #showSuccess() {
-        this.#success.classList.add("show");
+        this.#success.classList.add('show');
     }
 
     /**
      *
      */
     #hideSuccess() {
-        this.#success.classList.remove("show");
+        this.#success.classList.remove('show');
         this.#reset();
     }
 
@@ -133,7 +134,7 @@ export class SignUp extends AbstractElement {
      */
     #reset() {
         for (const input of this.#inputs)
-            input.type === "checkbox" ? (input.checked = false) : (input.value = "");
+            input.type === 'checkbox' ? (input.checked = false) : (input.value = '');
     }
 
     /**
@@ -164,4 +165,4 @@ export class SignUp extends AbstractElement {
 /**
  * @comment Register as custom html-element
  */
-window.customElements.define("component-signup", SignUp);
+window.customElements.define('component-signup', SignUp);

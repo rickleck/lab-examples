@@ -1,9 +1,9 @@
-@use "../../variables/forms";
-@use "../../variables/colors";
-@use "../../variables/layout";
-@use "../../common-gui/icons";
-@use "../../common-gui/buttons";
-@use "../../utils/breakpoints";
+@use '../../variables/forms';
+@use '../../variables/colors';
+@use '../../variables/layout';
+@use '../../common-gui/icons';
+@use '../../common-gui/buttons';
+@use '../../utils/breakpoints';
 
 .signup {
     position: relative;
@@ -26,7 +26,7 @@
         overflow: hidden;
 
         &::before {
-            content: "";
+            content: '';
             position: absolute;
             width: 200%;
             height: 200%;
@@ -71,8 +71,6 @@
         }
 
         .is-invalid {
-            border: forms.$input-fields-border--invalid;
-            outline: forms.$input-fields-outline--invalid;
             animation: error-alert 200ms 4 alternate;
         }
 
@@ -114,7 +112,7 @@
             width: 100%;
             padding-right: 30px;
             background-color: white;
-            background: url("#{icons.$data-svg}#{icons.$icon-select-arrow-svg}") calc(100% - 4px)
+            background: url('#{icons.$data-svg}#{icons.$icon-select-arrow-svg}') calc(100% - 4px)
                 center no-repeat;
             background-size: 30px;
             border: forms.$input-fields-border;
@@ -143,7 +141,7 @@
             }
 
             &::before {
-                content: "";
+                content: '';
                 width: 1em;
                 height: 1em;
                 transform: scale(0);

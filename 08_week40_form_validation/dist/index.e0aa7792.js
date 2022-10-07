@@ -70,15 +70,15 @@ class $06463adbb96d13aa$export$d5345f74bf36d494 extends HTMLElement {
         this.innerHTML = htmlString;
     }
     /**
-     * @param {HTMLElement} el
-     * @returns {ElementBase}
+     * @param {HTMLElement} element
+     * @returns {AbstractElement}
      */ appendTo(element) {
         element.append(this);
         return this;
     }
     /**
-     * @param {HTMLElement} el
-     * @returns {ElementBase}
+     * @param {HTMLElement} element
+     * @returns {AbstractElement}
      */ prependTo(element) {
         element.prepend(this);
         return this;
@@ -274,6 +274,7 @@ class $851b5eb68e168251$export$4ee457d816cea81a extends (0, $06463adbb96d13aa$ex
      */  #showInputError(input1) {
         input1.classList.add("is-invalid");
         this.#addErrorTooltip(input1);
+        input1.focus();
     }
     /**
      *

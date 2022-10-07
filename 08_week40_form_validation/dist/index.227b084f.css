@@ -171,8 +171,6 @@ a:hover {
 }
 
 .signup__form .is-invalid {
-  border: 1px solid #d14545;
-  outline: 1px solid #d14545;
   animation: .2s 4 alternate error-alert;
 }
 
