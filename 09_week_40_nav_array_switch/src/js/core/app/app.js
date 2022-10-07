@@ -1,6 +1,5 @@
 import { Navigation } from '../../components/navigation/navigation';
-import { Page } from '../../components/page/page';
-import { ElementConfig } from '../element/config/elementconfig';
+import { Pages } from '../../components/pages/pages';
 
 export class App {
     /** @type {App} */
@@ -46,7 +45,7 @@ export class App {
      */
     goToPage(id) {
         if (this.#currentPage) this.#currentPage.destroy();
-        this.#currentPage = new Page(new ElementConfig({ id: id }));
+        this.#currentPage = Pages.getPage(id);
         document.querySelector('#page-container').appendChild(this.#currentPage);
         this.activePage = id;
     }

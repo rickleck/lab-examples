@@ -6,7 +6,7 @@ $3bb07def7debad7e$exports = "<div class=\"container-responsive\">\r\n    <nav>\r
 
 
 
-class $bdb62bb55cd97d0c$export$763ea9d89dbce745 {
+class $aaf1807221727ea1$export$763ea9d89dbce745 {
     /**
      * @constructor
      * @param {object} init
@@ -34,14 +34,14 @@ class $bdb62bb55cd97d0c$export$763ea9d89dbce745 {
 }
 
 
-class $06463adbb96d13aa$export$d5345f74bf36d494 extends HTMLElement {
+class $7f62a88c9aa485f8$export$d5345f74bf36d494 extends HTMLElement {
     /** @type {ElementConfig} */ #config;
     /**
      * @constructor
      * @param {ElementConfig} config optional
      */ constructor(config){
         super();
-        this.config = config ? config : new (0, $bdb62bb55cd97d0c$export$763ea9d89dbce745)();
+        this.config = config ? config : new (0, $aaf1807221727ea1$export$763ea9d89dbce745)();
         this.validateConfig();
         this.populateFromConfig();
     }
@@ -70,15 +70,15 @@ class $06463adbb96d13aa$export$d5345f74bf36d494 extends HTMLElement {
         this.innerHTML = htmlString;
     }
     /**
-     * @param {HTMLElement} el
-     * @returns {ElementBase}
+     * @param {HTMLElement} element
+     * @returns {AbstractElement}
      */ appendTo(element) {
         element.append(this);
         return this;
     }
     /**
-     * @param {HTMLElement} el
-     * @returns {ElementBase}
+     * @param {HTMLElement} element
+     * @returns {AbstractElement}
      */ prependTo(element) {
         element.prepend(this);
         return this;
@@ -95,11 +95,16 @@ class $06463adbb96d13aa$export$d5345f74bf36d494 extends HTMLElement {
         this.id = this.config.id;
         for (const className of this.config.classList.split(" "))this.classList.add(className);
     }
+    /**
+     *
+     */ destroy() {
+        if (this.parentElement) this.parentElement.removeChild(this);
+    }
 }
 
 
 
-class $489a32f8870ec4f2$export$b8a61e5c71402559 extends (0, $06463adbb96d13aa$export$d5345f74bf36d494) {
+class $489a32f8870ec4f2$export$b8a61e5c71402559 extends (0, $7f62a88c9aa485f8$export$d5345f74bf36d494) {
     /**  @type {HTMLElement[]} */ #list;
     /** @type {string} */ #listOpenClass = "is-open";
     /**  @type {HTMLElement[]} */ #items;
@@ -151,8 +156,12 @@ class $489a32f8870ec4f2$export$b8a61e5c71402559 extends (0, $06463adbb96d13aa$ex
  */ window.customElements.define("component-navigation", $489a32f8870ec4f2$export$b8a61e5c71402559);
 
 
+var $8b8a697590915cb2$exports = {};
+$8b8a697590915cb2$exports = "<h1>Page: Array</h1>\r\n\r\n<div id=\"chart\" class=\"page-array__chart\"></div>";
 
-class $1c2b913514992058$export$6955bcca4cd3539f extends (0, $06463adbb96d13aa$export$d5345f74bf36d494) {
+
+
+class $0ad27ba0de23c53c$export$7c0a0d9cc4225390 extends (0, $7f62a88c9aa485f8$export$d5345f74bf36d494) {
     /**
      * @constructor
      * @param {ElementConfig} config
@@ -164,27 +173,86 @@ class $1c2b913514992058$export$6955bcca4cd3539f extends (0, $06463adbb96d13aa$ex
      * @returns {object}
      */ get defaults() {
         return {
-            id: "page",
-            classList: "page"
+            id: "page-array",
+            classList: "page page-array"
         };
     }
     /**
      *
-     */ render(htmlString) {
-        if (!htmlString) super.render(`<h1>Page: ${this.id}</h1>`);
-        else super.render(htmlString);
-    //
+     */ render() {
+        super.render((0, (/*@__PURE__*/$parcel$interopDefault($8b8a697590915cb2$exports))));
+        this.#drawArray("#chart", 8, 3);
+    //TODO: Add names, age etc. and hover a stack for details about person
     }
     /**
-     *
-     */ destroy() {
-        this.parentElement.removeChild(this);
+     * @param {string} id container id
+     */  #drawArray(id, length, forceHeight = 0, forceHeightMin = 200) {
+        const randomRange = (min = 140, max = 220)=>Math.floor(Math.random() * (max - min + 1) + min);
+        const chart = this.querySelector(id);
+        for(let i = 0; i < length; i++){
+            let height = i < forceHeight ? randomRange(forceHeightMin) : randomRange();
+            let stack = document.createElement("div");
+            let inner = document.createElement("span");
+            stack.append(inner);
+            stack.classList.add("page-array__chart-stack");
+            stack.style.height = height + "px";
+            inner.innerText = height / 100 + " m";
+            //Randomize list
+            Math.random() > 0.5 ? chart.append(stack) : chart.prepend(stack);
+        }
     }
 }
 /**
  * @comment Register as custom html-element
- */ window.customElements.define("component-page", $1c2b913514992058$export$6955bcca4cd3539f);
+ */ window.customElements.define("component-page-array", $0ad27ba0de23c53c$export$7c0a0d9cc4225390);
 
+
+var $91fe69e7bae1ffd0$exports = {};
+$91fe69e7bae1ffd0$exports = "<h1>Page: Switch</h1>";
+
+
+
+class $dc5d728fbaa349fa$export$ea0bc0ec1649be89 extends (0, $7f62a88c9aa485f8$export$d5345f74bf36d494) {
+    /**
+     * @constructor
+     * @param {ElementConfig} config
+     */ constructor(config){
+        super(config);
+        this.render();
+    }
+    /**
+     * @returns {object}
+     */ get defaults() {
+        return {
+            id: "page-switch",
+            classList: "page page-switch"
+        };
+    }
+    /**
+     *
+     */ render() {
+        super.render((0, (/*@__PURE__*/$parcel$interopDefault($91fe69e7bae1ffd0$exports))));
+    }
+}
+/**
+ * @comment Register as custom html-element
+ */ window.customElements.define("component-page-switch", $dc5d728fbaa349fa$export$ea0bc0ec1649be89);
+
+
+class $90d2a80a275b0dd6$export$c717c2ee03fc6c49 {
+    /**
+     * @param {string} id
+     */ static getPage(id) {
+        switch(id){
+            case "array":
+                return new (0, $0ad27ba0de23c53c$export$7c0a0d9cc4225390)();
+            case "switch":
+                return new (0, $dc5d728fbaa349fa$export$ea0bc0ec1649be89)();
+            default:
+                throw new Error("No Page class found!");
+        }
+    }
+}
 
 
 class $342d8b3f004474be$export$86fbec116b87613f {
@@ -215,9 +283,7 @@ class $342d8b3f004474be$export$86fbec116b87613f {
      *
      */ goToPage(id) {
         if (this.#currentPage) this.#currentPage.destroy();
-        this.#currentPage = new (0, $1c2b913514992058$export$6955bcca4cd3539f)(new (0, $bdb62bb55cd97d0c$export$763ea9d89dbce745)({
-            id: id
-        }));
+        this.#currentPage = (0, $90d2a80a275b0dd6$export$c717c2ee03fc6c49).getPage(id);
         document.querySelector("#page-container").appendChild(this.#currentPage);
         this.activePage = id;
     }

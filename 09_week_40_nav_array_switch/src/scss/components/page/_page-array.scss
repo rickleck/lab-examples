@@ -1,0 +1,46 @@
+@use '../../variables/colors';
+@use '../../variables/chart';
+
+.page-array {
+    &__chart {
+        display: flex;
+        gap: 0.7rem;
+        align-items: flex-end;
+        height: 250px;
+        &-stack {
+            position: relative;
+            width: 75px;
+            border: 1px solid colors.$primary-color;
+            background-color: colors.$highlight-color;
+            box-shadow: chart.$stack-depth chart.$stack-depth 0 colors.$primary-color;
+
+            &::before {
+                content: '';
+                position: absolute;
+                background-color: colors.$primary-color;
+                clip-path: polygon(0% 0%, 100% chart.$stack-depth, 0% 20px);
+                width: chart.$stack-depth;
+                height: 100%;
+                left: 100%;
+            }
+
+            &::after {
+                content: '';
+                position: absolute;
+                background-color: colors.$primary-color;
+                clip-path: polygon(0% 0%, chart.$stack-depth 0%, chart.$stack-depth 100%);
+                width: 100%;
+                height: chart.$stack-depth;
+                top: 100%;
+                left: 0;
+            }
+
+            span {
+                display: block;
+                padding: 0.3rem;
+                color: white;
+                font-weight: 700;
+            }
+        }
+    }
+}

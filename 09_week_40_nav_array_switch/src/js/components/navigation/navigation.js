@@ -1,7 +1,7 @@
 import HTMLTemplate from 'bundle-text:./navigation.html';
 import { App } from '../../core/app/app';
-import { AbstractElement } from '../../core/element/abstractelement';
-import { ElementConfig } from '../../core/element/config/elementconfig';
+import { AbstractElement } from '../../core/element/abstract-element';
+import { ElementConfig } from '../../core/element/config/element-config';
 
 export class Navigation extends AbstractElement {
     /**  @type {HTMLElement[]} */

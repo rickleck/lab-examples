@@ -1,4 +1,4 @@
-import { ElementConfig } from './config/elementconfig';
+import { ElementConfig } from './config/element-config';
 
 export class AbstractElement extends HTMLElement {
     /** @type {ElementConfig} */
@@ -45,8 +45,8 @@ export class AbstractElement extends HTMLElement {
     }
 
     /**
-     * @param {HTMLElement} el
-     * @returns {ElementBase}
+     * @param {HTMLElement} element
+     * @returns {AbstractElement}
      */
     appendTo(element) {
         element.append(this);
@@ -54,8 +54,8 @@ export class AbstractElement extends HTMLElement {
     }
 
     /**
-     * @param {HTMLElement} el
-     * @returns {ElementBase}
+     * @param {HTMLElement} element
+     * @returns {AbstractElement}
      */
     prependTo(element) {
         element.prepend(this);
@@ -76,5 +76,11 @@ export class AbstractElement extends HTMLElement {
     populateFromConfig() {
         this.id = this.config.id;
         for (const className of this.config.classList.split(' ')) this.classList.add(className);
+    }
+    /**
+     *
+     */
+    destroy() {
+        if (this.parentElement) this.parentElement.removeChild(this);
     }
 }
