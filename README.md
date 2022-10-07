@@ -19,4 +19,4 @@ Lexicon
 - [Week 40 Lab 8: Form Validation](https://leck-lex.github.io/labs/08_week40_form_validation/dist) 
 
 ### In Progress
-- [Week 40 Lab 9: Navigation, Array, Switch](https://leck-lex.github.io/labs/09_week_40_nav_array_switch/dist)
+- [Week 40 Lab 9: Navigation, Array, Switch](https://leck-lex.github.io/labs/09_week40_nav_array_switch/dist)
