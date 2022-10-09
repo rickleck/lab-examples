@@ -46,10 +46,10 @@ export class Navigation extends AbstractElement {
         this.#items = this.#list.querySelectorAll('a');
         this.addEventListener(
             'click',
-            (event) => {
-                if (event.target.id === 'nav-toggle') {
+            (e) => {
+                if (e.target.id === 'nav-toggle') {
                     this.#toggleList();
-                } else if (event.target.dataset.href) {
+                } else if (e.target.dataset.href) {
                     App.instance.reportNavigationClick(event.target.dataset.href);
                     this.#toggleList(true);
                 }

@@ -1,24 +1,32 @@
-@use "../../variables/colors";
+@use '../../variables/colors';
 
 .tooltip {
     display: block;
     position: absolute;
+    margin-left: -40px;
+    min-width: 150px;
     font-weight: 700;
     text-align: center;
     padding: 1em;
     color: white;
-    filter: drop-shadow(6px 6px 0px rgba(0, 0, 0, 0.5));
-    opacity: 0;
-    transition: 100ms opacity ease-in-out;
+    filter: drop-shadow(6px 6px 0px rgba(colors.$primary-color, 0.5));
 
     &::before {
         position: absolute;
-        content: "";
+        content: '';
         width: 20px;
         height: 20px;
         left: 40px;
         top: 100%;
         clip-path: polygon(0 100%, 0 0, 100% 0);
+    }
+
+    &.left {
+        &::before {
+            left: unset;
+            right: 40px;
+            clip-path: polygon(0 0, 100% 0, 100% 100%);
+        }
     }
 
     &.info {
@@ -46,6 +54,12 @@
     }
 
     &.show {
-        opacity: 100;
+        animation: 150ms ease-out anim-tooltip;
+    }
+}
+
+@keyframes anim-tooltip {
+    from {
+        opacity: 0;
     }
 }

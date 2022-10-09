@@ -1,4 +1,4 @@
-import { AbstractElement } from '../../core/element/abstractelement';
+import { AbstractElement } from '../../core/element/abstract-element';
 import { TooltipConfig } from './config/tooltipconfig';
 
 export class Tooltip extends AbstractElement {
@@ -10,6 +10,9 @@ export class Tooltip extends AbstractElement {
 
     /** @type {string} */
     static MODE_ERROR = 'error';
+
+    /** @type {number} */
+    #arrowHeight = 20;
 
     /**
      * @constructor
@@ -28,17 +31,43 @@ export class Tooltip extends AbstractElement {
     }
 
     /**
+     * @returns {HTMLElement}
+     */
+    get targetElement() {
+        return this.config.targetElement;
+    }
+
+    /**
+     * @returns {object}
+     */
+    get globalPosition() {
+        const rectTarget = this.config.targetElement.getBoundingClientRect();
+        return {
+            left: rectTarget.left + window.scrollX + this.config.offsetX,
+            top:
+                rectTarget.top +
+                window.scrollY +
+                this.config.offsetY -
+                this.offsetHeight -
+                this.#arrowHeight,
+        };
+    }
+
+    /**
      *
      */
     render() {
         super.render(this.config.msg);
-        this.prependTo(this.config.targetElement);
-        this.style.transform = `translate(${Number.parseInt(this.config.offsetX)}px, ${
-            -this.clientHeight + Number.parseInt(this.config.offsetY)
-        }px)`;
+        document.body.appendChild(this);
         this.classList.add(this.config.mode, 'show');
-    }
+        this.style.left = this.globalPosition.left + 'px';
+        this.style.top = this.globalPosition.top + 'px';
 
+        if (this.offsetLeft + this.offsetWidth > document.body.clientWidth) {
+            this.style.marginLeft = this.config.offsetX - this.offsetWidth + 'px';
+            this.classList.add('left');
+        }
+    }
     /**
      *
      */

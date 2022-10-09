@@ -1,45 +1,174 @@
 @use '../../variables/colors';
-@use '../../variables/chart';
+@use '../../utils/breakpoints';
+@use './variables/vars';
+@use './mixins/mixins';
+@use 'sass:color';
 
 .page-array {
     &__chart {
         display: flex;
-        gap: 0.7rem;
-        align-items: flex-end;
-        height: 250px;
+        flex-wrap: wrap;
+        gap: vars.$chart-gap;
+
         &-stack {
             position: relative;
-            width: 75px;
-            border: 1px solid colors.$primary-color;
-            background-color: colors.$highlight-color;
-            box-shadow: chart.$stack-depth chart.$stack-depth 0 colors.$primary-color;
-
-            &::before {
-                content: '';
-                position: absolute;
-                background-color: colors.$primary-color;
-                clip-path: polygon(0% 0%, 100% chart.$stack-depth, 0% 20px);
-                width: chart.$stack-depth;
-                height: 100%;
-                left: 100%;
-            }
+            height: vars.$chart-stack-height;
+            width: calc(25% - vars.$chart-gap);
+            cursor: pointer;
 
             &::after {
                 content: '';
                 position: absolute;
-                background-color: colors.$primary-color;
-                clip-path: polygon(0% 0%, chart.$stack-depth 0%, chart.$stack-depth 100%);
+                border-bottom: 2px dotted colors.$primary-color;
                 width: 100%;
-                height: chart.$stack-depth;
-                top: 100%;
-                left: 0;
+                height: calc(vars.$chart-stack-height - 200px);
             }
 
-            span {
-                display: block;
-                padding: 0.3rem;
-                color: white;
-                font-weight: 700;
+            @include breakpoints.from-md {
+                width: calc(8% - vars.$chart-gap);
+            }
+
+            &-graphic {
+                position: absolute;
+                width: 100%;
+                bottom: 0;
+                border: 1px solid colors.$primary-color;
+                background-color: colors.$highlight-color;
+                box-shadow: vars.$chart-stack-depth vars.$chart-stack-depth 0 colors.$primary-color;
+                pointer-events: none;
+
+                :hover > & {
+                    background-color: color.scale(colors.$highlight-color, $lightness: -10%);
+                }
+
+                &::before,
+                &::after {
+                    content: '';
+                    position: absolute;
+                    background-color: colors.$primary-color;
+                }
+
+                &::before {
+                    clip-path: polygon(
+                        0% 0%,
+                        100% vars.$chart-stack-depth,
+                        0% vars.$chart-stack-depth
+                    );
+                    width: vars.$chart-stack-depth;
+                    height: 100%;
+                    left: 100%;
+                }
+
+                &::after {
+                    clip-path: polygon(
+                        0% 0%,
+                        vars.$chart-stack-depth 0%,
+                        vars.$chart-stack-depth 100%
+                    );
+                    width: 100%;
+                    height: vars.$chart-stack-depth;
+                    top: 100%;
+                }
+
+                span {
+                    position: absolute;
+                    padding: 0.5rem;
+                    font-weight: 700;
+                    line-height: 0.9em;
+                }
+
+                &-span--top {
+                    * {
+                        position: relative;
+                        z-index: 2;
+                        width: vars.$chart-stack-index-d;
+                        height: vars.$chart-stack-index-d;
+                        line-height: vars.$chart-stack-index-d;
+                        color: colors.$highlight-color;
+                        text-align: center;
+                        font-size: small;
+                    }
+
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        background-color: white;
+                        clip-path: circle(50% at 50% 50%);
+                        width: vars.$chart-stack-index-d;
+                        height: vars.$chart-stack-index-d;
+                    }
+                }
+
+                &-span--bottom {
+                    bottom: 0;
+                    color: white;
+                    font-size: x-small;
+
+                    @include breakpoints.from-breakpoint(360px) {
+                        font-size: small;
+                    }
+                }
+            }
+
+            @include mixins.chart-animation() using ($step, $duration, $delay) {
+                &:nth-child(#{$step}) {
+                    opacity: 0;
+                    animation: $duration ease-out $delay forwards anim-stack;
+                }
+            }
+
+            @include mixins.chart-animation() using ($step, $duration, $delay) {
+                &:nth-child(#{$step}) &-graphic {
+                    animation: $duration ease-out $delay forwards anim-stack-graphic;
+                }
+            }
+
+            @keyframes anim-stack {
+                to {
+                    opacity: 1;
+                }
+            }
+
+            @keyframes anim-stack-graphic {
+                from {
+                    height: 0;
+                }
+            }
+        }
+    }
+
+    &__console {
+        width: 100%;
+        background-color: rgb(38, 38, 38);
+        border: 1px solid gray;
+        color: rgb(227, 227, 227);
+        margin-top: 2rem;
+        padding: 1rem 0;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: small;
+
+        @include breakpoints.from-md {
+            width: 50%;
+        }
+
+        p {
+            margin: 0;
+            padding: 0.1rem 1rem;
+            border-bottom: 1px solid rgba(128, 128, 128, 0.25);
+        }
+
+        .key {
+            color: rgb(184, 184, 184);
+            font-style: italic;
+        }
+
+        .value {
+            &--string {
+                color: rgb(51, 207, 199);
+            }
+
+            &--number {
+                color: rgb(176, 164, 238);
             }
         }
     }

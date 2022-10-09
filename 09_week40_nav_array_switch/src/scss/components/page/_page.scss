@@ -1,4 +1,62 @@
+@use '../../common-gui/buttons';
+@use '../../utils/breakpoints';
+@use '../../variables/colors';
+@use './variables/vars';
+
 .page {
     display: block;
-    padding-top: 1rem;
+    padding-top: 2rem;
+
+    &__step {
+        padding-top: 1rem;
+        margin-bottom: 3rem;
+
+        &-text {
+            position: relative;
+            display: flex;
+            align-items: baseline;
+            gap: 0.4rem;
+            font-weight: 700;
+
+            @include breakpoints.from-lg {
+                max-width: 70%;
+            }
+
+            span:nth-child(1) {
+                position: relative;
+                * {
+                    position: relative;
+                    color: white;
+                    width: vars.$page-item-number-d;
+                    height: vars.$page-item-number-d;
+                    line-height: 2rem;
+                    text-align: center;
+                }
+                &::before {
+                    content: '';
+                    position: absolute;
+                    background-color: colors.$primary-color;
+                    clip-path: circle(50% at 50% 50%);
+                    width: vars.$page-item-number-d;
+                    height: vars.$page-item-number-d;
+                }
+            }
+        }
+
+        &-btn {
+            @extend .generic-button;
+            margin-top: 1.5rem;
+        }
+
+        &-instruction {
+            font-size: small;
+            font-weight: 700;
+            transform: translateY(22px);
+        }
+    }
+
+    &-btn-reset {
+        @extend .generic-button;
+        margin-top: 0;
+    }
 }

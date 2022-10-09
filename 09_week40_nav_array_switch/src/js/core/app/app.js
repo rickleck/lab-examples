@@ -48,6 +48,7 @@ export class App {
         this.#currentPage = Pages.getPage(id);
         document.querySelector('#page-container').appendChild(this.#currentPage);
         this.activePage = id;
+        window.scrollTo(0, 0);
     }
 
     /**

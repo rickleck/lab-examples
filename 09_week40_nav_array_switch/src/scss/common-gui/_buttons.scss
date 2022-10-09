@@ -1,5 +1,5 @@
-@use "../variables/colors";
-@use "sass:color";
+@use '../variables/colors';
+@use 'sass:color';
 .generic-button {
     border: none;
     margin-top: 0.4rem;
@@ -16,7 +16,11 @@
         background-color: colors.$highlight-color;
     }
 
-    &:focus {
+    &:active {
         background-color: color.scale(colors.$highlight-color, $lightness: -20%);
+    }
+
+    &.is-hidden {
+        display: none;
     }
 }

@@ -1,4 +1,4 @@
-import { ElementConfig } from '../../../core/element/config/elementconfig';
+import { ElementConfig } from '../../../core/element/config/element-config';
 import { Tooltip } from '../tooltip';
 
 export class TooltipConfig extends ElementConfig {

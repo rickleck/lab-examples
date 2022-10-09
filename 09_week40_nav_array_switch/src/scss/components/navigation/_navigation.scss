@@ -121,10 +121,10 @@
             transform: translateX(-500px);
         }
 
-        @include animation.with-delay(2, 50) using ($step, $delay) {
+        @include animation.with-delay(2, 200, 50) using ($step, $duration, $delay) {
             .is-open & {
                 &:nth-child(#{$step}) {
-                    animation: 200ms ease-in $delay forwards anim-item-in;
+                    animation: $duration ease-in $delay forwards anim-item-in;
                 }
             }
         }

@@ -1,0 +1,13 @@
+@use '../../../utils/animation';
+@use '../variables/vars';
+
+@mixin chart-animation {
+    @include animation.with-delay(
+            vars.$chart-anim-steps,
+            vars.$chart-anim-duration,
+            vars.$chart-anim-delay
+        )
+        using ($step, $duration, $delay) {
+        @content ($step, $duration, $delay);
+    }
+}
