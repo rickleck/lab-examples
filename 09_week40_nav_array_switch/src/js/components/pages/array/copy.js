@@ -1,5 +1,6 @@
-export default copy = {
-    names: [
+export class Copy {
+    /** @type {string[]} */
+    static names = [
         'Adam',
         'Carl',
         'Christer A',
@@ -16,13 +17,17 @@ export default copy = {
         'Ola',
         'Rickard',
         'Robert',
-    ],
-    stepTexts: [
+    ];
+
+    /** @type {string[]} */
+    static stepTexts = [
         'Create a new array containing 8 persons. Each person should have the properties name, age and height. At least 3 persons must be taller than 2 meters.',
         'Create another array containing 4 persons, each also having the properties name, age and height.',
         'Combine the two arrays.',
         'Using the filter() method, create a new array that only includes the persons taller than 2 meters.',
         'Using the forEach() method, log all persons taller than 2 meters to the console.',
-    ],
-    instruction: '* Click on a stack for more details.',
-};
+    ];
+
+    /** @type {string} */
+    static instruction = '* Click on a stack for more details.';
+}

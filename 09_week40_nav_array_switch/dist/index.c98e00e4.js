@@ -1223,8 +1223,8 @@ $d96731589b0a5840$exports = $d96731589b0a5840$var$toFinite;
 $48ca3ab83437dbe2$exports = $48ca3ab83437dbe2$var$random;
 
 
-var $4b8f0669a12fa97f$export$2e2bcd8739ae039 = copy = {
-    names: [
+class $4b8f0669a12fa97f$export$92ce62e1201c4fc0 {
+    /** @type {string[]} */ static names = [
         "Adam",
         "Carl",
         "Christer A",
@@ -1241,16 +1241,16 @@ var $4b8f0669a12fa97f$export$2e2bcd8739ae039 = copy = {
         "Ola",
         "Rickard",
         "Robert", 
-    ],
-    stepTexts: [
+    ];
+    /** @type {string[]} */ static stepTexts = [
         "Create a new array containing 8 persons. Each person should have the properties name, age and height. At least 3 persons must be taller than 2 meters.",
         "Create another array containing 4 persons, each also having the properties name, age and height.",
         "Combine the two arrays.",
         "Using the filter() method, create a new array that only includes the persons taller than 2 meters.",
         "Using the forEach() method, log all persons taller than 2 meters to the console.", 
-    ],
-    instruction: "* Click on a stack for more details."
-};
+    ];
+    /** @type {string} */ static instruction = "* Click on a stack for more details.";
+}
 
 
 
@@ -1336,7 +1336,7 @@ class $cceaa0965f6dc1b7$export$d8b5cdb5205beabc extends (0, $aaf1807221727ea1$ex
 
 
 class $0ad27ba0de23c53c$export$7c0a0d9cc4225390 extends (0, $7f62a88c9aa485f8$export$d5345f74bf36d494) {
-    /** @type {string[]} */ #names = (0, (/*@__PURE__*/$parcel$interopDefault($254661b4c3b13288$exports)))((0, $4b8f0669a12fa97f$export$2e2bcd8739ae039).names);
+    /** @type {string[]} */ #names = (0, (/*@__PURE__*/$parcel$interopDefault($254661b4c3b13288$exports)))((0, $4b8f0669a12fa97f$export$92ce62e1201c4fc0).names);
     /** @type {object[]} */ #stepArrays = [];
     /** @type {Tooltip} */ #tooltip;
     /**
@@ -1357,7 +1357,7 @@ class $0ad27ba0de23c53c$export$7c0a0d9cc4225390 extends (0, $7f62a88c9aa485f8$ex
     /**
      *
      */ render() {
-        super.render((0, $90d2a80a275b0dd6$export$c717c2ee03fc6c49).getHTML((0, $4b8f0669a12fa97f$export$2e2bcd8739ae039).stepTexts));
+        super.render((0, $90d2a80a275b0dd6$export$c717c2ee03fc6c49).getHTML((0, $4b8f0669a12fa97f$export$92ce62e1201c4fc0).stepTexts));
         this.addEventListener("click", this, true);
         window.addEventListener("resize", this);
     }
@@ -1519,7 +1519,7 @@ class $0ad27ba0de23c53c$export$7c0a0d9cc4225390 extends (0, $7f62a88c9aa485f8$ex
      */  #addInstruction() {
         const instruction = document.createElement("p");
         instruction.classList.add("page__step-instruction");
-        instruction.innerText = (0, $4b8f0669a12fa97f$export$2e2bcd8739ae039).instruction;
+        instruction.innerText = (0, $4b8f0669a12fa97f$export$92ce62e1201c4fc0).instruction;
         this.querySelector("#step-1").append(instruction);
     }
 }

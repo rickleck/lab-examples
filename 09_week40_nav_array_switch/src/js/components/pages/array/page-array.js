@@ -1,6 +1,6 @@
 import shuffle from 'lodash/shuffle';
 import random from 'lodash/random';
-import copy from './copy';
+import { Copy } from './copy';
 import { App } from '../../../core/app/app';
 import { AbstractElement } from '../../../core/element/abstract-element';
 import { Pages } from '../pages';
@@ -9,7 +9,7 @@ import { Tooltip } from '../../tooltip/tooltip';
 
 export class PageArray extends AbstractElement {
     /** @type {string[]} */
-    #names = shuffle(copy.names);
+    #names = shuffle(Copy.names);
 
     /** @type {object[]} */
     #stepArrays = [];
@@ -37,7 +37,7 @@ export class PageArray extends AbstractElement {
      *
      */
     render() {
-        super.render(Pages.getHTML(copy.stepTexts));
+        super.render(Pages.getHTML(Copy.stepTexts));
         this.addEventListener('click', this, true);
         window.addEventListener('resize', this);
     }
@@ -234,7 +234,7 @@ export class PageArray extends AbstractElement {
     #addInstruction() {
         const instruction = document.createElement('p');
         instruction.classList.add('page__step-instruction');
-        instruction.innerText = copy.instruction;
+        instruction.innerText = Copy.instruction;
         this.querySelector('#step-1').append(instruction);
     }
 }
