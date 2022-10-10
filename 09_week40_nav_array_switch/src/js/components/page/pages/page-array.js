@@ -1,15 +1,13 @@
 import shuffle from 'lodash/shuffle';
 import random from 'lodash/random';
-import { Copy } from './copy';
 import { App } from '../../../core/app/app';
-import { AbstractElement } from '../../../core/element/abstract-element';
-import { Pages } from '../pages';
 import { TooltipConfig } from '../../tooltip/config/tooltipconfig';
 import { Tooltip } from '../../tooltip/tooltip';
+import { Page } from '../page';
 
-export class PageArray extends AbstractElement {
+export class PageArray extends Page {
     /** @type {string[]} */
-    #names = shuffle(Copy.names);
+    #names;
 
     /** @type {object[]} */
     #stepArrays = [];
@@ -37,9 +35,28 @@ export class PageArray extends AbstractElement {
      *
      */
     render() {
-        super.render(Pages.getHTML(Copy.stepTexts));
+        this.buildHTML();
+        this.#names = shuffle(this.copy.names);
         this.addEventListener('click', this, true);
         window.addEventListener('resize', this);
+    }
+
+    /**
+     * @returns {string}
+     */
+    buildHTML() {
+        super.render(this.getStepsHTML());
+        this.append(this.#getButton(['page__step-btn'], { type: 'reset' }, 'Reset'));
+
+        let counter = 0;
+        for (const step of this.querySelectorAll('.page__step'))
+            step.append(
+                this.#getButton(
+                    ['page__step-btn'],
+                    { type: 'step', step: (counter += 1) },
+                    'Generate'
+                )
+            );
     }
 
     /**
@@ -234,8 +251,19 @@ export class PageArray extends AbstractElement {
     #addInstruction() {
         const instruction = document.createElement('p');
         instruction.classList.add('page__step-instruction');
-        instruction.innerText = Copy.instruction;
+        instruction.innerText = this.copy.instruction;
         this.querySelector('#step-1').append(instruction);
+    }
+
+    /**
+     * @returns {HTMLButtonElement}
+     */
+    #getButton(classes, dataset, text) {
+        let btn = document.createElement('button');
+        btn.classList.add(...classes);
+        Object.assign(btn.dataset, dataset);
+        btn.innerHTML = text;
+        return btn;
     }
 }
 

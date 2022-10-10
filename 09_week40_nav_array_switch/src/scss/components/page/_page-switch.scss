@@ -1,0 +1,7 @@
+.page-switch {
+    &__params {
+        display: grid;
+        grid-template-columns: 5rem auto;
+        margin-bottom: 1rem;
+    }
+}

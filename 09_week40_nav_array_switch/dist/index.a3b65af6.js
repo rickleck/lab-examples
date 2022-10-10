@@ -280,6 +280,167 @@ class $489a32f8870ec4f2$export$b8a61e5c71402559 extends (0, $7f62a88c9aa485f8$ex
  */ window.customElements.define("component-navigation", $489a32f8870ec4f2$export$b8a61e5c71402559);
 
 
+
+class $ebaa68acb0f31e48$export$92ce62e1201c4fc0 {
+    /** @type {object}[] */ static pages = [
+        {
+            id: "page-array",
+            names: [
+                "Adam",
+                "Carl",
+                "Christer A",
+                "Christer S",
+                "Erik N",
+                "Ivan",
+                "Ivona",
+                "Joakim",
+                "Johannes",
+                "Lars-Erik",
+                "Matewos",
+                "Miriam",
+                "Niklas",
+                "Ola",
+                "Rickard",
+                "Robert", 
+            ],
+            steps: [
+                "Create a new array containing 8 persons. Each person should have the properties name, age and height. At least 3 persons must be taller than 2 meters.",
+                "Create another array containing 4 persons, each also having the properties name, age and height.",
+                "Combine the two arrays.",
+                "Using the filter() method, create a new array that only includes the persons taller than 2 meters.",
+                "Using the forEach() method, log all persons taller than 2 meters to the console.", 
+            ],
+            instruction: "* Click on a stack for more details."
+        },
+        {
+            id: "page-switch",
+            steps: [
+                "<p>Create a switch that logs a value to the console corresponding a parameter:</p>",
+                "<p>Create a switch that logs a value to the console corresponding a parameter:</p>", 
+            ],
+            params: [
+                [
+                    {
+                        param: "0",
+                        value: "Nisse"
+                    },
+                    {
+                        param: "1",
+                        value: "Per"
+                    },
+                    {
+                        param: "2",
+                        value: "Johannes"
+                    },
+                    {
+                        param: "3",
+                        value: "Joakim"
+                    },
+                    {
+                        param: "default",
+                        value: "Hans"
+                    }, 
+                ],
+                [
+                    {
+                        param: "0",
+                        value: "Ume\xe5"
+                    },
+                    {
+                        param: "1-5",
+                        value: "Stockholm"
+                    },
+                    {
+                        param: "6-9",
+                        value: "Mora"
+                    },
+                    {
+                        param: "10-14",
+                        value: "V\xe4ster\xe5s"
+                    },
+                    {
+                        param: "15-19",
+                        value: "G\xf6teborg"
+                    },
+                    {
+                        param: "default",
+                        value: "Malm\xf6"
+                    }, 
+                ], 
+            ]
+        }, 
+    ];
+    /**
+     * @param {string} id
+     * @returns {object} page copy object
+     */ static getPage(id) {
+        return $ebaa68acb0f31e48$export$92ce62e1201c4fc0.pages.find((page)=>page.id === id);
+    }
+}
+
+
+class $1c2b913514992058$export$6955bcca4cd3539f extends (0, $7f62a88c9aa485f8$export$d5345f74bf36d494) {
+    /**
+     * @constructor
+     * @param {ElementConfig} config
+     */ constructor(config){
+        super(config);
+    }
+    /**
+     * @returns {object}
+     */ get defaults() {
+        return {
+            id: "page",
+            classList: "page"
+        };
+    }
+    /**
+     * @return {object}
+     */ get copy() {
+        return (0, $ebaa68acb0f31e48$export$92ce62e1201c4fc0).getPage(this.id);
+    }
+    /**
+     *
+     */ render(htmlString = "<h1>Page</h1>") {
+        super.render(htmlString);
+    }
+    /**
+     *
+     */ destroy() {
+        super.destroy();
+    }
+    /**
+     * @param {string} pageId
+     * @returns {string} html string
+     */ getStepsHTML() {
+        let htmlString = ``;
+        let counter = 0;
+        for (const step of this.copy.steps)htmlString += `<div id="step-${counter += 1}" class="page__step">
+                <div class="page__step-text">
+                    <span class="page__step-text--number">
+                        <p>${counter}</p>
+                    </span>
+                    <span>
+                    ${step}
+                    </span>
+                </div>
+                <div id="step-draw-${counter}"></div>
+            </div>`;
+        return htmlString;
+    }
+    /**
+     * @param {number} step
+     * @returns {string}
+     */ getStepInputHTML(step) {
+        step;
+        return "";
+    }
+}
+/**
+ * @comment Register as custom html-element
+ */ window.customElements.define("component-page", $1c2b913514992058$export$6955bcca4cd3539f);
+
+
 var $254661b4c3b13288$exports = {};
 var $8af21efe281e0216$exports = {};
 var $1a563ad9c6f05ecd$exports = {};
@@ -1223,38 +1384,6 @@ $d96731589b0a5840$exports = $d96731589b0a5840$var$toFinite;
 $48ca3ab83437dbe2$exports = $48ca3ab83437dbe2$var$random;
 
 
-class $4b8f0669a12fa97f$export$92ce62e1201c4fc0 {
-    /** @type {string[]} */ static names = [
-        "Adam",
-        "Carl",
-        "Christer A",
-        "Christer S",
-        "Erik N",
-        "Ivan",
-        "Ivona",
-        "Joakim",
-        "Johannes",
-        "Lars-Erik",
-        "Matewos",
-        "Miriam",
-        "Niklas",
-        "Ola",
-        "Rickard",
-        "Robert", 
-    ];
-    /** @type {string[]} */ static stepTexts = [
-        "Create a new array containing 8 persons. Each person should have the properties name, age and height. At least 3 persons must be taller than 2 meters.",
-        "Create another array containing 4 persons, each also having the properties name, age and height.",
-        "Combine the two arrays.",
-        "Using the filter() method, create a new array that only includes the persons taller than 2 meters.",
-        "Using the forEach() method, log all persons taller than 2 meters to the console.", 
-    ];
-    /** @type {string} */ static instruction = "* Click on a stack for more details.";
-}
-
-
-
-
 
 
 
@@ -1335,8 +1464,9 @@ class $cceaa0965f6dc1b7$export$d8b5cdb5205beabc extends (0, $aaf1807221727ea1$ex
 
 
 
-class $0ad27ba0de23c53c$export$7c0a0d9cc4225390 extends (0, $7f62a88c9aa485f8$export$d5345f74bf36d494) {
-    /** @type {string[]} */ #names = (0, (/*@__PURE__*/$parcel$interopDefault($254661b4c3b13288$exports)))((0, $4b8f0669a12fa97f$export$92ce62e1201c4fc0).names);
+
+class $f4aed3f945d4d569$export$7c0a0d9cc4225390 extends (0, $1c2b913514992058$export$6955bcca4cd3539f) {
+    /** @type {string[]} */ #names;
     /** @type {object[]} */ #stepArrays = [];
     /** @type {Tooltip} */ #tooltip;
     /**
@@ -1357,9 +1487,27 @@ class $0ad27ba0de23c53c$export$7c0a0d9cc4225390 extends (0, $7f62a88c9aa485f8$ex
     /**
      *
      */ render() {
-        super.render((0, $90d2a80a275b0dd6$export$c717c2ee03fc6c49).getHTML((0, $4b8f0669a12fa97f$export$92ce62e1201c4fc0).stepTexts));
+        this.buildHTML();
+        this.#names = (0, (/*@__PURE__*/$parcel$interopDefault($254661b4c3b13288$exports)))(this.copy.names);
         this.addEventListener("click", this, true);
         window.addEventListener("resize", this);
+    }
+    /**
+     * @returns {string}
+     */ buildHTML() {
+        super.render(this.getStepsHTML());
+        this.append(this.#getButton([
+            "page__step-btn"
+        ], {
+            type: "reset"
+        }, "Reset"));
+        let counter = 0;
+        for (const step of this.querySelectorAll(".page__step"))step.append(this.#getButton([
+            "page__step-btn"
+        ], {
+            type: "step",
+            step: counter += 1
+        }, "Generate"));
     }
     /**
      * @param {Event} e
@@ -1519,21 +1667,26 @@ class $0ad27ba0de23c53c$export$7c0a0d9cc4225390 extends (0, $7f62a88c9aa485f8$ex
      */  #addInstruction() {
         const instruction = document.createElement("p");
         instruction.classList.add("page__step-instruction");
-        instruction.innerText = (0, $4b8f0669a12fa97f$export$92ce62e1201c4fc0).instruction;
+        instruction.innerText = this.copy.instruction;
         this.querySelector("#step-1").append(instruction);
+    }
+    /**
+     * @returns {HTMLButtonElement}
+     */  #getButton(classes, dataset, text) {
+        let btn = document.createElement("button");
+        btn.classList.add(...classes);
+        Object.assign(btn.dataset, dataset);
+        btn.innerHTML = text;
+        return btn;
     }
 }
 /**
  * @comment Register as custom html-element
- */ window.customElements.define("component-page-array", $0ad27ba0de23c53c$export$7c0a0d9cc4225390);
-
-
-var $91fe69e7bae1ffd0$exports = {};
-$91fe69e7bae1ffd0$exports = "<h1>Page: Switch</h1>";
+ */ window.customElements.define("component-page-array", $f4aed3f945d4d569$export$7c0a0d9cc4225390);
 
 
 
-class $dc5d728fbaa349fa$export$ea0bc0ec1649be89 extends (0, $7f62a88c9aa485f8$export$d5345f74bf36d494) {
+class $e3f1f6b65e30fb2a$export$ea0bc0ec1649be89 extends (0, $1c2b913514992058$export$6955bcca4cd3539f) {
     /**
      * @constructor
      * @param {ElementConfig} config
@@ -1552,46 +1705,37 @@ class $dc5d728fbaa349fa$export$ea0bc0ec1649be89 extends (0, $7f62a88c9aa485f8$ex
     /**
      *
      */ render() {
-        super.render((0, (/*@__PURE__*/$parcel$interopDefault($91fe69e7bae1ffd0$exports))));
+        this.buildHTML();
+    }
+    /**
+     *
+     */ buildHTML() {
+        super.render(this.getStepsHTML());
+    }
+    /**
+     * @param {number} step
+     * @returns {string}
+     */ getStepInputHTML(step) {
+        return `<input type="number" id="param-step-${step}"/>`;
     }
 }
 /**
  * @comment Register as custom html-element
- */ window.customElements.define("component-page-switch", $dc5d728fbaa349fa$export$ea0bc0ec1649be89);
+ */ window.customElements.define("component-page-switch", $e3f1f6b65e30fb2a$export$ea0bc0ec1649be89);
 
 
-class $90d2a80a275b0dd6$export$c717c2ee03fc6c49 {
+class $3962eb24df2008d6$export$c717c2ee03fc6c49 {
     /**
      * @param {string} id
      */ static getPage(id) {
         switch(id){
             case "array":
-                return new (0, $0ad27ba0de23c53c$export$7c0a0d9cc4225390)();
+                return new (0, $f4aed3f945d4d569$export$7c0a0d9cc4225390)();
             case "switch":
-                return new (0, $dc5d728fbaa349fa$export$ea0bc0ec1649be89)();
+                return new (0, $e3f1f6b65e30fb2a$export$ea0bc0ec1649be89)();
             default:
-                throw new Error("No Page class found!");
+                return new (0, $1c2b913514992058$export$6955bcca4cd3539f)();
         }
-    }
-    /**
-     * @param {string[]} stepTexts
-     * @returns {string} html string
-     */ static getHTML(stepTexts) {
-        let htmlString = ``;
-        for(let step = 1; step <= 5; step++)htmlString += `<div id="step-${step}" class="page__step">
-                <div class="page__step-text">
-                    <span>
-                        <p>${step}</p>
-                    </span>
-                    <span>
-                    ${stepTexts[step - 1]}
-                    </span>
-                </div>
-                <button data-type="step" data-step="${step}" class="page__step-btn">Generate</button>
-                <div id="step-draw-${step}"></div>
-            </div>`;
-        htmlString += `<button data-type="reset" class="page-btn-reset is-hidden">Reset</button>`;
-        return htmlString;
     }
 }
 
@@ -1624,7 +1768,7 @@ class $342d8b3f004474be$export$86fbec116b87613f {
      *
      */ goToPage(id) {
         if (this.#currentPage) this.#currentPage.destroy();
-        this.#currentPage = (0, $90d2a80a275b0dd6$export$c717c2ee03fc6c49).getPage(id);
+        this.#currentPage = (0, $3962eb24df2008d6$export$c717c2ee03fc6c49).getPage(id);
         document.querySelector("#page-container").appendChild(this.#currentPage);
         this.activePage = id;
         window.scrollTo(0, 0);

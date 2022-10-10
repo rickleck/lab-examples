@@ -1,5 +1,5 @@
 import { Navigation } from '../../components/navigation/navigation';
-import { Pages } from '../../components/pages/pages';
+import { Pages } from '../../components/page/pages/pages';
 
 export class App {
     /** @type {App} */

@@ -1,7 +1,6 @@
-import HTMLTemplate from 'bundle-text:./page-switch.html';
-import { AbstractElement } from '../../../core/element/abstract-element';
+import { Page } from '../page';
 
-export class PageSwitch extends AbstractElement {
+export class PageSwitch extends Page {
     /**
      * @constructor
      * @param {ElementConfig} config
@@ -22,7 +21,21 @@ export class PageSwitch extends AbstractElement {
      *
      */
     render() {
-        super.render(HTMLTemplate);
+        this.buildHTML();
+    }
+    /**
+     *
+     */
+    buildHTML() {
+        super.render(this.getStepsHTML());
+    }
+
+    /**
+     * @param {number} step
+     * @returns {string}
+     */
+    getStepInputHTML(step) {
+        return `<input type="number" id="param-step-${step}"/>`;
     }
 }
 
