@@ -589,8 +589,13 @@ a {
   right: 40px;
 }
 
-.tooltip.info, .tooltip.info:before {
-  background-color: #ee6c4d;
+.tooltip.info {
+  color: #293241;
+  background-color: #fff;
+}
+
+.tooltip.info:before {
+  background-color: #fff;
 }
 
 .tooltip.success, .tooltip.success:before {
