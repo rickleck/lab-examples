@@ -9,7 +9,7 @@
     text-align: center;
     padding: 1em;
     color: white;
-    filter: drop-shadow(6px 6px 0px rgba(colors.$primary-color, 0.5));
+    filter: drop-shadow(4px 4px 4px rgba(colors.$primary-color, 0.4));
 
     &::before {
         position: absolute;

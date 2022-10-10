@@ -565,7 +565,7 @@ a {
   min-width: 150px;
   text-align: center;
   color: #fff;
-  filter: drop-shadow(6px 6px #29324180);
+  filter: drop-shadow(4px 4px 4px #29324166);
   margin-left: -40px;
   padding: 1em;
   font-weight: 700;
