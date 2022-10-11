@@ -1,36 +1,39 @@
 export class ElementConfig {
+    /** @type {string[]}*/
+    #classList = [];
     /**
      * @constructor
      * @param {object} init
      */
     constructor(init) {
+        /** @type {string} */
         this.id;
-        this.classList;
+
+        /** @type {object} */
         this.options;
+
         this.populate(init);
     }
 
     /**
-     * @param {string} value string of space separated class names
+     * @param {*} space-separated string or an array of class-names
      */
-    appendClassList(value) {
-        this.classList = this.classList ? this.classList : '';
-        let prefix = this.classList.length > 0 && !this.classList.endsWith(' ') ? ' ' : '';
-        this.classList += prefix + value;
+    set classList(value) {
+        if (typeof value === 'string') {
+            value = value.split(' ');
+        }
+        this.#classList = [...this.#classList, ...value];
     }
-
+    /**
+     * @returns {string[]}
+     */
+    get classList() {
+        return this.#classList;
+    }
     /**
      * @param {object} init
      */
     populate(init) {
-        if (init) {
-            for (const key in init) {
-                if (key == 'classList') {
-                    this.appendClassList(init[key]);
-                } else {
-                    this[key] = init[key];
-                }
-            }
-        }
+        if (init) Object.assign(this, init);
     }
 }

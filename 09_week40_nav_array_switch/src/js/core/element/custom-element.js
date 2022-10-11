@@ -67,7 +67,7 @@ export class CustomElement extends HTMLElement {
      */
     validateConfig() {
         this.config.id = this.config.id ? this.config.id : this.defaults.id;
-        this.config.appendClassList(this.defaults.classList);
+        this.config.classList = this.defaults.classList;
     }
 
     /**
@@ -75,7 +75,7 @@ export class CustomElement extends HTMLElement {
      */
     populateFromConfig() {
         this.id = this.config.id;
-        for (const className of this.config.classList.split(' ')) this.classList.add(className);
+        this.classList.add(...this.config.classList);
     }
     /**
      *

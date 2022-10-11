@@ -131,29 +131,33 @@ $3bb07def7debad7e$exports = "<div class=\"container-responsive\">\r\n    <nav>\r
 
 
 class $aaf1807221727ea1$export$763ea9d89dbce745 {
+    /** @type {string[]}*/ #classList = [];
     /**
      * @constructor
      * @param {object} init
      */ constructor(init){
-        this.id;
-        this.classList;
-        this.options;
+        /** @type {string} */ this.id;
+        /** @type {object} */ this.options;
         this.populate(init);
     }
     /**
-     * @param {string} value string of space separated class names
-     */ appendClassList(value) {
-        this.classList = this.classList ? this.classList : "";
-        let prefix = this.classList.length > 0 && !this.classList.endsWith(" ") ? " " : "";
-        this.classList += prefix + value;
+     * @param {*} space-separated string or an array of class-names
+     */ set classList(value) {
+        if (typeof value === "string") value = value.split(" ");
+        this.#classList = [
+            ...this.#classList,
+            ...value
+        ];
+    }
+    /**
+     * @returns {string[]}
+     */ get classList() {
+        return this.#classList;
     }
     /**
      * @param {object} init
      */ populate(init) {
-        if (init) {
-            for(const key in init)if (key == "classList") this.appendClassList(init[key]);
-            else this[key] = init[key];
-        }
+        if (init) Object.assign(this, init);
     }
 }
 
@@ -211,13 +215,13 @@ class $51ea5997f43e00e5$export$e38207f28c74982d extends HTMLElement {
      *
      */ validateConfig() {
         this.config.id = this.config.id ? this.config.id : this.defaults.id;
-        this.config.appendClassList(this.defaults.classList);
+        this.config.classList = this.defaults.classList;
     }
     /**
      *
      */ populateFromConfig() {
         this.id = this.config.id;
-        for (const className of this.config.classList.split(" "))this.classList.add(className);
+        this.classList.add(...this.config.classList);
     }
     /**
      *
@@ -285,6 +289,13 @@ class $ebaa68acb0f31e48$export$92ce62e1201c4fc0 {
     /** @type {object}[] */ static pages = [
         {
             id: "page-array",
+            steps: [
+                "Create a new array containing 8 persons. Each person should have the properties name, age and height. At least 3 persons must be taller than 2 meters.",
+                "Create another array containing 4 persons, each also having the properties name, age and height.",
+                "Combine the two arrays.",
+                "Using the filter() method, create a new array that only includes the persons taller than 2 meters.",
+                "Using the forEach() method, log all persons taller than 2 meters to the console.", 
+            ],
             names: [
                 "Adam",
                 "Carl",
@@ -302,13 +313,6 @@ class $ebaa68acb0f31e48$export$92ce62e1201c4fc0 {
                 "Ola",
                 "Rickard",
                 "Robert", 
-            ],
-            steps: [
-                "Create a new array containing 8 persons. Each person should have the properties name, age and height. At least 3 persons must be taller than 2 meters.",
-                "Create another array containing 4 persons, each also having the properties name, age and height.",
-                "Combine the two arrays.",
-                "Using the filter() method, create a new array that only includes the persons taller than 2 meters.",
-                "Using the forEach() method, log all persons taller than 2 meters to the console.", 
             ],
             instruction: "* Click on a stack for more details."
         },
@@ -1507,7 +1511,7 @@ class $f4aed3f945d4d569$export$7c0a0d9cc4225390 extends (0, $1c2b913514992058$ex
      */ handleEvent(e) {
         if (e.type === "click") switch(e.target.dataset.type){
             case "step":
-                this.#goToStep(parseInt(e.target.dataset.step));
+                this.#goToStep(+e.target.dataset.step);
                 break;
             case "stack":
                 this.#toggleTooltip(e.target);
@@ -1519,7 +1523,7 @@ class $f4aed3f945d4d569$export$7c0a0d9cc4225390 extends (0, $1c2b913514992058$ex
         else if (e.type === "resize") this.#removeTooltip();
     }
     /**
-     * @returns {string}
+     *
      */  #buildHTML() {
         super.render(this.getStepsHTML());
         this.append(this.#getButton([
