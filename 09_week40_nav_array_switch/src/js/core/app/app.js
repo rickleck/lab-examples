@@ -37,22 +37,26 @@ export class App {
      */
     run() {
         this.#navigation = new Navigation().prependTo(document.body);
-        this.goToPage('array');
+
+        //Shortcut for dev
+        const page = new URLSearchParams(document.location.search).get('page');
+        this.goToPage(page === null ? 'page-array' : 'page-' + page);
     }
 
     /**
-     *
+     * @param {string} id
      */
     goToPage(id) {
         if (this.#currentPage) this.#currentPage.destroy();
         this.#currentPage = Pages.getPage(id);
         document.querySelector('#page-container').appendChild(this.#currentPage);
         this.activePage = id;
+
         window.scrollTo(0, 0);
     }
 
     /**
-     * @param {string} href
+     * @param {string} id
      */
     reportNavigationClick(id) {
         this.goToPage(id);

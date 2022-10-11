@@ -2,8 +2,6 @@
 
 A custom combo of lab 9 and lab 9b.
 
-TODO: Finish Switch page.
-
 #### Code specific to lab 9:
 - [page-array.js](src/js/components/page/pages/page-array.js)
 - [page-switch.js](src/js/components/page/pages/page-switch.js)

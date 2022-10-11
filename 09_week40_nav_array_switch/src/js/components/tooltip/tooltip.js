@@ -1,7 +1,7 @@
-import { AbstractElement } from '../../core/element/abstract-element';
+import { CustomElement } from '../../core/element/custom-element';
 import { TooltipConfig } from './config/tooltipconfig';
 
-export class Tooltip extends AbstractElement {
+export class Tooltip extends CustomElement {
     /** @type {string} */
     static MODE_INFO = 'info';
 

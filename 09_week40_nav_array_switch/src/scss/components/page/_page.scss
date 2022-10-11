@@ -6,6 +6,7 @@
 .page {
     display: block;
     padding-top: 2rem;
+    font-weight: 700;
 
     &__step {
         padding-top: 1rem;
@@ -15,8 +16,7 @@
             position: relative;
             display: flex;
             align-items: baseline;
-            gap: 0.4rem;
-            font-weight: 700;
+            gap: vars.$page-item-number-gap;
 
             @include breakpoints.from-lg {
                 max-width: 70%;
@@ -43,6 +43,10 @@
             }
         }
 
+        &-inset {
+            padding-left: vars.$page-item-number-d + vars.$page-item-number-gap;
+        }
+
         &-btn {
             @extend .generic-button;
             margin-top: 1.5rem;
@@ -51,12 +55,12 @@
         &-instruction {
             font-size: small;
             font-weight: 700;
-            transform: translateY(22px);
         }
     }
 
     &-btn-reset {
         @extend .generic-button;
         margin-top: 0;
+        margin-left: vars.$page-item-number-d + vars.$page-item-number-gap;
     }
 }

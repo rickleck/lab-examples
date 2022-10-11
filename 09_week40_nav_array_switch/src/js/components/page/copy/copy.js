@@ -33,8 +33,8 @@ export class Copy {
         {
             id: 'page-switch',
             steps: [
-                '<p>Create a switch that logs a value to the console corresponding a parameter:</p>',
-                '<p>Create a switch that logs a value to the console corresponding a parameter:</p>',
+                'Create a switch that logs the value corresponding to a parameter:',
+                'Create another switch corresponding to:',
             ],
             params: [
                 [
@@ -42,7 +42,7 @@ export class Copy {
                     { param: '1', value: 'Per' },
                     { param: '2', value: 'Johannes' },
                     { param: '3', value: 'Joakim' },
-                    { param: 'default', value: 'Hans' },
+                    { param: 'other', value: 'Hans' },
                 ],
                 [
                     { param: '0', value: 'Umeå' },
@@ -50,9 +50,10 @@ export class Copy {
                     { param: '6-9', value: 'Mora' },
                     { param: '10-14', value: 'Västerås' },
                     { param: '15-19', value: 'Göteborg' },
-                    { param: 'default', value: 'Malmö' },
+                    { param: 'other', value: 'Malmö' },
                 ],
             ],
+            instruction: '* Input a number.',
         },
     ];
 

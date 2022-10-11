@@ -126,7 +126,7 @@ module.exports = nodeUtil;
 });
 
 var $3bb07def7debad7e$exports = {};
-$3bb07def7debad7e$exports = "<div class=\"container-responsive\">\r\n    <nav>\r\n        <div class=\"navigation__buttons\">\r\n            <a data-href=\"array\" class=\"navigation__buttons-logo\">\r\n                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"111\" height=\"55\" viewBox=\"0 0 111 55\">\r\n                    <path class=\"svg-depth\" d=\"M0 47.625l7.9375 7.937501h7.9375V7.9375L7.9375 0v47.625H0\"></path>\r\n                    <path class=\"svg-depth\" d=\"M15.875 47.625l7.9375 7.937501h23.812499V7.9375L39.687499 0v47.625zm0-39.6875l7.9375 7.9375h7.937499V7.9375zm7.9375 15.875h7.937499v15.875H23.8125z\"></path>\r\n                    <path class=\"svg-depth\" d=\"M47.624999 47.625l7.9375 7.937501h23.8125V23.8125l-7.9375-7.9375v31.75zM55.5625 23.8125H63.5v15.875h-7.9375zM55.562499 0l7.9375 7.9375v7.9375h-7.9375z\"></path>\r\n                    <path class=\"svg-depth\" d=\"M79.374999 47.624999l7.9375 7.9375H111.125V7.9375L103.1875 0v47.624999zm0-15.874999l7.9375 7.937499h7.9375V31.75zm7.9375-23.8125h7.9375v15.875h-7.9375z\"></path>\r\n                    <path class=\"svg-text\" d=\"M0 0v47.625h7.9375V0zm15.875 0v7.9375H31.75v7.9375H15.875v31.75h23.8125V0zm7.9375 23.8125H31.75v15.875h-7.9375zM47.360416 0L47.625 47.625h23.8125v-31.75h-15.875L55.47431 0zM55.5625 23.8125H63.5v15.875h-7.9375v-15.875zM79.375 47.625v-7.9375H95.25V31.75H79.375V0h23.8125v47.625zm7.9375-23.8125H95.25V7.9375h-7.9375z\"></path>\r\n                </svg>\r\n            </a>\r\n            <button id=\"nav-toggle\" class=\"navigation__buttons-toggle\">\r\n                <div></div>\r\n                <div></div>\r\n                <div></div>\r\n            </button>\r\n        </div>\r\n        <ul class=\"navigation__list\">\r\n            <li class=\"navigation__list-item\"><a data-href=\"array\">Array [ ]</a></li>\r\n            <li class=\"navigation__list-item\"><a data-href=\"switch\">Switch { }</a></li>\r\n        </ul>\r\n    </nav>\r\n</div>";
+$3bb07def7debad7e$exports = "<div class=\"container-responsive\">\r\n    <nav>\r\n        <div class=\"navigation__buttons\">\r\n            <a data-href=\"page-array\" class=\"navigation__buttons-logo\">\r\n                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"111\" height=\"55\" viewBox=\"0 0 111 55\">\r\n                    <path class=\"svg-depth\" d=\"M0 47.625l7.9375 7.937501h7.9375V7.9375L7.9375 0v47.625H0\"></path>\r\n                    <path class=\"svg-depth\" d=\"M15.875 47.625l7.9375 7.937501h23.812499V7.9375L39.687499 0v47.625zm0-39.6875l7.9375 7.9375h7.937499V7.9375zm7.9375 15.875h7.937499v15.875H23.8125z\"></path>\r\n                    <path class=\"svg-depth\" d=\"M47.624999 47.625l7.9375 7.937501h23.8125V23.8125l-7.9375-7.9375v31.75zM55.5625 23.8125H63.5v15.875h-7.9375zM55.562499 0l7.9375 7.9375v7.9375h-7.9375z\"></path>\r\n                    <path class=\"svg-depth\" d=\"M79.374999 47.624999l7.9375 7.9375H111.125V7.9375L103.1875 0v47.624999zm0-15.874999l7.9375 7.937499h7.9375V31.75zm7.9375-23.8125h7.9375v15.875h-7.9375z\"></path>\r\n                    <path class=\"svg-text\" d=\"M0 0v47.625h7.9375V0zm15.875 0v7.9375H31.75v7.9375H15.875v31.75h23.8125V0zm7.9375 23.8125H31.75v15.875h-7.9375zM47.360416 0L47.625 47.625h23.8125v-31.75h-15.875L55.47431 0zM55.5625 23.8125H63.5v15.875h-7.9375v-15.875zM79.375 47.625v-7.9375H95.25V31.75H79.375V0h23.8125v47.625zm7.9375-23.8125H95.25V7.9375h-7.9375z\"></path>\r\n                </svg>\r\n            </a>\r\n            <button id=\"nav-toggle\" class=\"navigation__buttons-toggle\">\r\n                <div></div>\r\n                <div></div>\r\n                <div></div>\r\n            </button>\r\n        </div>\r\n        <ul class=\"navigation__list\">\r\n            <li class=\"navigation__list-item\"><a data-href=\"page-array\">Array [ ]</a></li>\r\n            <li class=\"navigation__list-item\"><a data-href=\"page-switch\">Switch { }</a></li>\r\n        </ul>\r\n    </nav>\r\n</div>";
 
 
 
@@ -158,7 +158,7 @@ class $aaf1807221727ea1$export$763ea9d89dbce745 {
 }
 
 
-class $7f62a88c9aa485f8$export$d5345f74bf36d494 extends HTMLElement {
+class $51ea5997f43e00e5$export$e38207f28c74982d extends HTMLElement {
     /** @type {ElementConfig} */ #config;
     /**
      * @constructor
@@ -195,14 +195,14 @@ class $7f62a88c9aa485f8$export$d5345f74bf36d494 extends HTMLElement {
     }
     /**
      * @param {HTMLElement} element
-     * @returns {AbstractElement}
+     * @returns {CustomElement}
      */ appendTo(element) {
         element.append(this);
         return this;
     }
     /**
      * @param {HTMLElement} element
-     * @returns {AbstractElement}
+     * @returns {CustomElement}
      */ prependTo(element) {
         element.prepend(this);
         return this;
@@ -228,7 +228,7 @@ class $7f62a88c9aa485f8$export$d5345f74bf36d494 extends HTMLElement {
 
 
 
-class $489a32f8870ec4f2$export$b8a61e5c71402559 extends (0, $7f62a88c9aa485f8$export$d5345f74bf36d494) {
+class $489a32f8870ec4f2$export$b8a61e5c71402559 extends (0, $51ea5997f43e00e5$export$e38207f28c74982d) {
     /**  @type {HTMLElement[]} */ #list;
     /** @type {string} */ #listOpenClass = "is-open";
     /**  @type {HTMLElement[]} */ #items;
@@ -315,8 +315,8 @@ class $ebaa68acb0f31e48$export$92ce62e1201c4fc0 {
         {
             id: "page-switch",
             steps: [
-                "<p>Create a switch that logs a value to the console corresponding a parameter:</p>",
-                "<p>Create a switch that logs a value to the console corresponding a parameter:</p>", 
+                "Create a switch that logs the value corresponding to a parameter:",
+                "Create another switch corresponding to:", 
             ],
             params: [
                 [
@@ -337,7 +337,7 @@ class $ebaa68acb0f31e48$export$92ce62e1201c4fc0 {
                         value: "Joakim"
                     },
                     {
-                        param: "default",
+                        param: "other",
                         value: "Hans"
                     }, 
                 ],
@@ -363,11 +363,12 @@ class $ebaa68acb0f31e48$export$92ce62e1201c4fc0 {
                         value: "G\xf6teborg"
                     },
                     {
-                        param: "default",
+                        param: "other",
                         value: "Malm\xf6"
                     }, 
                 ], 
-            ]
+            ],
+            instruction: "* Input a number."
         }, 
     ];
     /**
@@ -379,7 +380,7 @@ class $ebaa68acb0f31e48$export$92ce62e1201c4fc0 {
 }
 
 
-class $1c2b913514992058$export$6955bcca4cd3539f extends (0, $7f62a88c9aa485f8$export$d5345f74bf36d494) {
+class $1c2b913514992058$export$6955bcca4cd3539f extends (0, $51ea5997f43e00e5$export$e38207f28c74982d) {
     /**
      * @constructor
      * @param {ElementConfig} config
@@ -424,16 +425,17 @@ class $1c2b913514992058$export$6955bcca4cd3539f extends (0, $7f62a88c9aa485f8$ex
                     ${step}
                     </span>
                 </div>
-                <div id="step-draw-${counter}"></div>
+                <div class="page__step-inset"></div>
             </div>`;
         return htmlString;
     }
     /**
-     * @param {number} step
-     * @returns {string}
-     */ getStepInputHTML(step) {
-        step;
-        return "";
+     *
+     */ addInstruction() {
+        const instruction = document.createElement("p");
+        instruction.classList.add("page__step-instruction");
+        instruction.innerText = this.copy.instruction;
+        this.querySelector("#step-1 > .page__step-inset").append(instruction);
     }
 }
 /**
@@ -1388,7 +1390,7 @@ $48ca3ab83437dbe2$exports = $48ca3ab83437dbe2$var$random;
 
 
 
-class $de6dd8b3b44e1129$export$28c660c63b792dea extends (0, $7f62a88c9aa485f8$export$d5345f74bf36d494) {
+class $de6dd8b3b44e1129$export$28c660c63b792dea extends (0, $51ea5997f43e00e5$export$e38207f28c74982d) {
     /** @type {string} */ static MODE_INFO = "info";
     /** @type {string} */ static MODE_SUCCESS = "success";
     /** @type {string} */ static MODE_ERROR = "error";
@@ -1487,43 +1489,10 @@ class $f4aed3f945d4d569$export$7c0a0d9cc4225390 extends (0, $1c2b913514992058$ex
     /**
      *
      */ render() {
-        this.buildHTML();
+        this.#buildHTML();
         this.#names = (0, (/*@__PURE__*/$parcel$interopDefault($254661b4c3b13288$exports)))(this.copy.names);
         this.addEventListener("click", this, true);
         window.addEventListener("resize", this);
-    }
-    /**
-     * @returns {string}
-     */ buildHTML() {
-        super.render(this.getStepsHTML());
-        this.append(this.#getButton([
-            "page__step-btn"
-        ], {
-            type: "reset"
-        }, "Reset"));
-        let counter = 0;
-        for (const step of this.querySelectorAll(".page__step"))step.append(this.#getButton([
-            "page__step-btn"
-        ], {
-            type: "step",
-            step: counter += 1
-        }, "Generate"));
-    }
-    /**
-     * @param {Event} e
-     */ handleEvent(e) {
-        if (e.type === "click") switch(e.target.dataset.type){
-            case "step":
-                this.goToStep(parseInt(e.target.dataset.step));
-                break;
-            case "reset":
-                (0, $342d8b3f004474be$export$86fbec116b87613f).instance.goToPage("array");
-                break;
-            case "stack":
-                this.#toggleTooltip(e.target);
-                break;
-        }
-        else if (e.type === "resize") this.#removeTooltip();
     }
     /**
      *
@@ -1534,32 +1503,74 @@ class $f4aed3f945d4d569$export$7c0a0d9cc4225390 extends (0, $1c2b913514992058$ex
         super.destroy();
     }
     /**
-     * @param {number} step
-     */ goToStep(step) {
-        for(let i = this.#stepArrays.length; i < step; i++)this.#drawStep(i + 1);
-        this.#scrollToStep(step);
+     * @param {Event} e
+     */ handleEvent(e) {
+        if (e.type === "click") switch(e.target.dataset.type){
+            case "step":
+                this.#goToStep(parseInt(e.target.dataset.step));
+                break;
+            case "stack":
+                this.#toggleTooltip(e.target);
+                break;
+            case "reset":
+                (0, $342d8b3f004474be$export$86fbec116b87613f).instance.goToPage(this.id);
+                break;
+        }
+        else if (e.type === "resize") this.#removeTooltip();
+    }
+    /**
+     * @returns {string}
+     */  #buildHTML() {
+        super.render(this.getStepsHTML());
+        this.append(this.#getButton([
+            "page-btn-reset"
+        ], {
+            type: "reset"
+        }, "Reset"));
+        let counter = 0;
+        for (const step of this.querySelectorAll(".page__step"))step.querySelector(".page__step-inset").append(this.#getButton([
+            "page__step-btn"
+        ], {
+            type: "step",
+            step: counter += 1
+        }, "Generate"));
+    }
+    /**
+     * @returns {HTMLButtonElement}
+     */  #getButton(classes, dataset, text) {
+        let btn = document.createElement("button");
+        btn.classList.add(...classes);
+        Object.assign(btn.dataset, dataset);
+        btn.innerHTML = text;
+        return btn;
     }
     /**
      * @param {number} step
-     */  #scrollToStep(step) {
-        this.querySelector("#step-" + step).scrollIntoView({
+     */  #goToStep(step1) {
+        for(let i = this.#stepArrays.length; i < step1; i++)this.#drawStep(i + 1);
+        this.#scrollToStep(step1);
+    }
+    /**
+     * @param {number} step
+     */  #scrollToStep(step2) {
+        this.querySelector("#step-" + step2).scrollIntoView({
             behavior: "smooth"
         });
     }
     /**
      * @param {number} step
-     */  #drawStep(step1) {
-        step1 <= 4 ? this.#generateStepArray(step1) : this.#drawStepLog();
-        this.querySelector("#step-" + step1 + " > button").classList.add("is-hidden");
+     */  #drawStep(step3) {
+        step3 <= 4 ? this.#generateStepArray(step3) : this.#drawStepLog();
+        this.querySelector("#step-" + step3 + " > .page__step-inset > button").classList.add("is-hidden");
         this.querySelector('button[data-type="reset"]').classList.remove("is-hidden");
         this.#removeTooltip();
-        if (step1 === 1) this.#addInstruction();
+        if (step3 === 1) this.addInstruction();
     }
     /**
      * @param {number} step
-     */  #generateStepArray(step2) {
+     */  #generateStepArray(step4) {
         let arr;
-        switch(step2){
+        switch(step4){
             case 1:
                 arr = this.#createArray(8, 3);
                 break;
@@ -1577,7 +1588,7 @@ class $f4aed3f945d4d569$export$7c0a0d9cc4225390 extends (0, $1c2b913514992058$ex
                 break;
         }
         this.#stepArrays.push(arr);
-        this.#drawArray(step2, arr);
+        this.#drawArray(step4, arr);
     }
     /**
      * @param {number} length of array
@@ -1585,41 +1596,41 @@ class $f4aed3f945d4d569$export$7c0a0d9cc4225390 extends (0, $1c2b913514992058$ex
      * @returns {object[]}
      */  #createArray(length, forceHeight = 0) {
         let arr1 = [];
-        for(let i = 0; i < length; i++)arr1.push({
+        for(let i1 = 0; i1 < length; i1++)arr1.push({
             name: this.#names.shift(),
             age: (0, (/*@__PURE__*/$parcel$interopDefault($48ca3ab83437dbe2$exports)))(18, 99),
-            height: i < forceHeight ? (0, (/*@__PURE__*/$parcel$interopDefault($48ca3ab83437dbe2$exports)))(201, 220) : (0, (/*@__PURE__*/$parcel$interopDefault($48ca3ab83437dbe2$exports)))(140, 220)
+            height: i1 < forceHeight ? (0, (/*@__PURE__*/$parcel$interopDefault($48ca3ab83437dbe2$exports)))(201, 220) : (0, (/*@__PURE__*/$parcel$interopDefault($48ca3ab83437dbe2$exports)))(140, 220)
         });
         return (0, (/*@__PURE__*/$parcel$interopDefault($254661b4c3b13288$exports)))(arr1);
     }
     /**
      * @param {number} step
      * @param {object[]} arr
-     */  #drawArray(step3, arr2) {
+     */  #drawArray(step5, arr2) {
         let classBase = "page-array__chart";
         const chart = document.createElement("div");
         chart.classList.add(classBase);
-        this.querySelector("#step-draw-" + step3).append(chart);
-        for(let i1 = 0; i1 < arr2.length; i1++){
+        this.querySelector("#step-" + step5 + " > .page__step-inset").append(chart);
+        for(let i2 = 0; i2 < arr2.length; i2++){
             let className = classBase + "-stack";
             let stack = document.createElement("div");
             stack.classList.add(className);
             stack.dataset.type = "stack";
-            Object.assign(stack.dataset, arr2[i1]);
+            Object.assign(stack.dataset, arr2[i2]);
             chart.append(stack);
             let graphic = document.createElement("div");
             className += "-graphic";
             graphic.classList.add(className);
-            graphic.style.height = arr2[i1].height + "px";
+            graphic.style.height = arr2[i2].height + "px";
             stack.append(graphic);
             let span = document.createElement("span");
             className += "-span";
             span.classList.add(className + "--top");
-            span.innerHTML = "<p>" + i1 + "</p>";
+            span.innerHTML = "<p>" + i2 + "</p>";
             graphic.append(span);
             span = document.createElement("span");
             span.classList.add(className + "--bottom");
-            span.innerHTML = (arr2[i1].height / 100).toFixed(2) + " m";
+            span.innerHTML = (arr2[i2].height / 100).toFixed(2) + " m";
             graphic.append(span);
         }
     }
@@ -1631,7 +1642,7 @@ class $f4aed3f945d4d569$export$7c0a0d9cc4225390 extends (0, $1c2b913514992058$ex
         });
         const con = document.createElement("div");
         con.classList.add("page-array__console");
-        this.querySelector("#step-draw-5").append(con);
+        this.querySelector("#step-5 > .page__step-inset").append(con);
         let htmlString = "";
         for (const person of this.#stepArrays.pop())htmlString += `<p>{<span class="key">name</span>: 
                 <span class="value--string">'${person.name}'</span>, 
@@ -1662,23 +1673,6 @@ class $f4aed3f945d4d569$export$7c0a0d9cc4225390 extends (0, $1c2b913514992058$ex
         if (this.#tooltip) this.#tooltip.destroy();
         this.#tooltip = undefined;
     }
-    /**
-     *
-     */  #addInstruction() {
-        const instruction = document.createElement("p");
-        instruction.classList.add("page__step-instruction");
-        instruction.innerText = this.copy.instruction;
-        this.querySelector("#step-1").append(instruction);
-    }
-    /**
-     * @returns {HTMLButtonElement}
-     */  #getButton(classes, dataset, text) {
-        let btn = document.createElement("button");
-        btn.classList.add(...classes);
-        Object.assign(btn.dataset, dataset);
-        btn.innerHTML = text;
-        return btn;
-    }
 }
 /**
  * @comment Register as custom html-element
@@ -1705,18 +1699,121 @@ class $e3f1f6b65e30fb2a$export$ea0bc0ec1649be89 extends (0, $1c2b913514992058$ex
     /**
      *
      */ render() {
-        this.buildHTML();
+        this.#buildHTML();
+        this.addEventListener("input", this, true);
     }
     /**
      *
-     */ buildHTML() {
+     */ destroy() {
+        this.removeEventListener("input", this, true);
+        super.destroy();
+    }
+    /**
+     * @param {Event} e
+     */ handleEvent(e) {
+        if (e.type === "input" && e.target.dataset.step) this.#processInput(e.target.dataset.step, e.target.value);
+    }
+    /**
+     *
+     */  #buildHTML() {
         super.render(this.getStepsHTML());
+        let counter = 0;
+        for (const step of this.querySelectorAll(".page__step")){
+            counter += 1;
+            let inset = step.querySelector(".page__step-inset");
+            inset.append(this.#getStepParams(counter));
+            inset.append(this.#getStepInput(counter));
+        }
+        this.addInstruction();
     }
     /**
      * @param {number} step
-     * @returns {string}
-     */ getStepInputHTML(step) {
-        return `<input type="number" id="param-step-${step}"/>`;
+     * @returns {HTMLInputElement}
+     */  #getStepInput(step1) {
+        const input = document.createElement("input");
+        input.type = "number";
+        input.dataset.step = step1;
+        return input;
+    }
+    /**
+     * @param {number} step
+     * @returns {HTMLElement}
+     */  #getStepParams(step2) {
+        const container = document.createElement("div");
+        container.classList.add("page-switch__params");
+        container.id = "params-" + step2;
+        for (const param of this.copy.params[step2 - 1]){
+            let row = document.createElement("div");
+            row.classList.add("page-switch__params-row");
+            container.append(row);
+            let span = document.createElement("span");
+            span.innerText = param.param + ":";
+            row.append(span);
+            span = document.createElement("span");
+            span.innerText = param.value;
+            row.append(span);
+        }
+        return container;
+    }
+    /**
+     * @param {string} step
+     * @param {string} value
+     */  #processInput(step3, value) {
+        const valid = ()=>!Number.isNaN(value) && !Number.isNaN(parseFloat(value));
+        valid() ? this.#processParam(+step3, +value) : this.#setSelected(+step3);
+    }
+    /**
+     * @param {number} step
+     * @param {number} value
+     */  #processParam(step4, value1) {
+        let index;
+        if (step4 === 1) switch(true){
+            case value1 >= 0 && value1 <= 3 && Number.isInteger(value1):
+                index = value1;
+                break;
+            default:
+                index = 4;
+                break;
+        }
+        else switch(true){
+            case value1 < 0:
+                index = 5;
+                break;
+            case value1 == 0:
+                index = 0;
+                break;
+            case value1 <= 5:
+                index = 1;
+                break;
+            case value1 <= 9:
+                index = 2;
+                break;
+            case value1 <= 14:
+                index = 3;
+                break;
+            case value1 <= 19:
+                index = 4;
+                break;
+            default:
+                index = 5;
+                break;
+        }
+        this.#setOutput(step4, index);
+    }
+    /**
+     * @param {number} step
+     * @param {number} index
+     */  #setOutput(step5, index1) {
+        let valuePair = this.copy.params[step5 - 1][index1];
+        if (valuePair !== undefined) console.log(valuePair.value);
+        this.#setSelected(step5, index1);
+    }
+    /**
+     * @param {number} step
+     * @param {number} index
+     */  #setSelected(step6, index2) {
+        const rows = this.querySelector("#step-" + step6).querySelectorAll(".page-switch__params-row");
+        for(let i = 0; i < rows.length; i++)i === index2 ? rows[i].classList.add("selected") : rows[i].classList.remove("selected");
     }
 }
 /**
@@ -1729,9 +1826,9 @@ class $3962eb24df2008d6$export$c717c2ee03fc6c49 {
      * @param {string} id
      */ static getPage(id) {
         switch(id){
-            case "array":
+            case "page-array":
                 return new (0, $f4aed3f945d4d569$export$7c0a0d9cc4225390)();
-            case "switch":
+            case "page-switch":
                 return new (0, $e3f1f6b65e30fb2a$export$ea0bc0ec1649be89)();
             default:
                 return new (0, $1c2b913514992058$export$6955bcca4cd3539f)();
@@ -1762,10 +1859,12 @@ class $342d8b3f004474be$export$86fbec116b87613f {
      *
      */ run() {
         this.#navigation = new (0, $489a32f8870ec4f2$export$b8a61e5c71402559)().prependTo(document.body);
-        this.goToPage("array");
+        //Shortcut for dev
+        const page = new URLSearchParams(document.location.search).get("page");
+        this.goToPage(page === null ? "page-array" : "page-" + page);
     }
     /**
-     *
+     * @param {string} id
      */ goToPage(id) {
         if (this.#currentPage) this.#currentPage.destroy();
         this.#currentPage = (0, $3962eb24df2008d6$export$c717c2ee03fc6c49).getPage(id);
@@ -1774,7 +1873,7 @@ class $342d8b3f004474be$export$86fbec116b87613f {
         window.scrollTo(0, 0);
     }
     /**
-     * @param {string} href
+     * @param {string} id
      */ reportNavigationClick(id) {
         this.goToPage(id);
     }

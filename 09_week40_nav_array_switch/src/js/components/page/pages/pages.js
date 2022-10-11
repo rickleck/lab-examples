@@ -8,9 +8,9 @@ export class Pages {
      */
     static getPage(id) {
         switch (id) {
-            case 'array':
+            case 'page-array':
                 return new PageArray();
-            case 'switch':
+            case 'page-switch':
                 return new PageSwitch();
             default:
                 return new Page();

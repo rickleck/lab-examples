@@ -1,7 +1,7 @@
-import { AbstractElement } from '../../core/element/abstract-element';
+import { CustomElement } from '../../core/element/custom-element';
 import { Copy } from './copy/copy';
 
-export class Page extends AbstractElement {
+export class Page extends CustomElement {
     /**
      * @constructor
      * @param {ElementConfig} config
@@ -55,19 +55,20 @@ export class Page extends AbstractElement {
                     ${step}
                     </span>
                 </div>
-                <div id="step-draw-${counter}"></div>
+                <div class="page__step-inset"></div>
             </div>`;
 
         return htmlString;
     }
 
     /**
-     * @param {number} step
-     * @returns {string}
+     *
      */
-    getStepInputHTML(step) {
-        step;
-        return '';
+    addInstruction() {
+        const instruction = document.createElement('p');
+        instruction.classList.add('page__step-instruction');
+        instruction.innerText = this.copy.instruction;
+        this.querySelector('#step-1 > .page__step-inset').append(instruction);
     }
 }
 

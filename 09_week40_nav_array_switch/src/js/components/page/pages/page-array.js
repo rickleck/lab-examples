@@ -35,49 +35,10 @@ export class PageArray extends Page {
      *
      */
     render() {
-        this.buildHTML();
+        this.#buildHTML();
         this.#names = shuffle(this.copy.names);
         this.addEventListener('click', this, true);
         window.addEventListener('resize', this);
-    }
-
-    /**
-     * @returns {string}
-     */
-    buildHTML() {
-        super.render(this.getStepsHTML());
-        this.append(this.#getButton(['page__step-btn'], { type: 'reset' }, 'Reset'));
-
-        let counter = 0;
-        for (const step of this.querySelectorAll('.page__step'))
-            step.append(
-                this.#getButton(
-                    ['page__step-btn'],
-                    { type: 'step', step: (counter += 1) },
-                    'Generate'
-                )
-            );
-    }
-
-    /**
-     * @param {Event} e
-     */
-    handleEvent(e) {
-        if (e.type === 'click') {
-            switch (e.target.dataset.type) {
-                case 'step':
-                    this.goToStep(parseInt(e.target.dataset.step));
-                    break;
-                case 'reset':
-                    App.instance.goToPage('array');
-                    break;
-                case 'stack':
-                    this.#toggleTooltip(e.target);
-                    break;
-            }
-        } else if (e.type === 'resize') {
-            this.#removeTooltip();
-        }
     }
 
     /**
@@ -91,9 +52,59 @@ export class PageArray extends Page {
     }
 
     /**
+     * @param {Event} e
+     */
+    handleEvent(e) {
+        if (e.type === 'click') {
+            switch (e.target.dataset.type) {
+                case 'step':
+                    this.#goToStep(parseInt(e.target.dataset.step));
+                    break;
+                case 'stack':
+                    this.#toggleTooltip(e.target);
+                    break;
+                case 'reset':
+                    App.instance.goToPage(this.id);
+                    break;
+            }
+        } else if (e.type === 'resize') {
+            this.#removeTooltip();
+        }
+    }
+
+    /**
+     * @returns {string}
+     */
+    #buildHTML() {
+        super.render(this.getStepsHTML());
+        this.append(this.#getButton(['page-btn-reset'], { type: 'reset' }, 'Reset'));
+
+        let counter = 0;
+        for (const step of this.querySelectorAll('.page__step'))
+            step.querySelector('.page__step-inset').append(
+                this.#getButton(
+                    ['page__step-btn'],
+                    { type: 'step', step: (counter += 1) },
+                    'Generate'
+                )
+            );
+    }
+
+    /**
+     * @returns {HTMLButtonElement}
+     */
+    #getButton(classes, dataset, text) {
+        let btn = document.createElement('button');
+        btn.classList.add(...classes);
+        Object.assign(btn.dataset, dataset);
+        btn.innerHTML = text;
+        return btn;
+    }
+
+    /**
      * @param {number} step
      */
-    goToStep(step) {
+    #goToStep(step) {
         for (let i = this.#stepArrays.length; i < step; i++) {
             this.#drawStep(i + 1);
         }
@@ -112,10 +123,12 @@ export class PageArray extends Page {
      */
     #drawStep(step) {
         step <= 4 ? this.#generateStepArray(step) : this.#drawStepLog();
-        this.querySelector('#step-' + step + ' > button').classList.add('is-hidden');
+        this.querySelector('#step-' + step + ' > .page__step-inset > button').classList.add(
+            'is-hidden'
+        );
         this.querySelector('button[data-type="reset"]').classList.remove('is-hidden');
         this.#removeTooltip();
-        if (step === 1) this.#addInstruction();
+        if (step === 1) this.addInstruction();
     }
     /**
      * @param {number} step
@@ -164,7 +177,7 @@ export class PageArray extends Page {
         let classBase = 'page-array__chart';
         const chart = document.createElement('div');
         chart.classList.add(classBase);
-        this.querySelector('#step-draw-' + step).append(chart);
+        this.querySelector('#step-' + step + ' > .page__step-inset').append(chart);
 
         for (let i = 0; i < arr.length; i++) {
             let className = classBase + '-stack';
@@ -203,7 +216,7 @@ export class PageArray extends Page {
 
         const con = document.createElement('div');
         con.classList.add('page-array__console');
-        this.querySelector('#step-draw-5').append(con);
+        this.querySelector('#step-5 > .page__step-inset').append(con);
 
         let htmlString = '';
         for (const person of this.#stepArrays.pop()) {
@@ -243,27 +256,6 @@ export class PageArray extends Page {
     #removeTooltip() {
         if (this.#tooltip) this.#tooltip.destroy();
         this.#tooltip = undefined;
-    }
-
-    /**
-     *
-     */
-    #addInstruction() {
-        const instruction = document.createElement('p');
-        instruction.classList.add('page__step-instruction');
-        instruction.innerText = this.copy.instruction;
-        this.querySelector('#step-1').append(instruction);
-    }
-
-    /**
-     * @returns {HTMLButtonElement}
-     */
-    #getButton(classes, dataset, text) {
-        let btn = document.createElement('button');
-        btn.classList.add(...classes);
-        Object.assign(btn.dataset, dataset);
-        btn.innerHTML = text;
-        return btn;
     }
 }
 

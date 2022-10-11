@@ -247,6 +247,7 @@ a {
 
 .page {
   padding-top: 2rem;
+  font-weight: 700;
   display: block;
 }
 
@@ -257,8 +258,7 @@ a {
 
 .page__step-text {
   align-items: baseline;
-  gap: .4rem;
-  font-weight: 700;
+  gap: .7rem;
   display: flex;
   position: relative;
 }
@@ -291,6 +291,10 @@ a {
   position: absolute;
 }
 
+.page__step-inset {
+  padding-left: 2.7rem;
+}
+
 .page__step-btn {
   margin-top: 1.5rem;
 }
@@ -298,11 +302,11 @@ a {
 .page__step-instruction {
   font-size: small;
   font-weight: 700;
-  transform: translateY(22px);
 }
 
 .page-btn-reset {
   margin-top: 0;
+  margin-left: 2.7rem;
 }
 
 .page-array__chart {
@@ -561,10 +565,69 @@ a {
   color: #b0a4ee;
 }
 
+.page-array .page__step-instruction {
+  transform: translateY(22px);
+}
+
+.page-switch input {
+  all: unset;
+  width: 3rem;
+  font-size: inherit;
+  color: inherit;
+  text-align: center;
+  background: #fff;
+  border: 1px solid #293241;
+  outline: none;
+  padding: .5rem .1rem .5rem 1rem;
+  font-family: inherit;
+}
+
 .page-switch__params {
-  grid-template-columns: 5rem auto;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
+}
+
+.page-switch__params-row {
+  border-bottom: 1px dotted #293241;
+  grid: 100% / 5rem auto;
+  padding: .3rem .6rem;
   display: grid;
+  position: relative;
+}
+
+@media (min-width: 576px) {
+  .page-switch__params-row {
+    max-width: 300px;
+  }
+}
+
+.page-switch__params-row:nth-child(1) {
+  border-top: 1px dotted #293241;
+}
+
+.page-switch__params-row:before {
+  content: "";
+  width: 0;
+  height: 100%;
+  opacity: 0;
+  z-index: -1;
+  background: #ee6c4d;
+  transition: all .2s ease-in;
+  position: absolute;
+}
+
+.page-switch__params-row.selected {
+  color: #fff;
+}
+
+.page-switch__params-row.selected:before {
+  width: 100%;
+  opacity: 1;
+}
+
+.page-switch .page__step-instruction {
+  margin-left: .7rem;
+  display: inline-block;
+  transform: translateY(11px);
 }
 
 .tooltip {

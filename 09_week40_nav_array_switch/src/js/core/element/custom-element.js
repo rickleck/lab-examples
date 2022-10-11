@@ -1,6 +1,6 @@
 import { ElementConfig } from './config/element-config';
 
-export class AbstractElement extends HTMLElement {
+export class CustomElement extends HTMLElement {
     /** @type {ElementConfig} */
     #config;
 
@@ -46,7 +46,7 @@ export class AbstractElement extends HTMLElement {
 
     /**
      * @param {HTMLElement} element
-     * @returns {AbstractElement}
+     * @returns {CustomElement}
      */
     appendTo(element) {
         element.append(this);
@@ -55,7 +55,7 @@ export class AbstractElement extends HTMLElement {
 
     /**
      * @param {HTMLElement} element
-     * @returns {AbstractElement}
+     * @returns {CustomElement}
      */
     prependTo(element) {
         element.prepend(this);

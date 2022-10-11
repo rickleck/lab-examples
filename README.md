@@ -17,6 +17,7 @@ Lexicon
 - [Week 39 Lab 6: Arrow Functions](https://leck-lex.github.io/labs/06_week39_arrow_functions/dist) 
 - [Week 39 Lab 7: DOM Manipulation](https://leck-lex.github.io/labs/07_week39_dom_manipulation/dist)
 - [Week 40 Lab 8: Form Validation](https://leck-lex.github.io/labs/08_week40_form_validation/dist) 
+- [Week 40 Lab 9: Navigation, Array, Switch](https://leck-lex.github.io/labs/09_week40_nav_array_switch/dist)
 
 ### In Progress
-- [Week 40 Lab 9: Navigation, Array, Switch](https://leck-lex.github.io/labs/09_week40_nav_array_switch/dist)
+-
