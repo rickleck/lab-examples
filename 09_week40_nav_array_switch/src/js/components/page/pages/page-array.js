@@ -58,7 +58,7 @@ export class PageArray extends Page {
         if (e.type === 'click') {
             switch (e.target.dataset.type) {
                 case 'step':
-                    this.#goToStep(parseInt(e.target.dataset.step));
+                    this.#goToStep(+e.target.dataset.step);
                     break;
                 case 'stack':
                     this.#toggleTooltip(e.target);
@@ -73,7 +73,7 @@ export class PageArray extends Page {
     }
 
     /**
-     * @returns {string}
+     *
      */
     #buildHTML() {
         super.render(this.getStepsHTML());
