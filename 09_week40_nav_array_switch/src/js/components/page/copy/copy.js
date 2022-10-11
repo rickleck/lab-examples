@@ -3,6 +3,13 @@ export class Copy {
     static pages = [
         {
             id: 'page-array',
+            steps: [
+                'Create a new array containing 8 persons. Each person should have the properties name, age and height. At least 3 persons must be taller than 2 meters.',
+                'Create another array containing 4 persons, each also having the properties name, age and height.',
+                'Combine the two arrays.',
+                'Using the filter() method, create a new array that only includes the persons taller than 2 meters.',
+                'Using the forEach() method, log all persons taller than 2 meters to the console.',
+            ],
             names: [
                 'Adam',
                 'Carl',
@@ -20,13 +27,6 @@ export class Copy {
                 'Ola',
                 'Rickard',
                 'Robert',
-            ],
-            steps: [
-                'Create a new array containing 8 persons. Each person should have the properties name, age and height. At least 3 persons must be taller than 2 meters.',
-                'Create another array containing 4 persons, each also having the properties name, age and height.',
-                'Combine the two arrays.',
-                'Using the filter() method, create a new array that only includes the persons taller than 2 meters.',
-                'Using the forEach() method, log all persons taller than 2 meters to the console.',
             ],
             instruction: '* Click on a stack for more details.',
         },
