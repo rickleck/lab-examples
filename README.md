@@ -20,4 +20,5 @@ Lexicon
 - [Week 40 Lab 9: Navigation, Array, Switch](https://leck-lex.github.io/labs/09_week40_nav_array_switch/dist)
 
 ### In Progress
--
+
+- [Week 41 Lab 10: Fetch (Deck of Cards)](https://leck-lex.github.io/labs/10_week41_fetch/dist/)
