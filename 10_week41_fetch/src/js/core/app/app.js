@@ -1,3 +1,5 @@
+import { GameService } from '../services/game/game-service';
+
 export class App {
     /** @type {App} */
     static #instance;
@@ -12,16 +14,31 @@ export class App {
         return this.#instance;
     }
 
+    /** @type {GameService} */
+    #gameService;
+
     /**
      * @constructor
      */
     constructor() {}
 
     /**
+     * @returns {GameService}
+     */
+    get gameService() {
+        return this.#gameService;
+    }
+
+    /**
      *
      */
     run() {
-        document.querySelector('main').appendChild(document.createElement('h1')).innerHTML =
+        document
+            .querySelector('main')
+            .insertAdjacentElement('afterbegin', document.createElement('h1')).innerHTML =
             'Week 41 Lab 10 Fetch (Deck of Cards)';
+
+        this.#gameService = new GameService();
+        this.#gameService.startNewGame();
     }
 }
