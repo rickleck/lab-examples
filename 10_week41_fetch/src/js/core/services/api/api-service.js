@@ -16,8 +16,8 @@ export class ApiService {
 
     /**
      *
-     * @param {string} url
-     * @returns
+     * @param {string} req
+     * @returns {Promise}
      */
     #doApiFetch(req) {
         return new Promise((resolve, reject) => {
