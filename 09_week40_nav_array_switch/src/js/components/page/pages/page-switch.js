@@ -47,13 +47,11 @@ export class PageSwitch extends Page {
      */
     #buildHTML() {
         super.render(this.getStepsHTML());
-        let counter = 0;
-        for (const step of this.querySelectorAll('.page__step')) {
-            counter += 1;
+        this.querySelectorAll('.page__step').forEach((step, index) => {
             let inset = step.querySelector('.page__step-inset');
-            inset.append(this.#getStepParams(counter));
-            inset.append(this.#getStepInput(counter));
-        }
+            inset.append(this.#getStepParams(index + 1));
+            inset.append(this.#getStepInput(index + 1));
+        });
         this.addInstruction();
     }
 
@@ -167,8 +165,9 @@ export class PageSwitch extends Page {
             '.page-switch__params-row'
         );
 
-        for (let i = 0; i < rows.length; i++)
-            i === index ? rows[i].classList.add('selected') : rows[i].classList.remove('selected');
+        rows.forEach((row, i) => {
+            i === index ? row.classList.add('selected') : row.classList.remove('selected');
+        });
     }
 }
 

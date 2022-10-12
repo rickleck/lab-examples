@@ -79,15 +79,11 @@ export class PageArray extends Page {
         super.render(this.getStepsHTML());
         this.append(this.#getButton(['page-btn-reset'], { type: 'reset' }, 'Reset'));
 
-        let counter = 0;
-        for (const step of this.querySelectorAll('.page__step'))
+        this.querySelectorAll('.page__step').forEach((step, index) => {
             step.querySelector('.page__step-inset').append(
-                this.#getButton(
-                    ['page__step-btn'],
-                    { type: 'step', step: (counter += 1) },
-                    'Generate'
-                )
+                this.#getButton(['page__step-btn'], { type: 'step', step: index + 1 }, 'Generate')
             );
+        });
     }
 
     /**
@@ -179,19 +175,19 @@ export class PageArray extends Page {
         chart.classList.add(classBase);
         this.querySelector('#step-' + step + ' > .page__step-inset').append(chart);
 
-        for (let i = 0; i < arr.length; i++) {
+        arr.forEach((person, i) => {
             let className = classBase + '-stack';
 
             let stack = document.createElement('div');
             stack.classList.add(className);
             stack.dataset.type = 'stack';
-            Object.assign(stack.dataset, arr[i]);
+            Object.assign(stack.dataset, person);
             chart.append(stack);
 
             let graphic = document.createElement('div');
             className += '-graphic';
             graphic.classList.add(className);
-            graphic.style.height = arr[i].height + 'px';
+            graphic.style.height = person.height + 'px';
             stack.append(graphic);
 
             let span = document.createElement('span');
@@ -202,9 +198,9 @@ export class PageArray extends Page {
 
             span = document.createElement('span');
             span.classList.add(className + '--bottom');
-            span.innerHTML = (arr[i].height / 100).toFixed(2) + ' m';
+            span.innerHTML = (person.height / 100).toFixed(2) + ' m';
             graphic.append(span);
-        }
+        });
     }
     /**
      *

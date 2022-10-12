@@ -1531,13 +1531,14 @@ class $f4aed3f945d4d569$export$7c0a0d9cc4225390 extends (0, $1c2b913514992058$ex
         ], {
             type: "reset"
         }, "Reset"));
-        let counter = 0;
-        for (const step of this.querySelectorAll(".page__step"))step.querySelector(".page__step-inset").append(this.#getButton([
-            "page__step-btn"
-        ], {
-            type: "step",
-            step: counter += 1
-        }, "Generate"));
+        this.querySelectorAll(".page__step").forEach((step, index)=>{
+            step.querySelector(".page__step-inset").append(this.#getButton([
+                "page__step-btn"
+            ], {
+                type: "step",
+                step: index + 1
+            }, "Generate"));
+        });
     }
     /**
      * @returns {HTMLButtonElement}
@@ -1550,31 +1551,31 @@ class $f4aed3f945d4d569$export$7c0a0d9cc4225390 extends (0, $1c2b913514992058$ex
     }
     /**
      * @param {number} step
-     */  #goToStep(step1) {
-        for(let i = this.#stepArrays.length; i < step1; i++)this.#drawStep(i + 1);
-        this.#scrollToStep(step1);
+     */  #goToStep(step) {
+        for(let i = this.#stepArrays.length; i < step; i++)this.#drawStep(i + 1);
+        this.#scrollToStep(step);
     }
     /**
      * @param {number} step
-     */  #scrollToStep(step2) {
-        this.querySelector("#step-" + step2).scrollIntoView({
+     */  #scrollToStep(step1) {
+        this.querySelector("#step-" + step1).scrollIntoView({
             behavior: "smooth"
         });
     }
     /**
      * @param {number} step
-     */  #drawStep(step3) {
-        step3 <= 4 ? this.#generateStepArray(step3) : this.#drawStepLog();
-        this.querySelector("#step-" + step3 + " > .page__step-inset > button").classList.add("is-hidden");
+     */  #drawStep(step2) {
+        step2 <= 4 ? this.#generateStepArray(step2) : this.#drawStepLog();
+        this.querySelector("#step-" + step2 + " > .page__step-inset > button").classList.add("is-hidden");
         this.querySelector('button[data-type="reset"]').classList.remove("is-hidden");
         this.#removeTooltip();
-        if (step3 === 1) this.addInstruction();
+        if (step2 === 1) this.addInstruction();
     }
     /**
      * @param {number} step
-     */  #generateStepArray(step4) {
+     */  #generateStepArray(step3) {
         let arr;
-        switch(step4){
+        switch(step3){
             case 1:
                 arr = this.#createArray(8, 3);
                 break;
@@ -1592,7 +1593,7 @@ class $f4aed3f945d4d569$export$7c0a0d9cc4225390 extends (0, $1c2b913514992058$ex
                 break;
         }
         this.#stepArrays.push(arr);
-        this.#drawArray(step4, arr);
+        this.#drawArray(step3, arr);
     }
     /**
      * @param {number} length of array
@@ -1610,33 +1611,33 @@ class $f4aed3f945d4d569$export$7c0a0d9cc4225390 extends (0, $1c2b913514992058$ex
     /**
      * @param {number} step
      * @param {object[]} arr
-     */  #drawArray(step5, arr2) {
+     */  #drawArray(step4, arr2) {
         let classBase = "page-array__chart";
         const chart = document.createElement("div");
         chart.classList.add(classBase);
-        this.querySelector("#step-" + step5 + " > .page__step-inset").append(chart);
-        for(let i2 = 0; i2 < arr2.length; i2++){
+        this.querySelector("#step-" + step4 + " > .page__step-inset").append(chart);
+        arr2.forEach((person, i)=>{
             let className = classBase + "-stack";
             let stack = document.createElement("div");
             stack.classList.add(className);
             stack.dataset.type = "stack";
-            Object.assign(stack.dataset, arr2[i2]);
+            Object.assign(stack.dataset, person);
             chart.append(stack);
             let graphic = document.createElement("div");
             className += "-graphic";
             graphic.classList.add(className);
-            graphic.style.height = arr2[i2].height + "px";
+            graphic.style.height = person.height + "px";
             stack.append(graphic);
             let span = document.createElement("span");
             className += "-span";
             span.classList.add(className + "--top");
-            span.innerHTML = "<p>" + i2 + "</p>";
+            span.innerHTML = "<p>" + i + "</p>";
             graphic.append(span);
             span = document.createElement("span");
             span.classList.add(className + "--bottom");
-            span.innerHTML = (arr2[i2].height / 100).toFixed(2) + " m";
+            span.innerHTML = (person.height / 100).toFixed(2) + " m";
             graphic.append(span);
-        }
+        });
     }
     /**
      *
@@ -1721,32 +1722,30 @@ class $e3f1f6b65e30fb2a$export$ea0bc0ec1649be89 extends (0, $1c2b913514992058$ex
      *
      */  #buildHTML() {
         super.render(this.getStepsHTML());
-        let counter = 0;
-        for (const step of this.querySelectorAll(".page__step")){
-            counter += 1;
+        this.querySelectorAll(".page__step").forEach((step, index)=>{
             let inset = step.querySelector(".page__step-inset");
-            inset.append(this.#getStepParams(counter));
-            inset.append(this.#getStepInput(counter));
-        }
+            inset.append(this.#getStepParams(index + 1));
+            inset.append(this.#getStepInput(index + 1));
+        });
         this.addInstruction();
     }
     /**
      * @param {number} step
      * @returns {HTMLInputElement}
-     */  #getStepInput(step1) {
+     */  #getStepInput(step) {
         const input = document.createElement("input");
         input.type = "number";
-        input.dataset.step = step1;
+        input.dataset.step = step;
         return input;
     }
     /**
      * @param {number} step
      * @returns {HTMLElement}
-     */  #getStepParams(step2) {
+     */  #getStepParams(step1) {
         const container = document.createElement("div");
         container.classList.add("page-switch__params");
-        container.id = "params-" + step2;
-        for (const param of this.copy.params[step2 - 1]){
+        container.id = "params-" + step1;
+        for (const param of this.copy.params[step1 - 1]){
             let row = document.createElement("div");
             row.classList.add("page-switch__params-row");
             container.append(row);
@@ -1762,16 +1761,16 @@ class $e3f1f6b65e30fb2a$export$ea0bc0ec1649be89 extends (0, $1c2b913514992058$ex
     /**
      * @param {string} step
      * @param {string} value
-     */  #processInput(step3, value) {
+     */  #processInput(step2, value) {
         const valid = ()=>!Number.isNaN(value) && !Number.isNaN(parseFloat(value));
-        valid() ? this.#processParam(+step3, +value) : this.#setSelected(+step3);
+        valid() ? this.#processParam(+step2, +value) : this.#setSelected(+step2);
     }
     /**
      * @param {number} step
      * @param {number} value
-     */  #processParam(step4, value1) {
+     */  #processParam(step3, value1) {
         let index;
-        if (step4 === 1) switch(true){
+        if (step3 === 1) switch(true){
             case value1 >= 0 && value1 <= 3 && Number.isInteger(value1):
                 index = value1;
                 break;
@@ -1802,22 +1801,24 @@ class $e3f1f6b65e30fb2a$export$ea0bc0ec1649be89 extends (0, $1c2b913514992058$ex
                 index = 5;
                 break;
         }
-        this.#setOutput(step4, index);
+        this.#setOutput(step3, index);
     }
     /**
      * @param {number} step
      * @param {number} index
-     */  #setOutput(step5, index1) {
-        let valuePair = this.copy.params[step5 - 1][index1];
+     */  #setOutput(step4, index1) {
+        let valuePair = this.copy.params[step4 - 1][index1];
         if (valuePair !== undefined) console.log(valuePair.value);
-        this.#setSelected(step5, index1);
+        this.#setSelected(step4, index1);
     }
     /**
      * @param {number} step
      * @param {number} index
-     */  #setSelected(step6, index2) {
-        const rows = this.querySelector("#step-" + step6).querySelectorAll(".page-switch__params-row");
-        for(let i = 0; i < rows.length; i++)i === index2 ? rows[i].classList.add("selected") : rows[i].classList.remove("selected");
+     */  #setSelected(step5, index2) {
+        const rows = this.querySelector("#step-" + step5).querySelectorAll(".page-switch__params-row");
+        rows.forEach((row, i)=>{
+            i === index2 ? row.classList.add("selected") : row.classList.remove("selected");
+        });
     }
 }
 /**
