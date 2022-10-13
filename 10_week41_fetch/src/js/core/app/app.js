@@ -39,6 +39,6 @@ export class App {
             'Week 41 Lab 10 Fetch (Deck of Cards)';
 
         this.#gameService = new GameService();
-        this.#gameService.startNewGame();
+        this.#gameService.setupNewGame().then(() => this.#gameService.playRound());
     }
 }
