@@ -46,8 +46,8 @@ export class GameService {
         console.log('Play round');
 
         try {
-            const user = await this.#getPlayerRound(Constants.GAME.USER);
-            const computer = await this.#getPlayerRound(Constants.GAME.COMPUTER);
+            const user = await this.#drawCard(new PlayerVO(Constants.GAME.USER));
+            const computer = await this.#drawCard(new PlayerVO(Constants.GAME.COMPUTER));
 
             console.log('user.card: ' + user.card.valueByNumber);
             console.log('computer.card: ' + computer.card.valueByNumber);
@@ -56,8 +56,8 @@ export class GameService {
                 // WAR
                 console.log('WAR');
                 user.state = computer.state = Constants.GAME.WAR;
-                await this.#addWarCard(user);
-                await this.#addWarCard(computer);
+                await this.#drawCard(user);
+                await this.#drawCard(computer);
             } else {
                 // WIN / LOSE
                 console.log('WIN / LOSE');
@@ -101,7 +101,7 @@ export class GameService {
         - Set game service state to WAR
         x Set state WAR for each player
         x Draw 1 extra card for each player (the cards facing down)
-        - Add the cards to the cards in play list
+        X Add the cards to the cards in play list
         x Set remaining cards for each player
         - Declare overall winner if other player has 0 cards
         - Return result of round with each PlayerVO
@@ -112,43 +112,21 @@ export class GameService {
     /**
      * @returns {Promise}
      */
-    async #setupStartHand(playerID) {
+    async #setupStartHand(id) {
         const apiData = await this.#api.drawFromDeck(26);
-        await this.#api.addToPile(playerID, apiData.cards);
+        await this.#api.addToPile(id, apiData.cards);
     }
 
     /**
-     * @param {string} playerID
+     * @param {PlayerVO} pVO
      * @returns {PlayerVO}
      */
-    async #getPlayerRound(playerID) {
-        const cardData = await this.#drawCard(playerID);
-        const pVO = new PlayerVO(playerID, cardData.card);
-        pVO.remaining = cardData.remaining;
-        this.#cardsInPlay.push(cardData.card);
+    async #drawCard(pVO) {
+        const apiData = await this.#api.drawFromPile(pVO.id);
+        const card = new CardVO(apiData.cards[0]);
+        if (pVO.state !== Constants.GAME.WAR) pVO.card = card;
+        this.#cardsInPlay.push(card);
+        pVO.remaining = apiData.piles[pVO.id].remaining;
         return pVO;
-    }
-
-    /**
-     * @param {PlayerVO} pVO
-     * @returns {Promise}
-     */
-    async #addWarCard(pVO) {
-        const cardData = await this.#drawCard(pVO.id);
-        pVO.remaining = cardData.remaining;
-        this.#cardsInPlay.push(cardData.card);
-        pVO.warCards.push(cardData.card);
-    }
-
-    /**
-     * @param {PlayerVO} pVO
-     * @returns {object} {CardVO, remaining}
-     */
-    async #drawCard(playerID) {
-        const apiData = await this.#api.drawFromPile(playerID);
-        return {
-            card: new CardVO(apiData.cards[0]),
-            remaining: apiData.piles[playerID].remaining,
-        };
     }
 }
