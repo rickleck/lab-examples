@@ -1,4 +1,8 @@
 export class CardVO {
+    /**
+     * @constructor
+     * @param {object} card
+     */
     constructor(card) {
         this.code;
         this.image;
