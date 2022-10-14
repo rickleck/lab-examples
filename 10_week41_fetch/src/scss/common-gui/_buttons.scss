@@ -23,4 +23,9 @@
     &.is-hidden {
         display: none;
     }
+
+    &:disabled {
+        color: rgba(white, $alpha: 0.5);
+        pointer-events: none;
+    }
 }

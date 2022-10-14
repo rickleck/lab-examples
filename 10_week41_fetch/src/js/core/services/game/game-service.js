@@ -1,25 +1,14 @@
+import { Constants } from '../../constants/constants';
 import { ApiService } from '../api/api-service';
-import { CardVO } from './card/card-vo';
-import { PlayerVO } from './player/player-vo';
+import { CardVO } from './vo/card-vo';
+import { PlayerVO } from './vo/player-vo';
 
 export class GameService {
-    /** @type {string} */
-    static PLAYER_USER = 'player_user';
-
-    /** @type {string} */
-    static PLAYER_COMPUTER = 'player_computer';
-
-    /** @type {string} */
-    static ROUND_WIN = 'round_win';
-
-    /** @type {string} */
-    static ROUND_LOSE = 'round_lose';
-
-    /** @type {string} */
-    static ROUND_WAR = 'round_war';
-
     /** @type {ApiService}*/
     #api;
+
+    /** @type {Card[]}*/
+    #cardsInPlay = [];
 
     /**
      * @constructor
@@ -36,15 +25,15 @@ export class GameService {
     }
 
     /**
-     *
+     * @returns {Promise}
+     * @comment Draw half the deck and store in a pile for each player
      */
     async setupNewGame() {
         try {
             await this.#api.getNewDeck();
-            await this.#setupStartHand(GameService.PLAYER_USER);
-            await this.#setupStartHand(GameService.PLAYER_COMPUTER);
+            await this.#setupStartHand(Constants.GAME.USER);
+            await this.#setupStartHand(Constants.GAME.COMPUTER);
             console.log('New game ready');
-            //await this.playRound();
         } catch (error) {
             console.error(error);
         }
@@ -55,53 +44,111 @@ export class GameService {
      */
     async playRound() {
         console.log('Play round');
-        const user = this.#getPlayerRound(GameService.PLAYER_USER);
-        const computer = this.#getPlayerRound(GameService.PLAYER_COMPUTER);
+
+        try {
+            const user = await this.#getPlayerRound(Constants.GAME.USER);
+            const computer = await this.#getPlayerRound(Constants.GAME.COMPUTER);
+
+            console.log('user.card: ' + user.card.valueByNumber);
+            console.log('computer.card: ' + computer.card.valueByNumber);
+
+            if (user.card.valueByNumber === computer.card.valueByNumber) {
+                // WAR
+                console.log('WAR');
+                user.state = computer.state = Constants.GAME.WAR;
+                await this.#addWarCard(user);
+                await this.#addWarCard(computer);
+            } else {
+                // WIN / LOSE
+                console.log('WIN / LOSE');
+                if (user.card.valueByNumber > computer.card.valueByNumber) {
+                    user.state = Constants.GAME.WIN;
+                    computer.state = Constants.GAME.LOSE;
+                } else {
+                    user.state = Constants.GAME.LOSE;
+                    computer.state = Constants.GAME.WIN;
+                }
+            }
+
+            console.log('user: ', user);
+            console.log('computer:', computer);
+        } catch (error) {
+            console.error(error);
+        }
 
         /*
+        TODO:
 
-        ROUND:
+        ROUND
 
-        - Draw 1 card from each player's pile via api
-        - Create PlayerVO-ojects and populate with the card for each player
-        - Add the cards to a list of cards in play
-        - Determine round result (card with highest value)
+        x Draw 1 card from each player's pile via api. Return it as a CardVO (CardValueObject)
+        x Create a PlayerVO (PlayerValueObject) and populate with the card for each player
+        x Add the cards to a list of cards in play
+        x Determine round result (card with highest value or even)
 
-        if WIN or LOSE
+        if WIN / LOSE
 
-        - Set ROUND_WIN or ROUND_LOSE to each player's VO
+        x Set states WIN or LOSE to each PlayerVO
         - Update api and move all cards in play to winner's pile
-        - Set remaining cards to each player's VO
+        - Set remaining cards to each PlayerVO
         - Clear the cards in play list
-        - Declare war winner if previous round was ROUND_WAR
+        - Declare war winner if previous round was game service state WAR
         - Declare overall winner if other player has 0 cards
-        - Return result of round with each player's VO
+        - Return result of round with each PlayerVO
 
-        else if WAR (draw)
+        else if WAR (even)S
 
-        - Set game service state to ROUND_WAR
-        - Set ROUND_WAR to each player
-        - Draw 1 extra card for each player (the ones facing down)
+        - Set game service state to WAR
+        x Set state WAR for each player
+        x Draw 1 extra card for each player (the cards facing down)
         - Add the cards to the cards in play list
-        - Set remaining cards for each player
+        x Set remaining cards for each player
         - Declare overall winner if other player has 0 cards
-        - Return result of round with each player's VO
+        - Return result of round with each PlayerVO
 
         */
     }
+
     /**
-     * @param {id} string
+     * @returns {Promise}
+     */
+    async #setupStartHand(playerID) {
+        const apiData = await this.#api.drawFromDeck(26);
+        await this.#api.addToPile(playerID, apiData.cards);
+    }
+
+    /**
+     * @param {string} playerID
      * @returns {PlayerVO}
      */
-    async #getPlayerRound(id) {
-        const cards = await this.#api.drawFromPile(id, 1, ApiService.DECK_BOTTOM);
-        return new PlayerVO(new CardVO(cards.cards[0]));
+    async #getPlayerRound(playerID) {
+        const cardData = await this.#drawCard(playerID);
+        const pVO = new PlayerVO(playerID, cardData.card);
+        pVO.remaining = cardData.remaining;
+        this.#cardsInPlay.push(cardData.card);
+        return pVO;
     }
+
     /**
-     * @comment Draw half the deck and store in a pile for each player
+     * @param {PlayerVO} pVO
+     * @returns {Promise}
      */
-    async #setupStartHand(player) {
-        const data = await this.#api.drawFromDeck(26);
-        await this.#api.addToPile(player, data.cards);
+    async #addWarCard(pVO) {
+        const cardData = await this.#drawCard(pVO.id);
+        pVO.remaining = cardData.remaining;
+        this.#cardsInPlay.push(cardData.card);
+        pVO.warCards.push(cardData.card);
+    }
+
+    /**
+     * @param {PlayerVO} pVO
+     * @returns {object} {CardVO, remaining}
+     */
+    async #drawCard(playerID) {
+        const apiData = await this.#api.drawFromPile(playerID);
+        return {
+            card: new CardVO(apiData.cards[0]),
+            remaining: apiData.piles[playerID].remaining,
+        };
     }
 }

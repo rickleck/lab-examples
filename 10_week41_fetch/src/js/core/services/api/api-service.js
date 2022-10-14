@@ -1,16 +1,6 @@
+import { Constants } from '../../constants/constants';
+
 export class ApiService {
-    /** @type {string} */
-    static BASE_URL = 'https://deckofcardsapi.com/api/deck';
-
-    /** @type {string} */
-    static DECK_TOP = '';
-
-    /** @type {string} */
-    static DECK_BOTTOM = 'bottom/';
-
-    /** @type {string} */
-    static DECK_RANDOM = 'random/';
-
     /** @type {string} */
     #deckID;
 
@@ -33,7 +23,7 @@ export class ApiService {
      * @param {string} position DECK_TOP (default), DECK_BOTTOM, DECK_RANDOM
      * @returns {Promise}
      */
-    drawFromDeck(count, position = ApiService.DECK_TOP) {
+    drawFromDeck(count, position = Constants.API.DECK_TOP) {
         return this.#doApiFetch(`/${this.#deckID}/draw/${position}?count=${count}`);
     }
 
@@ -43,7 +33,7 @@ export class ApiService {
      * @param {string} position DECK_TOP (default), DECK_BOTTOM, DECK_RANDOM
      * @returns {Promise}
      */
-    drawFromPile(pile, count, position = ApiService.DECK_TOP) {
+    drawFromPile(pile, count = 1, position = Constants.API.DECK_BOTTOM) {
         return this.#doApiFetch(`/${this.#deckID}/pile/${pile}/draw/${position}?count=${count}`);
     }
 
@@ -65,7 +55,7 @@ export class ApiService {
     #doApiFetch(req) {
         return new Promise((resolve, reject) => {
             console.log('%c[API Call]' + req, 'color: grey');
-            fetch(ApiService.BASE_URL + req, {
+            fetch(Constants.API.BASE_URL + req, {
                 method: 'GET',
             })
                 .then((res) => {

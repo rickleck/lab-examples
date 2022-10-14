@@ -27,7 +27,7 @@ export class CardVO {
                     return 14;
             }
         } else {
-            return Number.parseInt(this.value);
+            return +this.value;
         }
     }
 }

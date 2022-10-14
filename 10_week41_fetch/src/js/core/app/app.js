@@ -39,6 +39,23 @@ export class App {
             'Week 41 Lab 10 Fetch (Deck of Cards)';
 
         this.#gameService = new GameService();
-        this.#gameService.setupNewGame().then(() => this.#gameService.playRound());
+
+        //Test buttons
+        const btnStart = document.createElement('button');
+        btnStart.innerText = 'Log New Game';
+        btnStart.classList.add('generic-button');
+        btnStart.addEventListener('click', () => {
+            btnRound.disabled = true;
+            this.#gameService.setupNewGame().then(() => (btnRound.disabled = false));
+        });
+        document.querySelector('main').appendChild(btnStart);
+
+        const btnRound = document.createElement('button');
+        btnRound.style.marginLeft = '10px';
+        btnRound.innerText = 'Log Play Round';
+        btnRound.classList.add('generic-button');
+        btnRound.disabled = true;
+        btnRound.addEventListener('click', () => this.#gameService.playRound());
+        document.querySelector('main').appendChild(btnRound);
     }
 }
