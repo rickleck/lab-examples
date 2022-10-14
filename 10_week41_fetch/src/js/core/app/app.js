@@ -35,12 +35,16 @@ export class App {
     run() {
         document
             .querySelector('main')
+            .insertAdjacentElement('afterbegin', document.createElement('p')).innerHTML =
+            '(User interface coming soon...)';
+        document
+            .querySelector('main')
             .insertAdjacentElement('afterbegin', document.createElement('h1')).innerHTML =
-            'Week 41 Lab 10 Fetch (Deck of Cards)';
+            'Card Game: War';
 
         this.#gameService = new GameService();
 
-        //Test buttons
+        //Test interface for logging of game
         const btnStart = document.createElement('button');
         btnStart.innerText = 'Log New Game';
         btnStart.classList.add('generic-button');
@@ -55,7 +59,14 @@ export class App {
         btnRound.innerText = 'Log Play Round';
         btnRound.classList.add('generic-button');
         btnRound.disabled = true;
-        btnRound.addEventListener('click', () => this.#gameService.playRound());
+        btnRound.addEventListener('click', () => {
+            this.#gameService.playRound().then((gameEndWinner) => {
+                if (gameEndWinner) {
+                    btnRound.disabled = true;
+                }
+            });
+        });
         document.querySelector('main').appendChild(btnRound);
+        //
     }
 }

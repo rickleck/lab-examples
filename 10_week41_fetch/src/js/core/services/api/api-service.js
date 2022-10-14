@@ -54,7 +54,7 @@ export class ApiService {
      */
     #doApiFetch(req) {
         return new Promise((resolve, reject) => {
-            console.log('%c[API Call]' + req, 'color: grey');
+            if (Constants.API.LOG) console.log('%c[API Call]' + req, 'color: grey');
             fetch(Constants.API.BASE_URL + req, {
                 method: 'GET',
             })
@@ -65,7 +65,7 @@ export class ApiService {
                     return res.json();
                 })
                 .then((data) => {
-                    console.log('%c[API Data]', 'color: grey', data);
+                    if (Constants.API.LOG) console.log('%c[API Data]', 'color: grey', data);
                     resolve(data);
                 })
                 .catch((err) => reject(err));

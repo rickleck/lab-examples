@@ -1,6 +1,9 @@
 ## lab 10
 
-Deck of Cards
+Deck of Cards API using fetch().
+
+API calls and game logic done. The game is logged to the console.
+TODO: User interface.
 
 #### Card game: War
 

@@ -1,11 +1,12 @@
 export class Constants {
     /** @type {object} */
     static GAME = {
-        USER: 'plsyer_user',
+        USER: 'player_user',
         COMPUTER: 'player_wopr',
         WIN: 'win',
         LOSE: 'lose',
         WAR: 'war',
+        START_PILE: 26,
     };
 
     /** @type {object} */
@@ -14,5 +15,6 @@ export class Constants {
         DECK_TOP: '',
         DECK_BOTTOM: 'bottom/',
         DECK_RANDOM: 'random/',
+        LOG: false,
     };
 }

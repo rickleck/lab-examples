@@ -7,6 +7,15 @@ export class GameService {
     /** @type {ApiService}*/
     #api;
 
+    /** @type {PlayerVO}*/
+    #user;
+
+    /** @type {PlayerVO}*/
+    #computer;
+
+    /** @type {PlayerVO[]} */
+    #players = [];
+
     /** @type {Card[]}*/
     #cardsInPlay = [];
 
@@ -14,119 +23,138 @@ export class GameService {
      * @constructor
      */
     constructor() {
-        this.#init();
-    }
-
-    /**
-     *
-     */
-    #init() {
         this.#api = new ApiService();
     }
 
     /**
+     * @param {string} id
+     * @returns {PlayerVO}
+     */
+    player(id) {
+        return this.#players.find((pVO) => pVO.id === id);
+    }
+
+    /**
      * @returns {Promise}
-     * @comment Draw half the deck and store in a pile for each player
      */
     async setupNewGame() {
+        console.log('%cSetting up new game...', 'color: yellow');
+
+        this.#user = new PlayerVO(Constants.GAME.USER);
+        this.#players.push(this.#user);
+
+        this.#computer = new PlayerVO(Constants.GAME.COMPUTER);
+        this.#players.push(this.#computer);
+
         try {
             await this.#api.getNewDeck();
             await this.#setupStartHand(Constants.GAME.USER);
             await this.#setupStartHand(Constants.GAME.COMPUTER);
-            console.log('New game ready');
         } catch (error) {
             console.error(error);
         }
+
+        console.log('%cNew game ready', 'color: yellow');
     }
 
     /**
-     * @returns {object}
+     * @returns {PlayerVO | undefined} PlayerVO is returned if it's the game end winner
      */
     async playRound() {
-        console.log('Play round');
+        console.log('-------------------');
+        console.log('%cPlay round', 'color: yellow');
 
         try {
-            const user = await this.#drawCard(new PlayerVO(Constants.GAME.USER));
-            const computer = await this.#drawCard(new PlayerVO(Constants.GAME.COMPUTER));
+            await this.#drawCard(this.#user);
+            await this.#drawCard(this.#computer);
 
-            console.log('user.card: ' + user.card.valueByNumber);
-            console.log('computer.card: ' + computer.card.valueByNumber);
+            console.log('user.card: ' + this.#user.card.valueByNumber);
+            console.log('computer.card: ' + this.#computer.card.valueByNumber);
 
-            if (user.card.valueByNumber === computer.card.valueByNumber) {
-                // WAR
-                console.log('WAR');
-                user.state = computer.state = Constants.GAME.WAR;
-                await this.#drawCard(user);
-                await this.#drawCard(computer);
+            if (this.#user.card.valueByNumber === this.#computer.card.valueByNumber) {
+                console.log('%cWAR', 'color: red');
+
+                this.#user.state = this.#computer.state = Constants.GAME.WAR;
+
+                await this.#drawCard(this.#user, true);
+                await this.#drawCard(this.#computer, true);
             } else {
-                // WIN / LOSE
-                console.log('WIN / LOSE');
-                if (user.card.valueByNumber > computer.card.valueByNumber) {
-                    user.state = Constants.GAME.WIN;
-                    computer.state = Constants.GAME.LOSE;
-                } else {
-                    user.state = Constants.GAME.LOSE;
-                    computer.state = Constants.GAME.WIN;
-                }
-            }
+                let winner;
+                let loser;
 
-            console.log('user: ', user);
-            console.log('computer:', computer);
+                if (this.#user.card.valueByNumber > this.#computer.card.valueByNumber) {
+                    winner = this.#user;
+                    loser = this.#computer;
+                } else {
+                    winner = this.#computer;
+                    loser = this.#user;
+                }
+
+                winner.state = Constants.GAME.WIN;
+                loser.state = Constants.GAME.LOSE;
+
+                await this.#awardCardsInPlay(winner);
+
+                console.log('%cWinner: ', 'color: lightgreen', winner);
+                console.log('%cLoser: ', 'color: red', loser);
+            }
         } catch (error) {
             console.error(error);
+            return;
         }
 
-        /*
-        TODO:
-
-        ROUND
-
-        x Draw 1 card from each player's pile via api. Return it as a CardVO (CardValueObject)
-        x Create a PlayerVO (PlayerValueObject) and populate with the card for each player
-        x Add the cards to a list of cards in play
-        x Determine round result (card with highest value or even)
-
-        if WIN / LOSE
-
-        x Set states WIN or LOSE to each PlayerVO
-        - Update api and move all cards in play to winner's pile
-        - Set remaining cards to each PlayerVO
-        - Clear the cards in play list
-        - Declare war winner if previous round was game service state WAR
-        - Declare overall winner if other player has 0 cards
-        - Return result of round with each PlayerVO
-
-        else if WAR (even)S
-
-        - Set game service state to WAR
-        x Set state WAR for each player
-        x Draw 1 extra card for each player (the cards facing down)
-        X Add the cards to the cards in play list
-        x Set remaining cards for each player
-        - Declare overall winner if other player has 0 cards
-        - Return result of round with each PlayerVO
-
-        */
+        return this.#checkGameEndState();
     }
 
     /**
+     * @param {id}
      * @returns {Promise}
      */
     async #setupStartHand(id) {
-        const apiData = await this.#api.drawFromDeck(26);
+        const apiData = await this.#api.drawFromDeck(Constants.GAME.START_PILE);
         await this.#api.addToPile(id, apiData.cards);
     }
 
     /**
      * @param {PlayerVO} pVO
-     * @returns {PlayerVO}
+     * @param {boolean} isWarCard
+     * @returns {Promise}
      */
-    async #drawCard(pVO) {
+    async #drawCard(pVO, isWarCard = false) {
         const apiData = await this.#api.drawFromPile(pVO.id);
         const card = new CardVO(apiData.cards[0]);
-        if (pVO.state !== Constants.GAME.WAR) pVO.card = card;
+        if (!isWarCard) pVO.card = card;
         this.#cardsInPlay.push(card);
         pVO.remaining = apiData.piles[pVO.id].remaining;
-        return pVO;
+    }
+
+    /**
+     * @param {PlayerVO} pVO
+     * @returns {Promise}
+     */
+    async #awardCardsInPlay(pVO) {
+        console.log('Cards in play for winner: ', this.#cardsInPlay);
+        const apiData = await this.#api.addToPile(pVO.id, this.#cardsInPlay);
+        pVO.remaining = apiData.piles[pVO.id].remaining;
+        this.#cardsInPlay = [];
+    }
+
+    /**
+     * @returns {PlayerVO}
+     */
+    #checkGameEndState() {
+        const loser = this.#players.find((pVO) => pVO.remaining == 0);
+        let winner;
+        if (loser) {
+            winner = this.#players.find((pVO) => pVO.remaining != 0);
+            winner.endState = Constants.GAME.WIN;
+            loser.endState = Constants.GAME.LOSE;
+
+            console.log('-------------------');
+            console.log('%cGame Over!', 'color: yellow');
+            console.log('%cWinner: ', 'color: lightgreen', winner);
+            console.log('%cLoser: ', 'color: red', loser);
+        }
+        return winner;
     }
 }
