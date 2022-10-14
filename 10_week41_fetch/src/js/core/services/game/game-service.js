@@ -140,7 +140,7 @@ export class GameService {
     }
 
     /**
-     * @returns {PlayerVO}
+     * @returns {PlayerVO | undefined}
      */
     #checkGameEndState() {
         const loser = this.#players.find((pVO) => pVO.remaining == 0);
