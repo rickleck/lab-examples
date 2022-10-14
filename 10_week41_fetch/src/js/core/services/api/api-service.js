@@ -20,7 +20,7 @@ export class ApiService {
 
     /**
      * @param {number} count
-     * @param {string} position DECK_TOP (default), DECK_BOTTOM, DECK_RANDOM
+     * @param {string} position see Constants.API
      * @returns {Promise}
      */
     drawFromDeck(count, position = Constants.API.DECK_TOP) {
@@ -30,7 +30,7 @@ export class ApiService {
     /**
      * @param {string} pile
      * @param {number} count
-     * @param {string} position DECK_TOP (default), DECK_BOTTOM, DECK_RANDOM
+     * @param {string} position see Constants.API
      * @returns {Promise}
      */
     drawFromPile(pile, count = 1, position = Constants.API.DECK_BOTTOM) {
