@@ -4,16 +4,19 @@
     border: none;
     margin-top: 0.4rem;
     padding: 0.7rem 1.5rem;
-    background-color: colors.$primary-color;
-    color: white;
+    background-color: white;
+    color: black;
     font-size: 1.2rem;
     font-weight: 700;
     text-align: center;
     cursor: pointer;
     transition: background-color 150ms ease;
 
+    border-radius: 12px;
+
     &:hover {
         background-color: colors.$highlight-color;
+        color: white;
     }
 
     &:active {
@@ -25,7 +28,25 @@
     }
 
     &:disabled {
-        color: rgba(white, $alpha: 0.5);
+        color: rgba(black, $alpha: 0.5);
         pointer-events: none;
+    }
+}
+
+.circle-button {
+    border: none;
+    width: 51px;
+    height: 51px;
+    background: black;
+    border-radius: 50%;
+    color: white;
+    font-size: 1.6rem;
+    font-weight: 800;
+    line-height: 100%;
+    text-align: center;
+    cursor: pointer;
+
+    &:hover {
+        background-color: colors.$highlight-color;
     }
 }

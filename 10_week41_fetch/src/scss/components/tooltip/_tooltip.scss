@@ -4,12 +4,14 @@
     display: block;
     position: absolute;
     margin-left: -40px;
-    min-width: 150px;
+    min-width: 210px;
     font-weight: 700;
-    text-align: center;
     padding: 1em;
     color: white;
-    filter: drop-shadow(4px 4px 4px rgba(colors.$primary-color, 0.4));
+    border-radius: 12px;
+    filter: drop-shadow(4px 4px 4px rgba(black, 0.4));
+
+    z-index: 2;
 
     &::before {
         position: absolute;
@@ -31,7 +33,7 @@
 
     &.info {
         background-color: white;
-        color: colors.$primary-color;
+        color: black;
 
         &::before {
             background-color: white;

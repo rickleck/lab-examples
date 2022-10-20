@@ -3,27 +3,27 @@
 
 html {
     font-family: 'Roboto', sans-serif;
+    height: 100%;
 }
 
 body {
-    background: colors.$body-bg-color;
-    padding: 1.5rem;
+    height: 100%;
+    background-color: colors.$body-bg-color;
 }
 
-.container-responsive {
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-
-    @include breakpoints.from-md {
-        max-width: breakpoints.$bp-md;
-    }
-
-    @include breakpoints.from-lg {
-        max-width: breakpoints.$bp-lg;
-    }
-
-    @include breakpoints.from-xl {
-        max-width: breakpoints.$bp-xl;
+main {
+    background: url(../../assets/jpg/wopr-crop.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: top;
+    max-width: 500px;
+    padding: 1.5rem;
+    @include breakpoints.from-sm {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
     }
 }

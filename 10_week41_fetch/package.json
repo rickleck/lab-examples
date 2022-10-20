@@ -5,7 +5,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "start": "npm run clean && npx parcel src/index.html",
-    "build": "npm run clean && npx parcel build src/index.html --no-cache"
+    "build": "npm run clean && npx parcel build src/index.html --no-optimize --no-cache"
   },
   "author": "",
   "license": "ISC",
@@ -15,6 +15,7 @@
     }
   },
   "devDependencies": {
+    "@parcel/transformer-inline-string": "^2.7.0",
     "@parcel/transformer-sass": "^2.7.0",
     "parcel": "^2.7.0",
     "rimraf": "^3.0.2"

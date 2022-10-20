@@ -1,3 +1,4 @@
+import { Game } from '../../components/game/game';
 import { GameService } from '../services/game/game-service';
 
 export class App {
@@ -17,6 +18,9 @@ export class App {
     /** @type {GameService} */
     #gameService;
 
+    /** @type {Game} */
+    #game;
+
     /**
      * @constructor
      */
@@ -30,43 +34,22 @@ export class App {
     }
 
     /**
+     * @returns {Game}
+     */
+    get game() {
+        return this.#game;
+    }
+
+    /**
      *
      */
     run() {
-        document
-            .querySelector('main')
-            .insertAdjacentElement('afterbegin', document.createElement('p')).innerHTML =
-            '(User interface coming soon...)';
-        document
-            .querySelector('main')
-            .insertAdjacentElement('afterbegin', document.createElement('h1')).innerHTML =
-            'Card Game: War';
+        const devMode = new URLSearchParams(document.location.search).get('dev');
 
-        this.#gameService = new GameService();
+        this.#gameService = new GameService(devMode);
 
-        //Test interface for logging of game
-        const btnStart = document.createElement('button');
-        btnStart.innerText = 'Log New Game';
-        btnStart.classList.add('generic-button');
-        btnStart.addEventListener('click', () => {
-            btnRound.disabled = true;
-            this.#gameService.setupNewGame().then(() => (btnRound.disabled = false));
-        });
-        document.querySelector('main').appendChild(btnStart);
-
-        const btnRound = document.createElement('button');
-        btnRound.style.marginLeft = '10px';
-        btnRound.innerText = 'Log Play Round';
-        btnRound.classList.add('generic-button');
-        btnRound.disabled = true;
-        btnRound.addEventListener('click', () => {
-            this.#gameService.playRound().then((gameEndWinner) => {
-                if (gameEndWinner) {
-                    btnRound.disabled = true;
-                }
-            });
-        });
-        document.querySelector('main').appendChild(btnRound);
-        //
+        this.#game = new Game();
+        document.querySelector('main').appendChild(this.#game);
+        this.#game.render();
     }
 }

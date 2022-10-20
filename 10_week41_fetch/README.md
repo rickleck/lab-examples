@@ -1,16 +1,13 @@
 ## lab 10
 
-Deck of Cards API using fetch().
-
-API calls and game logic done. The game is logged to the console.
-TODO: User interface.
-
-#### Card game: War
-
-War is a 2-player game. The goal is to collect the full deck to win the game. 
-
-It uses a 52-card deck, divided equally among the players. They must stack their cards face down in front of them. Then, each player turns up a card at the same time. The one with the highest number wins and can add the two cards to the bottom of their stack.
-
-If it is a draw, then it is war! Each player draws a card from their stack and places it face down on the table. Then they turn up a card from the stack. The player who wins gets to collect the cards that led to war, the cards that went to “battle” and the ones facing down (6 cards in total).
+#### Card game "War"
 
 Deploy: https://leck-lex.github.io/labs/10_week41_fetch/dist/
+
+- Using the [Deck of Cards API](https://deckofcardsapi.com/) to generate a deck for the common card game "War". Click the help button in the game to read the rules. The name of the card game inspired a certain theme...
+
+- Tested in Chrome, Edge and Firefox on Windows 11.
+
+- Since "War" is a game of chance, the next turn can be generated and preloaded (the card images) in the background, minimizing load times for the user. That means the console log is always 1 turn ahead of the interface.
+
+- Use url param [?dev=1](https://leck-lex.github.io/labs/10_week41_fetch/dist/?dev=1) to see a shorter version of the game with only 4 pre-defined cards in each stack instead of the usual random 26.

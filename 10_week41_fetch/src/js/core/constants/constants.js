@@ -1,12 +1,19 @@
 export class Constants {
     /** @type {object} */
     static GAME = {
-        USER: 'player_user',
-        COMPUTER: 'player_wopr',
+        USER: 'user',
+        COMPUTER: 'computer',
         WIN: 'win',
         LOSE: 'lose',
         WAR: 'war',
         START_PILE: 26,
+        OVERLAY: {
+            WAR: 'overlay-war',
+            START: 'overlay-start',
+            GAME_OVER: 'overlay-game-over',
+            HELP: 'overlay-help',
+        },
+        DEV_MODE: '1',
     };
 
     /** @type {object} */

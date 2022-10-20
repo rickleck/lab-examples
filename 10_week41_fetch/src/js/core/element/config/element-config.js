@@ -6,10 +6,7 @@ export class ElementConfig {
      * @param {object} init
      */
     constructor(init) {
-        /** @type {string} */
         this.id;
-
-        /** @type {object} */
         this.options;
 
         this.populate(init);

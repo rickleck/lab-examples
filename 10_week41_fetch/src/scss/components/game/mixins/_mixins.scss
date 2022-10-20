@@ -1,0 +1,147 @@
+@mixin cardInAnimation($animName) {
+    .game__card-inner {
+        animation: unquote($animName) 0.7s ease-in forwards;
+    }
+}
+
+@mixin cardIOutAnimation($animName, $rotY: -180deg) {
+    .game__card-inner {
+        visibility: visible;
+        transform: rotateY($rotY);
+        animation: unquote($animName) 0.4s ease-in forwards;
+    }
+}
+
+@mixin cardAnimations() {
+    &.animate-in {
+        @include cardInAnimation(card-animate-in);
+    }
+
+    &.animate-in.war {
+        @include cardInAnimation(war-card-animate-in);
+    }
+
+    &.user.animate-out.win {
+        @include cardIOutAnimation(card-animate-out);
+    }
+
+    &.computer.animate-out.win {
+        @include cardIOutAnimation(card-animate-out);
+    }
+
+    &.user.animate-out.lose {
+        @include cardIOutAnimation(card-animate-out-up);
+    }
+
+    &.computer.animate-out.lose {
+        @include cardIOutAnimation(card-animate-out-down);
+    }
+
+    &.user.animate-out.win.war {
+        @include cardIOutAnimation(war-card-animate-out, 0);
+    }
+
+    &.computer.animate-out.win.war {
+        @include cardIOutAnimation(war-card-animate-out, 0);
+    }
+
+    &.user.animate-out.lose.war {
+        @include cardIOutAnimation(war-card-animate-out-up, 0);
+    }
+
+    &.computer.animate-out.lose.war {
+        @include cardIOutAnimation(war-card-animate-out-down, 0);
+    }
+
+    @keyframes card-animate-in {
+        from {
+            transform: translateX(-100%);
+            visibility: visible;
+        }
+
+        70% {
+            transform: scale(130%) rotateY(-180deg);
+        }
+
+        to {
+            transform: rotateY(-180deg);
+            visibility: visible;
+        }
+    }
+
+    @keyframes war-card-animate-in {
+        from {
+            transform: translateX(-100%);
+            visibility: visible;
+        }
+
+        70% {
+            transform: scale(130%);
+        }
+
+        to {
+            transform: translateX(15%);
+            visibility: visible;
+        }
+    }
+
+    @keyframes card-animate-out {
+        50% {
+            transform: translateX(-50%) scale(120%);
+        }
+        to {
+            transform: translateX(-100%);
+            visibility: hidden;
+        }
+    }
+
+    @keyframes card-animate-out-down {
+        50% {
+            transform: translate(-50%, 50%) scale(125%);
+        }
+        to {
+            transform: translate(-100%, 100%);
+            visibility: hidden;
+        }
+    }
+
+    @keyframes card-animate-out-up {
+        50% {
+            transform: translate(-50%, -50%) scale(125%);
+        }
+        to {
+            transform: translate(-100%, -100%);
+            visibility: hidden;
+        }
+    }
+
+    @keyframes war-card-animate-out {
+        50% {
+            transform: translateX(-50%) scale(120%);
+        }
+        to {
+            transform: translateX(-100%);
+            visibility: hidden;
+        }
+    }
+
+    @keyframes war-card-animate-out-down {
+        50% {
+            transform: translate(-50%, 50%) scale(125%);
+        }
+        to {
+            transform: translate(-100%, 100%);
+            visibility: hidden;
+        }
+    }
+
+    @keyframes war-card-animate-out-up {
+        50% {
+            transform: translate(-50%, -50%) scale(125%);
+        }
+        to {
+            transform: translate(-100%, -100%);
+            visibility: hidden;
+        }
+    }
+}

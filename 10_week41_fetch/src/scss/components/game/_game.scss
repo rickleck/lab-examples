@@ -1,0 +1,319 @@
+@use 'sass:color';
+@use './mixins/mixins';
+@use '../../variables/colors';
+@use '../../utils/breakpoints';
+
+.game {
+    position: relative;
+    width: 100%;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.27));
+
+    .circle-button {
+        position: absolute;
+        right: 0;
+        z-index: 150;
+        top: 1.1rem;
+        filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.27));
+    }
+
+    .loader__spinner,
+    .generic-button {
+        filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.7));
+
+        &:hover {
+            filter: drop-shadow(0 0 25px colors.$highlight-color);
+        }
+    }
+
+    .generic-button {
+        letter-spacing: 0.1rem;
+        font-family: Modeseven;
+    }
+}
+
+.game__hud {
+    display: flex;
+    padding: 1rem 0;
+    font-family: Modeseven;
+    font-size: 1.3rem;
+    color: rgb(131, 195, 251);
+    .inner {
+        display: flex;
+        padding: 1rem 2rem;
+        background-color: black;
+        border-radius: 20px;
+    }
+
+    &-name,
+    &-score {
+        filter: drop-shadow(0 0 10px colors.$highlight-color)
+            drop-shadow(0 0 10px colors.$highlight-color);
+    }
+
+    &-name {
+        letter-spacing: 0.2rem;
+        margin-right: 1.2rem;
+    }
+
+    &.user {
+        transform: translateY(-100%);
+        &.animate-in {
+            animation: anim-in-hud 0.3s ease 0.2s forwards;
+        }
+    }
+
+    &.computer {
+        transform: translateY(100%);
+        &.animate-in {
+            animation: anim-in-hud 0.3s ease forwards;
+        }
+    }
+
+    &.animate-out {
+        animation: anim-out-hud 0.3s ease forwards;
+    }
+
+    @keyframes anim-in-hud {
+        to {
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes anim-out-hud {
+        from {
+            transform: translateY(0);
+        }
+    }
+}
+
+.game__stage {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    user-select: none;
+    z-index: 1;
+    background-color: black;
+    padding: 2rem;
+    border-radius: 20px;
+
+    img {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        display: block;
+    }
+
+    &-slot {
+        position: relative;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        opacity: 1;
+
+        img {
+            transition: opacity 0.3s ease-in;
+            opacity: 1;
+        }
+
+        &-button {
+            cursor: pointer;
+            outline: colors.$highlight-color solid 3px;
+
+            img {
+                filter: drop-shadow(0 0 10px colors.$highlight-color)
+                    drop-shadow(0 0 10px colors.$highlight-color);
+            }
+
+            * {
+                pointer-events: none;
+            }
+
+            &:hover {
+                img {
+                    filter: brightness(1.3) drop-shadow(0 0 10px colors.$highlight-color)
+                        drop-shadow(0 0 20px colors.$highlight-color);
+                }
+            }
+        }
+
+        &.is-hidden {
+            pointer-events: none;
+
+            img {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        &.is-disabled {
+            pointer-events: none;
+            outline: none;
+
+            img {
+                filter: none;
+            }
+        }
+
+        &.lose {
+            transition: all 0.3s ease;
+            background-color: rgba(255, 0, 0, 0.25);
+            filter: drop-shadow(0 0 40px red);
+        }
+    }
+}
+
+.game__card {
+    position: absolute;
+    perspective: 1000px;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+
+    &-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+        transform-origin: center;
+        visibility: hidden;
+    }
+
+    &-front,
+    &-back {
+        position: absolute;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        transform: rotateX(0deg); //To fix firefox bug
+    }
+
+    &-front {
+        transform: rotateY(180deg);
+    }
+
+    @include mixins.cardAnimations();
+}
+
+.game__overlay {
+    position: absolute;
+    z-index: 50;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
+    border-radius: 20px;
+    background-color: black;
+
+    .inner {
+        padding: 2rem;
+        border-radius: 10px;
+    }
+
+    button {
+        align-self: center;
+    }
+
+    &-start {
+        @include breakpoints.from-sm() {
+            img:first-child {
+                margin-bottom: -2rem;
+            }
+        }
+    }
+
+    &-war {
+        img {
+            display: block;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .screen {
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 0;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .header {
+            font-family: Modeseven;
+            text-align: center;
+            color: white;
+            filter: blur(1px) drop-shadow(0 0 20px red) drop-shadow(0 0 20px red);
+            p {
+                font-size: 5rem;
+                font-weight: 700;
+                letter-spacing: 0.7rem;
+                margin: 0;
+                padding: 1rem 0 0 0;
+            }
+        }
+    }
+
+    &-help {
+        justify-content: flex-start;
+        z-index: 100;
+        background: rgba(0, 0, 0, 0.25);
+
+        .inner {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+        }
+
+        @include breakpoints.from-sm() {
+            justify-content: center;
+        }
+    }
+
+    &-game-over {
+        .msg {
+            display: none;
+            color: colors.$highlight-color;
+            font-family: Modeseven;
+            filter: drop-shadow(0 0 20px colors.$highlight-color)
+                drop-shadow(0 0 50px colors.$highlight-color);
+        }
+
+        &.win {
+            .msg-win {
+                display: block;
+            }
+        }
+
+        &.lose {
+            .msg-lose {
+                display: block;
+            }
+        }
+    }
+
+    &.animate-in {
+        animation: animate-war-in 0.3s ease forwards;
+    }
+
+    &.animate-out {
+        animation: animate-war-out 0.3s ease forwards;
+    }
+
+    @keyframes animate-war-in {
+        from {
+            opacity: 0;
+        }
+    }
+
+    @keyframes animate-war-out {
+        to {
+            opacity: 0;
+        }
+    }
+}

@@ -30,7 +30,7 @@ export class ApiService {
     /**
      * @param {string} pile
      * @param {number} count
-     * @param {string} position see Constants.API
+     * @param {string} position
      * @returns {Promise}
      */
     drawFromPile(pile, count = 1, position = Constants.API.DECK_BOTTOM) {
@@ -39,13 +39,27 @@ export class ApiService {
 
     /**
      * @param {string} pile
-     * @param {object[]} cards
+     * @param {string} cards
      * @returns {Promise}
      */
-    addToPile(pile, cards) {
-        return this.#doApiFetch(
-            `/${this.#deckID}/pile/${pile}/add/?cards=${this.#getCardCodes(cards)}`
-        );
+    addToPile(pile, cardCodes) {
+        return this.#doApiFetch(`/${this.#deckID}/pile/${pile}/add/?cards=${cardCodes}`);
+    }
+
+    /**
+     * @param {string} cards
+     * @returns {string}
+     */
+    returnToDeck(cardCodes) {
+        return this.#doApiFetch(`/${this.#deckID}/return/?cards=${cardCodes}`);
+    }
+
+    /**
+     * @param {object[]} cards
+     * @returns {string}
+     */
+    getCardCodes(cards) {
+        return cards.map((card) => card.code).join(',');
     }
 
     /**
@@ -70,12 +84,5 @@ export class ApiService {
                 })
                 .catch((err) => reject(err));
         });
-    }
-    /**
-     * @param {object[]} cards
-     * @returns {string}
-     */
-    #getCardCodes(cards) {
-        return cards.map((card) => card.code).join(',');
     }
 }

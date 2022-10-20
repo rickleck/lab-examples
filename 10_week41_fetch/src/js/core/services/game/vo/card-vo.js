@@ -1,4 +1,7 @@
 export class CardVO {
+    /** @type {HTMLImageElement}*/
+    #imageElement;
+
     /**
      * @constructor
      * @param {object} card
@@ -13,6 +16,13 @@ export class CardVO {
         this.suit;
         this.value;
         Object.assign(this, card);
+    }
+
+    /**
+     * @returns {HTMLImageElement}
+     */
+    get imageElement() {
+        return this.#imageElement;
     }
 
     /**
@@ -33,5 +43,21 @@ export class CardVO {
         } else {
             return +this.value;
         }
+    }
+
+    /**
+     * @returns {Promise}
+     */
+    loadImage() {
+        return new Promise((resolve, reject) => {
+            this.#imageElement = new Image();
+            this.#imageElement.onload = () => {
+                resolve();
+            };
+            this.#imageElement.onerror = () => {
+                resolve();
+            };
+            this.#imageElement.src = this.images.png;
+        });
     }
 }

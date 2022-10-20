@@ -11,6 +11,7 @@ export class TooltipConfig extends ElementConfig {
         super();
         this.mode = Tooltip.MODE_INFO;
         this.targetElement = document.body;
+        this.position = Tooltip.POSITION_GLOBAL;
         this.offsetX = 200;
         this.offsetY = 200;
         this.msg = 'Tooltip text here';
