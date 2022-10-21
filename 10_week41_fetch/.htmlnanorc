@@ -1,3 +1,14 @@
 {
-    "minifySvg": false
+    "minifySvg": {
+        "plugins": [
+            {
+                "name": "preset-default",
+                "params": {
+                    "overrides": {
+                        "removeUselessStrokeAndFill": false
+                    }
+                }
+            }
+        ]
+    }
 }
