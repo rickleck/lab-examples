@@ -90,17 +90,21 @@ export class GameService {
         console.log('-------------------');
         console.log('%cNext turn', 'color: yellow');
 
-        //Check if result queue is empty
-        if (this.#resultQueue.length === 0) {
-            await this.#createTurn();
+        try {
+            //Check if result queue is empty
+            if (this.#resultQueue.length === 0) {
+                await this.#createTurn();
+            }
+            // Use first result in queue
+            const result = this.#resultQueue.shift();
+
+            //Preload next result
+            if (!this.#isGameOver) this.#createTurn();
+
+            return result;
+        } catch (error) {
+            return Promise.reject(error);
         }
-        // Use first result in queue
-        const result = this.#resultQueue.shift();
-
-        //Preload next result
-        if (!this.#isGameOver) this.#createTurn();
-
-        return result;
     }
 
     /**
@@ -196,7 +200,7 @@ export class GameService {
         } catch (error) {
             this.#turnPending = false;
             console.error('%cGameService.#createTurn.error');
-            return;
+            return Promise.reject(error);
         }
     }
 

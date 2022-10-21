@@ -153,6 +153,8 @@ export class Game extends CustomElement {
                 .then((result) => {
                     if (result) {
                         this.#drawTurnResult(result);
+                    } else {
+                        this.#toggleDealButton(true);
                     }
                 })
                 .catch((error) => {
