@@ -74,7 +74,7 @@ export class ApiService {
             })
                 .then((res) => {
                     if (!res.ok) {
-                        console.error('%cGameService.#doApiFetch.error');
+                        //console.error('%cGameService.#doApiFetch.error');
                         reject(res.statusText);
                     }
                     return res.json();
