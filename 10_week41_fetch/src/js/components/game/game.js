@@ -106,7 +106,15 @@ export class Game extends CustomElement {
     newGame() {
         this.#toggleLoader(true);
         this.#resetGame();
-        App.instance.gameService.setupNewGame().then((pileSize) => this.#gameReady(pileSize));
+        App.instance.gameService
+            .setupNewGame()
+            .then((pileSize) => this.#gameReady(pileSize))
+            .catch((error) => {
+                console.error('Game.newGame');
+                console.error(error);
+                this.#toggleLoader(false);
+                this.#displayError();
+            });
     }
 
     /**
@@ -140,11 +148,18 @@ export class Game extends CustomElement {
         this.#btnDeal.addEventListener('click', () => {
             this.#toggleDealButton(false);
             this.#toggleTooltip(false);
-            App.instance.gameService.playTurn().then((result) => {
-                if (result) {
-                    this.#drawTurnResult(result);
-                }
-            });
+            App.instance.gameService
+                .playTurn()
+                .then((result) => {
+                    if (result) {
+                        this.#drawTurnResult(result);
+                    }
+                })
+                .catch((error) => {
+                    console.error('Game.#btnDeal.click');
+                    console.error(error);
+                    this.#displayError();
+                });
         });
     }
 
@@ -394,6 +409,13 @@ export class Game extends CustomElement {
      */
     #animateOutHuds() {
         this.#huds.forEach((hud) => hud.animateOut());
+    }
+
+    /**
+     *
+     */
+    #displayError() {
+        this.#createOverlay(Constants.GAME.OVERLAY.GAME_OVER, Constants.GAME.ERROR);
     }
 
     /**

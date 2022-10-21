@@ -568,8 +568,12 @@ main {
   display: none;
 }
 
-.game__overlay-game-over.win .msg-win, .game__overlay-game-over.lose .msg-lose {
+.game__overlay-game-over.win .msg-win, .game__overlay-game-over.lose .msg-lose, .game__overlay-game-over.error .msg-error {
   display: block;
+}
+
+.game__overlay-game-over.error #btn-new-game {
+  display: none;
 }
 
 .game__overlay.animate-in {
@@ -648,4 +652,4 @@ main {
   }
 }
 
-/*# sourceMappingURL=index.bfe143e7.css.map */
+/*# sourceMappingURL=index.7f699237.css.map */

@@ -72,7 +72,7 @@ module.exports = new URL((parcelRequire("aKzDW")).resolve("2LepY"), import.meta.
 
 var $40782a20e8f47696$exports = {};
 
-(parcelRequire("aKzDW")).register(JSON.parse('{"6HCxQ":"index.f3672d29.js","2LepY":"war.34d96e76.gif","ck6hz":"card-back-2.9c91ded9.png","gKE1p":"wargames_logo.6673790a.webp","8OIqb":"intro.e46f81fc.jpg"}'));
+(parcelRequire("aKzDW")).register(JSON.parse('{"6HCxQ":"index.b3dc0971.js","2LepY":"war.34d96e76.gif","ck6hz":"card-back-2.9c91ded9.png","gKE1p":"wargames_logo.6673790a.webp","8OIqb":"intro.e46f81fc.jpg"}'));
 
 var $ec219c38d9e34832$exports = {};
 $ec219c38d9e34832$exports = "<button id=\"btn-help\" class=\"circle-button\">?</button>\r\n<div class=\"game__stage\">\r\n    <div id=\"slot-pile-computer\" class=\"game__stage-slot is-hidden\">\r\n        <img src=\"card-back-2.9c91ded9.png\">\r\n    </div>\r\n    <div id=\"slot-card-computer\" class=\"game__stage-slot\">\r\n        <!-- <element-card> -->\r\n    </div>\r\n    <div id=\"slot-pile-user\" class=\"game__stage-slot game__stage-slot-button is-hidden\">\r\n        <img src=\"card-back-2.9c91ded9.png\">\r\n    </div>\r\n    <div id=\"slot-card-user\" class=\"game__stage-slot\">\r\n        <!-- <element-card> -->\r\n    </div>\r\n    <svg class=\"loader__spinner\" viewbox=\"0 0 50 50\">\r\n        <circle class=\"path\" cx=\"25\" cy=\"25\" r=\"20\" fill=\"none\" stroke-width=\"5\"></circle>\r\n    </svg>\r\n</div>";
@@ -86,6 +86,7 @@ class $52df9f21a640acd9$export$a002182e51710d39 {
         WIN: "win",
         LOSE: "lose",
         WAR: "war",
+        ERROR: "error",
         START_PILE: 26,
         OVERLAY: {
             WAR: "overlay-war",
@@ -402,6 +403,7 @@ class $34ac7a5a9fd2f760$export$60332b2344f7fe41 extends (0, $c9d91b8c1bee6b6c$ex
             this.parentElement.style.zIndex = 25;
         }
         this.style.zIndex = this.#animZIndex;
+        console.log("this.style.zIndex ", this.style.zIndex);
         const delay = this.#animIndex * delayFactor + "s";
         this.querySelector(".game__card-inner").style.animationDelay = delay;
         this.onanimationstart = ()=>{
@@ -482,7 +484,7 @@ $a5fb54b35e29cc97$exports = "<div class=\"inner\">\r\n    <div class=\"screen\">
 
 
 var $254c0e6d6a8cd5c0$exports = {};
-$254c0e6d6a8cd5c0$exports = "<div class=\"inner\">\r\n    <div class=\"msg msg-win\">\r\n        <h2>You won!</h2>\r\n        <p>You beat the NORAD supercomputer WOPR (War Operation Plan Response).</p>\r\n    </div>\r\n    <div class=\"msg msg-lose\">\r\n        <h2>Sorry, you lost!</h2>\r\n        <p>The NORAD supercomputer WOPR (War Operation Plan Response) beat you.</p>\r\n    </div>\r\n</div>\r\n<button id=\"btn-new-game\" class=\"generic-button\">PLAY AGAIN</button>";
+$254c0e6d6a8cd5c0$exports = "<div class=\"inner\">\r\n    <div class=\"msg msg-win\">\r\n        <h2>You won!</h2>\r\n        <p>You beat the NORAD supercomputer WOPR (War Operation Plan Response).</p>\r\n    </div>\r\n    <div class=\"msg msg-lose\">\r\n        <h2>Sorry, you lost!</h2>\r\n        <p>The NORAD supercomputer WOPR (War Operation Plan Response) beat you.</p>\r\n    </div>\r\n    <div class=\"msg msg-error\">\r\n        <h2>Something went wrong while loading data :-(</h2>\r\n        <p>Maybe WOPR is in a bad mood, come back later.</p>\r\n    </div>\r\n</div>\r\n<button id=\"btn-new-game\" class=\"generic-button\">PLAY AGAIN</button>";
 
 
 var $604b62212aa46109$exports = {};
@@ -563,7 +565,7 @@ class $2352de0254afedd3$export$c6fdb837b070b4ff extends (0, $c9d91b8c1bee6b6c$ex
      */  #renderGameOver() {
         this.classList.add("game__overlay-game-over", this.state);
         super.render((0, (/*@__PURE__*/$parcel$interopDefault($254c0e6d6a8cd5c0$exports))));
-        this.#setupNewGameButton();
+        if (this.state !== (0, $52df9f21a640acd9$export$a002182e51710d39).GAME.ERROR) this.#setupNewGameButton();
         this.animateIn();
     }
     /**
@@ -662,7 +664,12 @@ class $a54111e15dc09a1a$export$985739bfa5723e08 extends (0, $c9d91b8c1bee6b6c$ex
      */ newGame() {
         this.#toggleLoader(true);
         this.#resetGame();
-        (0, $9f7045cd9bacd6f5$export$86fbec116b87613f).instance.gameService.setupNewGame().then((pileSize)=>this.#gameReady(pileSize));
+        (0, $9f7045cd9bacd6f5$export$86fbec116b87613f).instance.gameService.setupNewGame().then((pileSize)=>this.#gameReady(pileSize)).catch((error)=>{
+            console.error("Game.newGame");
+            console.error(error);
+            this.#toggleLoader(false);
+            this.#displayError();
+        });
     }
     /**
      * @param {number} pileSize
@@ -688,6 +695,10 @@ class $a54111e15dc09a1a$export$985739bfa5723e08 extends (0, $c9d91b8c1bee6b6c$ex
             this.#toggleTooltip(false);
             (0, $9f7045cd9bacd6f5$export$86fbec116b87613f).instance.gameService.playTurn().then((result)=>{
                 if (result) this.#drawTurnResult(result);
+            }).catch((error)=>{
+                console.error("Game.#btnDeal.click");
+                console.error(error);
+                this.#displayError();
             });
         });
     }
@@ -875,6 +886,11 @@ class $a54111e15dc09a1a$export$985739bfa5723e08 extends (0, $c9d91b8c1bee6b6c$ex
         this.#huds.forEach((hud)=>hud.animateOut());
     }
     /**
+     *
+     */  #displayError() {
+        this.#createOverlay((0, $52df9f21a640acd9$export$a002182e51710d39).GAME.OVERLAY.GAME_OVER, (0, $52df9f21a640acd9$export$a002182e51710d39).GAME.ERROR);
+    }
+    /**
      * @param {string} mode
      * @param {string} state
      * @param {Image} img
@@ -1025,12 +1041,18 @@ class $3e2ece72ba5dc390$export$ae14c375fc93363 {
             fetch((0, $52df9f21a640acd9$export$a002182e51710d39).API.BASE_URL + req, {
                 method: "GET"
             }).then((res)=>{
-                if (!res.ok) throw new Error(res.statusText);
+                if (!res.ok) {
+                    console.error("%cGameService.#doApiFetch.error");
+                    reject(res.statusText);
+                }
                 return res.json();
             }).then((data)=>{
                 if ((0, $52df9f21a640acd9$export$a002182e51710d39).API.LOG) console.log("%c[API Data]", "color: grey", data);
                 resolve(data);
-            }).catch((err)=>reject(err));
+            }).catch((err)=>{
+                console.error("GameService.#doApiFetch.error");
+                reject(err);
+            });
         });
     }
 }
@@ -1113,7 +1135,6 @@ class $89e7f4eb538c8c09$export$76299a8db1a98dcd {
      */ async setupNewGame() {
         console.clear();
         console.log("%cSetting up new game...", "color: yellow");
-        console.log("%cConsole will always be 1 turn ahead of the interface,\nsince the next turn is preloaded in the background.", "color: yellow");
         this.#resultQueue = [];
         this.#cardsInPlay = [];
         this.#isGameOver = false;
@@ -1133,15 +1154,17 @@ class $89e7f4eb538c8c09$export$76299a8db1a98dcd {
             await this.#api.getNewDeck();
             await this.#setupStartHand((0, $52df9f21a640acd9$export$a002182e51710d39).GAME.USER, testCardCodes);
             await this.#setupStartHand((0, $52df9f21a640acd9$export$a002182e51710d39).GAME.COMPUTER, testCardCodes);
+            console.log("%cConsole will always be 1 turn ahead of the interface,\nsince the next turn is preloaded in the background.", "color: yellow");
             //Preload first turn
             console.log("-------------------");
             console.log("%cNext turn", "color: yellow");
             await this.#createTurn();
+            console.log("%cNew game ready", "color: yellow");
             return pileSize;
         } catch (error) {
-            console.error(error);
+            console.error("GameService.setupNewGame.error");
+            return Promise.reject(error);
         }
-        console.log("%cNew game ready", "color: yellow");
     }
     /**
      * @returns {object}
@@ -1149,13 +1172,17 @@ class $89e7f4eb538c8c09$export$76299a8db1a98dcd {
         if (this.#turnPending) return;
         console.log("-------------------");
         console.log("%cNext turn", "color: yellow");
-        //Check if result queue is empty
-        if (this.#resultQueue.length === 0) await this.#createTurn();
-        // Use first result in queue
-        const result = this.#resultQueue.shift();
-        //Preload next result
-        if (!this.#isGameOver) this.#createTurn();
-        return result;
+        try {
+            //Check if result queue is empty
+            if (this.#resultQueue.length === 0) await this.#createTurn();
+            // Use first result in queue
+            const result = this.#resultQueue.shift();
+            //Preload next result
+            if (!this.#isGameOver) this.#createTurn();
+            return result;
+        } catch (error) {
+            return Promise.reject(error);
+        }
     }
     /**
      * @param {id}
@@ -1232,8 +1259,8 @@ class $89e7f4eb538c8c09$export$76299a8db1a98dcd {
             this.#turnPending = false;
         } catch (error) {
             this.#turnPending = false;
-            console.error(error);
-            return;
+            console.error("%cGameService.#createTurn.error");
+            return Promise.reject(error);
         }
     }
     /**
@@ -1322,4 +1349,4 @@ class $9f7045cd9bacd6f5$export$86fbec116b87613f {
 (0, $9f7045cd9bacd6f5$export$86fbec116b87613f).instance.run();
 
 
-//# sourceMappingURL=index.f3672d29.js.map
+//# sourceMappingURL=index.b3dc0971.js.map

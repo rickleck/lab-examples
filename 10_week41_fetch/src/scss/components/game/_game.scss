@@ -295,6 +295,16 @@
                 display: block;
             }
         }
+
+        &.error {
+            .msg-error {
+                display: block;
+            }
+
+            #btn-new-game {
+                display: none;
+            }
+        }
     }
 
     &.animate-in {

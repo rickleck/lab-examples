@@ -6,6 +6,7 @@ export class Constants {
         WIN: 'win',
         LOSE: 'lose',
         WAR: 'war',
+        ERROR: 'error',
         START_PILE: 26,
         OVERLAY: {
             WAR: 'overlay-war',

@@ -96,7 +96,7 @@ export class Overlay extends CustomElement {
     #renderGameOver() {
         this.classList.add('game__overlay-game-over', this.state);
         super.render(HTMLTemplateGameOver);
-        this.#setupNewGameButton();
+        if (this.state !== Constants.GAME.ERROR) this.#setupNewGameButton();
         this.animateIn();
     }
 

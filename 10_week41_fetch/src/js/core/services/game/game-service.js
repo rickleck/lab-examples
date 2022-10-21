@@ -43,10 +43,6 @@ export class GameService {
     async setupNewGame() {
         console.clear();
         console.log('%cSetting up new game...', 'color: yellow');
-        console.log(
-            '%cConsole will always be 1 turn ahead of the interface,\nsince the next turn is preloaded in the background.',
-            'color: yellow'
-        );
 
         this.#resultQueue = [];
         this.#cardsInPlay = [];
@@ -69,16 +65,20 @@ export class GameService {
             await this.#api.getNewDeck();
             await this.#setupStartHand(Constants.GAME.USER, testCardCodes);
             await this.#setupStartHand(Constants.GAME.COMPUTER, testCardCodes);
+            console.log(
+                '%cConsole will always be 1 turn ahead of the interface,\nsince the next turn is preloaded in the background.',
+                'color: yellow'
+            );
             //Preload first turn
             console.log('-------------------');
             console.log('%cNext turn', 'color: yellow');
             await this.#createTurn();
+            console.log('%cNew game ready', 'color: yellow');
             return pileSize;
         } catch (error) {
-            console.error(error);
+            console.error('GameService.setupNewGame.error');
+            return Promise.reject(error);
         }
-
-        console.log('%cNew game ready', 'color: yellow');
     }
 
     /**
@@ -90,17 +90,21 @@ export class GameService {
         console.log('-------------------');
         console.log('%cNext turn', 'color: yellow');
 
-        //Check if result queue is empty
-        if (this.#resultQueue.length === 0) {
-            await this.#createTurn();
+        try {
+            //Check if result queue is empty
+            if (this.#resultQueue.length === 0) {
+                await this.#createTurn();
+            }
+            // Use first result in queue
+            const result = this.#resultQueue.shift();
+
+            //Preload next result
+            if (!this.#isGameOver) this.#createTurn();
+
+            return result;
+        } catch (error) {
+            return Promise.reject(error);
         }
-        // Use first result in queue
-        const result = this.#resultQueue.shift();
-
-        //Preload next result
-        if (!this.#isGameOver) this.#createTurn();
-
-        return result;
     }
 
     /**
@@ -195,8 +199,8 @@ export class GameService {
             this.#turnPending = false;
         } catch (error) {
             this.#turnPending = false;
-            console.error(error);
-            return;
+            console.error('%cGameService.#createTurn.error');
+            return Promise.reject(error);
         }
     }
 

@@ -74,7 +74,8 @@ export class ApiService {
             })
                 .then((res) => {
                     if (!res.ok) {
-                        throw new Error(res.statusText);
+                        console.error('%cGameService.#doApiFetch.error');
+                        reject(res.statusText);
                     }
                     return res.json();
                 })
@@ -82,7 +83,10 @@ export class ApiService {
                     if (Constants.API.LOG) console.log('%c[API Data]', 'color: grey', data);
                     resolve(data);
                 })
-                .catch((err) => reject(err));
+                .catch((err) => {
+                    console.error('GameService.#doApiFetch.error');
+                    reject(err);
+                });
         });
     }
 }
