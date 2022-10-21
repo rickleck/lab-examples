@@ -119,8 +119,6 @@ export class Card extends CustomElement {
 
         this.style.zIndex = this.#animZIndex;
 
-        console.log('this.style.zIndex ', this.style.zIndex);
-
         const delay = this.#animIndex * delayFactor + 's';
         this.querySelector('.game__card-inner').style.animationDelay = delay;
 
