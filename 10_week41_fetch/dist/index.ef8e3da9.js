@@ -72,7 +72,7 @@ module.exports = new URL((parcelRequire("aKzDW")).resolve("2LepY"), import.meta.
 
 var $40782a20e8f47696$exports = {};
 
-(parcelRequire("aKzDW")).register(JSON.parse('{"6HCxQ":"index.b3dc0971.js","2LepY":"war.34d96e76.gif","ck6hz":"card-back-2.9c91ded9.png","gKE1p":"wargames_logo.6673790a.webp","8OIqb":"intro.e46f81fc.jpg"}'));
+(parcelRequire("aKzDW")).register(JSON.parse('{"6HCxQ":"index.ef8e3da9.js","2LepY":"war.34d96e76.gif","ck6hz":"card-back-2.9c91ded9.png","gKE1p":"wargames_logo.6673790a.webp","8OIqb":"intro.e46f81fc.jpg"}'));
 
 var $ec219c38d9e34832$exports = {};
 $ec219c38d9e34832$exports = "<button id=\"btn-help\" class=\"circle-button\">?</button>\r\n<div class=\"game__stage\">\r\n    <div id=\"slot-pile-computer\" class=\"game__stage-slot is-hidden\">\r\n        <img src=\"card-back-2.9c91ded9.png\">\r\n    </div>\r\n    <div id=\"slot-card-computer\" class=\"game__stage-slot\">\r\n        <!-- <element-card> -->\r\n    </div>\r\n    <div id=\"slot-pile-user\" class=\"game__stage-slot game__stage-slot-button is-hidden\">\r\n        <img src=\"card-back-2.9c91ded9.png\">\r\n    </div>\r\n    <div id=\"slot-card-user\" class=\"game__stage-slot\">\r\n        <!-- <element-card> -->\r\n    </div>\r\n    <svg class=\"loader__spinner\" viewbox=\"0 0 50 50\">\r\n        <circle class=\"path\" cx=\"25\" cy=\"25\" r=\"20\" fill=\"none\" stroke-width=\"5\"></circle>\r\n    </svg>\r\n</div>";
@@ -484,7 +484,7 @@ $a5fb54b35e29cc97$exports = "<div class=\"inner\">\r\n    <div class=\"screen\">
 
 
 var $254c0e6d6a8cd5c0$exports = {};
-$254c0e6d6a8cd5c0$exports = "<div class=\"inner\">\r\n    <div class=\"msg msg-win\">\r\n        <h2>You won!</h2>\r\n        <p>You beat the NORAD supercomputer WOPR (War Operation Plan Response).</p>\r\n    </div>\r\n    <div class=\"msg msg-lose\">\r\n        <h2>Sorry, you lost!</h2>\r\n        <p>The NORAD supercomputer WOPR (War Operation Plan Response) beat you.</p>\r\n    </div>\r\n    <div class=\"msg msg-error\">\r\n        <h2>Something went wrong while loading data :-(</h2>\r\n        <p>Maybe WOPR is in a bad mood, come back later.</p>\r\n    </div>\r\n</div>\r\n<button id=\"btn-new-game\" class=\"generic-button\">PLAY AGAIN</button>";
+$254c0e6d6a8cd5c0$exports = "<div class=\"inner\">\r\n    <div class=\"msg msg-win\">\r\n        <h2>You won!</h2>\r\n        <p>You beat the NORAD supercomputer WOPR (War Operation Plan Response).</p>\r\n    </div>\r\n    <div class=\"msg msg-lose\">\r\n        <h2>Sorry, you lost!</h2>\r\n        <p>The NORAD supercomputer WOPR (War Operation Plan Response) beat you.</p>\r\n    </div>\r\n    <div class=\"msg msg-error\">\r\n        <h2>Something went wrong while loading data :-(</h2>\r\n        <p>Maybe WOPR is in a bad mood, please come back later.</p>\r\n    </div>\r\n</div>\r\n<button id=\"btn-new-game\" class=\"generic-button\">PLAY AGAIN</button>";
 
 
 var $604b62212aa46109$exports = {};
@@ -1349,4 +1349,4 @@ class $9f7045cd9bacd6f5$export$86fbec116b87613f {
 (0, $9f7045cd9bacd6f5$export$86fbec116b87613f).instance.run();
 
 
-//# sourceMappingURL=index.b3dc0971.js.map
+//# sourceMappingURL=index.ef8e3da9.js.map
