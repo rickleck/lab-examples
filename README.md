@@ -19,7 +19,8 @@ Lexicon
 - [Week 40 Lab 8: Form Validation](08_week40_form_validation/) 
 - [Week 40 Lab 9: Navigation, Array, Switch](09_week40_nav_array_switch/)
 - [Week 41 Lab 10: Fetch (Deck of Cards API)](10_week41_fetch/)
+- [Week 43 Lab 11: UX VPC](11_week43_ux_vpc/)
 
 ### In Progress
--
+- [Week 43 Lab 12: UX Wireframe](12_week43_ux_wireframe/)
 
