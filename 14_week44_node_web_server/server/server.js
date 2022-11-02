@@ -12,6 +12,8 @@ server.on('request', (req, res) => {
     fs.readFile(fileHTML, 'utf8', (err, data) => {
         if (err) {
             console.error(err);
+            res.statusCode = 505;
+            res.end();
             return;
         }
         res.statusCode = 200;
