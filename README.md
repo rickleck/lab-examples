@@ -21,6 +21,7 @@ Lexicon
 - [Week 41 Lab 10: Fetch (Deck of Cards API)](10_week41_fetch/)
 - [Week 43 Lab 11: UX VPC](11_week43_ux_vpc/)
 - [Week 43 Lab 12: UX Wireframe](12_week43_ux_wireframe/)
+- [Week 44 Lab 14: Node Web Server](14_week44_node_web_server/)
 
 ### In Progress
-- [Week 44 Lab 14: Node Web Server](14_week44_node_web_server/)
+-
