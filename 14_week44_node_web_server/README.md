@@ -2,4 +2,4 @@
 
 Simple Node.js Web Server
 
-Deploy: https://leck-lex-labs.ey.r.appspot.com/
+Deploy: https://lab14-dot-leck-lex-labs.ey.r.appspot.com/
