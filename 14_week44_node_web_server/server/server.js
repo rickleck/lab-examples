@@ -5,7 +5,7 @@ import fs from 'node:fs';
 
 //__dirname and __filename are not defined in ES module scope
 const dirname = path.dirname(fileURLToPath(import.meta.url));
-const fileHTML = path.join(dirname, '..', 'markup', 'index.html');
+const fileHTML = path.join(dirname, '..', 'public', 'index.html');
 const server = http.createServer();
 
 server.on('request', (req, res) => {
