@@ -1,0 +1,54 @@
+{
+  "name": "16_week45_node_api_doc",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "dist/server.js",
+  "scripts": {
+    "start": "node dist/server.js",
+    "build:start": "npm run build && npm start",
+    "build": "npm run clean && npm run build:client && npm run build:server",
+    "build:client": "parcel build --target client --no-cache",
+    "build:server": "parcel build --target server --no-cache",
+    "dev": "concurrently --kill-others \"npm run dev:server\" \"npm run dev:client\"",
+    "dev:client": "parcel watch --target client",
+    "dev:server": "nodemon -r dotenv/config --watch src/server/ src/server/server.js",
+    "dev:build:start": "npm run build && node -r dotenv/config dist/server.js",
+    "clean": "rimraf dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "targets": {
+    "client": {
+      "context": "browser",
+      "source": "src/client/index.html",
+      "distDir": "dist/public"
+    },
+    "server": {
+      "context": "node",
+      "source": "src/server/server.js",
+      "distDir": "dist",
+      "outputFormat": "esmodule",
+      "includeNodeModules": false,
+      "engines": {
+        "node": ">= 16"
+      },
+      "optimize": false
+    }
+  },
+  "devDependencies": {
+    "@parcel/transformer-inline-string": "^2.7.0",
+    "@parcel/transformer-sass": "^2.7.0",
+    "concurrently": "^7.5.0",
+    "dotenv": "^16.0.3",
+    "nodemon": "^2.0.20",
+    "parcel": "^2.7.0",
+    "rimraf": "^3.0.2"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mongoose": "^6.7.2"
+  }
+}
