@@ -1,0 +1,20 @@
+@use '../variables/colors';
+@use '../variables/layout';
+@use '../utils/reset';
+
+html {
+    font-family: 'Noto Sans', sans-serif;
+}
+
+body {
+    padding: layout.$padding-body;
+    background: colors.$primary-light;
+}
+
+button {
+    @include reset.button;
+}
+
+input {
+    @include reset.input;
+}
