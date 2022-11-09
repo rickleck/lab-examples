@@ -10,7 +10,7 @@ export class ApiService {
             const data = await FileStorage.readFile();
             this.#sendData(res, 200, data);
         } catch (error) {
-            this.#sendError(res, 505, error);
+            this.#sendError(res, 500, error);
         }
     }
 
@@ -31,7 +31,7 @@ export class ApiService {
                 this.#sendError(res, 400, 'Could not add item because it has no properties.');
             }
         } catch (error) {
-            this.#sendError(res, 505, error);
+            this.#sendError(res, 500, error);
         }
     }
 
@@ -68,7 +68,7 @@ export class ApiService {
                 this.#sendError(res, 404, `Item with id: ${id} not found.`);
             }
         } catch (error) {
-            this.#sendError(res, 505, error);
+            this.#sendError(res, 500, error);
         }
     }
 

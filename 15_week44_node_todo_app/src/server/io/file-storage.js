@@ -46,6 +46,7 @@ export class FileStorage {
     }
 
     /**
+     * @param {object} data
      * @returns {Promise}
      */
     static async writeFile(data) {
