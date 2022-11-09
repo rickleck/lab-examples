@@ -1,7 +1,6 @@
 import express from 'express';
 import { ApiRouter } from './api/api-router.js';
 import { Constants } from './constants/constants.js';
-import { FileStorage } from './io/file-storage.js';
 
 export class Server {
     /** @type {Server} */
