@@ -1,0 +1,9 @@
+.DS_Store
+.gitignore
+.parcel-cache
+node_modules/
+src/
+README.md
+*.pdf
+.env
+.htmlnanorc
