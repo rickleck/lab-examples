@@ -42,6 +42,7 @@ class $f53a3e7e4a0f6ba6$export$7e4bb06c8b8658a1 {
         });
     }
     /**
+     * @param {object} data
      * @returns {Promise}
      */ static async writeFile(data) {
         if (process.env.NODE_ENV === (0, $432ebeeee125727a$export$a002182e51710d39).ENV_DEV_LOCAL) return await (0, $eqrMV$fsextra).writeJson(this.localFile, data);
@@ -62,7 +63,7 @@ class $f0ebd40517c8566a$export$ae14c375fc93363 {
             const data = await (0, $f53a3e7e4a0f6ba6$export$7e4bb06c8b8658a1).readFile();
             this.#sendData(res, 200, data);
         } catch (error) {
-            this.#sendError(res, 505, error);
+            this.#sendError(res, 500, error);
         }
     }
     /**
@@ -79,7 +80,7 @@ class $f0ebd40517c8566a$export$ae14c375fc93363 {
                 this.#sendData(res, 201, item);
             } else this.#sendError(res, 400, "Could not add item because it has no properties.");
         } catch (error) {
-            this.#sendError(res, 505, error);
+            this.#sendError(res, 500, error);
         }
     }
     /**
@@ -107,7 +108,7 @@ class $f0ebd40517c8566a$export$ae14c375fc93363 {
                 this.#sendStatus(res, 204);
             } else this.#sendError(res, 404, `Item with id: ${id} not found.`);
         } catch (error) {
-            this.#sendError(res, 505, error);
+            this.#sendError(res, 500, error);
         }
     }
     /**
@@ -151,7 +152,6 @@ class $bbe5ab2be9c7e901$export$6fa31d1144be64b2 {
         return router;
     }
 }
-
 
 
 
