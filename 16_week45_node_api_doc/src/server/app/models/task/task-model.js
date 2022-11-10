@@ -63,7 +63,6 @@ const createTask = async (req, res) => {
     } catch (err) {
         return res.status(500).json({
             message: 'Failed to create new task.',
-            err: err.message,
         });
     }
 };
