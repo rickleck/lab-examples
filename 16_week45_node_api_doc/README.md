@@ -2,8 +2,7 @@
 
 ### In Progress
 
-- CRUD part done.
-- Based on client app and API server from lab 15, but storing data in MongoDB Atlas.
-- Using a more specific MVC structure for the API as shown in lecture.
-- Creating js-modules for server without using class-syntax this time.
-- Documentation assignment will describe this API.
+- Front-end client and deployment to come.
+- [API Documentation](https://documenter.getpostman.com/view/24341668/2s8Yemvv2T)
+- Based on lab 15, but storing data in MongoDB Atlas instead on JSON-file.
+- Testing server js-modules without class-syntax this time and a more specified MVC structure as shown in lecture.
