@@ -1,8 +1,8 @@
-import mongoose from 'mongoose';
+import { model, Schema } from 'mongoose';
 
-const taskSchema = mongoose.model(
+const Task = model(
     'Task',
-    mongoose.Schema(
+    Schema(
         {
             title: {
                 type: String,
@@ -11,10 +11,11 @@ const taskSchema = mongoose.model(
             done: {
                 type: Boolean,
                 required: true,
+                default: false,
             },
         },
         { timestamps: true }
     )
 );
 
-export { taskSchema as Task };
+export { Task };
