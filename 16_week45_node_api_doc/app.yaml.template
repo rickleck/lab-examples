@@ -1,0 +1,6 @@
+runtime: nodejs16
+
+service: lab16
+
+env_variables:
+  MONGO_URI: ""
