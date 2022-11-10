@@ -1,7 +1,0 @@
-runtime: nodejs16
-
-service: lab16
-
-env_variables:
-  GOOGLE_CLOUD_PROJECT: "leck-lex-labs.appspot.com"
-  MONGO_URI: "mongodb+srv://admin:wHLBYUz42KVwxcM@cluster0.y1gcweb.mongodb.net/tasks?retryWrites=true&w=majority"
