@@ -23,7 +23,8 @@ Lexicon
 - [Week 43 Lab 12: UX Wireframe](12_week43_ux_wireframe/)
 - [Week 44 Lab 14: Node Web Server](14_week44_node_web_server/)
 - [Week 44 Lab 15: Node Todo App](15_week44_node_todo_app/)
+- [Week 45 Lab 16: Node API and Documentation](16_week45_node_api_doc/)
 
 ### In Progress
 
-- [Week 45 Lab 16: Node API and Documentation](16_week45_node_api_doc/)
+-
