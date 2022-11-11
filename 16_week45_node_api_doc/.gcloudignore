@@ -7,3 +7,5 @@ README.md
 *.pdf
 .env
 .htmlnanorc
+app.yaml.template
+.map

@@ -23,11 +23,13 @@
     "client": {
       "context": "browser",
       "source": "src/client/index.html",
+      "sourceMap": false,
       "distDir": "dist/public"
     },
     "server": {
       "context": "node",
       "source": "src/server/server.js",
+      "sourceMap": false,
       "distDir": "dist",
       "outputFormat": "esmodule",
       "includeNodeModules": false,
