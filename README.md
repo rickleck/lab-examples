@@ -27,4 +27,4 @@ Lexicon
 
 ### In Progress
 
--
+- [Week 46 Lab 17: Vue Page](17_week46_vue_page)
