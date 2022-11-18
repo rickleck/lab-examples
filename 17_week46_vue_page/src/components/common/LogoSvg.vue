@@ -11,8 +11,8 @@
         height: number | string;
     }
 
-    const props = defineProps<ILogoSvgProps>();
-    const orgSize: ILogoSvgSize = { width: 749.29767, height: 392.09967 };
+    const props = <ILogoSvgProps>defineProps();
+    const orgSize = <ILogoSvgSize>{ width: 749.29767, height: 392.09967 };
     const pxSize = computed<ILogoSvgSize>(() => {
         let scale: number = 0.1;
         if (props.width !== undefined) {

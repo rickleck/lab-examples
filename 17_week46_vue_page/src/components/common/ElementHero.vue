@@ -1,7 +1,7 @@
 <script setup lang="ts">
     import { defineProps } from 'vue';
 
-    interface IHeroData {
+    interface IHeroProps {
         data: {
             image: string;
             header: string;
@@ -10,7 +10,7 @@
         };
     }
 
-    const props = defineProps<IHeroData>();
+    const props = defineProps<IHeroProps>();
     const bgImage = {
         backgroundImage: 'url(' + props.data.image + ')',
     };
