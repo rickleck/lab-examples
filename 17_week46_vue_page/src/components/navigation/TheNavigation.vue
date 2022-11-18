@@ -6,10 +6,6 @@
 
     const isListOpen = ref<boolean>(false);
 
-    useEventListener(window, 'resize', () => {
-        toggleList(true);
-    });
-
     function toggleList(forceClose: boolean = false) {
         forceClose ? (isListOpen.value = false) : (isListOpen.value = !isListOpen.value);
     }
@@ -17,6 +13,10 @@
     function onBtnToggle() {
         toggleList();
     }
+
+    useEventListener(window, 'resize', () => {
+        toggleList(true);
+    });
 </script>
 
 <template>
@@ -70,7 +70,7 @@
 
         .btn-logo {
             &:hover {
-                &::v-deep svg {
+                &::v-deep .logo-svg {
                     .fill-color {
                         fill: colors.$secondary;
                     }

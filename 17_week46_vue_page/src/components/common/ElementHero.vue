@@ -22,11 +22,11 @@
 
 <template>
     <section class="hero" :style="bgImage">
-        <div class="container-responsive container-content">
+        <div class="container-responsive content-wrapper">
             <div class="content">
-                <h1>{{ data.header }}</h1>
-                <p>{{ data.body }}</p>
-                <button @click="onButtonClick">{{ data.callToAction }}</button>
+                <h1 class="header">{{ data.header }}</h1>
+                <p class="body">{{ data.body }}</p>
+                <button class="button" @click="onButtonClick">{{ data.callToAction }}</button>
             </div>
         </div>
     </section>
@@ -48,9 +48,9 @@
             align-items: center;
         }
 
-        .container-content {
+        .content-wrapper {
             height: 80%;
-            color: white;
+            color: colors.$light;
             padding: 2.5rem 2rem;
 
             @include breakpoints.from-md {
@@ -60,7 +60,7 @@
 
             .content {
                 filter: drop-shadow(5px 5px 10px rgba(black, 0.8));
-                h1 {
+                .header {
                     margin: 0 0 2rem 0;
                     font-size: 2rem;
                     line-height: 2rem;
@@ -78,7 +78,7 @@
                     }
                 }
 
-                p {
+                .body {
                     margin: 0 0 2rem 0;
                     font-weight: 700;
                     max-width: 50%;
@@ -92,7 +92,7 @@
                     }
                 }
 
-                button {
+                .button {
                     padding: 1rem 1.3rem;
                     color: colors.$light;
                     background-color: colors.$primary;

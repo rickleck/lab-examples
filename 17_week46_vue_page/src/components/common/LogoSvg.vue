@@ -1,27 +1,32 @@
 <script setup lang="ts">
-    import { defineProps, computed } from 'vue';
+    import { defineProps, computed, type CSSProperties } from 'vue';
 
-    interface ILogoSvg {
+    interface ILogoSvgProps {
         width?: number;
         height?: number;
     }
 
-    const props = defineProps<ILogoSvg>();
-    const orgSize = <{ width: number; height: number }>{ width: 749.29767, height: 392.09967 };
-    const compSize = computed(() => {
+    interface ILogoSvgSize extends CSSProperties {
+        width: number | string;
+        height: number | string;
+    }
+
+    const props = defineProps<ILogoSvgProps>();
+    const orgSize: ILogoSvgSize = { width: 749.29767, height: 392.09967 };
+    const pxSize = computed<ILogoSvgSize>(() => {
         let scale: number = 0.1;
         if (props.width !== undefined) {
-            scale = props.width / orgSize.width;
+            scale = props.width / +orgSize.width;
         } else if (props.height !== undefined) {
-            scale = props.height / orgSize.height;
+            scale = props.height / +orgSize.height;
         }
-        return { width: orgSize.width * scale + 'px', height: orgSize.height * scale + 'px' };
+        return { width: +orgSize.width * scale + 'px', height: +orgSize.height * scale + 'px' };
     });
 </script>
 
 <template>
-    <div :style="compSize">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 749.29767 392.09967">
+    <div class="logo-svg-wrapper" :style="pxSize">
+        <svg class="logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 749.29767 392.09967">
             <path
                 class="fill-color"
                 d="M492.146481 185.17773l-16.36718 7.11329.082 3.23632c.00017 99.36808-80.5538 179.92206-179.92188 179.92188-48.61743-.00045-92.6879-19.32855-125.0664-50.66406l-15.88282 6.90234c35.68041 37.19187 85.81246 60.41237 141.42188 60.41211 108.27444-.00053 196.04828-87.77439 196.04883-196.04883.00001-3.65038-.11752-7.27184-.31446-10.87305zM296.412111 0c-108.27586-.00052-196.05133 87.77492-196.05078 196.05078.00019 36.86487 10.18973 71.34421 27.88476 100.80078l14.85547-6.39843c-17.15201-27.55761-27.08208-60.07707-27.08203-94.92579.00091-99.36645 80.55347-179.91902 179.91992-179.91992 83.52354-.00015 153.68364 56.93562 173.94532 134.09961l15.27343-6.57812C462.060351 60.57462 386.339871.00046 296.412111 0z"
