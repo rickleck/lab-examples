@@ -113,7 +113,7 @@ export class TodoListItem extends BaseElement {
         this.#btnSave = this.element.querySelector(cPrefix + 'btn-save');
         this.#btnSave.addEventListener('click', this);
 
-        document.addEventListener('click', this.#handleDocumentClick.bind(this));
+        document.addEventListener('click', this.#handleDocumentClick);
     }
 
     /**
@@ -146,11 +146,11 @@ export class TodoListItem extends BaseElement {
     /**
      * @param {Event} event
      */
-    #handleDocumentClick(event) {
+    #handleDocumentClick = (event) => {
         if (!event.composedPath().includes(this.element) && this.#isMenuOpen) {
             this.#toggleMenu();
         }
-    }
+    };
 
     /**
      *
@@ -199,7 +199,7 @@ export class TodoListItem extends BaseElement {
         this.#btnMenu.removeEventListener('click', this);
         this.#btnDelete.removeEventListener('click', this);
         this.#btnSave.removeEventListener('click', this);
-        document.removeEventListener('click', this.#handleDocumentClick.bind(this));
+        document.removeEventListener('click', this.#handleDocumentClick);
         super.destroy();
     }
 }

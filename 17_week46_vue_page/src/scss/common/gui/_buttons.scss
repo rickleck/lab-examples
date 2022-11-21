@@ -11,8 +11,6 @@
     cursor: pointer;
     transition: background-color 150ms ease;
 
-    border-radius: 12px;
-
     &:hover {
         background-color: colors.$primary-light;
     }
@@ -44,10 +42,10 @@
         @extend .icon-button;
         color: colors.$light;
         &:hover {
-            color: colors.$secondary;
+            color: colors.$secondary-light;
         }
         &:active {
-            color: colors.$secondary !important;
+            color: colors.$secondary-light !important;
         }
     }
 

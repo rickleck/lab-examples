@@ -1,5 +1,7 @@
+'use strict'
+
 <script setup lang="ts">
-    import { defineProps, computed, type CSSProperties } from 'vue';
+    import { computed, type CSSProperties } from 'vue';
 
     interface ILogoSvgProps {
         width?: number;
@@ -11,17 +13,27 @@
         height: number | string;
     }
 
-    const props = <ILogoSvgProps>defineProps();
-    const orgSize = <ILogoSvgSize>{ width: 749.29767, height: 392.09967 };
+    const props = defineProps<ILogoSvgProps>();
+
+    const orgSize: ILogoSvgSize = {
+        width: 749.29767,
+        height: 392.09967,
+    };
+
     const pxSize = computed<ILogoSvgSize>(() => {
-        let scale: number = 0.1;
+        const size: ILogoSvgSize = scaledSize();
+        return { width: size.width + 'px', height: size.height + 'px' };
+    });
+
+    function scaledSize(): ILogoSvgSize {
+        let scale = 0.1;
         if (props.width !== undefined) {
             scale = props.width / +orgSize.width;
         } else if (props.height !== undefined) {
             scale = props.height / +orgSize.height;
         }
-        return { width: +orgSize.width * scale + 'px', height: +orgSize.height * scale + 'px' };
-    });
+        return { width: +orgSize.width * scale, height: +orgSize.height * scale };
+    }
 </script>
 
 <template>

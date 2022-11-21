@@ -1,16 +1,16 @@
 <script setup lang="ts">
     import { ref } from 'vue';
     import { useEventListener } from '@vueuse/core';
-    import LogoSvg from '../common/LogoSvg.vue';
-    import data from '../../assets/data/navigation.json';
+    import LogoSvg from '../common/graphics/LogoSvg.vue';
+    import data from '../../data/navigation.json';
 
     const isListOpen = ref<boolean>(false);
 
-    function toggleList(forceClose: boolean = false) {
+    function toggleList(forceClose: boolean = false): void {
         forceClose ? (isListOpen.value = false) : (isListOpen.value = !isListOpen.value);
     }
 
-    function onBtnToggle() {
+    function onBtnToggle(): void {
         toggleList();
     }
 
@@ -23,10 +23,11 @@
     <div class="navigation">
         <nav>
             <div class="bar">
-                <a class="btn-logo" href="/">
+                <a class="btn-logo" href="./">
                     <LogoSvg :width="90" />
+                    <p class="logo-text">Shuttle<span class="trademark">&trade;</span></p>
                 </a>
-                <button @click="onBtnToggle" class="btn-toggle">
+                <button @click="onBtnToggle" :class="{ 'is-open': isListOpen }" class="btn-toggle">
                     <div></div>
                     <div></div>
                     <div></div>
@@ -49,7 +50,7 @@
     .navigation {
         display: block;
         background-color: colors.$dark;
-        width: 100vw;
+        width: 100%;
         z-index: 1;
         //position: fixed;
 
@@ -66,18 +67,39 @@
         justify-content: space-between;
         align-items: center;
         height: layout.$navigation-height;
-        padding: 0 1.5rem;
+        padding: 0 2rem;
 
         .btn-logo {
-            &:hover {
-                &::v-deep .logo-svg {
-                    .fill-color {
-                        fill: colors.$secondary;
-                    }
+            display: flex;
+            align-items: center;
+            margin-right: 0.5rem;
 
-                    .stroke-color {
-                        stroke: colors.$secondary;
-                    }
+            .logo-text {
+                display: flex;
+                align-items: flex-start;
+                color: colors.$light;
+                font-size: 1.8rem;
+                font-weight: 700;
+                margin: 0 0 0.5rem 0.5rem;
+
+                .trademark {
+                    font-size: 1.4rem;
+                }
+            }
+        }
+
+        .btn-logo:hover {
+            .logo-text {
+                color: colors.$secondary;
+            }
+
+            &:deep(.logo-svg) {
+                .fill-color {
+                    fill: colors.$secondary;
+                }
+
+                .stroke-color {
+                    stroke: colors.$secondary;
                 }
             }
         }
@@ -98,7 +120,15 @@
             }
 
             &:hover {
-                background: colors.$secondary;
+                div {
+                    background: colors.$secondary;
+                }
+            }
+
+            &.is-open {
+                div {
+                    background: colors.$secondary;
+                }
             }
 
             @include breakpoints.from-md {
@@ -115,17 +145,19 @@
 
         @include breakpoints.from-md {
             display: flex;
-            flex-direction: row;
             align-items: center;
+            //margin-left: auto;
+            margin-right: 3rem;
         }
 
         .list-item {
             color: colors.$light;
             font-weight: 700;
             cursor: pointer;
+            white-space: nowrap;
 
             @include breakpoints.from-md {
-                margin-left: 2rem;
+                margin-right: 2rem;
                 padding: 0;
             }
 

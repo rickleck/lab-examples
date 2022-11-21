@@ -77,7 +77,7 @@ $bp-xxl: 1400px;
     }
 }
 
-@mixin to-breakpoint-xxl() {
+@mixin to-xxl() {
     @media (max-width: #{$bp-xxl - 1px}) {
         @content;
     }

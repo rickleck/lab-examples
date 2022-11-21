@@ -4,6 +4,7 @@
 
 html {
     font-family: 'Noto Sans', sans-serif;
+    font-size: 1rem;
 }
 
 body {
@@ -16,4 +17,9 @@ button {
 
 input {
     @include reset.input;
+}
+
+.body-side-padding {
+    padding-left: layout.$body-side-padding;
+    padding-right: layout.$body-side-padding;
 }

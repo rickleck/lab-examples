@@ -24,7 +24,7 @@ Lexicon
 - [Week 44 Lab 14: Node Web Server](14_week44_node_web_server/)
 - [Week 44 Lab 15: Node Todo App](15_week44_node_todo_app/)
 - [Week 45 Lab 16: Node API and Documentation](16_week45_node_api_doc/)
+- [Week 46 Lab 17: Vue.js Page](17_week46_vue_page)
 
 ### In Progress
-
-- [Week 46 Lab 17: Vue Page](17_week46_vue_page)
+-
