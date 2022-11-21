@@ -1,5 +1,3 @@
-'use strict'
-
 <script setup lang="ts">
     import { computed, type CSSProperties } from 'vue';
 

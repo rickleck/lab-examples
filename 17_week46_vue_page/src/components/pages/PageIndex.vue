@@ -3,7 +3,6 @@
     import ImageWidget from '../common/widgets/ImageWidget.vue';
     import data from '../../data/page-index.json';
 </script>
-;
 
 <template>
     <HeroWidget :data="data.hero" />
