@@ -23,7 +23,7 @@
     <div class="navigation">
         <nav>
             <div class="bar">
-                <a class="btn-logo" href="./">
+                <a class="btn-logo" :href="data.logo.url" target="_blank">
                     <LogoSvg :width="90" />
                     <p class="logo-text">Shuttle<span class="trademark">&trade;</span></p>
                 </a>
