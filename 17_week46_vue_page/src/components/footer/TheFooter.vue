@@ -1,28 +1,31 @@
 <script setup lang="ts">
     import LogoSvg from '../common/graphics/LogoSvg.vue';
-    import data from '../../data/footer.json';
+    import footerData from '../../data/footer.json';
+    import navData from '../../data/navigation.json';
 </script>
 
 <template>
     <div class="body-side-padding">
         <footer class="container-responsive">
             <!-- Logo -->
-            <div class="logo">
+            <a :href="navData.logo.url" target="_blank" class="logo">
                 <div class="logo-grpx">
                     <LogoSvg :width="50" />
                 </div>
                 <p class="logo-text">Shuttle&trade;</p>
-            </div>
+            </a>
 
             <!-- Menu -->
             <ul class="menu">
-                <li v-for="(item, index) in data.menu" :key="index" class="item">{{ item }}</li>
+                <li v-for="(item, index) in footerData.menu" :key="index" class="item">
+                    {{ item }}
+                </li>
             </ul>
 
             <!-- Social -->
             <div class="social">
                 <i
-                    v-for="(item, index) in data.social"
+                    v-for="(item, index) in footerData.social"
                     :key="index"
                     class="bi icon-button--light"
                     :class="['bi-' + item]"
@@ -31,7 +34,7 @@
 
             <!-- Legal -->
             <div class="legal">
-                <p>{{ data.legal }}</p>
+                <p>{{ footerData.legal }}</p>
             </div>
         </footer>
     </div>
@@ -61,6 +64,19 @@
         .logo {
             grid-area: logo;
             display: flex;
+
+            &:hover {
+                color: colors.$secondary-light;
+                &:deep(.logo-svg) {
+                    .fill-color {
+                        fill: colors.$secondary;
+                    }
+
+                    .stroke-color {
+                        stroke: colors.$secondary;
+                    }
+                }
+            }
 
             .logo-grpx {
                 margin-right: 0.5rem;

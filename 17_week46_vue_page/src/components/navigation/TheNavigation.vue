@@ -86,20 +86,20 @@
                     font-size: 1.4rem;
                 }
             }
-        }
 
-        .btn-logo:hover {
-            .logo-text {
-                color: colors.$secondary;
-            }
-
-            &:deep(.logo-svg) {
-                .fill-color {
-                    fill: colors.$secondary;
+            &:hover {
+                .logo-text {
+                    color: colors.$secondary;
                 }
 
-                .stroke-color {
-                    stroke: colors.$secondary;
+                &:deep(.logo-svg) {
+                    .fill-color {
+                        fill: colors.$secondary;
+                    }
+
+                    .stroke-color {
+                        stroke: colors.$secondary;
+                    }
                 }
             }
         }
