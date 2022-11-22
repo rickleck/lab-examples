@@ -67,7 +67,7 @@
         justify-content: space-between;
         align-items: center;
         height: layout.$navigation-height;
-        padding: 0 2rem;
+        padding: 0 layout.$body-side-padding 0 2rem;
 
         .btn-logo {
             display: flex;
@@ -105,7 +105,6 @@
         }
 
         .btn-toggle {
-            padding: 12px;
             cursor: pointer;
 
             div {
