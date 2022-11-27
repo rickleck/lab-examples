@@ -75,7 +75,7 @@
         UserStore.isLoggedIn ? 'bi-person-fill-lock' : 'bi-person-fill'
     );
 
-    function onBtnIcon() {
+    function onBtnIcon(): void {
         if (!UserStore.isLoggedIn) {
             UserStore.displayLogin = !UserStore.displayLogin;
         } else {
