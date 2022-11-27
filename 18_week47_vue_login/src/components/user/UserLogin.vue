@@ -38,20 +38,16 @@
 
 <script setup lang="ts">
     import { ref, onMounted } from 'vue';
-    import { onClickOutside } from '@vueuse/core';
     import { UserStore } from '@/stores/UserStore';
+    import { onClickOutsideLauncher } from '@/composables/onClickOutsideLauncher';
     import data from '@/data/login.json';
 
     const username = ref<string>('');
     const password = ref<string>('');
     const input = ref<HTMLInputElement | null>(null);
-    const inner = ref<HTMLInputElement | null>(null);
+    const inner = ref<HTMLElement | null>(null);
 
-    onClickOutside(inner, (e: PointerEvent) => {
-        const target = e.target as HTMLElement;
-        if (target.dataset.launches && target.dataset.launches.includes('login')) return;
-        UserStore.displayLogin = false;
-    });
+    onClickOutsideLauncher(inner, 'login', () => (UserStore.displayLogin = false));
 
     onMounted(() => {
         input.value?.focus();

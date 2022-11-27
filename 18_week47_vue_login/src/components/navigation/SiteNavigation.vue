@@ -61,8 +61,9 @@
 
 <script setup lang="ts">
     import { computed, ref, watchEffect, type Ref } from 'vue';
-    import { useEventListener, onClickOutside } from '@vueuse/core';
+    import { useEventListener } from '@vueuse/core';
     import { UserStore } from '@/stores/UserStore';
+    import { onClickOutsideLauncher } from '@/composables/onClickOutsideLauncher';
     import LogoSvg from '@/components/common/graphics/LogoSvg.vue';
     import data from '@/data/navigation.json';
 
@@ -82,23 +83,13 @@
         }
     }
 
-    function checkClickTarget(e: PointerEvent, launcher: string, ref: Ref) {
-        const target = e.target as HTMLElement;
-        if (target.dataset.launches && target.dataset.launches.includes(launcher)) return;
-        ref.value = false;
-    }
+    onClickOutsideLauncher(list, 'list', () => (displayList.value = false));
+
+    onClickOutsideLauncher(user, 'user', () => (displayUser.value = false));
 
     watchEffect(() => {
         if (!UserStore.isLoggedIn) displayUser.value = false;
         if (UserStore.displayLogin) displayList.value = false;
-    });
-
-    onClickOutside(list, (e: PointerEvent) => {
-        checkClickTarget(e, 'list', displayList);
-    });
-
-    onClickOutside(user, (e: PointerEvent) => {
-        checkClickTarget(e, 'user', displayUser);
     });
 
     useEventListener(window, 'resize', () => {
