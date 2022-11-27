@@ -1,0 +1,19 @@
+$primary: #62757f;
+$primary-light: #89989f;
+$primary-dark: #46545b;
+$secondary: #ff631b;
+$secondary-light: #ff844c;
+$secondary-dark: #fc5000;
+$dark: #000000;
+$light: #ffffff;
+
+$color-map: (
+    'primary': $primary,
+    'primary-light': $primary-light,
+    'primary-dark': $primary-dark,
+    'secondary': $secondary,
+    'secondary-light': $secondary-light,
+    'secondary-dark': $secondary-dark,
+    'light': $light,
+    'dark': $dark,
+);

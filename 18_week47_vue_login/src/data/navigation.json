@@ -1,0 +1,28 @@
+{
+    "logo": {
+        "url": "https://www.brandsoftheworld.com/logo/space-lego",
+        "name": "Shuttle"
+    },
+    "pages": [
+        {
+            "title": "Missions",
+            "url": ""
+        },
+        {
+            "title": "Pricing",
+            "url": ""
+        },
+        {
+            "title": "About Us",
+            "url": ""
+        },
+        {
+            "title": "Contact",
+            "url": ""
+        }
+    ],
+    "user": {
+        "login": "Log in",
+        "logout": "Log out"
+    }
+}

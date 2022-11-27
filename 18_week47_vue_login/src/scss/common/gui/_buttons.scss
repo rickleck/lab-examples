@@ -1,0 +1,105 @@
+@use '../variables/colors';
+.btn-generic {
+    padding: 0.7rem 1.5rem;
+    background-color: colors.$primary;
+    color: colors.$light;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 150ms ease;
+
+    &:hover {
+        background-color: colors.$primary-light;
+    }
+
+    &:active {
+        background-color: colors.$primary-dark;
+    }
+
+    &.is-hidden {
+        display: none;
+    }
+
+    &:disabled {
+        color: rgba(colors.$light, $alpha: 0.5);
+        pointer-events: none;
+    }
+}
+
+.btn-outline {
+    outline: 1px solid colors.$light;
+    color: colors.$light;
+    font-weight: 700;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    white-space: nowrap;
+
+    &:hover {
+        color: colors.$secondary-light;
+        outline-color: colors.$secondary-light;
+    }
+
+    &:active {
+        color: colors.$secondary;
+        outline-color: colors.$secondary;
+    }
+
+    &:disabled {
+        pointer-events: none;
+    }
+
+    &.is-selected {
+        color: colors.$secondary-light;
+        outline-color: colors.$secondary-light;
+    }
+}
+
+.hover-generic {
+    cursor: pointer;
+    //transition: color 150ms ease;
+
+    &:disabled {
+        opacity: 0.5;
+        pointer-events: none;
+    }
+
+    &--light {
+        @extend .hover-generic;
+        color: colors.$light;
+        &:hover,
+        &.is-selected {
+            color: colors.$secondary-light;
+        }
+        &:active {
+            color: colors.$secondary;
+        }
+    }
+
+    &--secondary {
+        @extend .hover-generic;
+        color: colors.$secondary;
+        &:hover {
+            color: colors.$secondary-light;
+        }
+        &:active {
+            color: colors.$secondary-dark;
+        }
+
+        &.is-selected {
+            color: colors.$secondary;
+        }
+    }
+
+    &--grey {
+        @extend .hover-generic;
+        color: rgb(199, 199, 199);
+        &:hover,
+        &.is-selected {
+            color: colors.$secondary;
+        }
+        &:active {
+            color: colors.$secondary-dark;
+        }
+    }
+}
