@@ -29,4 +29,4 @@ Lexicon
 
 ### In Progress
 
-- [Week 48 Lab 19: Vue.js Blog](18_week48_vue_blog)
+- [Week 48 Lab 19: Vue.js Blog](19_week48_vue_blog)
