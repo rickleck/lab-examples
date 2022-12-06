@@ -3,11 +3,13 @@
         <div class="input-field">
             <input
                 ref="input"
-                v-model="searchTerm"
+                :value="searchQuery"
+                @input="(e) => onInput(e)"
                 class="input"
                 type="text"
                 name="search"
                 id="search"
+                autocomplete="off"
                 :class="{ show: isInputOpen }"
             />
             <i
@@ -32,7 +34,7 @@
 </template>
 
 <script setup lang="ts">
-    import { ref, watch } from 'vue';
+    import { ref } from 'vue';
     import { RouterLink } from 'vue-router';
     import { onClickOutside, useEventListener } from '@vueuse/core';
     import { apiStore, type BlogEntry } from '../../stores/ApiStore';
@@ -40,11 +42,14 @@
     const componentRoot = ref<HTMLElement | null>(null);
     const input = ref<HTMLInputElement | null>(null);
     const isInputOpen = ref<boolean>(false);
-    const searchTerm = ref<string>('');
+    const searchQuery = ref<string>('');
     const searchResult = ref<{ id: string; title: string }[]>([]);
     let isLoading = false;
 
-    watch(searchTerm, () => {
+    function onInput(e: Event): void {
+        const el = e.target as HTMLInputElement;
+        searchQuery.value = el.value;
+
         if (apiStore.items.length === 0 && !isLoading) {
             isLoading = true;
             apiStore
@@ -57,12 +62,12 @@
             return;
         }
 
-        if (searchTerm.value === undefined || searchTerm.value.length < 2) {
+        if (searchQuery.value === undefined || searchQuery.value.length < 2) {
             searchResult.value = [];
             return;
         }
 
-        const regexp = new RegExp(searchTerm.value, 'gi');
+        const regexp = new RegExp(searchQuery.value, 'gi');
         searchResult.value = apiStore.items
             .filter((entry: BlogEntry) => entry.title.match(regexp))
             .map((entry: BlogEntry) => {
@@ -71,10 +76,14 @@
                     title: entry.title.replaceAll(regexp, '<span class="search-term">$&</span>'),
                 };
             });
-    });
+    }
 
     onClickOutside(componentRoot, resetInput);
-    useEventListener(window, 'resize', resetInput);
+    useEventListener(window, 'resize', () => {
+        if (window.innerWidth >= 768) {
+            resetInput();
+        }
+    });
 
     /**
      *
@@ -98,7 +107,7 @@
             toggleInput();
             return;
         }
-        searchTerm.value = '';
+        searchQuery.value = '';
         searchResult.value = [];
     }
 </script>
