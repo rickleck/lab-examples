@@ -7,7 +7,7 @@
 @use '../variables/colors';
 
 .loader__spinner {
-    animation: spinner-rotate 2s linear infinite;
+    animation: loader__spinner-rotate 2s linear infinite;
     z-index: 50;
     position: absolute;
     top: 50%;
@@ -29,25 +29,51 @@
         display: block;
         opacity: 1;
     }
+
+    @keyframes loader__spinner-rotate {
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    @keyframes loader__spinner-dash {
+        0% {
+            stroke-dasharray: 1, 150;
+            stroke-dashoffset: 0;
+        }
+        50% {
+            stroke-dasharray: 90, 150;
+            stroke-dashoffset: -35;
+        }
+        100% {
+            stroke-dasharray: 90, 150;
+            stroke-dashoffset: -124;
+        }
+    }
 }
 
-@keyframes spinner-rotate {
-    100% {
-        transform: rotate(360deg);
+@mixin loader__dots($color, $duration: 0.65s) {
+    &:after {
+        content: '.';
+        animation: loader__dots 0.65s steps(5, end) infinite;
     }
-}
 
-@keyframes spinner-dash {
-    0% {
-        stroke-dasharray: 1, 150;
-        stroke-dashoffset: 0;
-    }
-    50% {
-        stroke-dasharray: 90, 150;
-        stroke-dashoffset: -35;
-    }
-    100% {
-        stroke-dasharray: 90, 150;
-        stroke-dashoffset: -124;
+    @keyframes loader__dots {
+        0%,
+        20% {
+            color: rgba(0, 0, 0, 0);
+            text-shadow: 0.25em 0 0 rgba(0, 0, 0, 0), 0.5em 0 0 rgba(0, 0, 0, 0);
+        }
+        40% {
+            color: $color;
+            text-shadow: 0.25em 0 0 rgba(0, 0, 0, 0), 0.5em 0 0 rgba(0, 0, 0, 0);
+        }
+        60% {
+            text-shadow: 0.25em 0 0 $color, 0.5em 0 0 rgba(0, 0, 0, 0);
+        }
+        80%,
+        100% {
+            text-shadow: 0.25em 0 0 $color, 0.5em 0 0 $color;
+        }
     }
 }

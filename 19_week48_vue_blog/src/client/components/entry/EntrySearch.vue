@@ -27,6 +27,7 @@
                 @click="resetInput"
                 class="result-item link link-light link-hover-underline"
                 v-html="entry.title"
+                :class="{ disabled: entry.id === NO_RESULT_ID }"
             >
             </RouterLink>
         </div>
@@ -39,11 +40,21 @@
     import { onClickOutside, useEventListener } from '@vueuse/core';
     import { apiStore, type BlogEntry } from '../../stores/ApiStore';
 
+    interface ResultItem {
+        id: string;
+        title: string;
+    }
+
     const componentRoot = ref<HTMLElement | null>(null);
     const input = ref<HTMLInputElement | null>(null);
     const isInputOpen = ref<boolean>(false);
     const searchQuery = ref<string>('');
-    const searchResult = ref<{ id: string; title: string }[]>([]);
+    const searchResult = ref<ResultItem[]>([]);
+    const NO_RESULT_ID = ref<string>('no-result');
+    const noResult = <ResultItem>{
+        id: NO_RESULT_ID.value,
+        title: '<span class="searching">Searching</span>',
+    };
     let isLoading = false;
 
     onClickOutside(componentRoot, resetInput);
@@ -86,6 +97,8 @@
                     title: entry.title.replaceAll(regexp, '<span class="search-term">$&</span>'),
                 };
             });
+
+        if (searchResult.value.length === 0) searchResult.value = [noResult];
     }
 
     /**
@@ -118,7 +131,8 @@
 <style scoped lang="scss">
     @use '../../scss/common/variables/layout';
     @use '../../scss/common/variables/colors';
-    @use '../../scss/common//utils/breakpoints';
+    @use '../../scss/common/utils/breakpoints';
+    @use '../../scss/common/gui/loaders';
     .entry-search {
         position: absolute;
         top: 0.8rem;
@@ -197,6 +211,13 @@
 
                 &:last-of-type {
                     border-bottom: none;
+                }
+
+                &.disabled {
+                    pointer-events: none;
+                }
+                &:deep(.searching) {
+                    @include loaders.loader__dots(colors.$light);
                 }
             }
         }
