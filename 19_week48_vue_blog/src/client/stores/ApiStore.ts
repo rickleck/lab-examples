@@ -42,8 +42,8 @@ const apiStore = reactive<ApiStore<BlogEntry, BlogEntryUpdate>>({
     get(id: string = ''): Promise<BlogEntry[] | BlogEntry> {
         return new Promise((resolve, reject) => {
             doFetch('GET', id)
-                .then((data: any[] | any) => {
-                    if (Array.isArray(data)) this.items = data as any[];
+                .then((data: BlogEntry[] | BlogEntry) => {
+                    if (Array.isArray(data)) this.items = data as BlogEntry[];
                     resolve(data);
                 })
                 .catch((error: any) => reject(error));
