@@ -46,6 +46,16 @@
     const searchResult = ref<{ id: string; title: string }[]>([]);
     let isLoading = false;
 
+    onClickOutside(componentRoot, resetInput);
+    useEventListener(window, 'resize', () => {
+        if (window.innerWidth >= 768) {
+            resetInput();
+        }
+    });
+
+    /**
+     *
+     */
     function onInput(e: Event): void {
         const el = e.target as HTMLInputElement;
         searchQuery.value = el.value;
@@ -77,13 +87,6 @@
                 };
             });
     }
-
-    onClickOutside(componentRoot, resetInput);
-    useEventListener(window, 'resize', () => {
-        if (window.innerWidth >= 768) {
-            resetInput();
-        }
-    });
 
     /**
      *
