@@ -26,7 +26,8 @@ Lexicon
 - [Week 45 Lab 16: Node API and Documentation](16_week45_node_api_doc/)
 - [Week 46 Lab 17: Vue.js Page](17_week46_vue_page)
 - [Week 47 Lab 18: Vue.js Login](18_week47_vue_login)
+- [Week 48 Lab 19: Vue.js Blog](19_week48_vue_blog)
 
 ### In Progress
+-
 
-- [Week 48 Lab 19: Vue.js Blog](19_week48_vue_blog)

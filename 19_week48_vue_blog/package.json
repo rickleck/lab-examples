@@ -1,6 +1,7 @@
 {
-  "name": "18_week48_vue_blog",
-  "version": "0.0.0",
+  "name": "19_week48_vue_blog",
+  "version": "1.0.0",
+  "description": "",
   "type": "module",
   "main": "dist/server.js",
   "scripts": {
@@ -15,6 +16,9 @@
     "dev:build:start": "npm run build && node -r dotenv/config dist/server.js",
     "clean": "rimraf dist"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "targets": {
     "default": {
       "publicUrl": "./"
