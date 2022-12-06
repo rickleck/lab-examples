@@ -71,16 +71,18 @@
 
                 .header {
                     margin-top: layout.$default-spacing;
-                    line-height: 1.9rem;
+                    margin-bottom: 1rem;
+                    line-height: 1.5rem;
                     @include breakpoints.from-sm() {
-                        margin-top: 4rem;
+                        margin-top: 5rem;
+                        margin-bottom: layout.$default-spacing;
                         font-size: 2.5rem;
-                        line-height: 1;
+                        line-height: 2.3rem;
                     }
 
                     @include breakpoints.from-md() {
                         font-size: 3rem;
-                        line-height: 1;
+                        line-height: 2.7rem;
                     }
 
                     filter: drop-shadow(5px 0px 5px white);
