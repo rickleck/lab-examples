@@ -21,3 +21,6 @@ src/
 tsconfig.json
 *.md
 *.cjs
+.parcel-cache
+*.pdf
+.env
