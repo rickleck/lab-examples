@@ -216,6 +216,7 @@
                 &.disabled {
                     pointer-events: none;
                 }
+
                 &:deep(.searching) {
                     @include loaders.loader__dots(colors.$light);
                 }
