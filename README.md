@@ -28,4 +28,5 @@ Lexicon
 - [Week 47 Lab 18: Vue.js Login](18_week47_vue_login)
 
 ### In Progress
--
+
+- [Week 48 Lab 19: Vue.js Blog](18_week48_vue_blog)

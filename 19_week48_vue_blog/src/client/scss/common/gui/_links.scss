@@ -1,0 +1,98 @@
+@use '../variables/colors';
+
+.link {
+    cursor: pointer;
+
+    &:disabled {
+        opacity: 0.5;
+        pointer-events: none;
+    }
+
+    &-primary {
+        color: colors.$primary;
+        @extend .link-hover-to-secondary;
+    }
+
+    &-primary-light {
+        color: colors.$primary-light;
+        @extend .link-hover-to-secondary;
+    }
+
+    &-secondary {
+        color: colors.$secondary;
+        @extend .link-hover-to-primary;
+    }
+
+    &-secondary-light {
+        color: colors.$secondary-light;
+        @extend .link-hover-to-primary-light;
+    }
+
+    &-dark {
+        color: colors.$dark;
+        @extend .link-hover-to-secondary;
+    }
+
+    &-light {
+        color: colors.$light;
+        @extend .link-hover-to-secondary-light;
+    }
+
+    &-black {
+        color: colors.$black;
+        @extend .link-hover-to-secondary;
+    }
+
+    &-white {
+        color: colors.$white;
+        @extend .link-hover-to-secondary;
+    }
+}
+
+.link-hover-underline {
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.link-hover-to {
+    &-primary {
+        &:hover,
+        &.is-selected {
+            color: colors.$primary;
+        }
+        &:active {
+            color: colors.$primary-dark;
+        }
+    }
+
+    &-primary-light {
+        &:hover,
+        &.is-selected {
+            color: colors.$primary-light;
+        }
+        &:active {
+            color: colors.$primary;
+        }
+    }
+
+    &-secondary {
+        &:hover,
+        &.is-selected {
+            color: colors.$secondary;
+        }
+        &:active {
+            color: colors.$secondary-dark;
+        }
+    }
+
+    &-secondary-light {
+        &:hover,
+        &.is-selected {
+            color: colors.$secondary-light;
+        }
+        &:active {
+            color: colors.$secondary;
+        }
+    }
+}

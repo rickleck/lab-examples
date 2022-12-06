@@ -1,0 +1,102 @@
+//Default breakpoints
+
+$bp-xs: 0;
+$bp-sm: 576px;
+$bp-md: 768px;
+$bp-lg: 992px;
+$bp-xl: 1200px;
+$bp-xxl: 1400px;
+
+//Up
+
+@mixin from-breakpoint($from) {
+    @media (min-width: #{$from}) {
+        @content;
+    }
+}
+
+@mixin from-sm() {
+    @media (min-width: #{$bp-sm}) {
+        @content;
+    }
+}
+
+@mixin from-md() {
+    @media (min-width: #{$bp-md}) {
+        @content;
+    }
+}
+
+@mixin from-lg() {
+    @media (min-width: #{$bp-lg}) {
+        @content;
+    }
+}
+
+@mixin from-xl() {
+    @media (min-width: #{$bp-xl}) {
+        @content;
+    }
+}
+
+@mixin from-xxl() {
+    @media (min-width: #{$bp-xxl}) {
+        @content;
+    }
+}
+
+//Down
+
+@mixin to-breakpoint($to) {
+    @media (max-width: #{$to - 1px}) {
+        @content;
+    }
+}
+
+@mixin to-sm() {
+    @media (max-width: #{$bp-sm - 1px}) {
+        @content;
+    }
+}
+
+@mixin to-md() {
+    @media (max-width: #{$bp-md - 1px}) {
+        @content;
+    }
+}
+
+@mixin to-lg() {
+    @media (max-width: #{$bp-lg - 1px}) {
+        @content;
+    }
+}
+
+@mixin to-xl() {
+    @media (max-width: #{$bp-xl - 1px}) {
+        @content;
+    }
+}
+
+@mixin to-xxl() {
+    @media (max-width: #{$bp-xxl - 1px}) {
+        @content;
+    }
+}
+
+.container-responsive {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+
+    @include from-md {
+        max-width: $bp-md;
+    }
+
+    @include from-lg {
+        max-width: $bp-lg;
+    }
+
+    @include from-xl {
+        max-width: $bp-xl;
+    }
+}

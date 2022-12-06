@@ -1,0 +1,9 @@
+{
+    "extends": "@vue/tsconfig/tsconfig.json",
+    "include": ["env.d.ts", "src/client/**/*", "src/client/**/*.vue"],
+    "compilerOptions": {
+        "baseUrl": "./",
+        "types": ["node"],
+        "lib": ["ESNext", "DOM", "DOM.Iterable"]
+    }
+}
