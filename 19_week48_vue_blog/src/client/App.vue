@@ -4,11 +4,7 @@
             <SiteNavigation />
         </header>
         <main class="view container-responsive">
-            <RouterView v-slot="{ Component, route }">
-                <Transition name="fade" mode="out-in">
-                    <component :is="Component" :key="route.path" />
-                </Transition>
-            </RouterView>
+            <RouterView />
         </main>
         <SiteFooter />
     </div>
@@ -25,16 +21,12 @@
     @use './scss/common/variables/colors';
     @use './scss/common//utils/breakpoints';
     .app-inner {
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-
         @include breakpoints.from-md() {
             padding-bottom: layout.$default-spacing;
         }
 
         .view {
-            flex: 1;
+            min-height: 100vh;
             padding: layout.$navigation-height layout.$default-spacing 0 layout.$default-spacing;
             background-color: colors.$white;
 

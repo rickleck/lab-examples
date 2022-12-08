@@ -29,6 +29,9 @@ const router: Router = createRouter(<RouterOptions>{
             component: NotFoundView,
         },
     ],
+    scrollBehavior(to, from, savedPosition) {
+        return { top: 0 };
+    },
 });
 
 export { router };

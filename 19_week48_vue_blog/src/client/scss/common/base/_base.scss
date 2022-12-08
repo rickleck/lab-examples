@@ -13,6 +13,7 @@ body {
     background: colors.$secondary;
     color: colors.$dark;
     position: relative;
+    min-height: 100vh;
 }
 
 button {

@@ -1,13 +1,14 @@
 /*
-<svg class="loader__spinner" viewBox="0 0 50 50">
-  <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
-</svg>
+<div class="loader__spinner show">
+    <svg class="loader__spinner" viewBox="0 0 50 50">
+        <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+    </svg>
+</div>
 */
 
 @use '../variables/colors';
 
 .loader__spinner {
-    animation: loader__spinner-rotate 2s linear infinite;
     z-index: 50;
     position: absolute;
     top: 50%;
@@ -15,18 +16,21 @@
     width: 100px;
     height: 100px;
     margin: -50px 0 0 -50px;
-    transition: opacity 0.3s ease;
-    display: none;
+    visibility: hidden;
+    transition: opacity 0.4s ease;
     opacity: 0;
 
-    & .path {
-        stroke: colors.$secondary;
-        stroke-linecap: round;
-        animation: spinner-dash 1.5s ease-in-out infinite;
+    svg {
+        animation: loader__spinner-rotate 2s linear infinite;
+        .path {
+            stroke: colors.$secondary;
+            stroke-linecap: round;
+            animation: loader__spinner-dash 1s ease-in-out infinite;
+        }
     }
 
     &.show {
-        display: block;
+        visibility: visible;
         opacity: 1;
     }
 

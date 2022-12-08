@@ -1,37 +1,41 @@
 <template>
-    <article class="entry-view view-padding">
-        <div class="page-grid">
-            <aside><HomeButton /></aside>
-            <header class="header">
-                <h1 class="title">{{ entry.title }}</h1>
-                <p class="details">
-                    {{ entry.published }}
-                    <i class="bi bi-dot"></i>
-                    <span class="author"> By {{ entry.author }}</span>
-                </p>
-            </header>
-        </div>
-        <div v-if="entry.img_src" class="image">
-            <img :src="entry.img_src" />
-        </div>
+    <div class="entry-view view-padding">
+        <article v-if="entry">
+            <div class="page-grid">
+                <aside><HomeButton /></aside>
+                <header class="header">
+                    <h1 class="title">{{ entry.title }}</h1>
+                    <p class="details">
+                        {{ entry.published }}
+                        <i class="bi bi-dot"></i>
+                        <span class="author"> By {{ entry.author }}</span>
+                    </p>
+                </header>
+            </div>
+            <div v-if="entry.img_src" class="image">
+                <img :src="entry.img_src" />
+            </div>
 
-        <div class="page-grid">
-            <aside></aside>
-            <p class="pody">
-                {{ entry.body }}
-            </p>
-        </div>
-    </article>
+            <div class="page-grid">
+                <aside></aside>
+                <p class="pody">
+                    {{ entry.body }}
+                </p>
+            </div>
+        </article>
+        <LoaderSpinner v-else :delay="600" />
+    </div>
 </template>
 
 <script setup lang="ts">
     import { ref } from 'vue';
     import { apiStore, type BlogEntry } from '../stores/ApiStore';
     import HomeButton from '../components/common/HomeButton.vue';
+    import LoaderSpinner from '../components/common/LoaderSpinner.vue';
     import { useRoute, useRouter } from 'vue-router';
 
     const props = defineProps<{ id: string }>();
-    const entry = ref<BlogEntry>(<BlogEntry>{});
+    const entry = ref<BlogEntry>();
     const router = useRouter();
     const route = useRoute();
 
