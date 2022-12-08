@@ -29,5 +29,6 @@ Lexicon
 - [Week 48 Lab 19: Vue.js Blog](19_week48_vue_blog)
 
 ### In Progress
--
+
+- [Week 49 Lab 20: Vue.js Store](20_week49_vue_store)
 

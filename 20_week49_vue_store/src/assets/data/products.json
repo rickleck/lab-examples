@@ -1,0 +1,206 @@
+[
+    {
+        "id": "03GS3MPC02MPL22",
+        "name": "LA MARZOCCO GS3 MP FLAT WHITE MAPLE WOOD KIT ESPRESSO MACHINE",
+        "price": {
+            "amount": 8040,
+            "currency": "€"
+        },
+        "available": {
+            "status": true,
+            "msg": "In Stock"
+        },
+        "description": {
+            "short": "The La Marzocco GS3 MP is amongst the best commercial coffee machines for home use.",
+            "full": "The La Marzocco GS3 MP is amongst the best commercial coffee machines for home use. With its double stainless steel boilers, adjustable temperature controls and programmable water flow it promises commercial grade performance for home use. This version features the flow control thanks to a valve situated above the group head that gives you the freedom to manage the pressure flow at any point of the coffee extraction."
+        },
+        "image": "https://www.espressocoffeeshop.com/750-large_default/0-la-marzocco-gs3-mp-flat-white-maple-wood-kit-coffee-machine.jpg"
+    },
+    {
+        "id": "01GIRC0322",
+        "name": "ROCKET GIOTTO TIMER EVOLUZIONE R ESPRESSO MACHINE",
+        "price": {
+            "amount": 1656,
+            "currency": "€"
+        },
+        "available": {
+            "status": true,
+            "msg": "In Stock"
+        },
+        "description": {
+            "short": "Combines the original Italian design with the latest and most advanced technological solutions.",
+            "full": "Like all Rocket machines, the Giotto Timer Evoluzione R combines the original Italian design with the latest and most advanced technological solutions. A true hand made coffee machine with incredible looks and easy to use."
+        },
+        "image": "https://www.espressocoffeeshop.com/55-large_default/0-rocket-giotto-timer-evoluzione-r-coffee-machine.jpg"
+    },
+    {
+        "id": "50CUBEARC0122",
+        "name": "SANREMO CUBE R ESPRESSO MACHINE",
+        "price": {
+            "amount": 1999,
+            "currency": "€"
+        },
+        "available": {
+            "status": true,
+            "msg": "In Stock"
+        },
+        "description": {
+            "short": "Suitable for the coffee enthusiast, ideal for home use or within a commercial environment.",
+            "full": "Suitable for the coffee enthusiast, ideal for home use or within a commercial environment.\nThe revolutionary CUBE - R is a Semi-professional one group model, that follows in the footprints of the Café Racer. An object of desire, advanced technology and minimal design in the “Sanremo style” tradition.\nThanks to the colour palette and particular design of the side panels, the CUBE offers a great choice for domestic use."
+        },
+        "image": "https://www.espressocoffeeshop.com/1327-large_default/sanremo-cube-r-espresso-machine.jpg"
+    },
+    {
+        "id": "06OSC22C0150",
+        "name": "NUOVA SIMONELLI OSCAR II WITH OPV KIT ESPRESSO MACHINE",
+        "price": {
+            "amount": 720,
+            "currency": "€"
+        },
+        "available": {
+            "status": true,
+            "msg": "In Stock"
+        },
+        "description": {
+            "short": "Professional performance in a small space.",
+            "full": "Professional performance in a small space.\nThe restyling of a classic. Oscar II is a new generation of the coffee machine launched in the late nineties, which has conquered coffee lovers around the world. Just 32 cm wide and thanks to the stainless steel body, Oscar II is suitable for all small spaces, in a kitchen, a coffee corner, an office or a Bed & Breakfast to guarantee guests taste very high quality"
+        },
+        "image": "https://www.espressocoffeeshop.com/410-large_default/nuova-simonelli-oscar-ii-macchina-da-caffe-.jpg"
+    },
+    {
+        "id": "01R92GR38",
+        "name": "ROCKET R9 ESPRESSO MACHINE",
+        "price": {
+            "amount": 9150,
+            "currency": "€"
+        },
+        "available": {
+            "status": true,
+            "msg": "In Stock"
+        },
+        "description": {
+            "short": "The pursuit of the perfect espresso is an endless quest.",
+            "full": "The pursuit of the perfect espresso is an endless quest.\nIn designing the Rocket Espresso R 9, engineer Ennio Berti opted for a fully saturated group to further enhance machine temperature stability through PID control in the stainless steel multi boiler machine Pressure transducer technology was used to dramatically reduce steam pressure recovery times, increasingly important in high volume cafes.\nAesthetically the R 9 shares the contemporary look that sets Rocket Espresso machines apart from others, with a lowered machine height that allows for a better interaction between the barista and the customer. The digital display features boiler temperature adjustable in increments of 0.1 degrees celsius and shot timers for each group."
+        },
+        "image": "https://www.espressocoffeeshop.com/1676-large_default/0-rocket-r9-espresso-machine.jpg"
+    },
+    {
+        "id": "51PL162T22",
+        "name": "LELIT BIANCA PL162T V3 ESPRESSO MACHINE",
+        "price": {
+            "amount": 1799,
+            "currency": "€"
+        },
+        "available": {
+            "status": false,
+            "msg": "Out of Stock"
+        },
+        "description": {
+            "short": "Professional coffee machine with L58E group and manual water flow control.",
+            "full": "Professional coffee machine with L58E group and manual water flow control. The double boiler guarantees unsurpassed thermal stability. Created only for true experts who want to get the best out of every coffee.\nThis is the latest V3 2022 version available."
+        },
+        "image": "https://www.espressocoffeeshop.com/1403-large_default/0-lelit-bianca-pl162t-espresso-machine.jpg"
+    },
+    {
+        "id": "01PTV22C03",
+        "name": "ROCKET PORTA VIA ESPRESSO MACHINE",
+        "price": {
+            "amount": 1664,
+            "currency": "€"
+        },
+        "available": {
+            "status": true,
+            "msg": "In Stock"
+        },
+        "description": {
+            "short": "Here is the most travel-friendly coffee machine you will ever see.",
+            "full": "Here is the most travel-friendly coffee machine you will ever see. If you want to bring the best quality coffee to any event, this is the machine for you. It comes inside a case that looks just like the one a Rockstar would use to carry instruments around the world."
+        },
+        "image": "https://www.espressocoffeeshop.com/70-large_default/0-rocket-porta-via-coffee-machine.jpg"
+    },
+    {
+        "id": "53SYA22",
+        "name": "ECM SYNCHRONIKA ANTHRACITE ESPRESSO MACHINE",
+        "price": {
+            "amount": 2599,
+            "currency": "€"
+        },
+        "available": {
+            "status": true,
+            "msg": "In Stock"
+        },
+        "description": {
+            "short": "Elegant dual boiler espresso machine.",
+            "full": "Elegant dual boiler espresso machine with an extremely quiet and durable commercial grade rotary pump. If you're looking for a high end prosumer espresso machine with commercial-like capabilities, the Synchronika is the right choice for you."
+        },
+        "image": "https://www.espressocoffeeshop.com/1376-large_default/0-ecm-synchronika-anthracite-espresso-machine.jpg"
+    },
+    {
+        "id": "01REA222GR",
+        "name": "ROCKET RE TIMER COMMERCIAL ESPRESSO MACHINE",
+        "price": {
+            "amount": 6270,
+            "currency": "€"
+        },
+        "available": {
+            "status": true,
+            "msg": "In Stock"
+        },
+        "description": {
+            "short": "Handmade from the very best materials.",
+            "full": "Handmade from the very best materials in Milan factory, the RE A Timer espresso machine utilises digitally adjustable, pressure transducer technology to ensure optimum brewing control."
+        },
+        "image": "https://www.espressocoffeeshop.com/1262-large_default/0-rocket-re-timer-commercial-espresso-machine.jpg"
+    },
+    {
+        "id": "04P30022",
+        "name": "PROFITEC PRO 300 ESPRESSO MACHINE",
+        "price": {
+            "amount": 1302,
+            "currency": "€"
+        },
+        "available": {
+            "status": false,
+            "msg": "Out of Stock"
+        },
+        "description": {
+            "short": "A compact dual boiler semi-automatic coffee machine.",
+            "full": "Don't be fooled by the small size of this one because the Pro 300 is a compact dual boiler semi-automatic coffee machine with incredible performance and an impressive value for the money. Engineered in Germany, this machine benefits a high built quality and will be the optimum choice if you want a small double boiler coffee machine."
+        },
+        "image": "https://www.espressocoffeeshop.com/279-large_default/profitec-pro-300-macchina-da-caffe-.jpg"
+    },
+    {
+        "id": "03GS3MPC01WLN22",
+        "name": "LA MARZOCCO GS3 MP FLAT BLACK WALNUT WOOD KIT ESPRESSO MACHINE",
+        "price": {
+            "amount": 8040,
+            "currency": "€"
+        },
+        "available": {
+            "status": true,
+            "msg": "In Stock"
+        },
+        "description": {
+            "short": "The La Marzocco GS3 MP is amongst the best commercial coffee machines for domestic use.",
+            "full": "The La Marzocco GS3 MP is amongst the best commercial coffee machines for domestic use. With its double stainless steel boilers, adjustable temperature controls and programmable water flow it promises commercial grade performance in your kitchen. This version features the flow control thanks to a valve situated above the group head that gives you the freedom to manage the pressure flow at any point of the coffee extraction. "
+        },
+        "image": "https://www.espressocoffeeshop.com/741-large_default/0-la-marzocco-gs3-mp-flat-black-walnut-wood-kit-coffee-machine.jpg"
+    },
+    {
+        "id": "03GS3MPC01WLN22",
+        "name": "LA MARZOCCO GS3 MP FLAT WHITE ESPRESSO MACHIN",
+        "price": {
+            "amount": 7125,
+            "currency": "€"
+        },
+        "available": {
+            "status": true,
+            "msg": "In Stock"
+        },
+        "description": {
+            "short": "The La Marzocco GS3 MP is amongst the best commercial coffee machines for domestic use.",
+            "full": "The La Marzocco GS3 MP is amongst the best commercial coffee machines for domestic use. With its double stainless steel boilers, adjustable temperature controls and programmable water flow it promises commercial grade performance in your kitchen. This version features the flow control thanks to a valve situated above the group head that gives you the freedom to manage the pressure flow at any point of the coffee extraction. "
+        },
+        "image": "https://www.espressocoffeeshop.com/742-large_default/0-la-marzocco-gs3-mp-flat-white-coffee-machine.jpg"
+    }
+]

@@ -1,0 +1,27 @@
+@use '../layout';
+@use '../breakpoints';
+@use '../reset';
+
+html {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1rem;
+}
+
+body {
+    background: white;
+    color: black;
+    position: relative;
+    min-height: 100vh;
+}
+
+button {
+    @include reset.button;
+}
+
+input {
+    @include reset.input;
+}
+
+img {
+    display: block;
+}

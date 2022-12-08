@@ -1,0 +1,16 @@
+/* Included default classes*/
+@use 'reset/reset-classes';
+@use 'base/base-classes';
+@use 'color/color-classes';
+@use 'layout/layout-classes';
+@use 'gui/gui-classes.scss';
+
+/* Fonts */
+@use 'fonts/font-imports';
+
+/* Icons */
+// @use 'gui/icons/icons-import-bi'; //Bootstrap
+// @use 'gui/icons/icons-import-md'; //Google
+
+/* Vue specific */
+@use 'vue/vue-classes';
