@@ -10,7 +10,8 @@
 
 /* Icons */
 // @use 'gui/icons/icons-import-bi'; //Bootstrap
-// @use 'gui/icons/icons-import-md'; //Google
+@use 'gui/icons/icons-import-md'; //Google Icons
+// @use 'gui/icons-import-md-symbols'; //Google Symbols
 
 /* Vue specific */
-@use 'vue/vue-classes';
+//@use 'vue/vue-classes';

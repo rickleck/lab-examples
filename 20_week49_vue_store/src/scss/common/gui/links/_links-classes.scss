@@ -28,16 +28,6 @@
         @extend .link-hover-to-primary-light;
     }
 
-    &-dark {
-        color: color.$dark;
-        @extend .link-hover-to-secondary;
-    }
-
-    &-light {
-        color: color.$light;
-        @extend .link-hover-to-secondary-light;
-    }
-
     &-black {
         color: color.$black;
         @extend .link-hover-to-secondary;

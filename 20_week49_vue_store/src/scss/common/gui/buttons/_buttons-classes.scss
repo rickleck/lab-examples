@@ -1,10 +1,10 @@
 @use '../../color';
 
 .btn {
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
+    padding: 0.7rem 1.1rem;
     font-weight: 700;
     text-align: center;
+    text-transform: uppercase;
     cursor: pointer;
     transition: background-color 150ms ease;
 
@@ -12,7 +12,7 @@
         @extend .btn;
 
         background-color: color.$primary;
-        color: color.$light;
+        color: white;
 
         &:hover {
             background-color: color.$primary-light;
@@ -27,6 +27,7 @@
         display: none;
     }
 
+    &.disabled,
     &:disabled {
         opacity: 0.5;
         pointer-events: none;
@@ -34,18 +35,15 @@
 }
 
 .btn-outline {
-    outline: 1px solid white;
-    color: white;
     font-weight: 700;
     padding: 0.5rem 1rem;
     cursor: pointer;
     white-space: nowrap;
-
     text-transform: uppercase;
 
     &:hover {
-        color: color.$secondary-light;
-        outline-color: color.$secondary-light;
+        color: color.$secondary;
+        outline-color: color.$secondary;
     }
 
     &:active {
@@ -53,12 +51,27 @@
         outline-color: color.$secondary;
     }
 
+    &.disabled,
     &:disabled {
         pointer-events: none;
+        color: lightgrey;
+        outline-color: lightgrey;
     }
 
     &.is-selected {
-        color: color.$secondary-light;
-        outline-color: color.$secondary-light;
+        color: color.$secondary;
+        outline-color: color.$secondary;
+    }
+
+    &-white {
+        @extend .btn-outline;
+        outline: 2px solid white;
+        color: white;
+    }
+
+    &-black {
+        @extend .btn-outline;
+        outline: 2px solid black;
+        color: black;
     }
 }

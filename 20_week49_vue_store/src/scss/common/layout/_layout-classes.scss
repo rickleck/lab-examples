@@ -20,6 +20,14 @@
 }
 
 .body-side-padding {
-    padding-left: vars.$default-spacing;
-    padding-right: vars.$default-spacing;
+    padding-left: vars.$spacing-default;
+    padding-right: vars.$spacing-default;
+}
+
+.view-padding-bottom {
+    padding-bottom: vars.$view-padding-bottom-default;
+}
+
+.view-padding-top {
+    padding-top: vars.$view-padding-top-default;
 }

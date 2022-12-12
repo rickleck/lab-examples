@@ -1,0 +1,15 @@
+[
+    {
+        "title": "Products",
+        "route": "product_list"
+    },
+    {
+        "title": "Our History"
+    },
+    {
+        "title": "Stores"
+    },
+    {
+        "title": "Customer Service"
+    }
+]

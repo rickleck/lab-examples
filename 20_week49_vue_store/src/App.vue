@@ -1,5 +1,5 @@
 <script setup lang="ts">
-    import { RouterLink, RouterView } from 'vue-router';
+    import { RouterView } from 'vue-router';
     import SiteFooter from './components/footer/SiteFooter.vue';
     import SiteNavigation from './components/navigation/SiteNavigation.vue';
 </script>
@@ -17,8 +17,16 @@
 </template>
 
 <style lang="scss" scoped>
-    @use './scss/common/layout';
+    @use '@/scss/common/layout';
+
+    :global(#app) {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
     main {
+        flex: 1;
         padding-top: layout.$navigation-height;
     }
 </style>

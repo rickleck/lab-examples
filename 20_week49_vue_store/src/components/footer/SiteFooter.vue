@@ -7,7 +7,7 @@
 <style lang="scss" scoped>
     .footer {
         width: 100%;
-        height: 200px;
+        height: 100px;
         background: black;
     }
 </style>

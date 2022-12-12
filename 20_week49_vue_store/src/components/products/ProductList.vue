@@ -1,62 +1,104 @@
 <script setup lang="ts">
-    import { useShop } from '@/stores/Shop';
+    import { Routes } from '@/router/enum/Routes';
+    import { useShopStore } from '@/stores/ShopStore';
+    import BackButton from '@/components/common/BackButton.vue';
 
-    const shop = useShop();
+    const shop = useShopStore();
+    const products = shop.inventory.sortedBy(['brand', 'model']);
 </script>
-
 <template>
-    <div class="product-list">
-        <RouterLink
-            v-for="product in shop.products"
-            :key="product.id"
-            :to="{ name: 'product', params: { id: product.id } }"
-            class="product-list-item link-black"
-        >
-            <div class="image">
-                <img :src="product.image" alt="" />
-            </div>
-            <div class="texts">
-                <p class="name">{{ product.name }}</p>
-                <p class="description">{{ product.description.short }}</p>
-            </div>
-        </RouterLink>
+    <div class="product-list container-responsive">
+        <BackButton />
+        <div class="list">
+            <RouterLink
+                v-for="product in products"
+                :key="product.id"
+                :to="{ name: Routes.PRODUCT_DETAILS, params: { id: product.id } }"
+                class="product-list-item"
+            >
+                <div class="image">
+                    <img :src="product.image" alt="" />
+                </div>
+                <div class="texts">
+                    <p class="brand">{{ product.brand }}</p>
+                    <p class="model">{{ product.model }}</p>
+                    <div class="divider"></div>
+                    <p class="description">{{ product.description.short }}</p>
+                    <p class="price">
+                        {{ product.price.amount.toLocaleString() + ' ' + product.price.currency }}
+                    </p>
+                </div>
+            </RouterLink>
+        </div>
     </div>
 </template>
 
 <style lang="scss" scoped>
+    @use '@/scss/common/color';
+    @use '@/scss/common/layout';
     .product-list {
-        max-width: 850px;
-        margin-left: auto;
-        margin-right: auto;
-        .product-list-item {
-            display: flex;
-            margin-bottom: 1rem;
+        .list {
+            max-width: layout.$list-max-width;
+            margin: 3rem auto 0 auto;
+            .product-list-item {
+                display: flex;
+                margin-bottom: 1rem;
 
-            &:hover {
+                &:hover {
+                    .brand,
+                    .model,
+                    .description,
+                    .price {
+                        transform: translateX(10px);
+                        color: color.$secondary !important;
+                    }
+                }
+
+                .image {
+                    margin-right: 1rem;
+
+                    img {
+                        width: 200px;
+                        height: 200px;
+                        object-fit: cover;
+                    }
+                }
+
+                $transition: all 0.2s ease;
+
                 .texts {
-                    transform: translateX(10px);
-                }
-            }
+                    padding: 3rem 0 0 0;
+                    flex: 1;
 
-            .image {
-                margin-right: 1rem;
+                    .brand {
+                        font-weight: 700;
+                        font-size: 1.2rem;
+                        text-transform: uppercase;
+                        margin-bottom: 0.5rem;
+                        transition: $transition;
+                    }
 
-                img {
-                    width: 200px;
-                    height: 200px;
-                    object-fit: cover;
-                }
-            }
+                    .model {
+                        text-transform: uppercase;
+                        margin-bottom: 0.1rem;
+                        transition: $transition;
+                    }
 
-            .texts {
-                padding: 3rem 0 0 0;
-                flex: 1;
-                transition: all 0.2s ease;
-                .name {
-                    font-weight: 700;
-                    padding-bottom: 0.4rem;
-                    margin-bottom: 0.5rem;
-                    border-bottom: 1px dotted black;
+                    .divider {
+                        border-top: 1px solid rgb(192, 192, 192);
+                        margin-bottom: 0.5rem;
+                    }
+
+                    .description {
+                        margin-bottom: 0.7rem;
+                        transition: $transition;
+                    }
+
+                    .price {
+                        font-weight: 700;
+                        color: grey;
+                        transition: $transition;
+                    }
                 }
             }
         }
