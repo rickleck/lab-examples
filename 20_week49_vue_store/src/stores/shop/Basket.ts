@@ -2,9 +2,9 @@ import { ref, computed, type Ref } from 'vue';
 import type { Product } from '@/stores/shop/Product';
 
 interface Basket {
-    items: Ref<BasketItem[]>;
-    itemsTotal: Ref<number>;
-    subTotal: Ref<number>;
+    items: Ref<BasketItem[]> | BasketItem[];
+    itemsTotal: Ref<number> | number;
+    subTotal: Ref<number> | number;
     add: (product: Product) => void;
     remove: (product: Product) => void;
     setQuantity: (product: Product, quantity: number) => void;

@@ -23,17 +23,13 @@ const router = createRouter({
                     path: '',
                     name: Routes.PRODUCT_LIST,
                     component: ProductList,
+                    props: (route) => route.query,
                 },
                 {
                     path: '/products/:id',
                     name: Routes.PRODUCT_DETAILS,
                     component: ProductDetails,
                     props: true,
-                },
-                {
-                    path: '/brands/:brand' /* TODO */,
-                    name: Routes.BRAND,
-                    component: ProductList,
                 },
             ],
         },

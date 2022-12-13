@@ -4,37 +4,34 @@
     import navData from '@/assets/data/navigation.json';
     import { useShopStore } from '@/stores/ShopStore';
     import { watch, ref } from 'vue';
+    import { useEventListener } from '@vueuse/core';
 
     const shop = useShopStore();
     const route = useRoute();
     const showIndicator = ref<boolean>(false);
+    const isNavOpen = ref<boolean>(false);
 
     watch(shop.basket, () => {
         if (route.name !== Routes.BASKET) showIndicator.value = true;
     });
 
-    /**
-     *
-     */
-    function onIndicatorIn() {
-        showIndicator.value = false;
-    }
+    useEventListener(window, 'resize', () => (isNavOpen.value = false));
 </script>
 
 <template>
     <div class="navigation">
         <div class="top-wrapper">
             <RouterLink :to="{ name: Routes.HOME }">
-                <img src="../../assets/svg/logo.svg" height="70" />
+                <img src="../../assets/graphics/logo-opt.svg" class="logo" />
             </RouterLink>
         </div>
-        <div class="nav-wrapper">
+        <div class="nav-bar-wrapper">
             <nav class="nav-bar">
                 <RouterLink
                     v-for="(item, index) in navData"
                     :key="index"
                     :to="{ name: item.route || Routes.NOT_IMPLEMENTED }"
-                    class="nav-bar-link"
+                    class="nav-bar-item"
                     :title="item.route ? item.title : 'Not implemented'"
                 >
                     {{ item.title }}
@@ -42,15 +39,35 @@
             </nav>
         </div>
         <div class="basket">
-            <Transition name="indicator" :duration="1700" @after-enter="onIndicatorIn">
+            <Transition name="indicator" :duration="1700" @after-enter="showIndicator = false">
                 <div class="indicator" v-show="showIndicator">Item added</div>
             </Transition>
             <RouterLink :to="{ name: Routes.BASKET }">
-                <span class="material-icons-outlined icon"> shopping_bag </span>
+                <i class="bi bi-bag icon"></i>
+
                 <div class="basket-items">
                     <span class="count">{{ shop.basket.itemsTotal }}</span>
                 </div>
             </RouterLink>
+        </div>
+        <div class="nav-list-wrapper">
+            <button @click="isNavOpen = !isNavOpen" class="link link-black btn-nav-list">
+                <i v-if="!isNavOpen" class="bi bi-list"></i>
+                <i v-else class="bi bi-x"></i>
+            </button>
+            <nav class="nav-list" :class="{ 'is-open': isNavOpen }">
+                <RouterLink
+                    v-for="(item, index) in navData"
+                    :key="index"
+                    :to="{ name: item.route || Routes.NOT_IMPLEMENTED }"
+                    class="nav-list-item"
+                    :class="{ 'is-open': isNavOpen }"
+                    :title="item.route ? item.title : 'Not implemented'"
+                    @click="isNavOpen = false"
+                >
+                    {{ item.title }}
+                </RouterLink>
+            </nav>
         </div>
     </div>
 </template>
@@ -58,26 +75,102 @@
 <style lang="scss" scoped>
     @use '@/scss/common/layout';
     @use '@/scss/common/color';
+    @use '@/scss/common/breakpoints';
+    @use '@/scss/common/animation';
     .navigation {
         position: fixed;
         display: block;
         width: 100%;
         z-index: 50;
         background: white;
+
+        .nav-list-wrapper {
+            position: absolute;
+            width: 100%;
+            top: 0;
+            z-index: 10;
+            pointer-events: none;
+
+            @include breakpoints.from-md() {
+                display: none;
+            }
+
+            .btn-nav-list {
+                font-size: 2.4rem;
+                padding: 1rem layout.$spacing-default;
+                pointer-events: all;
+            }
+
+            .nav-list {
+                display: none;
+                flex-direction: column;
+                pointer-events: all;
+
+                &.is-open {
+                    display: flex;
+                }
+
+                .nav-list-item {
+                    flex-basis: 100%;
+                    background-color: white;
+                    padding: 1rem layout.$spacing-default;
+                    font-weight: 700;
+
+                    &:hover {
+                        background-color: color.$secondary;
+                        color: white;
+                    }
+
+                    &.is-open {
+                        opacity: 0;
+                        transform: translateX(-500px);
+                    }
+
+                    @include animation.with-delay(4, 200, 60) using ($step, $duration, $delay) {
+                        &.is-open {
+                            &:nth-child(#{$step}) {
+                                animation: $duration ease $delay forwards anim-item-in;
+                            }
+                        }
+                    }
+
+                    @keyframes anim-item-in {
+                        to {
+                            opacity: 1;
+                            transform: translateX(0);
+                        }
+                    }
+                }
+            }
+        }
+
         .top-wrapper {
             position: relative;
             display: flex;
             justify-content: center;
             width: 100%;
-            padding: 1rem;
+            padding: 1rem 0;
+
+            .logo {
+                margin-top: -0.4rem;
+                width: 180px;
+
+                @include breakpoints.from-md() {
+                    width: 260px;
+                }
+            }
         }
 
-        .nav-wrapper {
-            display: flex;
+        .nav-bar-wrapper {
+            display: none;
             justify-content: center;
             align-items: center;
             width: 100%;
             padding: 0.5rem 0 1.3rem 0;
+
+            @include breakpoints.from-md() {
+                display: flex;
+            }
 
             .nav-bar {
                 display: flex;
@@ -86,7 +179,7 @@
                 font-weight: 700;
                 text-transform: uppercase;
 
-                .nav-bar-link {
+                .nav-bar-item {
                     position: relative;
 
                     &::after {
@@ -123,8 +216,13 @@
 
         .basket {
             position: absolute;
-            top: layout.$spacing-default;
+            top: 1rem;
             right: layout.$spacing-default;
+
+            @include breakpoints.from-md() {
+                top: layout.$spacing-default;
+                right: layout.$spacing-default;
+            }
 
             &:hover {
                 .icon {
@@ -133,14 +231,18 @@
             }
 
             .icon {
-                font-size: 50px;
+                font-size: 40px;
+
+                @include breakpoints.from-md() {
+                    font-size: 50px;
+                }
             }
 
             .basket-items {
                 $size: 25px;
                 position: absolute;
-                top: 0;
-                right: -4px;
+                top: 4px;
+                right: -8px;
                 width: $size;
                 height: $size;
 

@@ -13,13 +13,18 @@
 
         <div v-if="shop.basket.items.length > 0" class="basket">
             <div v-for="item in shop.basket.items" :key="item.product.id" class="basket-item">
-                <img :src="item.product.image" class="image" />
+                <RouterLink :to="{ name: Routes.PRODUCT_DETAILS, params: { id: item.product.id } }">
+                    <img :src="item.product.image" class="image" />
+                </RouterLink>
 
                 <div class="properties">
-                    <div class="name">
-                        <p class="brand">{{ item.product.brand }}</p>
+                    <RouterLink
+                        :to="{ name: Routes.PRODUCT_DETAILS, params: { id: item.product.id } }"
+                        class="name link-black"
+                    >
+                        <p class="brand">{{ item.product.brand.name }}</p>
                         <p class="model">{{ item.product.model }}</p>
-                    </div>
+                    </RouterLink>
 
                     <div class="remove">
                         <button
@@ -27,7 +32,7 @@
                             class="btn-remove link link-black"
                             title="Remove"
                         >
-                            <span class="material-icons-outlined md-36"> delete </span>
+                            <i class="bi bi-trash3"></i>
                         </button>
                     </div>
 
@@ -73,24 +78,40 @@
 
 <style lang="scss" scoped>
     @use '@/scss/common/layout';
+    @use '@/scss/common/breakpoints';
     .basket-view {
         .header {
             text-align: center;
-            margin-bottom: 3rem;
+
+            @include breakpoints.from-sm() {
+                margin-bottom: 3rem;
+            }
         }
         .basket {
             max-width: layout.$list-max-width;
             margin-left: auto;
             margin-right: auto;
             .basket-item {
-                display: flex;
-                align-items: center;
                 border-bottom: 1px solid lightgray;
+                padding: 1rem 0;
+
+                @include breakpoints.from-sm() {
+                    display: flex;
+                    align-items: center;
+                    padding: 0;
+                }
 
                 .image {
-                    width: 200px;
-                    height: 200px;
-                    object-fit: cover;
+                    width: 100%;
+                    max-width: 300px;
+                    margin-left: auto;
+                    margin-right: auto;
+                    @include breakpoints.from-sm() {
+                        width: 200px;
+                        height: 200px;
+                        object-fit: cover;
+                        margin: 0;
+                    }
                 }
                 .properties {
                     width: 100%;
@@ -106,6 +127,7 @@
 
                     .remove {
                         justify-self: end;
+                        font-size: 1.7rem;
                     }
 
                     .quantity {
@@ -136,7 +158,9 @@
                 margin-bottom: 3rem;
 
                 .subtotal-header {
-                    margin-left: 200px;
+                    @include breakpoints.from-sm() {
+                        margin-left: 200px;
+                    }
                 }
 
                 .subtotal-amount {

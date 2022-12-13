@@ -1,27 +1,31 @@
 <script setup lang="ts">
     import { Routes } from '@/router/enum/Routes';
+    import type { Product } from '@/stores/shop/Product';
     import { useShopStore } from '@/stores/ShopStore';
     import { RouterLink } from 'vue-router';
 
-    const shop = useShopStore();
-    const brand = 'ROCKET';
-    const collection = shop.inventory.filterBy('brand', brand);
+    const brand = {
+        id: 'rocket',
+        name: 'Rocket',
+    };
+    const inventory = useShopStore().inventory();
+    inventory.filterTo((product: Product) => product.brand.id === brand.id);
 </script>
 
 <template>
     <section class="grid-section view-padding-bottom">
         <div class="container-responsive">
-            <p class="grid-header">Discover {{ brand.toLowerCase() }}</p>
+            <p class="grid-header home-view-header">Discover {{ brand.name }}</p>
             <div class="grid">
                 <RouterLink
-                    v-for="product in collection"
+                    v-for="product in inventory.getList()"
                     :key="product.id"
                     class="grid-item"
                     :to="{ name: Routes.PRODUCT_DETAILS, params: { id: product.id } }"
                 >
-                    <img class="image" :src="product.image" :title="product.brand" />
+                    <img class="image" :src="product.image" :title="product.brand.name" />
                     <p class="product-name">
-                        <span class="brand">{{ product.brand + ' ' }}</span>
+                        <span class="brand">{{ product.brand.name + ' ' }}</span>
                         <span class="model">{{ product.model }}</span>
                     </p>
                 </RouterLink>
@@ -33,25 +37,37 @@
 <style lang="scss" scoped>
     @use '@/scss/common/layout';
     @use '@/scss/common/color';
+    @use '@/scss/common/breakpoints';
     .grid-section {
-        padding-top: 7rem;
         position: relative;
+        padding-top: 3rem;
+        padding-left: layout.$spacing-default;
+        padding-right: layout.$spacing-default;
+
+        @include breakpoints.from-md() {
+            padding-top: 7rem;
+        }
 
         .grid-header {
-            font-size: 4.5rem;
-            line-height: 4.3rem;
-            font-weight: 700;
-            margin: 0;
             text-align: center;
-            text-transform: capitalize;
         }
         .grid {
             display: grid;
-            grid: auto auto / auto auto;
+            grid: auto / auto;
             gap: layout.$spacing-default;
+            justify-content: center;
+
+            @include breakpoints.from-md() {
+                grid: auto auto / auto auto;
+            }
 
             .grid-item {
                 position: relative;
+                max-width: 400px;
+
+                @include breakpoints.from-md() {
+                    max-width: none;
+                }
 
                 &:hover {
                     .product-name {
@@ -64,11 +80,10 @@
                 }
 
                 .product-name {
-                    position: absolute;
-                    bottom: layout.$spacing-default;
-                    right: layout.$spacing-default;
                     transition: all 0.2s ease;
                     margin: 0;
+                    text-transform: uppercase;
+                    text-align: center;
 
                     .brand {
                         font-weight: 700;

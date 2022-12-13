@@ -1,38 +1,61 @@
 import { sortBy as _sortBy, filter as _filter } from 'lodash';
 import type { Product } from '@/stores/shop/Product';
 
-interface Inventory {
-    list: Product[];
-    sortedBy: (predicate: string[], customList?: Product[]) => Product[];
-    productById: (id: string, customList?: Product[]) => Product | undefined;
-    filterBy: (key: string, value: any, customList?: Product[]) => Product[];
+interface Inventory<T> {
+    getList: () => T[];
+    productById: (id: string) => T | undefined;
+    hasBrandById: (id: string) => boolean;
+    sortBy: (iteratees: string[] | Function) => void;
+    filterTo: (iteratees: string[] | Function) => void;
+    reverse: () => void;
 }
 
-function useInventory(productstData?: Product[]): Inventory {
-    const list = productstData || [];
+function useInventory(productstData?: Product[]): Inventory<Product> {
+    let list = productstData || [];
 
     /**
      *
      */
-    function sortedBy(predicate: string[], customList?: Product[]): Product[] {
-        return _sortBy(customList || list, ...predicate);
+    function getList(): Product[] {
+        return list;
     }
 
     /**
      *
      */
-    function productById(id: string, customList?: Product[]): Product | undefined {
-        return (customList || list).find((product: Product) => product.id === id);
+    function productById(id: string): Product | undefined {
+        return list.find((product: Product) => product.id === id);
     }
 
     /**
      *
      */
-    function filterBy(key: string, value: any, customList?: Product[]): Product[] {
-        return _filter(customList || list, [key, value]);
+    function hasBrandById(id: string): boolean {
+        return list.find((product: Product) => product.brand.id === id) != undefined;
     }
 
-    return { list, sortedBy, productById, filterBy };
+    /**
+     *
+     */
+    function sortBy(iteratees: string[] | Function): void {
+        list = _sortBy(list, iteratees) as Product[];
+    }
+
+    /**
+     *
+     */
+    function filterTo(iteratees: string[] | Function): void {
+        list = _filter(list, iteratees) as Product[];
+    }
+
+    /**
+     *
+     */
+    function reverse(): void {
+        list.reverse();
+    }
+
+    return { getList, productById, hasBrandById, sortBy, filterTo, reverse };
 }
 
 export { useInventory, type Inventory };

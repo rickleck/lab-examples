@@ -18,6 +18,7 @@
 
 <style lang="scss" scoped>
     @use '@/scss/common/layout';
+    @use '@/scss/common/breakpoints';
 
     :global(#app) {
         display: flex;
@@ -28,5 +29,10 @@
     main {
         flex: 1;
         padding-top: layout.$navigation-height;
+        padding-left: layout.$spacing-default;
+        padding-right: layout.$spacing-default;
+        @include breakpoints.from-md() {
+            padding-top: layout.$navigation-height-from-md;
+        }
     }
 </style>

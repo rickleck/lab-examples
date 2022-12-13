@@ -5,7 +5,8 @@ button {
     @include reset.button;
 }
 
-input {
+input,
+select {
     @include reset.input;
 }
 

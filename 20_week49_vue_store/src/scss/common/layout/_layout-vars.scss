@@ -1,10 +1,13 @@
+@use '../breakpoints';
+
 //Defaults
-$spacing-default: 24px;
+$spacing-default: 1.3rem;
 $view-padding-bottom-default: 5rem;
 $view-padding-top-default: 4rem;
 
 //Navigation
-$navigation-height: 153px;
+$navigation-height: 75px;
+$navigation-height-from-md: 147px;
 
 //Lists
 $list-max-width: 800px;

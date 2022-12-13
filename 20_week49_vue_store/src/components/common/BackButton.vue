@@ -1,5 +1,5 @@
 <template>
-    <a @click="router.go(-1)" class="btn-back link link-black">
+    <a @click="router.go(-1)" class="btn-back link link-black body-side-padding">
         <span class="icon">&lsaquo;</span>Back
     </a>
 </template>
@@ -10,13 +10,18 @@
 </script>
 
 <style scoped lang="scss">
+    @use '@/scss/common/breakpoints';
     .btn-back {
-        display: block;
+        display: none;
         font-weight: 700;
         width: max-content;
         .icon {
             margin-right: 0.3rem;
             font-size: 1.5rem;
+        }
+
+        @include breakpoints.from-lg() {
+            display: block;
         }
     }
 </style>

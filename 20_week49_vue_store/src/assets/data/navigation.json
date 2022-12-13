@@ -1,10 +1,11 @@
 [
     {
-        "title": "Products",
-        "route": "product_list"
+        "title": "Home",
+        "route": "home"
     },
     {
-        "title": "Our History"
+        "title": "Products",
+        "route": "product_list"
     },
     {
         "title": "Stores"

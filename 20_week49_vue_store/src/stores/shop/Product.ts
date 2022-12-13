@@ -1,6 +1,9 @@
 interface Product {
     id: string;
-    brand: string;
+    brand: {
+        id: string;
+        name: string;
+    };
     model: string;
     price: {
         amount: number;
