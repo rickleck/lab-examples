@@ -8,7 +8,7 @@
     "build:github.io": "run-p type-check build-only:github",
     "preview": "vite preview",
     "build-only": "vite build",
-    "build-only:github": "vite build --base /labs/20_week49_vue_store/dist",
+    "build-only:github": "vite build --base /labs/20_week49_vue_store/dist/",
     "type-check": "vue-tsc --noEmit"
   },
   "dependencies": {

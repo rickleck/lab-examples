@@ -65,12 +65,9 @@
                 }}</span>
             </div>
             <div class="checkout">
-                <RouterLink
-                    :to="{ name: Routes.NOT_IMPLEMENTED }"
-                    class="btn-primary"
-                    title="Not implemented"
-                    >Check out</RouterLink
-                >
+                <button class="btn-primary link-not-implemeted" title="Not implemented">
+                    Check out
+                </button>
             </div>
         </div>
         <div v-else class="empty">Your basket is empty.</div>

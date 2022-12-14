@@ -32,6 +32,7 @@
                     :key="index"
                     :to="{ name: item.route || Routes.NOT_IMPLEMENTED }"
                     class="nav-bar-item"
+                    :class="{ 'link-not-implemeted': !item.route }"
                     :title="item.route ? item.title : 'Not implemented'"
                 >
                     {{ item.title }}
@@ -61,7 +62,7 @@
                     :key="index"
                     :to="{ name: item.route || Routes.NOT_IMPLEMENTED }"
                     class="nav-list-item"
-                    :class="{ 'is-open': isNavOpen }"
+                    :class="{ 'is-open': isNavOpen, 'link-not-implemeted': !item.route }"
                     :title="item.route ? item.title : 'Not implemented'"
                     @click="isNavOpen = false"
                 >

@@ -7,11 +7,7 @@
         <footer class="footer container-responsive">
             <!-- Menu -->
             <div class="menu">
-                <div
-                    v-for="(item, index) in footerData.menu"
-                    :key="index"
-                    class="link link-white item"
-                >
+                <div v-for="(item, index) in footerData.menu" :key="index" class="item">
                     {{ item }}
                 </div>
             </div>
@@ -21,7 +17,7 @@
                     <i
                         v-for="(item, index) in footerData.social"
                         :key="index"
-                        class="bi link link-white"
+                        class="bi"
                         :class="['bi-' + item]"
                     ></i>
                 </div>
@@ -70,6 +66,7 @@
             .item {
                 display: block;
                 white-space: nowrap;
+                pointer-events: none;
             }
         }
 
