@@ -2,8 +2,8 @@
     import { pageNotFound } from '@/router/utils/PageNotFound';
     import { useShopStore } from '@/stores/ShopStore';
     import type { Product } from '@/stores/shop/Product';
-    import BackButton from '@/components/common/BackButton.vue';
     import { Routes } from '@/router/enum/Routes';
+    import { useBaseURL } from '@/router/utils/BaseUrl';
 
     const props = defineProps<{ id: string }>();
     const shop = useShopStore();
@@ -18,7 +18,7 @@
     <div class="product-details container-responsive">
         <div v-if="product" class="product">
             <div class="left">
-                <img :src="product.image" class="image" :alt="product.model" />
+                <img :src="useBaseURL(product.image)" class="image" :alt="product.model" />
             </div>
             <div class="right">
                 <div class="info">

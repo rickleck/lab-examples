@@ -3,6 +3,7 @@
     import type { Product } from '@/stores/shop/Product';
     import { useShopStore } from '@/stores/ShopStore';
     import { RouterLink } from 'vue-router';
+    import { useBaseURL } from '@/router/utils/BaseUrl';
 
     const brand = {
         id: 'rocket',
@@ -23,7 +24,11 @@
                     class="grid-item"
                     :to="{ name: Routes.PRODUCT_DETAILS, params: { id: product.id } }"
                 >
-                    <img class="image" :src="product.image" :title="product.brand.name" />
+                    <img
+                        class="image"
+                        :src="useBaseURL(product.image)"
+                        :title="product.brand.name"
+                    />
                     <p class="product-name">
                         <span class="brand">{{ product.brand.name + ' ' }}</span>
                         <span class="model">{{ product.model }}</span>

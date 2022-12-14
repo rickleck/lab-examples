@@ -4,6 +4,7 @@
     import { useShopStore } from '@/stores/ShopStore';
     import { ref, computed } from 'vue';
     import { useRouter } from 'vue-router';
+    import { useBaseURL } from '@/router/utils/BaseUrl';
 
     enum SortBy {
         BRAND = 'brand',
@@ -126,7 +127,7 @@
                 class="product-list-item"
             >
                 <div class="image">
-                    <img :src="product.image" alt="" />
+                    <img :src="useBaseURL(product.image)" alt="" />
                 </div>
                 <div class="texts">
                     <p class="brand">{{ product.brand.name }}</p>

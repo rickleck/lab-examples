@@ -2,6 +2,7 @@
     import BackButton from '@/components/common/BackButton.vue';
     import { Routes } from '@/router/enum/Routes';
     import { useShopStore } from '@/stores/ShopStore';
+    import { useBaseURL } from '@/router/utils/BaseUrl';
 
     const shop = useShopStore();
 </script>
@@ -14,7 +15,7 @@
         <div v-if="shop.basket.items.length > 0" class="basket">
             <div v-for="item in shop.basket.items" :key="item.product.id" class="basket-item">
                 <RouterLink :to="{ name: Routes.PRODUCT_DETAILS, params: { id: item.product.id } }">
-                    <img :src="item.product.image" class="image" />
+                    <img :src="useBaseURL(item.product.image)" class="image" />
                 </RouterLink>
 
                 <div class="properties">
