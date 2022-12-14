@@ -5,10 +5,8 @@
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check build-only",
-    "build:github.io": "run-p type-check build-only:github.io",
     "preview": "vite preview",
     "build-only": "vite build",
-    "build-only:github.io": "vite build --base /labs/20_week49_vue_store/dist/",
     "type-check": "vue-tsc --noEmit"
   },
   "dependencies": {
