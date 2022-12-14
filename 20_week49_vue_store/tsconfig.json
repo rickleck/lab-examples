@@ -2,7 +2,7 @@
     "extends": "@vue/tsconfig/tsconfig.web.json",
     "include": ["**/*.ts", "**/*.js", "src/**/*.vue", "vite-plugin-vsharp'ts"],
     "compilerOptions": {
-        "baseUrl": ".",
+        "baseUrl": "./",
         "paths": {
             "@/*": ["./src/*"]
         },
