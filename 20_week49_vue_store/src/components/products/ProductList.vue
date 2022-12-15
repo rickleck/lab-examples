@@ -24,7 +24,7 @@
      *
      */
     const listItems = computed(() => {
-        let segment = inventory.masterList;
+        let segment = [...inventory.masterList];
         isBrand.value = false;
         filter.value = 'all';
 
