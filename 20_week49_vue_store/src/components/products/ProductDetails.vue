@@ -1,13 +1,14 @@
 <script setup lang="ts">
     import { pageNotFound } from '@/router/utils/PageNotFound';
-    import { useShopStore } from '@/stores/ShopStore';
-    import type { Product } from '@/stores/shop/Product';
+    import { useInventoryStore } from '@/stores/InventoryStore';
+    import { useBasketStore } from '@/stores/BasketStore';
+    import type { Product } from '@/stores/InventoryStore';
     import { Routes } from '@/router/enum/Routes';
     import { useBaseURL } from '@/router/utils/BaseUrl';
 
     const props = defineProps<{ id: string }>();
-    const shop = useShopStore();
-    const product = shop.inventory().productById(props.id);
+    const basket = useBasketStore();
+    const product = useInventoryStore().productById(props.id);
 
     if (!product) {
         pageNotFound();
@@ -45,7 +46,7 @@
                     <button
                         class="btn-outline-black btn-basket"
                         :class="{ disabled: !product.available.status }"
-                        @click="shop.basket.add(product as Product)"
+                        @click="basket.add(product as Product)"
                     >
                         Add to basket
                     </button>

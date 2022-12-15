@@ -1,16 +1,15 @@
 <script setup lang="ts">
     import { Routes } from '@/router/enum/Routes';
-    import type { Product } from '@/stores/shop/Product';
-    import { useShopStore } from '@/stores/ShopStore';
+    import type { Brand, Product } from '@/stores/InventoryStore';
+    import { useInventoryStore } from '@/stores/InventoryStore';
     import { RouterLink } from 'vue-router';
     import { useBaseURL } from '@/router/utils/BaseUrl';
 
-    const brand = {
+    const brand: Brand = {
         id: 'rocket',
         name: 'Rocket',
     };
-    const inventory = useShopStore().inventory();
-    inventory.filterTo((product: Product) => product.brand.id === brand.id);
+    const items = useInventoryStore().filterTo((product: Product) => product.brand.id === brand.id);
 </script>
 
 <template>
@@ -19,7 +18,7 @@
             <p class="grid-header home-view-header">Discover {{ brand.name }}</p>
             <div class="grid">
                 <RouterLink
-                    v-for="product in inventory.getList()"
+                    v-for="product in items"
                     :key="product.id"
                     class="grid-item"
                     :to="{ name: Routes.PRODUCT_DETAILS, params: { id: product.id } }"

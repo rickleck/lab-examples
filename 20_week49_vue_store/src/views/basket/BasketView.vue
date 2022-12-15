@@ -1,10 +1,10 @@
 <script setup lang="ts">
     import BackButton from '@/components/common/BackButton.vue';
     import { Routes } from '@/router/enum/Routes';
-    import { useShopStore } from '@/stores/ShopStore';
+    import { useBasketStore } from '@/stores/BasketStore';
     import { useBaseURL } from '@/router/utils/BaseUrl';
 
-    const shop = useShopStore();
+    const basket = useBasketStore();
 </script>
 
 <template>
@@ -12,8 +12,8 @@
         <BackButton />
         <h1 class="header">Your Basket</h1>
 
-        <div v-if="shop.basket.items.length > 0" class="basket">
-            <div v-for="item in shop.basket.items" :key="item.product.id" class="basket-item">
+        <div v-if="basket.items.length > 0" class="basket">
+            <div v-for="item in basket.items" :key="item.product.id" class="basket-item">
                 <RouterLink :to="{ name: Routes.PRODUCT_DETAILS, params: { id: item.product.id } }">
                     <img :src="useBaseURL(item.product.image)" class="image" />
                 </RouterLink>
@@ -29,7 +29,7 @@
 
                     <div class="remove">
                         <button
-                            @click="shop.basket.remove(item.product)"
+                            @click="basket.remove(item.product)"
                             class="btn-remove link link-black"
                             title="Remove"
                         >
@@ -60,9 +60,7 @@
             </div>
             <div class="subtotal">
                 <span class="subtotal-header">Subtotal:</span
-                ><span class="subtotal-amount">{{
-                    shop.basket.subTotal.toLocaleString() + ' €'
-                }}</span>
+                ><span class="subtotal-amount">{{ basket.subTotal.toLocaleString() + ' €' }}</span>
             </div>
             <div class="checkout">
                 <button class="btn-primary link-not-implemeted" title="Not implemented">

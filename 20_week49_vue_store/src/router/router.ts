@@ -5,7 +5,7 @@ import HomeView from '@/views/home/HomeView.vue';
 import NotFoundView from '@/views/error/NotFoundView.vue';
 import ProductList from '@/components/products/ProductList.vue';
 import ProductDetails from '@/components/products/ProductDetails.vue';
-import BasketView from '@/views/checkout/BasketView.vue';
+import BasketView from '@/views/basket/BasketView.vue';
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),

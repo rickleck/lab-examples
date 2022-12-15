@@ -1,10 +1,11 @@
 import { ref, computed, type Ref } from 'vue';
-import type { Product } from '@/stores/shop/Product';
+import { defineStore } from 'pinia';
+import type { Product } from '@/stores/InventoryStore';
 
 interface Basket {
-    items: Ref<BasketItem[]> | BasketItem[];
-    itemsTotal: Ref<number> | number;
-    subTotal: Ref<number> | number;
+    items: Ref<BasketItem[]>;
+    itemsTotal: Ref<number>;
+    subTotal: Ref<number>;
     add: (product: Product) => void;
     remove: (product: Product) => void;
     setQuantity: (product: Product, quantity: number) => void;
@@ -16,7 +17,7 @@ interface BasketItem {
     quantity: number;
 }
 
-function useBasket(): Basket {
+const useBasketStore = defineStore('basket', (): Basket => {
     const items = ref<BasketItem[]>([]);
 
     /**
@@ -68,6 +69,6 @@ function useBasket(): Basket {
     }
 
     return { items, itemsTotal, subTotal, add, remove, setQuantity };
-}
+});
 
-export { useBasket, type Basket, type BasketItem };
+export { useBasketStore, type Basket, type BasketItem };

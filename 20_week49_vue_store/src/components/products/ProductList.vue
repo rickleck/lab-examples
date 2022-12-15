@@ -1,7 +1,7 @@
 <script setup lang="ts">
     import { Routes } from '@/router/enum/Routes';
-    import type { Product } from '@/stores/shop/Product';
-    import { useShopStore } from '@/stores/ShopStore';
+    import type { Product } from '@/stores/InventoryStore';
+    import { useInventoryStore } from '@/stores/InventoryStore';
     import { ref, computed } from 'vue';
     import { useRouter } from 'vue-router';
     import { useBaseURL } from '@/router/utils/BaseUrl';
@@ -15,7 +15,7 @@
 
     const props = defineProps<{ brand?: string; sort?: string }>();
     const router = useRouter();
-    const shop = useShopStore();
+    const inventory = useInventoryStore();
     const sort = ref<string>('');
     const filter = ref<string>('');
     const isBrand = ref<boolean>(false);
@@ -23,39 +23,40 @@
     /**
      *
      */
-    const list = computed(() => {
-        const inventory = shop.inventory();
+    const listItems = computed(() => {
+        let segment = inventory.masterList;
         isBrand.value = false;
         filter.value = 'all';
 
         if (props.brand && inventory.hasBrandById(props.brand)) {
-            inventory.filterTo((product: Product) => product.brand.id === props.brand);
+            segment = inventory.filterTo((product: Product) => product.brand.id === props.brand);
             isBrand.value = true;
             filter.value = props.brand;
         }
 
         switch (props.sort) {
             case SortBy.MODEL:
-                inventory.sortBy([SortBy.MODEL]);
                 sort.value = props.sort;
-                break;
+                return inventory.sortBy([SortBy.MODEL], segment);
+
             case SortBy.PRICE_ASC:
-                inventory.sortBy((product: Product) => product.price.amount);
                 sort.value = props.sort;
-                break;
+                return inventory.sortBy((product: Product) => product.price.amount, segment);
+
             case SortBy.PRICE_DESC:
-                inventory.sortBy((product: Product) => product.price.amount);
-                inventory.reverse();
                 sort.value = props.sort;
-                break;
+                return inventory
+                    .sortBy((product: Product) => product.price.amount, segment)
+                    .reverse();
+
             case SortBy.BRAND:
             default:
-                inventory.sortBy((product: Product) => product.brand.name + product.model);
                 sort.value = isBrand.value ? SortBy.MODEL : SortBy.BRAND;
-                break;
+                return inventory.sortBy(
+                    (product: Product) => product.brand.name + product.model,
+                    segment
+                );
         }
-
-        return inventory.getList();
     });
 
     /**
@@ -110,7 +111,7 @@
                     >
                         <option value="all" default>All</option>
                         <option
-                            v-for="(brand, index) in shop.allBrands"
+                            v-for="(brand, index) in inventory.allBrands"
                             :key="index"
                             :value="brand.id"
                         >
@@ -121,7 +122,7 @@
             </div>
 
             <RouterLink
-                v-for="(product, index) in list"
+                v-for="(product, index) in listItems"
                 :key="index"
                 :to="{ name: Routes.PRODUCT_DETAILS, params: { id: product.id } }"
                 class="product-list-item"

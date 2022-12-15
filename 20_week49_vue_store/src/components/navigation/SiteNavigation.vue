@@ -2,17 +2,17 @@
     import { RouterLink, useRoute } from 'vue-router';
     import { Routes } from '@/router/enum/Routes';
     import navData from '@/assets/data/navigation.json';
-    import { useShopStore } from '@/stores/ShopStore';
+    import { useBasketStore } from '@/stores/BasketStore';
     import { watch, ref } from 'vue';
     import { useEventListener } from '@vueuse/core';
 
-    const shop = useShopStore();
+    const basket = useBasketStore();
     const route = useRoute();
     const showIndicator = ref<boolean>(false);
     const isNavOpen = ref<boolean>(false);
 
-    watch(shop.basket, () => {
-        if (route.name !== Routes.BASKET) showIndicator.value = true;
+    watch(basket, () => {
+        if (route.name !== Routes.BASKET && basket.itemsTotal > 0) showIndicator.value = true;
     });
 
     useEventListener(window, 'resize', () => (isNavOpen.value = false));
@@ -47,7 +47,7 @@
                 <i class="bi bi-bag icon"></i>
 
                 <div class="basket-items">
-                    <span class="count">{{ shop.basket.itemsTotal }}</span>
+                    <span class="count">{{ basket.itemsTotal }}</span>
                 </div>
             </RouterLink>
         </div>
