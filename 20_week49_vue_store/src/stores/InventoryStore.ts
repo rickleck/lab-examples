@@ -3,12 +3,14 @@ import { uniqBy as _uniqBy, sortBy as _sortBy, filter as _filter } from 'lodash'
 import { defineStore } from 'pinia';
 import productsData from '@/assets/data/products.json';
 
+interface Brand {
+    id: string;
+    name: string;
+}
+
 interface Product {
     id: string;
-    brand: {
-        id: string;
-        name: string;
-    };
+    brand: Brand;
     model: string;
     price: {
         amount: number;
@@ -23,11 +25,6 @@ interface Product {
         full: string;
     };
     image: string;
-}
-
-interface Brand {
-    id: string;
-    name: string;
 }
 
 interface Iventory {
