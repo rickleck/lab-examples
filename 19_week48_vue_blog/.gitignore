@@ -3,4 +3,4 @@ node_modules
 *.local
 .parcel-cache
 .env
-app.yaml
+dist
