@@ -1,102 +1,112 @@
 <template>
-    <div class="admin-view page-grid view-padding">
-        <aside class="aside">
-            <HomeButton />
-            <button
-                @click="transitionKey++, displayCreate()"
-                class="btn-primary btn-create"
-                :disabled="mode === 'create'"
-            >
-                <span>Create Entry</span> <i class="bi bi-plus-circle"></i>
-            </button>
-            <EntryListAdmin
-                :entry-list="entryList"
-                :current-entry="currentEntry"
-                @item-selected="onListItemSelected"
-            />
-        </aside>
-        <Transition name="fade" mode="out-in">
-            <div class="entry-edit" :key="transitionKey">
-                <h1 class="edit-header" v-if="mode === 'create'">Create Entry</h1>
-                <h1 class="edit-header" v-else>Edit Entry</h1>
-
-                <form class="form" @submit.prevent="saveEntry">
-                    <div class="form-control">
-                        <label class="label" for="published">Publish date</label>
-                        <input
-                            v-model="published"
-                            class="input-text input-published"
-                            type="date"
-                            name="published"
-                            id="published"
-                            :max="today"
-                            required
-                        />
-                    </div>
-                    <div class="form-control">
-                        <label class="label" for="author">Author</label>
-                        <input
-                            v-model="author"
-                            class="input-text"
-                            type="text"
-                            name="author"
-                            id="author"
-                            required
-                        />
-                    </div>
-                    <div class="form-control">
-                        <label class="label" for="title">Title</label>
-                        <input
-                            v-model="title"
-                            class="input-text input-title"
-                            type="text"
-                            name="title"
-                            id="title"
-                            required
-                        />
-                    </div>
-                    <div class="form-control">
-                        <label class="label" for="body">Body</label>
-                        <textarea
-                            v-model="body"
-                            class="input-text input-body"
-                            name="body"
-                            id="body"
-                            required
-                        >
-                        </textarea>
-                    </div>
-                    <img v-if="validImgSrc" :src="validImgSrc" class="entry-image" />
-                    <div class="form-control">
-                        <label class="label" for="image">image Url</label>
-                        <input
-                            v-model="imgSrc"
-                            class="input-text"
-                            type="text"
-                            name="image"
-                            id="image"
-                            placeholder="http..."
-                        />
-                    </div>
-
-                    <div class="form-btns">
-                        <input
-                            type="submit"
-                            class="btn-primary btn-form"
-                            value="Save"
-                            :disabled="!entryChanged"
-                        />
-                        <button
-                            v-if="mode === 'edit'"
-                            @click.prevent="deleteEntry"
-                            class="btn-primary btn-form"
-                        >
-                            Delete
-                        </button>
-                    </div>
-                </form>
+    <div class="admin-view view-padding">
+        <header class="admin-header page-grid">
+            <div><HomeButton /></div>
+            <div class="wrapper">
+                <h1 class="page-title">Admin</h1>
+                <p class="error-msg">{{ user.errorMsg }}</p>
+                <button @click="logout" class="btn-primary btn-logout">Log Out</button>
             </div>
-        </Transition>
+        </header>
+        <div class="page-grid">
+            <aside class="aside">
+                <button
+                    @click="transitionKey++, displayCreate()"
+                    class="btn-primary btn-create"
+                    :disabled="mode === 'create'"
+                >
+                    <span>Create Entry</span> <i class="bi bi-plus-circle"></i>
+                </button>
+                <EntryListAdmin
+                    :entry-list="entryList"
+                    :current-entry="currentEntry"
+                    @item-selected="onListItemSelected"
+                />
+            </aside>
+
+            <Transition name="fade" mode="out-in">
+                <div class="entry-edit" :key="transitionKey">
+                    <h2 class="edit-header" v-if="mode === 'create'">Create Entry</h2>
+                    <h2 class="edit-header" v-else>Edit Entry</h2>
+
+                    <form class="form" @submit.prevent="saveEntry">
+                        <div class="form-control">
+                            <label class="label" for="published">Publish date</label>
+                            <input
+                                v-model="published"
+                                class="input-text input-published"
+                                type="date"
+                                name="published"
+                                id="published"
+                                :max="today"
+                                required
+                            />
+                        </div>
+                        <div class="form-control">
+                            <label class="label" for="author">Author</label>
+                            <input
+                                v-model="author"
+                                class="input-text"
+                                type="text"
+                                name="author"
+                                id="author"
+                                required
+                            />
+                        </div>
+                        <div class="form-control">
+                            <label class="label" for="title">Title</label>
+                            <input
+                                v-model="title"
+                                class="input-text input-title"
+                                type="text"
+                                name="title"
+                                id="title"
+                                required
+                            />
+                        </div>
+                        <div class="form-control">
+                            <label class="label" for="body">Body</label>
+                            <textarea
+                                v-model="body"
+                                class="input-text input-body"
+                                name="body"
+                                id="body"
+                                required
+                            >
+                            </textarea>
+                        </div>
+                        <img v-if="validImgSrc" :src="validImgSrc" class="entry-image" />
+                        <div class="form-control">
+                            <label class="label" for="image">image Url</label>
+                            <input
+                                v-model="imgSrc"
+                                class="input-text"
+                                type="text"
+                                name="image"
+                                id="image"
+                                placeholder="http..."
+                            />
+                        </div>
+
+                        <div class="form-btns">
+                            <input
+                                type="submit"
+                                class="btn-primary btn-form"
+                                value="Save"
+                                :disabled="!entryChanged"
+                            />
+                            <button
+                                v-if="mode === 'edit'"
+                                @click.prevent="deleteEntry"
+                                class="btn-primary btn-form"
+                            >
+                                Delete
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </Transition>
+        </div>
     </div>
 </template>
 
@@ -106,6 +116,8 @@
     import { apiStore, type BlogEntry, type BlogEntryUpdate } from '../stores/ApiStore';
     import HomeButton from '../components/common/HomeButton.vue';
     import EntryListAdmin from '../components/entry/EntryListAdmin.vue';
+    import { useUserStore } from '../stores/UserStore';
+    import { useRouter } from 'vue-router';
 
     type Mode = 'edit' | 'create';
 
@@ -119,6 +131,8 @@
     const currentEntry = ref<BlogEntry>();
     const entryChanged = ref<boolean>(false);
     const transitionKey = ref<number>(0);
+    const user = useUserStore();
+    const router = useRouter();
     let watchCounter = 0;
 
     const today = computed<string>(() => {
@@ -253,6 +267,14 @@
             })
             .catch((error: any) => console.log(error));
     }
+    /**
+     *
+     */
+    function logout(): void {
+        user.logout().then(() => {
+            router.push({ name: 'Index' });
+        });
+    }
 </script>
 
 <style scoped lang="scss">
@@ -278,6 +300,37 @@
             }
         }
 
+        .admin-header {
+            margin-bottom: 2rem;
+            @include breakpoints.from-lg() {
+                margin-bottom: 1rem;
+            }
+
+            .wrapper {
+                display: flex;
+                align-items: center;
+                margin-top: 2rem;
+
+                @include breakpoints.from-lg() {
+                    margin-top: 0;
+                }
+
+                .page-title {
+                    margin: 0;
+                }
+
+                .error-msg {
+                    flex: 1;
+                    margin: 0;
+                    padding-right: 1rem;
+                    text-align: right;
+                }
+                .btn-logout {
+                    align-self: flex-end;
+                }
+            }
+        }
+
         .entry-edit {
             .edit-header {
                 margin-bottom: 0.7rem;
@@ -288,30 +341,8 @@
                 }
             }
             .form {
-                display: flex;
-                flex-direction: column;
-                gap: 1rem;
-
+                margin-bottom: 2rem;
                 .form-control {
-                    .label {
-                        display: block;
-                        font-weight: 700;
-                        margin-bottom: 0.3rem;
-                        color: colors.$primary;
-                    }
-
-                    .input-text {
-                        display: block;
-                        outline: 1px solid colors.$primary;
-                        padding: 0.5rem;
-                        color: inherit;
-                        width: 100%;
-
-                        &:focus {
-                            outline-color: colors.$secondary;
-                        }
-                    }
-
                     .input-title {
                         font-weight: 700;
                     }
