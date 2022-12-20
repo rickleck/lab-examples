@@ -36,6 +36,7 @@
         display: block;
         background: url('@/assets/images/hero.jpg');
         background-size: cover;
+        background-position: 50% 25%;
         margin: 0 calc(layout.$spacing-default * -1);
         aspect-ratio: 1;
 
