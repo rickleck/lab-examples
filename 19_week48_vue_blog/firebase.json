@@ -4,8 +4,12 @@
     "public": "dist",
     "ignore": [
       "firebase.json",
+      "tsconfig.json",
       "**/.*",
-      "**/node_modules/**"
+      "*.pdf",
+      "*.md",
+      "**/node_modules/**",
+      "**/src/**"
     ],
     "rewrites": [
       {
