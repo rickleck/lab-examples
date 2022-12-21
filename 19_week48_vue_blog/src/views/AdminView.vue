@@ -351,6 +351,7 @@
                         height: 35vh;
                         resize: none;
                         font-size: inherit;
+                        font-family: inherit;
                         border: none;
                     }
 
