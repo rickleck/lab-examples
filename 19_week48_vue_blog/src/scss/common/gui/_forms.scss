@@ -1,0 +1,31 @@
+@use '../variables/colors';
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    .form-control {
+        .label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+            color: colors.$primary;
+        }
+
+        .input-text {
+            display: block;
+            outline: 1px solid colors.$primary;
+            padding: 0.5rem;
+            color: inherit;
+            width: 100%;
+
+            &:focus {
+                outline-color: colors.$secondary;
+            }
+        }
+    }
+}
+
+.error-msg {
+    color: rgb(172, 0, 0);
+}

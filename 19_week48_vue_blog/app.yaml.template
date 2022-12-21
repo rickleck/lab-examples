@@ -1,7 +1,0 @@
-runtime: nodejs16
-
-service: lab19
-
-env_variables:
-  MONGO_URI: ""
-  API_BASE_URL: "/api/blog/"
