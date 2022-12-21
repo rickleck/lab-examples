@@ -1,17 +1,18 @@
 <script setup lang="ts">
     import type { UserCredential } from '@firebase/auth';
-    import { useUserStore } from '../stores/UserStore';
+    import { useAdminStore } from '../stores/AdminStore';
     import { ref } from 'vue';
     import { useRouter } from 'vue-router';
+    import { Routes } from '../router/Router';
 
     const router = useRouter();
-    const user = useUserStore();
+    const admin = useAdminStore();
     const email = ref<string>('');
     const password = ref<string>('');
 
     function login() {
-        user.login(email.value, password.value).then((res: UserCredential | void) => {
-            if (res) router.push({ name: 'Admin' });
+        admin.login(email.value, password.value).then((res: UserCredential | void) => {
+            if (res) router.push({ name: Routes.ADMIN });
         });
     }
 </script>
@@ -45,7 +46,7 @@
                     />
                 </div>
                 <div class="submit">
-                    <p class="error-msg" v-if="user.errorMsg">{{ user.errorMsg }}</p>
+                    <p class="error-msg" v-if="admin.errorMsg">{{ admin.errorMsg }}</p>
                     <input type="submit" class="btn-primary btn-submit" value="Submit" />
                 </div>
             </form>

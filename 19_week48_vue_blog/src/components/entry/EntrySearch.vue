@@ -23,7 +23,7 @@
             <RouterLink
                 v-for="entry in searchResult"
                 :key="entry.id"
-                :to="{ name: 'Entry', params: { id: entry.id } }"
+                :to="{ name: Routes.BLOG_ENTRY, params: { id: entry.id } }"
                 @click="resetInput"
                 class="result-item link link-light link-hover-underline"
                 v-html="entry.title"
@@ -38,13 +38,15 @@
     import { ref } from 'vue';
     import { RouterLink } from 'vue-router';
     import { onClickOutside, useEventListener } from '@vueuse/core';
-    import { apiStore, type BlogEntry } from '../../stores/ApiStore';
+    import { useBlogDataStore, type BlogEntry } from '../../stores/BlogDataStore';
+    import { Routes } from '../../router/Router';
 
     interface ResultItem {
         id: string;
         title: string;
     }
 
+    const blogData = useBlogDataStore();
     const componentRoot = ref<HTMLElement | null>(null);
     const input = ref<HTMLInputElement | null>(null);
     const isInputOpen = ref<boolean>(false);
@@ -71,12 +73,12 @@
         const el = e.target as HTMLInputElement;
         searchQuery.value = el.value;
 
-        if (apiStore.items.length === 0 && !isLoading) {
+        if (blogData.items.length === 0 && !isLoading) {
             isLoading = true;
-            apiStore
-                .get()
+            blogData
+                .getAll()
                 .then(() => (isLoading = false))
-                .catch((error) => {
+                .catch((error: any) => {
                     console.log(error);
                     isLoading = false;
                 });
@@ -89,11 +91,11 @@
         }
 
         const regexp = new RegExp(searchQuery.value, 'gi');
-        searchResult.value = apiStore.items
+        searchResult.value = blogData.items
             .filter((entry: BlogEntry) => entry.title.match(regexp))
             .map((entry: BlogEntry) => {
                 return {
-                    id: entry._id,
+                    id: entry.id,
                     title: entry.title.replaceAll(regexp, '<span class="search-term">$&</span>'),
                 };
             });

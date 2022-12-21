@@ -9,7 +9,7 @@
     <ul class="entry-list">
         <li
             v-for="entry in entryList"
-            :key="entry._id"
+            :key="entry.id"
             :entry="entry"
             @click="selectedEntry = entry"
             :class="{ 'is-selected': entry === selectedEntry }"
@@ -25,7 +25,7 @@
 
 <script setup lang="ts">
     import { computed } from 'vue';
-    import type { BlogEntry } from '../../stores/ApiStore';
+    import type { BlogEntry } from '../../stores/BlogDataStore';
 
     const props = defineProps<{ entryList: BlogEntry[]; currentEntry: BlogEntry | undefined }>();
     const emit = defineEmits<{

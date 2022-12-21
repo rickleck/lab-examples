@@ -1,10 +1,11 @@
 <template>
-    <RouterLink :to="{ name: 'Index' }" class="btn-home link-primary"
+    <RouterLink :to="{ name: Routes.INDEX }" class="btn-home link-primary"
         ><i class="bi bi-caret-left-fill"></i>Home</RouterLink
     >
 </template>
 
 <script setup lang="ts">
+    import { Routes } from '../../router/Router';
     import { RouterLink } from 'vue-router';
 </script>
 

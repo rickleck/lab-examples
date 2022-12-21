@@ -10,21 +10,29 @@ import IndexView from '../views/IndexView.vue';
 import AdminView from '../views/AdminView.vue';
 import LoginView from '../views/LoginView.vue';
 import NotFoundView from '../views/NotFoundView.vue';
-import { useUserStore } from '../stores/UserStore';
+import { useAdminStore } from '../stores/AdminStore';
+
+enum Routes {
+    INDEX = 'index',
+    BLOG_ENTRY = 'blog_entry',
+    LOGIN = 'login',
+    ADMIN = 'admin',
+    NOT_FOUND = 'not_found',
+}
 
 const requireAuth = (to: RouteLocation, from: RouteLocation, next: Function) => {
-    const user = useUserStore();
-    if (!user.isLoggedIn) {
-        next({ name: 'Login' });
+    const admin = useAdminStore();
+    if (!admin.isLoggedIn) {
+        next({ name: Routes.LOGIN });
     } else {
         next();
     }
 };
 
 const requireNotAuth = (to: RouteLocation, from: RouteLocation, next: Function) => {
-    const user = useUserStore();
-    if (user.isLoggedIn) {
-        next({ name: 'Admin' });
+    const admin = useAdminStore();
+    if (admin.isLoggedIn) {
+        next({ name: Routes.ADMIN });
     } else {
         next();
     }
@@ -35,30 +43,30 @@ const router: Router = createRouter(<RouterOptions>{
     routes: [
         {
             path: '/',
-            name: 'Index',
+            name: Routes.INDEX,
             component: IndexView,
         },
         {
             path: '/entry/:id',
-            name: 'Entry',
+            name: Routes.BLOG_ENTRY,
             component: EntryView,
             props: true,
         },
         {
             path: '/login',
-            name: 'Login',
+            name: Routes.LOGIN,
             component: LoginView,
             beforeEnter: requireNotAuth,
         },
         {
             path: '/admin',
-            name: 'Admin',
+            name: Routes.ADMIN,
             component: AdminView,
             beforeEnter: requireAuth,
         },
         {
             path: '/:pathMatch(.*)*',
-            name: 'NotFound',
+            name: Routes.NOT_FOUND,
             component: NotFoundView,
         },
     ],
@@ -67,4 +75,4 @@ const router: Router = createRouter(<RouterOptions>{
     },
 });
 
-export { router };
+export { router, Routes };

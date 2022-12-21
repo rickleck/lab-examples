@@ -29,7 +29,7 @@
 
 <script setup lang="ts">
     import { ref } from 'vue';
-    import { apiStore, type BlogEntry } from '../stores/ApiStore';
+    import { useBlogDataStore, type BlogEntry } from '../stores/BlogDataStore';
     import HomeButton from '../components/common/HomeButton.vue';
     import LoaderSpinner from '../components/common/LoaderSpinner.vue';
     import { useRoute, useRouter } from 'vue-router';
@@ -38,14 +38,11 @@
     const entry = ref<BlogEntry>();
     const router = useRouter();
     const route = useRoute();
+    const blogData = useBlogDataStore();
 
-    apiStore
-        .get(props.id)
-        .then((data: BlogEntry[] | BlogEntry) => (entry.value = data as BlogEntry))
-        .catch((error: any) => {
-            console.log('EntryVuew', error);
-            pageNotFound();
-        });
+    blogData.getByID(props.id).then((data: BlogEntry | undefined) => {
+        data ? (entry.value = data) : pageNotFound();
+    });
 
     /**
      *

@@ -9,7 +9,7 @@ import { defineStore } from 'pinia';
 import { ref, computed } from 'vue';
 import { auth } from '../firebase/config';
 
-const useUserStore = defineStore('user', () => {
+const useAdminStore = defineStore('admin', () => {
     const user = ref<User | null>(auth.currentUser);
     const errorMsg = ref<string | null>(null);
     const isLoggedIn = computed<boolean>(() => user.value != null);
@@ -18,6 +18,9 @@ const useUserStore = defineStore('user', () => {
         user.value = u;
     });
 
+    /**
+     *
+     */
     async function login(email: string, password: string): Promise<UserCredential | void> {
         errorMsg.value = null;
         try {
@@ -27,6 +30,9 @@ const useUserStore = defineStore('user', () => {
         }
     }
 
+    /**
+     *
+     */
     async function logout(): Promise<void> {
         errorMsg.value = null;
         try {
@@ -39,4 +45,4 @@ const useUserStore = defineStore('user', () => {
     return { user, isLoggedIn, errorMsg, login, logout };
 });
 
-export { useUserStore };
+export { useAdminStore };

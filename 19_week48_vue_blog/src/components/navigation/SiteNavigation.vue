@@ -1,7 +1,7 @@
 <template>
     <div class="navigation-wrapper">
         <nav class="navigation container-responsive">
-            <RouterLink :to="{ name: 'Index' }" class="logo link-light">
+            <RouterLink :to="{ name: Routes.INDEX }" class="logo link-light">
                 <LogoSvg :height="40" class="logo-svg" />
                 <span class="text"><span>Aqua</span><span>Blog</span></span>
             </RouterLink>
@@ -11,6 +11,7 @@
 </template>
 
 <script setup lang="ts">
+    import { Routes } from '../../router/Router';
     import { RouterLink } from 'vue-router';
     import LogoSvg from '../common/LogoSvg.vue';
     import EntrySearch from '../entry/EntrySearch.vue';

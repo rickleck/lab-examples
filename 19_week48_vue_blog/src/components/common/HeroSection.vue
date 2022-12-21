@@ -6,7 +6,7 @@
                 <div class="spacing"></div>
                 <div class="overlay-content">
                     <h1 class="header">Welcome to<br />our new blog.</h1>
-                    <router-link v-if="link !== ''" :to="link"
+                    <router-link v-if="link !== undefined" :to="link"
                         ><button class="btn-primary btn-cta">Read more</button></router-link
                     >
                 </div>
@@ -17,11 +17,18 @@
 
 <script setup lang="ts">
     import { computed } from 'vue';
-    import { apiStore } from '../../stores/ApiStore';
+    import { useBlogDataStore } from '../../stores/BlogDataStore';
+    import { Routes } from '../../router/Router';
 
-    const link = computed<string>(() =>
-        apiStore.items.length > 0 ? '/entry/' + apiStore.items[apiStore.items.length - 1]._id : ''
-    );
+    const blogData = useBlogDataStore();
+    const link = computed<{ name: string; params: { id: string } } | undefined>(() => {
+        return blogData.items.length > 0
+            ? {
+                  name: Routes.BLOG_ENTRY,
+                  params: { id: blogData.items[blogData.items.length - 1].id },
+              }
+            : undefined;
+    });
 </script>
 
 <style scoped lang="scss">

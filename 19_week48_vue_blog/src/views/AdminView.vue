@@ -4,7 +4,7 @@
             <div><HomeButton /></div>
             <div class="wrapper">
                 <h1 class="page-title">Admin</h1>
-                <p class="error-msg">{{ user.errorMsg }}</p>
+                <p class="error-msg">{{ admin.errorMsg }}</p>
                 <button @click="logout" class="btn-primary btn-logout">Log Out</button>
             </div>
         </header>
@@ -113,11 +113,16 @@
 <script setup lang="ts">
     import { ref, computed, watch } from 'vue';
     import { sanitize } from 'dompurify';
-    import { apiStore, type BlogEntry, type BlogEntryUpdate } from '../stores/ApiStore';
     import HomeButton from '../components/common/HomeButton.vue';
     import EntryListAdmin from '../components/entry/EntryListAdmin.vue';
-    import { useUserStore } from '../stores/UserStore';
+    import { useAdminStore } from '../stores/AdminStore';
     import { useRouter } from 'vue-router';
+    import { Routes } from '../router/Router';
+    import {
+        useBlogDataStore,
+        type BlogEntry,
+        type BlogEntryUpdate,
+    } from '../stores/BlogDataStore';
 
     type Mode = 'edit' | 'create';
 
@@ -131,8 +136,9 @@
     const currentEntry = ref<BlogEntry>();
     const entryChanged = ref<boolean>(false);
     const transitionKey = ref<number>(0);
-    const user = useUserStore();
+    const admin = useAdminStore();
     const router = useRouter();
+    const blogData = useBlogDataStore();
     let watchCounter = 0;
 
     const today = computed<string>(() => {
@@ -222,15 +228,13 @@
             img_src: sanitize(validImgSrc.value),
         };
 
-        try {
-            if (mode.value === 'create') {
-                apiStore.post(props).then(entryModified);
-            } else if (mode.value === 'edit') {
-                if (currentEntry.value)
-                    apiStore.patch(props, currentEntry.value._id).then(entryModified);
-            }
-        } catch (error: any) {
-            console.log(error);
+        if (mode.value === 'create') {
+            blogData.addItem(props).then((id: string | undefined) => entryModified(id));
+        } else if (mode.value === 'edit') {
+            if (currentEntry.value)
+                blogData
+                    .updateItem(currentEntry.value.id, props)
+                    .then((id: string | undefined) => entryModified(id));
         }
     }
 
@@ -238,31 +242,27 @@
      *
      */
     function deleteEntry(): void {
-        try {
-            if (currentEntry.value) apiStore.del(currentEntry.value._id).then(entryModified);
-        } catch (error: any) {
-            console.log(error);
-        }
+        if (currentEntry.value)
+            blogData.deleteItem(currentEntry.value.id).then(() => entryModified());
     }
 
     /**
      *
      */
-    function entryModified(entry?: BlogEntry): void {
+    function entryModified(id?: string): void {
         transitionKey.value++;
-        refreshData(entry);
+        refreshData(id);
     }
 
     /**
      *
      */
-    function refreshData(entry?: BlogEntry): void {
-        apiStore
-            .get()
-            .then((entries: BlogEntry[] | BlogEntry) => {
-                entries = entries as BlogEntry[];
+    function refreshData(id?: string): void {
+        blogData
+            .getAll()
+            .then((entries: BlogEntry[]) => {
                 entryList.value = entries;
-                const index = entry ? entries.findIndex((e: BlogEntry) => e._id === entry._id) : 0;
+                const index = id ? entries.findIndex((e: BlogEntry) => e.id === id) : 0;
                 displayEdit(entries[Math.max(index, 0)]);
             })
             .catch((error: any) => console.log(error));
@@ -271,8 +271,8 @@
      *
      */
     function logout(): void {
-        user.logout().then(() => {
-            router.push({ name: 'Index' });
+        admin.logout().then(() => {
+            router.push({ name: Routes.INDEX });
         });
     }
 </script>

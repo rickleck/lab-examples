@@ -2,11 +2,11 @@
     <ul class="entry-list">
         <li
             v-for="entry in entryList"
-            :key="entry._id"
+            :key="entry.id"
             :entry="entry"
             class="entry-list-item link-hover-to-secondary"
         >
-            <RouterLink :to="{ name: 'Entry', params: { id: entry._id } }">
+            <RouterLink :to="{ name: Routes.BLOG_ENTRY, params: { id: entry.id } }">
                 <h3 class="header">{{ entry.title }}</h3>
                 <span class="details"
                     >{{ entry.published }}<i class="bi bi-dot"></i
@@ -22,15 +22,14 @@
 
 <script setup lang="ts">
     import { ref } from 'vue';
-    import { apiStore, type BlogEntry } from '../../stores/ApiStore';
+    import { useBlogDataStore, type BlogEntry } from '../../stores/BlogDataStore';
     import { RouterLink } from 'vue-router';
+    import { Routes } from '../../router/Router';
 
     const entryList = ref<BlogEntry[]>();
+    const blogData = useBlogDataStore();
 
-    apiStore
-        .get()
-        .then((data: BlogEntry[] | BlogEntry) => (entryList.value = data as BlogEntry[]))
-        .catch((error: any) => console.log(error));
+    blogData.getAll().then((data: BlogEntry[]) => (entryList.value = data));
 </script>
 
 <style scoped lang="scss">

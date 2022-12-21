@@ -2,7 +2,7 @@
     <div class="footer-wrapper">
         <footer class="footer container-responsive">
             <span class="legal">&copy;2022. Aqua Blog Inc.</span>
-            <RouterLink to="/admin" class="admin link-light link-hover-underline"
+            <RouterLink :to="{ name: Routes.ADMIN }" class="admin link-light link-hover-underline"
                 >Admin <i class="bi bi-person-lock"></i
             ></RouterLink>
         </footer>
@@ -10,6 +10,7 @@
 </template>
 
 <script setup lang="ts">
+    import { Routes } from '../../router/Router';
     import { RouterLink } from 'vue-router';
 </script>
 

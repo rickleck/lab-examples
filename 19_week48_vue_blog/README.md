@@ -8,6 +8,6 @@
     - Email: leck-lex@email.com 
     - Password: enkattienhatt
 - Search searches blog entry titles.
-- Using re-purposed CRUD server from lab 16, storing blog entries in a MongoDB Atlas database.
+- Deployed to Firebase using Firestore DB for blog entries.
 
 Deploy https://lab-19.web.app/
