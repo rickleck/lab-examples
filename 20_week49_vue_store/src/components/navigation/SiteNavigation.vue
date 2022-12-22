@@ -5,17 +5,32 @@
     import { useBasketStore } from '@/stores/BasketStore';
     import { watch, ref } from 'vue';
     import { useEventListener } from '@vueuse/core';
+    import { debounce as _debounce } from 'lodash';
 
     const basket = useBasketStore();
     const route = useRoute();
     const showIndicator = ref<boolean>(false);
     const isNavOpen = ref<boolean>(false);
+    const hideNavBar = ref<boolean>(false);
+    let scrollPrev = 0;
 
     watch(basket, () => {
         if (route.name !== Routes.BASKET && basket.itemsTotal > 0) showIndicator.value = true;
     });
 
     useEventListener(window, 'resize', () => (isNavOpen.value = false));
+    useEventListener(
+        window,
+        'scroll',
+        _debounce(() => {
+            if (window.scrollY === 0 || window.scrollY < scrollPrev) {
+                hideNavBar.value = false;
+            } else {
+                hideNavBar.value = true;
+            }
+            scrollPrev = window.scrollY;
+        }, 10)
+    );
 </script>
 
 <template>
@@ -25,7 +40,7 @@
                 <img src="../../assets/graphics/logo-opt.svg" class="logo" />
             </RouterLink>
         </div>
-        <div class="nav-bar-wrapper">
+        <div class="nav-bar-wrapper" :class="{ hide: hideNavBar }">
             <nav class="nav-bar">
                 <RouterLink
                     v-for="(item, index) in navData"
@@ -83,7 +98,6 @@
         display: block;
         width: 100%;
         z-index: 50;
-        background: white;
 
         .nav-list-wrapper {
             position: absolute;
@@ -151,6 +165,7 @@
             justify-content: center;
             width: 100%;
             padding: 1rem 0;
+            background: white;
 
             .logo {
                 margin-top: -0.4rem;
@@ -168,9 +183,16 @@
             align-items: center;
             width: 100%;
             padding: 0.5rem 0 1.3rem 0;
+            background: white;
 
             @include breakpoints.from-md() {
                 display: flex;
+
+                &.hide {
+                    transition: all 0.3s ease;
+                    opacity: 0;
+                    transform: translateY(-20px);
+                }
             }
 
             .nav-bar {

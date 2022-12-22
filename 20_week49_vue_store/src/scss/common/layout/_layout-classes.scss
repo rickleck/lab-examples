@@ -25,11 +25,14 @@
 }
 
 .view-padding-bottom {
-    padding-bottom: vars.$view-padding-bottom-default;
+    padding-bottom: 5rem;
 }
 
 .view-padding-top {
-    padding-top: vars.$view-padding-top-default;
+    padding-top: 2rem;
+    @include breakpoints.from-md() {
+        padding-top: 5rem;
+    }
 }
 
 .home-view-header {
