@@ -19,6 +19,7 @@
     });
 
     useEventListener(window, 'resize', () => (isNavOpen.value = false));
+
     useEventListener(
         window,
         'scroll',
