@@ -23,11 +23,7 @@
         window,
         'scroll',
         _debounce(() => {
-            if (window.scrollY === 0 || window.scrollY < scrollPrev) {
-                hideNavBar.value = false;
-            } else {
-                hideNavBar.value = true;
-            }
+            hideNavBar.value = !(window.scrollY === 0 || window.scrollY < scrollPrev);
             scrollPrev = window.scrollY;
         }, 10)
     );
