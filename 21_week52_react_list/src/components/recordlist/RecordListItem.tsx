@@ -1,8 +1,11 @@
-import type { RecordVO } from './types';
+import type { Record } from './types';
 import './styles.scss';
 import { CSSProperties, useState } from 'react';
 
-function RecordListItem(record: RecordVO): JSX.Element {
+/**
+ *
+ */
+function RecordListItem(record: Record): JSX.Element {
     const [themed, setThemed] = useState<boolean>(true);
 
     /**
@@ -24,7 +27,7 @@ function RecordListItem(record: RecordVO): JSX.Element {
             <div className={'image' + (!themed ? ' bw-filter' : '')}>
                 <img src={record.coverUrl} />
             </div>
-            <div className={'sections'}>
+            <div className="sections">
                 <div className="section" style={bgColor(record.theme.color1)}>
                     <p className="title">{record.title}</p>
                     <p>{record.artist}</p>

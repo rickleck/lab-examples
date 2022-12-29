@@ -1,4 +1,4 @@
-interface RecordVO {
+interface Record {
     id: string;
     title: string;
     artist: string;
@@ -15,4 +15,4 @@ interface RecordVO {
     };
 }
 
-export { type RecordVO };
+export { type Record };

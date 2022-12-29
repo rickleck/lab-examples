@@ -28,8 +28,8 @@ Lexicon
 - [Week 47 Lab 18: Vue.js Login](18_week47_vue_login)
 - [Week 48 Lab 19: Vue.js Blog](19_week48_vue_blog)
 - [Week 49 Lab 20: Vue.js Store](20_week49_vue_store)
+- [Week 52 Lab 21: React List](21_week52_react_list)
 
 ### In Progress
-
-- [Week 52 Lab 21: React List](21_week52_react_list)
+-
 

@@ -1,9 +1,9 @@
 /* Included default classes*/
 @use 'reset/reset-classes';
 @use 'base/base-classes';
+@use 'layout/layout-classes';
+@use 'gui/gui-classes';
 //@use 'color/color-classes';
-//@use 'layout/layout-classes';
-//@use 'gui/gui-classes';
 
 /* Fonts */
 @use 'fonts/font-imports';

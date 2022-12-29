@@ -15,11 +15,11 @@
         color: white;
 
         &:hover {
-            background-color: color.$primary-light;
+            background-color: color.$secondary;
         }
 
         &:active {
-            background-color: color.$primary-dark;
+            background-color: color.$secondary-dark;
         }
     }
 
