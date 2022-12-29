@@ -1,0 +1,81 @@
+@use '../../scss/common/layout';
+@use '../../scss/common/breakpoints';
+
+.record-list {
+    display: grid;
+    grid: auto / auto;
+    gap: layout.$spacing-default;
+
+    @include breakpoints.from-md {
+        grid: auto / 1fr 1fr;
+    }
+
+    @include breakpoints.from-xl {
+        grid: auto / 1fr 1fr 1fr;
+    }
+
+    .card {
+        width: 100%;
+        background-color: white;
+        max-width: layout.$list-item-max-width;
+        padding: layout.$spacing-default;
+        box-shadow: layout.$box-shadow-default;
+    }
+
+    .header {
+        h1 {
+            font-size: 3rem;
+            line-height: 2.5rem;
+            margin: 0;
+        }
+    }
+
+    &-item {
+        cursor: pointer;
+
+        p {
+            padding: 0;
+            margin: 0;
+        }
+
+        .sections {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            align-items: flex-start;
+        }
+
+        .section {
+            color: white;
+            padding: 0.5rem 1rem;
+            white-space: pre-line;
+            transition: all 0.3s ease;
+        }
+
+        .title {
+            font-weight: 700;
+        }
+
+        .link {
+            text-decoration: underline;
+            font-weight: 700;
+        }
+
+        .image {
+            margin-bottom: layout.$spacing-default;
+            aspect-ratio: 1;
+            transition: all 0.3s ease;
+
+            &.bw-filter {
+                filter: grayscale(100%);
+            }
+
+            img {
+                width: 100%;
+                height: auto;
+                object-fit: cover;
+                aspect-ratio: 1;
+            }
+        }
+    }
+}

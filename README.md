@@ -30,5 +30,6 @@ Lexicon
 - [Week 49 Lab 20: Vue.js Store](20_week49_vue_store)
 
 ### In Progress
--
+
+- [Week 52 Lab 21: React List](21_week52_react_list)
 
