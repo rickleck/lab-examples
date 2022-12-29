@@ -11,7 +11,7 @@ function RecordListItem(record: Record): JSX.Element {
     /**
      *
      */
-    function onClick(): void {
+    function toggleTheme(): void {
         setThemed((themed) => !themed);
     }
 
@@ -23,7 +23,7 @@ function RecordListItem(record: Record): JSX.Element {
     }
 
     return (
-        <div className="card record-list-item" onClick={onClick}>
+        <div className="card record-list-item" onClick={toggleTheme}>
             <div className={'image' + (!themed ? ' bw-filter' : '')}>
                 <img src={record.coverUrl} />
             </div>
