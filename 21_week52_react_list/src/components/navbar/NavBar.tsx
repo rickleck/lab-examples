@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import Login from '../login/Login';
-import './styles.scss';
+import Login from '@/components/login/Login';
+import '@/components/navbar/styles.scss';
 
 function NavBar() {
     const [user, setUser] = useState<{ username: string } | null>(null);

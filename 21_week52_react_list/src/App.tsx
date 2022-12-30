@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import data from './assets/data/latest.json';
-import NavBar from './components/navbar/NavBar';
-import RecordList from './components/recordlist/RecordList';
-import type { Record } from './components/recordlist/types';
+import data from '@/assets/data/latest.json';
+import NavBar from '@/components/navbar/NavBar';
+import RecordList from '@/components/recordlist/RecordList';
+import type { Record } from '@/components/recordlist/types';
 
 /**
  *

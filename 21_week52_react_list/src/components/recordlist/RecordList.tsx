@@ -1,6 +1,6 @@
-import RecordListItem from './RecordListItem';
-import type { Record } from './types';
-import './styles.scss';
+import RecordListItem from '@/components/recordlist/RecordListItem';
+import type { Record } from '@/components/recordlist/types';
+import '@/components/recordlist/styles.scss';
 
 /**
  *

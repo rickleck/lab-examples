@@ -1,5 +1,5 @@
 import { FormEvent, useRef } from 'react';
-import './styles.scss';
+import '@/components/login/styles.scss';
 
 function Login({ login, close }: { login: Function; close: Function }): JSX.Element {
     const username = useRef<HTMLInputElement | null>(null);

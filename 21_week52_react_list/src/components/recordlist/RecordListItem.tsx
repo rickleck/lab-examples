@@ -1,5 +1,5 @@
-import type { Record } from './types';
-import './styles.scss';
+import type { Record } from '@/components/recordlist/types';
+import '@/components/recordlist/styles.scss';
 import { CSSProperties, useState } from 'react';
 
 /**
