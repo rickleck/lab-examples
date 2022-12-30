@@ -33,9 +33,8 @@ function RecordListItem(record: Record): JSX.Element {
                     <p>{record.artist}</p>
                 </div>
                 <div className="section" style={bgColor(record.theme.color2)}>
-                    {record.orgReleaseYear}
-                    <br />
-                    {record.label}
+                    <p>{record.orgReleaseYear}</p>
+                    <p>{record.label}</p>
                 </div>
                 <div className="section" style={bgColor(record.theme.color3)}>
                     Added: {record.addedDate}
