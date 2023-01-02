@@ -40,7 +40,12 @@ function RecordListItem(record: Record): JSX.Element {
                     Added: {record.addedDate}
                 </div>
                 <div className="section" style={bgColor(record.theme.color4)}>
-                    <a className="link" href={record.discogsUrl} target="_blank">
+                    <a
+                        className="link"
+                        href={record.discogsUrl}
+                        target="_blank"
+                        onClick={(e) => e.stopPropagation()}
+                    >
                         Discogs
                     </a>
                 </div>
