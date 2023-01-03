@@ -1,8 +1,12 @@
-import { FormEvent, useRef } from 'react';
+import { FormEvent, useEffect, useRef } from 'react';
 import '@/components/login/styles.scss';
 
 function Login({ login, close }: { login: Function; close: Function }): JSX.Element {
     const username = useRef<HTMLInputElement | null>(null);
+
+    useEffect(() => {
+        username.current?.focus();
+    }, []);
 
     /**
      *
