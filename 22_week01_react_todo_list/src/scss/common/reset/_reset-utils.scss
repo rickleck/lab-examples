@@ -1,0 +1,16 @@
+@mixin input {
+    appearance: none;
+    font-family: inherit;
+    font-size: inherit;
+    background-image: none;
+    outline: none;
+    background-color: transparent;
+    border: none;
+}
+
+@mixin button {
+    appearance: none;
+    all: unset;
+    outline: none;
+    border: none;
+}

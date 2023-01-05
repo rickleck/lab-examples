@@ -1,0 +1,14 @@
+/* Included default classes*/
+@use 'reset/reset-classes';
+@use 'base/base-classes';
+@use 'layout/layout-classes';
+@use 'gui/gui-classes';
+//@use 'color/color-classes';
+
+/* Fonts */
+@use 'fonts/font-imports';
+
+/* Icons */
+//@use 'gui/icons/icons-import-bi'; //Bootstrap
+//@use 'gui/icons/icons-import-md'; //Google Icons
+//@use 'gui/icons-import-md-symbols'; //Google Symbols

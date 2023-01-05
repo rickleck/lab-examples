@@ -1,0 +1,21 @@
+{
+  "hosting": {
+    "site": "lab-22",
+    "public": "dist",
+    "ignore": [
+      "firebase.json",
+      "tsconfig.json",
+      "**/.*",
+      "*.pdf",
+      "*.md",
+      "**/node_modules/**",
+      "**/src/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

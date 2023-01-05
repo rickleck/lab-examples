@@ -1,0 +1,27 @@
+@use '../reset';
+@use '../fonts';
+@use '../layout';
+
+button {
+    @include reset.button;
+}
+
+input,
+select {
+    @include reset.input;
+}
+
+html {
+    font-family: fonts.$font-family-default;
+    font-size: fonts.$font-size-default;
+    color: black;
+}
+
+body {
+    position: relative;
+    min-height: 100vh;
+    background: rgb(230, 230, 230);
+    display: flex;
+    place-content: center;
+    padding: layout.$spacing-default;
+}
