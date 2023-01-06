@@ -1,7 +1,7 @@
 import { PropsWithChildren } from 'react';
 import { DataContext } from '@/data/Data.context';
 import { useDataSubscriber } from '@/data/hooks/useDataSubscriber.hook';
-import { DataSubscription } from './Data.types';
+import { DataSubscription } from '@/data//Data.types';
 
 function DataProvider({ children }: PropsWithChildren): JSX.Element {
     const subscription: DataSubscription = useDataSubscriber();

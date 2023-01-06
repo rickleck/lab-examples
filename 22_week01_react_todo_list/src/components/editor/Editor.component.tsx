@@ -9,8 +9,6 @@ function Editor(): JSX.Element {
     const { addTask } = useDataSave();
     const inputTitle = useRef<HTMLInputElement | null>(null);
 
-    console.log('Render');
-
     /**
      *
      */
