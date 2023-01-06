@@ -1,24 +1,23 @@
-import { useRef, FormEvent } from 'react';
-import { useDataService } from '@/services/useDataService';
-import { TaskCreate } from '@/services/DataService.types';
 import '@/components/editor/Editor.styles.scss';
+import { useRef, FormEvent, useContext } from 'react';
+import { DataSubscription, Task } from '@/data/Data.types';
+import { useDataSave } from '@/data/hooks/useDataSave.hook';
+import { DataContext } from '@/data/Data.context';
 
-function Editor() {
-    const { addTask } = useDataService();
+function Editor(): JSX.Element {
+    const { tasks } = useContext<DataSubscription>(DataContext);
+    const { addTask } = useDataSave();
     const inputTitle = useRef<HTMLInputElement | null>(null);
+
+    console.log('Render');
 
     /**
      *
      */
     function handleSubmit(e: FormEvent): void {
         e.preventDefault();
-        const itemData: TaskCreate = {
-            title: (inputTitle.current?.value as string).trim(),
-            list: 'Default',
-            completed: false,
-        };
 
-        addTask(itemData)
+        addTask(tasks, (inputTitle.current?.value as string).trim(), 'Default')
             .then(() => {
                 if (inputTitle.current) inputTitle.current.value = '';
             })

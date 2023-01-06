@@ -1,22 +1,21 @@
-import { Task } from '@/services/DataService.types';
-import { useDataService } from '@/services/useDataService';
 import '@/components/list/List.styles.scss';
+import { Task } from '@/data/Data.types';
+import { useDataSave } from '@/data/hooks/useDataSave.hook';
 
-function ListItem(itemData: Task) {
-    const dataService = useDataService();
-
+function ListItem({ itemData }: { itemData: Task }): JSX.Element {
+    const { removeTask, updateTask } = useDataSave();
     /**
      *
      */
     function remove(): void {
-        dataService.removeTask(itemData.id);
+        removeTask(itemData.id);
     }
 
     /**
      *
      */
     function toggleCompleted(): void {
-        dataService.updateTask(itemData.id, { completed: !itemData.completed });
+        updateTask(itemData.id, { completed: !itemData.completed });
     }
 
     return (
@@ -25,6 +24,7 @@ function ListItem(itemData: Task) {
             <p>Title: {itemData.title}</p>
             <p>Completed: {itemData.completed ? 'true' : 'false'}</p>
             <p>ID: {itemData.id}</p>
+            <p>Order: {itemData.order}</p>
             <button onClick={toggleCompleted} className="btn-primary">
                 Toggle
             </button>
