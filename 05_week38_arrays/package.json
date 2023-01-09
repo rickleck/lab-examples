@@ -1,9 +1,0 @@
-{
-  "name": "05_week38_arrays_js",
-  "version": "1.0.0",
-  "description": "",
-  "type": "module",
-  "dependencies": {
-    "commander": "^9.4.0"
-  }
-}

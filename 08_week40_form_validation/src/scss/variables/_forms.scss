@@ -1,7 +1,0 @@
-@use "colors";
-
-$input-fields-padding: 0.3rem;
-$input-fields-border: 1px solid colors.$secondary-color;
-$input-fields-border--focus: 1px solid colors.$highlight-color;
-$input-fields-border--invalid: 1px solid colors.$error-color;
-$input-fields-outline--invalid: colors.$error-color solid 1px;
