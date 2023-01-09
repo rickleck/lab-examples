@@ -1,15 +1,19 @@
 import '@/components/list/List.styles.scss';
 import { useContext } from 'react';
-import ListItem from '@/components/list/ListItem.component';
 import { DataContext } from '@/data/Data.context';
-import { DataSubscription } from '@/data/Data.types';
+import { ViewStateContext } from '@/components/main/states/view/View.context';
+import ListItem from '@/components/list/ListItem.component';
 
+/**
+ *
+ */
 function List(): JSX.Element {
-    const { tasks } = useContext<DataSubscription>(DataContext);
+    const { tasksByListName } = useContext(DataContext);
+    const [{ currentList }] = useContext(ViewStateContext);
 
     return (
         <div className="list">
-            {tasks.map((itemData) => (
+            {(tasksByListName.get(currentList) || []).map((itemData) => (
                 <ListItem itemData={itemData} key={itemData.id} />
             ))}
         </div>
