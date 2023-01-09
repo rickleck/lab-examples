@@ -2,6 +2,6 @@
 Rickard
 
 Assorted Frontend Lab Assignments  
-Lexicon
+[Lexicon](https://www.lexicon.se/)
 
 
