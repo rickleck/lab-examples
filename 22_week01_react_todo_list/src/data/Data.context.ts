@@ -1,6 +1,14 @@
 import { createContext } from 'react';
 import { DataSubscription } from '@/data/Data.types';
 
-const DataContext = createContext<DataSubscription>({ tasks: [] });
+/**
+ *
+ */
+const init: DataSubscription = {
+    tasksByListName: new Map(),
+    listNames: [],
+};
+
+const DataContext = createContext<DataSubscription>(init);
 
 export { DataContext };

@@ -1,5 +1,8 @@
 import { FieldValue, Timestamp } from 'firebase/firestore';
 
+/**
+ *
+ */
 type Task = {
     id: string;
     list: string;
@@ -9,10 +12,26 @@ type Task = {
     modifiedAt: Timestamp | FieldValue;
 };
 
+type TaskUpdate = Partial<Pick<Task, 'title' | 'list' | 'completed'>>;
+
+/**
+ *
+ */
 type DataSubscription = {
     error?: Error | undefined;
     status?: 'loading' | 'error' | 'success';
-    tasks: Task[];
+    tasksByListName: Map<string, Task[]>;
+    listNames: string[];
 };
 
-export { type Task, type DataSubscription };
+/**
+ *
+ */
+interface DataSaver {
+    addTask: (title: string, list: string, parentList?: Task[]) => Promise<void>;
+    updateTask: (id: string, itemData: TaskUpdate) => Promise<void>;
+    removeTask: (id: string) => Promise<void>;
+    updateListOrder: (list: Task[]) => Promise<void>;
+}
+
+export { type Task, type TaskUpdate, type DataSubscription, type DataSaver };

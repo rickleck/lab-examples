@@ -10,30 +10,12 @@ import {
     FieldValue,
 } from 'firebase/firestore';
 import { useFirestore } from 'reactfire';
-import { Task } from '@/data/Data.types';
+import { DataSaver, Task, TaskUpdate } from '@/data/Data.types';
 
 /**
  *
  */
-interface DataSave {
-    addTask: (
-        parentList: Task[],
-        title: string,
-        list: string,
-        completed?: boolean
-    ) => Promise<void>;
-    updateTask: (
-        id: string,
-        itemData: Partial<Pick<Task, 'title' | 'list' | 'completed'>>
-    ) => Promise<void>;
-    removeTask: (id: string) => Promise<void>;
-    updateListOrder: (list: Task[]) => Promise<void>;
-}
-
-/**
- *
- */
-function useDataSave(): DataSave {
+function useDataSaver(): DataSaver {
     const firestore = useFirestore();
     const collectionRef = collection(firestore, 'tasklist');
     const handlers = {
@@ -46,18 +28,13 @@ function useDataSave(): DataSave {
     /**
      *
      */
-    async function addTask(
-        parentList: Task[],
-        title: string,
-        list: string,
-        completed: boolean = false
-    ): Promise<void> {
+    async function addTask(title: string, list: string, parentList: Task[] = []): Promise<void> {
         const batch = getOrderBatch(parentList);
         const docRef = doc(collectionRef);
         const itemData: Omit<Task, 'id'> = {
             title,
             list,
-            completed,
+            completed: false,
             order: parentList.length,
             modifiedAt: serverTimestamp() as FieldValue,
         };
@@ -68,10 +45,7 @@ function useDataSave(): DataSave {
     /**
      *
      */
-    async function updateTask(
-        id: string,
-        itemData: Partial<Pick<Task, 'title' | 'list' | 'completed'>>
-    ): Promise<void> {
+    async function updateTask(id: string, itemData: TaskUpdate): Promise<void> {
         if (itemData.list) (itemData as Partial<Task>).order = 1000;
         const docRef = doc(collectionRef, id);
         await updateDoc(docRef, { ...itemData, modifiedAt: serverTimestamp() });
@@ -108,4 +82,4 @@ function useDataSave(): DataSave {
     return { ...handlers };
 }
 
-export { useDataSave };
+export { useDataSaver };
