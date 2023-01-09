@@ -1,7 +1,7 @@
 # labs
 Rickard
 
-Assorted Frontend Lab Assignments  
+Assorted Front-end Lab Assignments  
 [Lexicon](https://www.lexicon.se/)
 
 
