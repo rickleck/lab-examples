@@ -1,28 +1,9 @@
 @use '../../color';
+@use '../../layout';
+@use '../links';
 
 .btn {
-    padding: 0.7rem 1.1rem;
-    font-weight: 700;
-    text-align: center;
-    text-transform: uppercase;
     cursor: pointer;
-    transition: background-color 150ms ease;
-
-    &-primary {
-        @extend .btn;
-
-        background-color: color.$primary;
-        color: white;
-
-        &:hover {
-            background-color: color.$secondary;
-        }
-
-        &:active {
-            background-color: color.$secondary-dark;
-        }
-    }
-
     &.is-hidden {
         display: none;
     }
@@ -34,44 +15,45 @@
     }
 }
 
+.btn-icon {
+    @extend .btn;
+    &-primary {
+        @extend .btn-icon;
+        color: color.$primary;
+        &:hover {
+            color: color.$primary-light;
+        }
+        &:active {
+            color: color.$primary-dark;
+        }
+    }
+
+    &-light {
+        @extend .btn-icon;
+        color: color.$light;
+        &:hover {
+            opacity: 0.7;
+        }
+        &:active {
+            opacity: 0.9;
+        }
+    }
+}
+
 .btn-outline {
+    @extend .btn;
+    border: 2px solid color.$light;
+    border-radius: layout.$border-radius-default;
+    padding: 1rem 1.5rem;
     font-weight: 700;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    white-space: nowrap;
+    color: color.$light;
     text-transform: uppercase;
-
+    text-align: center;
     &:hover {
-        color: color.$secondary;
-        outline-color: color.$secondary;
+        background-color: color.$primary-light;
     }
-
     &:active {
-        color: color.$secondary;
-        outline-color: color.$secondary;
-    }
-
-    &.disabled,
-    &:disabled {
-        pointer-events: none;
-        color: lightgrey;
-        outline-color: lightgrey;
-    }
-
-    &.is-selected {
-        color: color.$secondary;
-        outline-color: color.$secondary;
-    }
-
-    &-white {
-        @extend .btn-outline;
-        outline: 2px solid white;
-        color: white;
-    }
-
-    &-black {
-        @extend .btn-outline;
-        outline: 2px solid black;
-        color: black;
+        background-color: color.$primary-light;
+        opacity: 0.8;
     }
 }

@@ -1,6 +1,14 @@
 @use '../breakpoints';
 @use 'layout-vars' as vars;
 
+.border-dev-red {
+    border: 1px solid red;
+}
+
+.border-dev-black {
+    border: 1px solid black;
+}
+
 .container-responsive {
     width: 100%;
     margin-left: auto;

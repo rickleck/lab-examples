@@ -1,8 +1,25 @@
+$spacings-map: (
+    'm-all': 'margin',
+    'm-l': 'margin-left',
+    'm-r': 'margin-right',
+    'm-t': 'margin-top',
+    'm-b': 'margin-left',
+    'p-all': 'padding',
+    'p-l': 'padding-left',
+    'p-r': 'padding-right',
+    'p-t': 'padding-top',
+    'p-b': 'padding-left',
+    'gap': 'gap',
+);
+
 //Spacing
 $spacing-default: 1.5rem;
 
 //Lists
-$list-item-max-width: 400px;
+$app-max-width: 400px;
 
 //Boxes
 $box-shadow-default: 4px 4px 8px rgba(0, 0, 0, 0.25);
+
+//Border radius
+$border-radius-default: 10px;

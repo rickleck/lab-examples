@@ -7,8 +7,9 @@
 
 /* Fonts */
 @use 'fonts/font-imports';
+@use 'fonts/font-classes';
 
 /* Icons */
 //@use 'gui/icons/icons-import-bi'; //Bootstrap
 //@use 'gui/icons/icons-import-md'; //Google Icons
-//@use 'gui/icons-import-md-symbols'; //Google Symbols
+@use 'gui/icons/icons-import-md-symbols'; //Google Symbols

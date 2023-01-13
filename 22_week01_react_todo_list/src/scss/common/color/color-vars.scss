@@ -1,14 +1,18 @@
-$primary: hsl(0, 0%, 0%);
+$primary: #199bdc;
 
-$primary-light: hsl(0, 0%, 45%);
+$primary-light: #4bbbf3;
 
-$primary-dark: hsl(0, 0%, 0%);
+$primary-dark: #147cb0;
 
-$secondary: hsl(204, 47%, 57%);
+$secondary: #0b4b6e;
 
-$secondary-light: hsl(204, 54%, 68%);
+$secondary-light: #54819a;
 
-$secondary-dark: hsl(204, 43%, 45%);
+$secondary-dark: #093c58;
+
+$dark: #05151f;
+
+$light: white;
 
 $black: black;
 
@@ -21,6 +25,8 @@ $color-map: (
     'secondary': $secondary,
     'secondary-light': $secondary-light,
     'secondary-dark': $secondary-dark,
+    'light': $light,
+    'dark': $dark,
     'black': $black,
     'white': $white,
 );

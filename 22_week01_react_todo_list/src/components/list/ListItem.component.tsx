@@ -1,58 +1,88 @@
 import '@/components/list/List.styles.scss';
 import { Task } from '@/data/Data.types';
 import { useDataSaver } from '@/data/hooks/useDataSaver.hook';
-import { useErrorDispatch } from '@/components/main/states/error/Error.context';
-import { ViewStateContext } from '@/components/main/states/view/View.context';
+import { useErrorDispatch } from '@/states/error/Error.context';
+import { ViewStateContext } from '@/states/view/View.context';
 import { useContext } from 'react';
+import { useSortable } from '@dnd-kit/sortable';
+import { CSS } from '@dnd-kit/utilities';
 
 /**
  *
  */
 type ListItemProps = {
     itemData: Task;
+    draggingId: string | null;
 };
 
 /**
  *
  */
-function ListItem({ itemData }: ListItemProps): JSX.Element {
+function ListItem({ itemData, draggingId }: ListItemProps): JSX.Element {
     const { removeTask, updateTask } = useDataSaver();
     const errorDispatch = useErrorDispatch();
     const [{}, viewDispatch] = useContext(ViewStateContext);
+    const { attributes, listeners, setNodeRef, transform, transition } = useSortable({
+        id: itemData.id,
+    });
+
+    const style = {
+        // Update dragging
+        transform: CSS.Transform.toString(transform),
+        transition,
+    };
 
     return (
-        <div className="list-item">
-            <p>List: {itemData.list}</p>
-            <p>Title: {itemData.title}</p>
-            <p>Completed: {itemData.completed ? 'true' : 'false'}</p>
-            <p>ID: {itemData.id}</p>
-            <p>Order: {itemData.order}</p>
-            <button
-                onClick={() => viewDispatch({ type: 'openEditor', editTask: itemData })}
-                className="btn-primary"
-            >
-                Edit
-            </button>
+        <div
+            className={'list-item' + (draggingId === itemData.id ? ' is-dragging' : '')}
+            style={style}
+            ref={setNodeRef}
+            {...attributes}
+        >
             <button
                 onClick={() => {
                     updateTask(itemData.id, { completed: !itemData.completed }).catch(
                         (error: Error) => errorDispatch({ error: error })
                     );
                 }}
-                className="btn-primary"
+                className="material-symbols-outlined btn-icon-primary btn-completed"
+                title={itemData.completed ? 'Mark task not completed' : 'Mark task completed'}
             >
-                Toggle
+                {itemData.completed ? 'check_circle_outline' : 'radio_button_unchecked'}
             </button>
-            <button
-                onClick={() => {
-                    removeTask(itemData.id).catch((error: Error) =>
-                        errorDispatch({ error: error })
-                    );
-                }}
-                className="btn-primary"
-            >
-                Delete
-            </button>
+            <p className="title">{itemData.title}</p>
+            <div className="buttons">
+                <button
+                    onClick={() => viewDispatch({ type: 'openEditor', editTask: itemData })}
+                    className="material-symbols-outlined btn-icon-primary btn-edit"
+                    title="Edit task"
+                >
+                    edit
+                </button>
+
+                <button
+                    onClick={() => {
+                        removeTask(itemData.id).catch((error: Error) =>
+                            errorDispatch({ error: error })
+                        );
+                    }}
+                    className="material-symbols-outlined btn-icon-primary btn-delete"
+                    title="Delete task"
+                >
+                    do_not_disturb_on
+                </button>
+
+                <button
+                    {...listeners}
+                    className={
+                        'material-symbols-outlined  btn-icon-primary btn-reorder' +
+                        (draggingId === itemData.id ? ' is-dragging' : '')
+                    }
+                    title="Reorder list"
+                >
+                    reorder
+                </button>
+            </div>
         </div>
     );
 }

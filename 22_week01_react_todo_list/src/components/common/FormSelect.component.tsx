@@ -6,6 +6,7 @@ import { FormEvent } from 'react';
 type FormSelectProps = {
     currentValue: string;
     options: string[];
+    placeHolder?: string;
     isDisabled?: boolean;
     onChange: (value: string) => void;
 };
@@ -13,14 +14,20 @@ type FormSelectProps = {
 /**
  *
  */
-function FormSelect({ currentValue, options, isDisabled = false, onChange }: FormSelectProps) {
+function FormSelect({
+    currentValue,
+    options,
+    placeHolder = '',
+    isDisabled = false,
+    onChange,
+}: FormSelectProps) {
     return (
         <select
-            className={`form-input form-select ${isDisabled ? 'disabled' : ''}`}
+            className={`form-select ${isDisabled ? 'disabled' : ''}`}
             name="Formselect"
             id="Formselect"
             value={currentValue || ''}
-            disabled={isDisabled || options.length === 0}
+            disabled={isDisabled}
             onChange={(e: FormEvent) => {
                 onChange((e.target as HTMLSelectElement).value);
             }}
@@ -30,6 +37,8 @@ function FormSelect({ currentValue, options, isDisabled = false, onChange }: For
                     {option}
                 </option>
             ))}
+
+            {options.length == 0 && <option value="">{placeHolder}</option>}
         </select>
     );
 }

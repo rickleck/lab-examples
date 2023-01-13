@@ -5,7 +5,10 @@ import { DataSubscription } from '@/data/Data.types';
  *
  */
 const init: DataSubscription = {
-    tasksByListName: new Map(),
+    error: undefined,
+    status: 'loading',
+    allTasks: [],
+    currentTaskList: [],
     listNames: [],
 };
 

@@ -1,0 +1,30 @@
+@use '@/scss/common/color';
+@use '@/scss/common/layout';
+
+.footer {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    background-color: color.$secondary;
+    margin-top: 1rem;
+    border-radius: layout.$border-radius-default;
+    .btn-add {
+        $size: 60px;
+        position: absolute;
+        display: flex;
+        place-items: center;
+        place-content: center;
+        left: calc(50% - ($size * 0.5));
+        bottom: calc(0px - ($size * 0.5));
+        width: $size;
+        height: $size;
+        background-color: color.$primary;
+        border-radius: 50%;
+        color: white;
+        font-size: 4.2rem;
+        cursor: pointer;
+        &:hover {
+            background-color: color.$primary-light;
+        }
+    }
+}

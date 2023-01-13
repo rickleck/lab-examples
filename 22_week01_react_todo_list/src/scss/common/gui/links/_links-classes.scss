@@ -10,42 +10,50 @@
 
     &-primary {
         color: color.$primary;
-        @extend .link-hover-to-secondary;
+        @extend .color-hover-to-primary-light;
     }
 
     &-primary-light {
         color: color.$primary-light;
-        @extend .link-hover-to-secondary;
+        @extend .color-hover-to-secondary;
     }
 
     &-secondary {
         color: color.$secondary;
-        @extend .link-hover-to-primary;
+        @extend .color-hover-to-secondary-light;
     }
 
     &-secondary-light {
         color: color.$secondary-light;
-        @extend .link-hover-to-primary-light;
+        @extend .color-hover-to-primary-light;
     }
 
-    &-black {
+    &-black,
+    &-dark {
         color: color.$black;
-        @extend .link-hover-to-secondary;
+        @extend .color-hover-to-primary-light;
     }
 
-    &-white {
+    &-white,
+    &-light {
         color: color.$white;
-        @extend .link-hover-to-secondary;
+        @extend .color-hover-to-primary-light;
     }
 }
 
 .link-hover-underline {
+    cursor: pointer;
+
+    &:disabled {
+        opacity: 0.5;
+        pointer-events: none;
+    }
     &:hover {
         text-decoration: underline;
     }
 }
 
-.link-hover-to {
+.color-hover-to {
     &-primary {
         &:hover,
         &.is-selected {

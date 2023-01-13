@@ -23,19 +23,24 @@ function useDataSaver(): DataSaver {
         updateTask: useCallback(updateTask, [collectionRef]),
         removeTask: useCallback(removeTask, [collectionRef]),
         updateListOrder: useCallback(updateListOrder, []),
+        removeList: useCallback(removeList, []),
     };
 
     /**
      *
      */
-    async function addTask(title: string, list: string, parentList: Task[] = []): Promise<void> {
-        const batch = getOrderBatch(parentList);
+    async function addTask(
+        title: string,
+        list: string,
+        parentIdList: string[] = []
+    ): Promise<void> {
+        const batch = getOrderBatch(parentIdList);
         const docRef = doc(collectionRef);
         const itemData: Omit<Task, 'id'> = {
             title,
             list,
             completed: false,
-            order: parentList.length,
+            order: parentIdList.length,
             modifiedAt: serverTimestamp() as FieldValue,
         };
         batch.set(docRef, itemData);
@@ -62,18 +67,30 @@ function useDataSaver(): DataSaver {
     /**
      *
      */
-    async function updateListOrder(list: Task[]): Promise<void> {
-        const batch = getOrderBatch(list);
+    async function removeList(idList: string[]): Promise<void> {
+        const batch = writeBatch(firestore);
+        idList.forEach((id: string) => {
+            const docRef = doc(collectionRef, id);
+            batch.delete(docRef);
+        });
         await batch.commit();
     }
 
     /**
      *
      */
-    function getOrderBatch(list: Task[]): WriteBatch {
+    async function updateListOrder(idList: string[]): Promise<void> {
+        const batch = getOrderBatch(idList);
+        await batch.commit();
+    }
+
+    /**
+     *
+     */
+    function getOrderBatch(idList: string[]): WriteBatch {
         const batch = writeBatch(firestore);
-        list.reverse().forEach((task: Task, index: number) => {
-            const docRef = doc(collectionRef, task.id);
+        idList.forEach((id: string, index: number) => {
+            const docRef = doc(collectionRef, id);
             batch.update(docRef, { order: index });
         });
         return batch;

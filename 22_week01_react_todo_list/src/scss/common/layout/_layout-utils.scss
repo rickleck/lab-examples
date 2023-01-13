@@ -1,0 +1,65 @@
+/*
+Example:
+$spacings-map: (
+    'm-all': 'margin',
+    'm-l': 'margin-left',
+    'm-r': 'margin-right',
+    'm-t': 'margin-top',
+    'm-b': 'margin-left',
+    'p-all': 'padding',
+    'p-l': 'padding-left',
+    'p-r': 'padding-right',
+    'p-t': 'padding-top',
+    'p-b': 'padding-left',
+    'gap': 'gap',
+);
+@include utils.write-spacing-classes(vars.$spacings-map, 8);
+*/
+@mixin write-spacings($map, $iterations, $increment: 0.5, $unit: rem) {
+    @each $name, $type in $map {
+        @for $i from 1 through $iterations {
+            .#{$name}-#{$i} {
+                #{$type}: #{$i * $increment}#{$unit};
+            }
+        }
+    }
+}
+
+/*
+Example:
+@include utils.write-grid-template('rows');
+*/
+@mixin write-grid-template($type, $iterations: 8) {
+    @for $i from 1 through $iterations {
+        .grid-#{$type}-#{$i} {
+            grid-template-#{$type}: repeat(#{$i}, 1fr);
+        }
+    }
+}
+
+/*
+Example:
+//Justify content
+$list: (flex-start, flex-end, center, baseline, space-between, space-around, space-evenly, stretch);
+@include utils.write-value-pair-from-list('jc', 'justify-content', $list);
+*/
+@mixin write-value-pair-from-list($prefix, $key, $valueList) {
+    @each $value in $valueList {
+        .#{$prefix}-#{$value} {
+            #{$key}: #{$value};
+        }
+    }
+}
+
+/*
+Example:
+//Border radius
+@include utils.write-value-pair-iteration('border-radius', px, 10, 4, 2);
+*/
+@mixin write-value-pair-iteration($key, $unit, $iterations, $startIndex: 1, $increment: 1) {
+    @for $i from $startIndex through $iterations {
+        .#{$key}-#{$i * $increment}#{$unit} {
+            #{$key}: #{$i * $increment}#{$unit};
+        }
+    }
+}
