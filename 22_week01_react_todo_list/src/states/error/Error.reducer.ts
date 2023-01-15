@@ -1,4 +1,4 @@
-import { ErrorState } from './Error.types';
+import { ErrorState } from '@/states/error/Error.types';
 
 const initialErrorState: ErrorState = { error: null };
 

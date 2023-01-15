@@ -1,5 +1,5 @@
 import { createContext, Dispatch, useContext } from 'react';
-import { ErrorState } from './Error.types';
+import { ErrorState } from '@/states/error/Error.types';
 
 const ErrorDispatchContext = createContext<Dispatch<ErrorState>>(() => {});
 

@@ -1,0 +1,45 @@
+/* For React Transition Group */
+
+@mixin transition($prop, $duration: 250ms, $delay: 0, $timing: ease) {
+    transition-property: $prop;
+    transition-duration: $duration;
+    transition-timing-function: $timing;
+    transition-delay: $delay;
+}
+
+@mixin fade-in-enter-classes($duration: 250ms, $delay: 0) {
+    opacity: 0;
+
+    &.anim-fade-enter-active {
+        @include transition(opacity, $duration, $delay);
+        opacity: 1;
+    }
+
+    &.anim-fade-enter-done {
+        opacity: 1;
+    }
+}
+
+@mixin fade-in-appear-classes($duration: 250ms, $delay: 0) {
+    opacity: 0;
+
+    &.anim-fade-appear-active {
+        @include transition(opacity, $duration, $delay);
+        opacity: 1;
+    }
+
+    &.anim-fade-appear-done {
+        opacity: 1;
+    }
+}
+
+@mixin fade-out-exit-classes($duration: 250ms, $delay: 0) {
+    &.anim-fade-exit {
+        opacity: 1;
+    }
+
+    &.anim-fade-exit-active {
+        @include transition(opacity, $duration, $delay);
+        opacity: 0;
+    }
+}

@@ -1,0 +1,28 @@
+@use '../layout';
+
+.font-bold {
+    font-weight: 700;
+}
+
+.font-italic {
+    font-style: italic;
+}
+
+.font-inherit {
+    font-style: inherit;
+    font-size: inherit;
+}
+
+.text-decoration-none {
+    text-decoration: none;
+}
+
+.text-decoration-ul {
+    text-decoration: underline;
+}
+
+.text-decoration-l-t {
+    text-decoration: line-through;
+}
+
+@include layout.write-value-pair-from-list('text-align', 'text-align', (center, left, right));

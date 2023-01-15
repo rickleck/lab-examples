@@ -1,9 +1,9 @@
+import '@/scss/common/main.scss';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { FirebaseAppProvider } from 'reactfire';
 import { firebaseConfig } from '@/firebase/Firebase.config';
 import App from '@/App';
-import '@/scss/common/main.scss';
 
 /**
  *

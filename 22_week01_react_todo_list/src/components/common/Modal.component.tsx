@@ -1,29 +1,35 @@
 import '@/components/common/Modal.styles.scss';
-import { PropsWithChildren } from 'react';
-
+import { useAddClassNextFrame } from '@/hooks/useAddClassNextFrame.hook';
+import { CSSProperties, PropsWithChildren, useRef } from 'react';
 /**
  *
  */
 type ModalProps = PropsWithChildren & {
-    onClose: () => void;
+    onClose(): void;
+    extraStyles?: CSSProperties;
 };
 
 /**
  *
  */
-function Modal({ onClose, children }: ModalProps) {
+function Modal({ onClose, children, extraStyles = {} }: ModalProps): JSX.Element {
+    const contentRef = useRef<HTMLDivElement | null>(null);
+    const bgRef = useRef<HTMLDivElement | null>(null);
+
+    useAddClassNextFrame(bgRef, 'fade-in');
+    useAddClassNextFrame(contentRef, 'slide-in');
+
     return (
         <div className="modal">
-            <div className="modal-bg" onClick={onClose}></div>
-            <div className="modal-children-container">
+            <div className="modal-bg" ref={bgRef} onClick={onClose}></div>
+
+            <div className="modal-children-container" ref={contentRef} style={extraStyles}>
                 {children}
-                <button className="modal-btn-close" onClick={onClose}>
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
-                        <path
-                            fill="black"
-                            d="m12.45 37.65-2.1-2.1L21.9 24 10.35 12.45l2.1-2.1L24 21.9l11.55-11.55 2.1 2.1L26.1 24l11.55 11.55-2.1 2.1L24 26.1Z"
-                        />
-                    </svg>
+                <button
+                    className="material-symbols-outlined btn-icon-light modal-btn-close"
+                    onClick={onClose}
+                >
+                    cancel
                 </button>
             </div>
         </div>

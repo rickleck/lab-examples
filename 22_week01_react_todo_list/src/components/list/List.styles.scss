@@ -1,8 +1,60 @@
+@use '@/scss/common/layout';
+@use '@/scss/common/color';
+@use '@/scss/common/animation';
+
 .list {
+    position: relative;
+    z-index: 1;
     .list-item {
+        position: relative;
         display: flex;
-        flex-direction: column;
-        padding: 1rem;
-        border: 1px solid black;
+        gap: layout.$spacing-default;
+        align-items: flex-start;
+        padding: 2rem 2.4rem;
+        margin-top: 1rem;
+        background-color: color.$secondary;
+        border-radius: layout.$border-radius-default;
+        z-index: 2;
+        user-select: none;
+        opacity: 0;
+
+        &.is-dragging {
+            z-index: 10;
+            outline: 1px solid color.$primary;
+            filter: drop-shadow(10px 10px 20px rgba(black, 0.6));
+            cursor: move;
+
+            .btn-completed,
+            .btn-edit,
+            .btn-delete {
+                pointer-events: none;
+            }
+        }
+
+        .btn-completed {
+            font-size: 2.4rem;
+        }
+
+        .title {
+            margin: 0.2rem 0 0 0;
+            padding: 0;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 1rem;
+            font-size: 2rem;
+            margin-left: auto;
+
+            .btn-reorder {
+                &:hover {
+                    cursor: move;
+                }
+
+                &.is-dragging {
+                    color: color.$light;
+                }
+            }
+        }
     }
 }

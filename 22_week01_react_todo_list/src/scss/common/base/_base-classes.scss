@@ -1,9 +1,10 @@
 @use '../reset';
 @use '../fonts';
 @use '../layout';
+@use '../color';
 
 button {
-    @include reset.button;
+    all: unset;
 }
 
 input,
@@ -13,16 +14,27 @@ select {
 
 html {
     font-family: fonts.$font-family-default;
-    font-size: fonts.$font-size-default;
-    line-height: fonts.$line-height-default;
-    color: black;
+    font-size: fonts.$font-size-html-default;
 }
 
 body {
     position: relative;
-    min-height: 100vh;
-    background: rgb(230, 230, 230);
-    display: flex;
-    place-content: center;
-    padding: layout.$spacing-default;
+    background: color.$dark;
+    font-size: fonts.$font-size-body-default;
+    line-height: fonts.$line-height-default;
+    color: color.$light;
+
+    #root {
+        position: relative;
+        width: 100%;
+        display: flex;
+        place-content: center;
+        padding: 3rem layout.$spacing-default;
+
+        main {
+            position: relative;
+            width: 100%;
+            max-width: layout.$app-max-width;
+        }
+    }
 }
