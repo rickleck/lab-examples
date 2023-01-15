@@ -24,6 +24,9 @@
 
     &-children-container {
         position: relative;
+        width: 100%;
+        max-width: layout.$app-max-width;
+        margin-inline: layout.$spacing-default;
         opacity: 0;
         transform: translate3d(0, 100px, 0);
 
