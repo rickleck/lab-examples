@@ -1,6 +1,6 @@
 import '@/components/list/List.styles.scss';
 import { Task } from '@/data/Data.types';
-import { RefObject, useEffect, useRef, useState } from 'react';
+import { RefObject, useEffect, useRef } from 'react';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 

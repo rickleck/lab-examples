@@ -25,7 +25,7 @@ import ListItem from '@/components/list/ListItem.component';
 function List(): JSX.Element {
     const errorDispatch = useErrorDispatch();
     const dataSaver = useDataSaver();
-    const { currentTaskList, listNames } = useContext(DataContext);
+    const { currentTaskList } = useContext(DataContext);
     const [{ currentListName }, viewDispatch] = useContext(ViewStateContext);
     const [itemsOrder, setItemsOrder] = useState<string[]>([]);
     const [prevListName, setPrevListName] = useState<string>('');

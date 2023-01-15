@@ -16,11 +16,11 @@ import { Task, TaskUpdate } from '@/data/Data.types';
  *
  */
 interface DataSaver {
-    addTask: (title: string, list: string, parentIdList?: string[]) => Promise<void>;
-    updateTask: (id: string, itemData: TaskUpdate) => Promise<void>;
-    removeTask: (id: string) => Promise<void>;
+    addTask(title: string, list: string, parentIdList?: string[]): Promise<void>;
+    updateTask(id: string, itemData: TaskUpdate): Promise<void>;
+    removeTask(id: string): Promise<void>;
     removeList(idList: string[]): Promise<void>;
-    updateListOrder: (list: string[]) => Promise<void>;
+    updateListOrder(list: string[]): Promise<void>;
 }
 
 /**
