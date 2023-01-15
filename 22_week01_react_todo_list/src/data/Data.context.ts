@@ -4,7 +4,7 @@ import { DataSubscription } from '@/data/Data.types';
 /**
  *
  */
-const init: DataSubscription = {
+const init: Readonly<DataSubscription> = {
     error: undefined,
     status: 'loading',
     allTasks: [],
@@ -12,6 +12,6 @@ const init: DataSubscription = {
     listNames: [],
 };
 
-const DataContext = createContext<DataSubscription>(init);
+const DataContext = createContext<Readonly<DataSubscription>>(init);
 
 export { DataContext };

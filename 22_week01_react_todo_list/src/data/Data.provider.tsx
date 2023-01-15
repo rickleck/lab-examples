@@ -2,12 +2,11 @@ import { PropsWithChildren, useContext } from 'react';
 import { DataContext } from '@/data/Data.context';
 import { useFirestore, useFirestoreCollectionData } from 'reactfire';
 import { collection, orderBy, query } from 'firebase/firestore';
-import { DataSubscription, Task } from './Data.types';
+import { DataSubscription, Task } from '@/data/Data.types';
 import { ViewStateContext } from '@/states/view/View.context';
-import { useDataUtils } from './hooks/useDataUtils.hook';
+import { getListByName, getListNames } from '@/data/Data.utils';
 
 function DataProvider({ children }: PropsWithChildren): JSX.Element {
-    const dataUtils = useDataUtils();
     const firestore = useFirestore();
     const collectionRef = collection(firestore, 'tasklist');
     const collectionQuery = query(collectionRef, orderBy('order'), orderBy('modifiedAt'));
@@ -18,11 +17,11 @@ function DataProvider({ children }: PropsWithChildren): JSX.Element {
     // Updates automatically when the Firestore db is updated
     const { error, status, data } = useFirestoreCollectionData(collectionQuery, { idField: 'id' });
 
-    // Prepare all list names in an array for the selects
-    const listNames = dataUtils.getListNames(data as Task[]).sort();
+    // Prepare all list names in an array
+    const listNames = getListNames(data as Task[]).sort();
 
     // Get all tasks belonging to current list
-    const currentTaskList = dataUtils.getListByName(currentListName, data as Task[]);
+    const currentTaskList = getListByName(currentListName, data as Task[]);
 
     return (
         <DataContext.Provider
@@ -33,7 +32,7 @@ function DataProvider({ children }: PropsWithChildren): JSX.Element {
                     currentTaskList,
                     allTasks: data as Task[],
                     listNames,
-                } as DataSubscription
+                } as Readonly<DataSubscription>
             }
         >
             {children}

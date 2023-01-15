@@ -1,12 +1,12 @@
 import '@/components/editor/Editor.styles.scss';
 import { useRef, FormEvent, useContext, useEffect, useState } from 'react';
-import { Task, TaskUpdate } from '@/data/Data.types';
-import { useDataSaver } from '@/data/hooks/useDataSaver.hook';
+import { TaskUpdate } from '@/data/Data.types';
+import { useDataSaver } from '@/hooks/useDataSaver.hook';
+import { getListByName, getTaskIdList } from '@/data/Data.utils';
 import { DataContext } from '@/data/Data.context';
 import { EditorState } from '@/components/editor/Editor.types';
 import { useErrorDispatch } from '@/states/error/Error.context';
 import { ViewStateContext } from '@/states/view/View.context';
-import { useDataUtils } from '@/data/hooks/useDataUtils.hook';
 import Modal from '@/components/common/Modal.component';
 import FormSelect from '@/components/common/FormSelect.component';
 
@@ -15,9 +15,8 @@ import FormSelect from '@/components/common/FormSelect.component';
  */
 function Editor(): JSX.Element {
     const errorDispatch = useErrorDispatch();
-    const { addTask, updateTask } = useDataSaver();
+    const dataSaver = useDataSaver();
     const { allTasks, listNames } = useContext(DataContext);
-    const { getListByName, getTaskIdList } = useDataUtils();
     const [viewState, viewDispatch] = useContext(ViewStateContext);
     const [editorState, setEditorState] = useState({
         isSaving: false,
@@ -72,10 +71,10 @@ function Editor(): JSX.Element {
                 );
                 // Save to db if any changes found
                 if (Object.entries(changes).length > 0)
-                    await updateTask(viewState.editTask.id, changes);
+                    await dataSaver.updateTask(viewState.editTask.id, changes);
             } else {
                 // Save a new task
-                await addTask(
+                await dataSaver.addTask(
                     title,
                     list,
                     !editorState.newList ? getTaskIdList(getListByName(list, allTasks)) : undefined
@@ -97,8 +96,11 @@ function Editor(): JSX.Element {
     }
 
     return (
-        <Modal onClose={() => viewDispatch({ type: 'closeEditor' })}>
-            <div className="editor">
+        <Modal
+            onClose={() => viewDispatch({ type: 'closeEditor' })}
+            extraStyles={{ alignSelf: 'flex-start', marginTop: '190px' }}
+        >
+            <div className="editor bg-image">
                 <form className="form" onSubmit={handleSubmit}>
                     <div>
                         <label className="label" htmlFor="title">

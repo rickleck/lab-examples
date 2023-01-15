@@ -3,3 +3,21 @@
         @content ($i, unquote($duration + $unit), unquote(($delay * ($i - 1)) + $unit));
     }
 }
+
+@mixin fade-in-transition($delay: 0s, $duration: 250ms, $className: 'fade-in', $timing: ease) {
+    opacity: 0;
+
+    &.#{$className} {
+        transition: opacity $duration $timing $delay;
+        opacity: 1;
+    }
+}
+
+@mixin fade-out-transition($delay: 0s, $duration: 250ms, $className: 'fade-out', $timing: ease) {
+    opacity: 1;
+
+    &.#{$className} {
+        transition: opacity $duration $timing $delay;
+        opacity: 0;
+    }
+}

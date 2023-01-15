@@ -1,4 +1,4 @@
-import { ViewState, ViewStateAction } from './View.types';
+import { ViewState, ViewStateAction } from '@/states/view/View.types';
 
 const initialViewState: ViewState = {
     showEditor: false,

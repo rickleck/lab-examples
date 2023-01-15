@@ -10,45 +10,55 @@ import {
 } from '@dnd-kit/core';
 import { restrictToVerticalAxis } from '@dnd-kit/modifiers';
 import { arrayMove, SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { DataContext } from '@/data/Data.context';
-import { useDataSaver } from '@/data/hooks/useDataSaver.hook';
 import { ViewStateContext } from '@/states/view/View.context';
-import { useDataUtils } from '@/data/hooks/useDataUtils.hook';
+import { getTaskFromId, getTaskIdList } from '@/data/Data.utils';
+import { useDataSaver } from '@/hooks/useDataSaver.hook';
+import { useErrorDispatch } from '@/states/error/Error.context';
+import { Task } from '@/data/Data.types';
 import ListItem from '@/components/list/ListItem.component';
 
 /**
  *
  */
 function List(): JSX.Element {
-    const dataUtils = useDataUtils();
+    const errorDispatch = useErrorDispatch();
     const dataSaver = useDataSaver();
-    const { currentTaskList } = useContext(DataContext);
-    const [{ currentListName }] = useContext(ViewStateContext);
+    const { currentTaskList, listNames } = useContext(DataContext);
+    const [{ currentListName }, viewDispatch] = useContext(ViewStateContext);
     const [itemsOrder, setItemsOrder] = useState<string[]>([]);
     const [prevListName, setPrevListName] = useState<string>('');
-    const [draggingId, setDraggingId] = useState<string | null>(null);
+    const draggingId = useRef<string | null>(null);
     const sensors = useSensors(useSensor(PointerSensor));
 
     useEffect(() => {
-        // Re-draw only if curent list has changed in size or listname has changed
+        // Only sync with data if list has changed in size or current listname has changed
         if (currentTaskList.length !== itemsOrder.length || prevListName !== currentListName) {
             setPrevListName(currentListName);
-            setItemsOrder(dataUtils.getTaskIdList(currentTaskList));
+            setItemsOrder(getTaskIdList(currentTaskList));
         }
-    }, [currentTaskList, currentListName]);
+    }, [currentTaskList, currentListName, prevListName, itemsOrder]);
 
     /**
      *
      */
-    function handleDragEnd(e: DragEndEvent) {
+    function handleDragStart(e: DragStartEvent): void {
+        // Notify item being dragged
+        draggingId.current = e.active.id as string;
+    }
+
+    /**
+     *
+     */
+    function handleDragEnd(e: DragEndEvent): void {
         const { active, over } = e;
 
-        // Notify list item
-        setDraggingId(null);
+        // Notify dragged item
+        draggingId.current = null;
 
         if (active.id !== over?.id) {
-            setItemsOrder((prev: string[]) => {
+            setItemsOrder((prev: string[]): string[] => {
                 // Update list order
                 const oldIndex = prev.indexOf(active.id as string);
                 const newIndex = prev.indexOf(over?.id as string);
@@ -64,9 +74,25 @@ function List(): JSX.Element {
     /**
      *
      */
-    function handleDragStart(e: DragStartEvent) {
-        // Notify list item
-        setDraggingId(e.active.id as string);
+    function handleRemoveTask(id: string): void {
+        dataSaver.removeTask(id).catch((error: Error) => errorDispatch({ error: error }));
+    }
+
+    /**
+     *
+     */
+    function handleCompleteToggle(itemData: Task): void {
+        itemData.completed = !itemData.completed;
+        dataSaver
+            .updateTask(itemData.id, { completed: itemData.completed })
+            .catch((error: Error) => errorDispatch({ error: error }));
+    }
+
+    /**
+     *
+     */
+    function handleEditTask(itemData: Task): void {
+        viewDispatch({ type: 'openEditor', editTask: itemData });
     }
 
     return (
@@ -80,14 +106,18 @@ function List(): JSX.Element {
                     onDragStart={handleDragStart}
                 >
                     <SortableContext items={itemsOrder} strategy={verticalListSortingStrategy}>
-                        {itemsOrder.map((id: string) => {
-                            const task = dataUtils.getTaskFromId(id, currentTaskList);
+                        {itemsOrder.map((id: string, index: number): JSX.Element | undefined => {
+                            const task = getTaskFromId(id, currentTaskList);
                             return (
                                 task && (
                                     <ListItem
                                         itemData={task}
                                         key={task.id}
                                         draggingId={draggingId}
+                                        index={index}
+                                        onRemoveTask={handleRemoveTask}
+                                        onCompleteToggle={handleCompleteToggle}
+                                        onEditTask={handleEditTask}
                                     />
                                 )
                             );

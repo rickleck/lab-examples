@@ -1,10 +1,10 @@
-@mixin loader__dots($color, $duration: 0.65s) {
+@mixin loader-dots($color, $duration: 0.65s) {
     &:after {
         content: '.';
-        animation: loader__dots 0.65s steps(5, end) infinite;
+        animation: loader-dots-anim 0.65s steps(5, end) infinite;
     }
 
-    @keyframes loader__dots {
+    @keyframes loader-dots-anim {
         0%,
         20% {
             color: rgba(0, 0, 0, 0);

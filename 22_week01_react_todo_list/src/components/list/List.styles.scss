@@ -1,5 +1,6 @@
 @use '@/scss/common/layout';
 @use '@/scss/common/color';
+@use '@/scss/common/animation';
 
 .list {
     position: relative;
@@ -10,11 +11,12 @@
         gap: layout.$spacing-default;
         align-items: flex-start;
         padding: 2rem 2.4rem;
-        background-color: color.$secondary;
         margin-top: 1rem;
+        background-color: color.$secondary;
         border-radius: layout.$border-radius-default;
         z-index: 2;
         user-select: none;
+        opacity: 0;
 
         &.is-dragging {
             z-index: 10;
@@ -50,7 +52,7 @@
                 }
 
                 &.is-dragging {
-                    color: white;
+                    color: color.$light;
                 }
             }
         }

@@ -29,9 +29,9 @@ Lexicon
 - [Week 48 Lab 19: Vue.js Blog](19_week48_vue_blog)
 - [Week 49 Lab 20: Vue.js Store](20_week49_vue_store)
 - [Week 52 Lab 21: React List](21_week52_react_list)
+- [Week 01 Lab 22: React Todo List](22_week01_react_todo_list)
 
 ### In Progress
-
-- [Week 01 Lab 22: React Todo List](22_week01_react_todo_list)
+-
 
 

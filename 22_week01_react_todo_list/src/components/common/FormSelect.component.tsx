@@ -8,7 +8,7 @@ type FormSelectProps = {
     options: string[];
     placeHolder?: string;
     isDisabled?: boolean;
-    onChange: (value: string) => void;
+    onChange(value: string): void;
 };
 
 /**
@@ -20,7 +20,7 @@ function FormSelect({
     placeHolder = '',
     isDisabled = false,
     onChange,
-}: FormSelectProps) {
+}: FormSelectProps): JSX.Element {
     return (
         <select
             className={`form-select ${isDisabled ? 'disabled' : ''}`}
@@ -32,11 +32,13 @@ function FormSelect({
                 onChange((e.target as HTMLSelectElement).value);
             }}
         >
-            {options.map((option: string) => (
-                <option value={option} key={option}>
-                    {option}
-                </option>
-            ))}
+            {options.map(
+                (option: string): JSX.Element => (
+                    <option value={option} key={option}>
+                        {option}
+                    </option>
+                )
+            )}
 
             {options.length == 0 && <option value="">{placeHolder}</option>}
         </select>

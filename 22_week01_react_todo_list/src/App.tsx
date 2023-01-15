@@ -6,7 +6,6 @@ import { ErrorDispatchContext } from '@/states/error/Error.context';
 import { ViewStateContext } from '@/states/view/View.context';
 import { initialViewState, viewStateReducer } from '@/states/view/View.reducer';
 import DataProvider from '@/data/Data.provider';
-import Footer from '@/components/footer/Footer.component';
 import List from '@/components/list/List.component';
 import Editor from '@/components/editor/Editor.component';
 import Header from '@/components/header/Header.component';
@@ -21,6 +20,7 @@ function App(): JSX.Element {
 
     useEffect(() => {
         if (errorState.error) {
+            //TODO: Show error message to user
             console.log(errorState.error);
             errorDispatch({ error: null });
         }
@@ -35,7 +35,6 @@ function App(): JSX.Element {
                         <main>
                             <Header />
                             <List />
-                            <Footer />
                             {viewState.showEditor && <Editor />}
                         </main>
                     </DataProvider>
