@@ -13,4 +13,16 @@ export default defineConfig({
     server: {
         port: 7777,
     },
+    build: {
+        chunkSizeWarningLimit: 1000,
+        rollupOptions: {
+            output: {
+                manualChunks: {
+                    firestore: ['@firebase/firestore', 'reactfire'],
+                    react: ['react', 'react-dom'],
+                    dndkit: ['@dnd-kit/core', '@dnd-kit/modifiers', '@dnd-kit/sortable'],
+                },
+            },
+        },
+    },
 });
