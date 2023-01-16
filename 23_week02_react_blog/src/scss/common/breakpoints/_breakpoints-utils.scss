@@ -1,0 +1,77 @@
+@use 'breakpoints-vars' as vars;
+
+//Up
+
+@mixin from-breakpoint($from) {
+    @media (min-width: #{$from}) {
+        @content;
+    }
+}
+
+@mixin from-sm() {
+    @media (min-width: #{vars.$bp-sm}) {
+        @content;
+    }
+}
+
+@mixin from-md() {
+    @media (min-width: #{vars.$bp-md}) {
+        @content;
+    }
+}
+
+@mixin from-lg() {
+    @media (min-width: #{vars.$bp-lg}) {
+        @content;
+    }
+}
+
+@mixin from-xl() {
+    @media (min-width: #{vars.$bp-xl}) {
+        @content;
+    }
+}
+
+@mixin from-xxl() {
+    @media (min-width: #{vars.$bp-xxl}) {
+        @content;
+    }
+}
+
+//Down
+
+@mixin to-breakpoint($to) {
+    @media (max-width: #{$to - 1px}) {
+        @content;
+    }
+}
+
+@mixin to-sm() {
+    @media (max-width: #{vars.$bp-sm - 1px}) {
+        @content;
+    }
+}
+
+@mixin to-md() {
+    @media (max-width: #{vars.$bp-md - 1px}) {
+        @content;
+    }
+}
+
+@mixin to-lg() {
+    @media (max-width: #{vars.$bp-lg - 1px}) {
+        @content;
+    }
+}
+
+@mixin to-xl() {
+    @media (max-width: #{vars.$bp-xl - 1px}) {
+        @content;
+    }
+}
+
+@mixin to-xxl() {
+    @media (max-width: #{vars.$bp-xxl - 1px}) {
+        @content;
+    }
+}
