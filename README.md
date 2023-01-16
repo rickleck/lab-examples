@@ -32,6 +32,5 @@ Lexicon
 - [Week 01 Lab 22: React Todo List](22_week01_react_todo_list)
 
 ### In Progress
--
 
-
+- [Week 02 Lab 23: React Blog](23_week02_react_blog)
