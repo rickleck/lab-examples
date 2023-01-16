@@ -10,7 +10,7 @@ import {
     FieldValue,
 } from 'firebase/firestore';
 import { useFirestore } from 'reactfire';
-import { Task, TaskUpdate } from '@/data/Data.types';
+import { Task, TaskUpdate } from '@/data/DataTypes';
 
 /**
  *

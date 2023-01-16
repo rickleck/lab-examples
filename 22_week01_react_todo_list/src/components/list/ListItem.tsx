@@ -1,5 +1,5 @@
-import '@/components/list/List.styles.scss';
-import { Task } from '@/data/Data.types';
+import '@/components/list/List.scss';
+import { Task } from '@/data/DataTypes';
 import { RefObject, useEffect, useRef } from 'react';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';

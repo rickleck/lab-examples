@@ -1,5 +1,5 @@
-import '@/components/common/Modal.styles.scss';
-import { useAddClassNextFrame } from '@/hooks/useAddClassNextFrame.hook';
+import '@/components/common/Modal.scss';
+import { useAddClassNextFrame } from '@/utils/useAddClassNextFrame';
 import { CSSProperties, PropsWithChildren, useRef } from 'react';
 /**
  *

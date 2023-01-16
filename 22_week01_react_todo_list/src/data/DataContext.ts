@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import { DataSubscription } from '@/data/Data.types';
+import { DataSubscription } from '@/data/DataTypes';
 
 /**
  *

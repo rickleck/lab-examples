@@ -1,10 +1,10 @@
 import { PropsWithChildren, useContext } from 'react';
-import { DataContext } from '@/data/Data.context';
+import { DataContext } from '@/data/DataContext';
 import { useFirestore, useFirestoreCollectionData } from 'reactfire';
 import { collection, orderBy, query } from 'firebase/firestore';
-import { DataSubscription, Task } from '@/data/Data.types';
-import { ViewStateContext } from '@/states/view/View.context';
-import { getListByName, getListNames } from '@/data/Data.utils';
+import { DataSubscription, Task } from '@/data/DataTypes';
+import { ViewContext } from '@/states/view/ViewContext';
+import { getListByName, getListNames } from '@/data/utils/dataUtils';
 
 function DataProvider({ children }: PropsWithChildren): JSX.Element {
     const firestore = useFirestore();
@@ -12,7 +12,7 @@ function DataProvider({ children }: PropsWithChildren): JSX.Element {
     const collectionQuery = query(collectionRef, orderBy('order'), orderBy('modifiedAt'));
 
     // Current list to be rendered
-    const [{ currentListName }] = useContext(ViewStateContext);
+    const [{ currentListName }] = useContext(ViewContext);
 
     // Updates automatically when the Firestore db is updated
     const { error, status, data } = useFirestoreCollectionData(collectionQuery, { idField: 'id' });

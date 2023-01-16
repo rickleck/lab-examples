@@ -1,4 +1,4 @@
-import { Task } from '@/data/Data.types';
+import { Task } from '@/data/DataTypes';
 
 type ViewState = {
     showEditor: boolean;
