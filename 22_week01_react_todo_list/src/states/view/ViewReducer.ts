@@ -1,4 +1,4 @@
-import { ViewState, ViewStateAction } from '@/states/view/View.types';
+import { ViewState, ViewStateAction } from '@/states/view/ViewTypes';
 
 const initialViewState: ViewState = {
     showEditor: false,
@@ -6,7 +6,7 @@ const initialViewState: ViewState = {
     currentListName: '',
 };
 
-function viewStateReducer(viewState: ViewState, action: ViewStateAction): ViewState {
+function viewReducer(viewState: ViewState, action: ViewStateAction): ViewState {
     switch (action.type) {
         case 'openEditor':
             return { ...viewState, showEditor: true, editTask: action.editTask };
@@ -22,4 +22,4 @@ function viewStateReducer(viewState: ViewState, action: ViewStateAction): ViewSt
     }
 }
 
-export { viewStateReducer, initialViewState };
+export { viewReducer, initialViewState };

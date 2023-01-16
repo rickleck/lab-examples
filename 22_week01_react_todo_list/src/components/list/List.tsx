@@ -1,4 +1,4 @@
-import '@/components/list/List.styles.scss';
+import '@/components/list/List.scss';
 import {
     DndContext,
     closestCenter,
@@ -11,13 +11,13 @@ import {
 import { restrictToVerticalAxis } from '@dnd-kit/modifiers';
 import { arrayMove, SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable';
 import { useContext, useEffect, useRef, useState } from 'react';
-import { DataContext } from '@/data/Data.context';
-import { ViewStateContext } from '@/states/view/View.context';
-import { getTaskFromId, getTaskIdList } from '@/data/Data.utils';
-import { useDataSaver } from '@/hooks/useDataSaver.hook';
-import { useErrorDispatch } from '@/states/error/Error.context';
-import { Task } from '@/data/Data.types';
-import ListItem from '@/components/list/ListItem.component';
+import { DataContext } from '@/data/DataContext';
+import { ViewContext } from '@/states/view/ViewContext';
+import { getTaskFromId, getTaskIdList } from '@/data/utils/dataUtils';
+import { useDataSaver } from '@/data/utils/useDataSaver';
+import { useErrorDispatch } from '@/states/error/ErrorContext';
+import { Task } from '@/data/DataTypes';
+import ListItem from '@/components/list/ListItem';
 
 /**
  *
@@ -26,7 +26,7 @@ function List(): JSX.Element {
     const errorDispatch = useErrorDispatch();
     const dataSaver = useDataSaver();
     const { currentTaskList } = useContext(DataContext);
-    const [{ currentListName }, viewDispatch] = useContext(ViewStateContext);
+    const [{ currentListName }, viewDispatch] = useContext(ViewContext);
     const [itemsOrder, setItemsOrder] = useState<string[]>([]);
     const [prevListName, setPrevListName] = useState<string>('');
     const draggingId = useRef<string | null>(null);

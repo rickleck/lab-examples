@@ -1,12 +1,12 @@
-import '@/components/header/Header.styles.scss';
-import { DataContext } from '@/data/Data.context';
+import '@/components/header/Header.scss';
+import { DataContext } from '@/data/DataContext';
 import { useContext, useEffect, useRef } from 'react';
-import { useViewState } from '@/states/view/View.context';
-import { useDataSaver } from '@/hooks/useDataSaver.hook';
-import { getTaskIdList } from '@/data/Data.utils';
-import { useErrorDispatch } from '@/states/error/Error.context';
-import { useAddClassNextFrame } from '@/hooks/useAddClassNextFrame.hook';
-import FormSelect from '@/components/common/FormSelect.component';
+import { useViewState } from '@/states/view/ViewContext';
+import { useDataSaver } from '@/data/utils/useDataSaver';
+import { getTaskIdList } from '@/data/utils/dataUtils';
+import { useErrorDispatch } from '@/states/error/ErrorContext';
+import { useAddClassNextFrame } from '@/utils/useAddClassNextFrame';
+import FormSelect from '@/components/common/FormSelect';
 
 /**
  *

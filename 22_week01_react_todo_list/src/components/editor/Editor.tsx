@@ -1,14 +1,14 @@
-import '@/components/editor/Editor.styles.scss';
+import '@/components/editor/Editor.scss';
 import { useRef, FormEvent, useContext, useEffect, useState } from 'react';
-import { TaskUpdate } from '@/data/Data.types';
-import { useDataSaver } from '@/hooks/useDataSaver.hook';
-import { getListByName, getTaskIdList } from '@/data/Data.utils';
-import { DataContext } from '@/data/Data.context';
-import { EditorState } from '@/components/editor/Editor.types';
-import { useErrorDispatch } from '@/states/error/Error.context';
-import { ViewStateContext } from '@/states/view/View.context';
-import Modal from '@/components/common/Modal.component';
-import FormSelect from '@/components/common/FormSelect.component';
+import { TaskUpdate } from '@/data/DataTypes';
+import { useDataSaver } from '@/data/utils/useDataSaver';
+import { getListByName, getTaskIdList } from '@/data/utils/dataUtils';
+import { DataContext } from '@/data/DataContext';
+import { EditorState } from '@/components/editor/EditorTypes';
+import { useErrorDispatch } from '@/states/error/ErrorContext';
+import { ViewContext } from '@/states/view/ViewContext';
+import Modal from '@/components/common/Modal';
+import FormSelect from '@/components/common/FormSelect';
 
 /**
  *
@@ -17,7 +17,7 @@ function Editor(): JSX.Element {
     const errorDispatch = useErrorDispatch();
     const dataSaver = useDataSaver();
     const { allTasks, listNames } = useContext(DataContext);
-    const [viewState, viewDispatch] = useContext(ViewStateContext);
+    const [viewState, viewDispatch] = useContext(ViewContext);
     const [editorState, setEditorState] = useState({
         isSaving: false,
         newList: '',

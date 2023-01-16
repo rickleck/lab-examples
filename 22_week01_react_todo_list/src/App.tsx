@@ -1,22 +1,22 @@
 import { getFirestore } from 'firebase/firestore';
 import { FirestoreProvider, useFirebaseApp } from 'reactfire';
 import { useEffect, useReducer } from 'react';
-import { errorStateReducer, initialErrorState } from '@/states/error/Error.reducer';
-import { ErrorDispatchContext } from '@/states/error/Error.context';
-import { ViewStateContext } from '@/states/view/View.context';
-import { initialViewState, viewStateReducer } from '@/states/view/View.reducer';
-import DataProvider from '@/data/Data.provider';
-import List from '@/components/list/List.component';
-import Editor from '@/components/editor/Editor.component';
-import Header from '@/components/header/Header.component';
+import { errorReducer, initialErrorState } from '@/states/error/ErrorReducer';
+import { ErrorDispatchContext } from '@/states/error/ErrorContext';
+import { ViewContext } from '@/states/view/ViewContext';
+import { initialViewState, viewReducer } from '@/states/view/ViewReducer';
+import DataProvider from '@/data/DataProvider';
+import List from '@/components/list/List';
+import Editor from '@/components/editor/Editor';
+import Header from '@/components/header/Header';
 
 /**
  *
  */
 function App(): JSX.Element {
     const firestoreInstance = getFirestore(useFirebaseApp());
-    const [errorState, errorDispatch] = useReducer(errorStateReducer, initialErrorState);
-    const [viewState, viewDispatch] = useReducer(viewStateReducer, initialViewState);
+    const [errorState, errorDispatch] = useReducer(errorReducer, initialErrorState);
+    const [viewState, viewDispatch] = useReducer(viewReducer, initialViewState);
 
     useEffect(() => {
         if (errorState.error) {
@@ -29,7 +29,7 @@ function App(): JSX.Element {
 
     return (
         <FirestoreProvider sdk={firestoreInstance}>
-            <ViewStateContext.Provider value={[viewState, viewDispatch]}>
+            <ViewContext.Provider value={[viewState, viewDispatch]}>
                 <ErrorDispatchContext.Provider value={errorDispatch}>
                     <DataProvider>
                         <main>
@@ -39,7 +39,7 @@ function App(): JSX.Element {
                         </main>
                     </DataProvider>
                 </ErrorDispatchContext.Provider>
-            </ViewStateContext.Provider>
+            </ViewContext.Provider>
         </FirestoreProvider>
     );
 }
