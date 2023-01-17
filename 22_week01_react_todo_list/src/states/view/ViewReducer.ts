@@ -9,13 +9,13 @@ const initialViewState: ViewState = {
 function viewReducer(viewState: ViewState, action: ViewStateAction): ViewState {
     switch (action.type) {
         case 'openEditor':
-            return { ...viewState, showEditor: true, editTask: action.editTask };
+            return { ...viewState, showEditor: true, editTask: action.payload?.editTask };
 
         case 'closeEditor':
             return { ...viewState, showEditor: false, editTask: null };
 
         case 'changeList':
-            return { ...viewState, currentListName: action.listName! };
+            return { ...viewState, currentListName: action.payload?.listName! };
 
         default:
             return viewState;
