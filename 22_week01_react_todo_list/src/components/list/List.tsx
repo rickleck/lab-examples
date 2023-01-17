@@ -92,7 +92,7 @@ function List(): JSX.Element {
      *
      */
     function handleEditTask(itemData: Task): void {
-        viewDispatch({ type: 'openEditor', editTask: itemData });
+        viewDispatch({ type: 'openEditor', payload: { editTask: itemData } });
     }
 
     return (

@@ -83,7 +83,7 @@ function Editor(): JSX.Element {
 
             // If saved to a new / other list, switch to that list
             if (list !== viewState.currentListName)
-                viewDispatch({ type: 'changeList', listName: list });
+                viewDispatch({ type: 'changeList', payload: { listName: list } });
 
             // Close editor
             viewDispatch({ type: 'closeEditor' });

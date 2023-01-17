@@ -8,9 +8,11 @@ type ViewState = {
 
 type ViewStateAction = {
     type: 'openEditor' | 'closeEditor' | 'changeList';
-    editTask?: Task | null;
-    listName?: string;
-    originator?: string;
+    payload?: {
+        editTask?: Task | null;
+        listName?: string;
+        originator?: string;
+    };
 };
 
 export { type ViewState, type ViewStateAction };

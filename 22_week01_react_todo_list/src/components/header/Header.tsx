@@ -25,7 +25,7 @@ function Header(): JSX.Element {
         if (listNames.length > 0 && currentTaskList.length === 0) {
             viewDispatch({
                 type: 'changeList',
-                listName: listNames[0],
+                payload: { listName: listNames[0] },
             });
         }
     }, [currentTaskList, listNames]);
@@ -64,7 +64,7 @@ function Header(): JSX.Element {
                         onChange={(listName) =>
                             viewDispatch({
                                 type: 'changeList',
-                                listName,
+                                payload: { listName: listName },
                             })
                         }
                         options={listNames}
@@ -83,7 +83,7 @@ function Header(): JSX.Element {
                     </div>
                 </div>
                 <button
-                    onClick={() => viewDispatch({ type: 'openEditor', editTask: null })}
+                    onClick={() => viewDispatch({ type: 'openEditor' })}
                     className="material-symbols-outlined btn-add"
                     title="Add a task"
                 >
