@@ -65,7 +65,6 @@ function Header(): JSX.Element {
                             viewDispatch({
                                 type: 'changeList',
                                 listName,
-                                originator: 'header select',
                             })
                         }
                         options={listNames}
