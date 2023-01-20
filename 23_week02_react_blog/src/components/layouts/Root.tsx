@@ -1,14 +1,12 @@
-import Navigation from '@/components/navigation/Navigation.component';
-import Footer from '@/components/footer/Footer.component';
 import React from 'react';
 import { Outlet } from 'react-router-dom';
+import Header from '@/components/gui/header/Header';
+import Footer from '@/components/gui/footer/Footer';
 
-function RootLayout() {
+function Root() {
     return (
         <div className="root-inner">
-            <header>
-                <Navigation />
-            </header>
+            <Header />
             <main className="root container-responsive">
                 <Outlet />
             </main>
@@ -17,4 +15,4 @@ function RootLayout() {
     );
 }
 
-export default RootLayout;
+export default Root;
