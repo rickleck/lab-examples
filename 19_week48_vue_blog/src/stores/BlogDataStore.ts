@@ -75,9 +75,11 @@ const useBlogDataStore = defineStore('blogdata', (): BlogDataStore => {
                 return docSnap.data() as BlogEntry;
             } else {
                 console.log('No entry found');
+                return undefined;
             }
         } catch (error: unknown) {
             console.log(error);
+            return undefined;
         }
     }
 
@@ -91,6 +93,7 @@ const useBlogDataStore = defineStore('blogdata', (): BlogDataStore => {
             return docRef.id;
         } catch (error: unknown) {
             console.log(error);
+            return undefined;
         }
     }
 
@@ -117,6 +120,7 @@ const useBlogDataStore = defineStore('blogdata', (): BlogDataStore => {
             return id;
         } catch (error: unknown) {
             console.log(error);
+            return undefined;
         }
     }
 
