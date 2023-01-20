@@ -24,7 +24,7 @@ interface BlogDataStore {
     updateItem: (id: string, entryData: BlogEntryUpdate) => Promise<string | undefined>;
 }
 
-interface BlogEntry {
+type BlogEntry = {
     id: string;
     title: string;
     author: string;
@@ -32,15 +32,11 @@ interface BlogEntry {
     modified: FieldValue;
     body: string;
     img_src?: string;
-}
+};
 
-interface BlogEntryUpdate {
-    title?: string;
-    author?: string;
-    published?: string;
-    body?: string;
-    img_src?: string;
-}
+type BlogEntryUpdate = Partial<
+    Pick<BlogEntry, 'title' | 'author' | 'published' | 'body' | 'img_src'>
+>;
 
 const COLLECTION_NAME: string = 'blog';
 
@@ -61,7 +57,7 @@ const useBlogDataStore = defineStore('blogdata', (): BlogDataStore => {
                 data.id = doc.id;
                 items.value.push(data);
             });
-        } catch (error: any) {
+        } catch (error: unknown) {
             console.log(error);
         }
         return items.value;
@@ -79,9 +75,11 @@ const useBlogDataStore = defineStore('blogdata', (): BlogDataStore => {
                 return docSnap.data() as BlogEntry;
             } else {
                 console.log('No entry found');
+                return undefined;
             }
-        } catch (error: any) {
+        } catch (error: unknown) {
             console.log(error);
+            return undefined;
         }
     }
 
@@ -93,8 +91,9 @@ const useBlogDataStore = defineStore('blogdata', (): BlogDataStore => {
             const data = { modified: serverTimestamp(), ...entryData };
             const docRef = await addDoc(colRef, data);
             return docRef.id;
-        } catch (error: any) {
+        } catch (error: unknown) {
             console.log(error);
+            return undefined;
         }
     }
 
@@ -106,7 +105,7 @@ const useBlogDataStore = defineStore('blogdata', (): BlogDataStore => {
             const docRef = doc(db, COLLECTION_NAME, id);
             await deleteDoc(docRef);
             return;
-        } catch (error: any) {
+        } catch (error: unknown) {
             console.log(error);
         }
     }
@@ -117,10 +116,11 @@ const useBlogDataStore = defineStore('blogdata', (): BlogDataStore => {
     async function updateItem(id: string, entryData: BlogEntryUpdate): Promise<string | undefined> {
         try {
             const docRef = doc(db, COLLECTION_NAME, id);
-            await updateDoc(docRef, entryData as any);
+            await updateDoc(docRef, entryData);
             return id;
-        } catch (error: any) {
+        } catch (error: unknown) {
             console.log(error);
+            return undefined;
         }
     }
 

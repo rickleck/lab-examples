@@ -8,7 +8,8 @@ button {
 }
 
 input,
-select {
+select,
+textarea {
     @include reset.input;
 }
 
