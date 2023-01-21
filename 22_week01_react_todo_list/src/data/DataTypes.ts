@@ -12,7 +12,7 @@ type Task = {
     order: number;
 };
 
-type TaskUpdate = Partial<Pick<Task, 'title' | 'list' | 'completed'>>;
+type TaskUpdate = Pick<Task, 'title' | 'list' | 'completed'>;
 
 /**
  *

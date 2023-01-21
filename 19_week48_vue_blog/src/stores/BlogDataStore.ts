@@ -34,9 +34,7 @@ type BlogEntry = {
     img_src?: string;
 };
 
-type BlogEntryUpdate = Partial<
-    Pick<BlogEntry, 'title' | 'author' | 'published' | 'body' | 'img_src'>
->;
+type BlogEntryUpdate = Omit<BlogEntry, 'id' | 'modified'>;
 
 const COLLECTION_NAME: string = 'blog';
 
