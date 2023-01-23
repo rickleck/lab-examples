@@ -1,0 +1,64 @@
+@use '@/scss/common/layout';
+@use '@/scss/common/color';
+@use '@/scss/common/breakpoints';
+
+.record-details {
+    display: grid;
+    grid: auto / auto;
+    gap: layout.$spacing-default;
+
+    @include breakpoints.from-md {
+        grid: auto / 1fr 1fr;
+        gap: layout.$spacing-default * 2;
+    }
+
+    .image {
+        aspect-ratio: 1;
+        img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            aspect-ratio: 1;
+        }
+    }
+
+    .details {
+        p {
+            margin: 0;
+            padding: 0;
+        }
+
+        .headers {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+            .header {
+                display: block;
+                color: color.$light;
+                font-size: 1.6rem;
+                padding-block: 0.8rem;
+                padding-inline: 1.7rem;
+                margin: 0;
+            }
+            .album {
+                padding-block: 0.4rem;
+                margin: 0;
+            }
+            .artist {
+                padding-bottom: 0.4rem;
+            }
+        }
+
+        .description {
+            white-space: pre-wrap;
+
+            a {
+                display: block;
+                text-decoration: underline;
+                font-weight: 700;
+                padding-block: layout.$spacing-default;
+            }
+        }
+    }
+}

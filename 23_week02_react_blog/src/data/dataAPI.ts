@@ -1,5 +1,5 @@
 import { db } from '@/firebase/firebaseConfig';
-import { BlogPostData, BlogPostDataUpdate } from '@/types/BlogPostData';
+import { RecordCreateData, RecordData, RecordUpdateData } from '@/data/types/RecordData';
 import {
     addDoc,
     collection,
@@ -13,30 +13,37 @@ import {
     updateDoc,
 } from 'firebase/firestore';
 
-const COLLECTION_NAME: string = 'blog';
-const collRef = collection(db, COLLECTION_NAME);
-
+/**
+ *
+ */
 interface DataAPI<T> {
     getAll: () => Promise<T[]>;
     getByID: (id: string) => Promise<T | undefined>;
-    addItem: (itemData: Partial<T>) => Promise<string | undefined>;
+    addItem: (itemData: Omit<T, 'id'>) => Promise<string | undefined>;
     deleteItem: (id: string) => Promise<void>;
-    updateItem: (id: string, itemData: Partial<T>) => Promise<string | undefined>;
+    updateItem: (id: string, itemData: Partial<Omit<T, 'id'>>) => Promise<string | undefined>;
 }
 
 /**
  *
  */
-function dataAPI(): DataAPI<BlogPostData> {
+const COLLECTION_NAME = 'lab-23';
+const collRef = collection(db, COLLECTION_NAME);
+const docRefByID = (id: string) => doc(db, COLLECTION_NAME, id);
+
+/**
+ *
+ */
+function dataAPI(): DataAPI<RecordData> {
     /**
      *
      */
-    async function getAll(): Promise<BlogPostData[]> {
-        const q = query(collRef, orderBy('published', 'desc'));
+    async function getAll(): Promise<RecordData[]> {
+        const q = query(collRef, orderBy('addedDate', 'desc'));
         const querySnapshot = await getDocs(q);
-        const items: BlogPostData[] = [];
+        const items: RecordData[] = [];
         querySnapshot.forEach((doc) => {
-            const data = { ...doc.data(), id: doc.id } as BlogPostData;
+            const data = { ...doc.data(), id: doc.id } as RecordData;
             items.push(data);
         });
         return items;
@@ -45,16 +52,15 @@ function dataAPI(): DataAPI<BlogPostData> {
     /**
      *
      */
-    async function getByID(id: string): Promise<BlogPostData | undefined> {
-        const docRef = doc(db, COLLECTION_NAME, id);
-        const docSnap = await getDoc(docRef);
-        return docSnap.exists() ? (docSnap.data() as BlogPostData) : undefined;
+    async function getByID(id: string): Promise<RecordData | undefined> {
+        const docSnap = await getDoc(docRefByID(id));
+        return docSnap.exists() ? (docSnap.data() as RecordData) : undefined;
     }
 
     /**
      *
      */
-    async function addItem(itemData: BlogPostDataUpdate): Promise<string | undefined> {
+    async function addItem(itemData: RecordCreateData): Promise<string | undefined> {
         const docRef = await addDoc(collRef, { modified: serverTimestamp(), ...itemData });
         return docRef.id;
     }
@@ -63,16 +69,14 @@ function dataAPI(): DataAPI<BlogPostData> {
      *
      */
     async function deleteItem(id: string): Promise<void> {
-        const docRef = doc(db, COLLECTION_NAME, id);
-        await deleteDoc(docRef);
+        await deleteDoc(docRefByID(id));
     }
 
     /**
      *
      */
-    async function updateItem(id: string, itemData: BlogPostDataUpdate): Promise<string> {
-        const docRef = doc(db, COLLECTION_NAME, id);
-        await updateDoc(docRef, itemData);
+    async function updateItem(id: string, itemData: RecordUpdateData): Promise<string> {
+        await updateDoc(docRefByID(id), itemData);
         return id;
     }
 

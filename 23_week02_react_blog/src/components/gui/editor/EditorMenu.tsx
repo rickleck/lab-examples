@@ -1,21 +1,18 @@
-import { appRoutes } from '@/router/appRouter';
-import { BlogPostData } from '@/types/BlogPostData';
-import { RouteID } from '@/types/RouteID';
+import { appRoutes } from '@/router/appRoutes';
+import { RecordData } from '@/data/types/RecordData';
 import { NavLink } from 'react-router-dom';
 
 type EditorMenutProps = {
-    items: BlogPostData[];
+    items: RecordData[];
 };
 
 function EditorMenu({ items }: EditorMenutProps) {
     return (
         <div className="editor-menu">
             <ul>
-                {items.map((item: BlogPostData) => (
+                {items.map((item: RecordData) => (
                     <li key={item.id}>
-                        <NavLink to={appRoutes.get(RouteID.ADMIN)?.path + item.id}>
-                            {item.title}
-                        </NavLink>
+                        <NavLink to={appRoutes.ADMIN + item.id}>{item.album}</NavLink>
                     </li>
                 ))}
             </ul>

@@ -1,0 +1,18 @@
+@use '@/scss/common/layout';
+@use '@/scss/common/breakpoints';
+
+.record-list {
+    &-items {
+        display: grid;
+        grid: auto / auto;
+        gap: layout.$spacing-default;
+
+        @include breakpoints.from-md {
+            grid: auto / 1fr 1fr;
+        }
+
+        @include breakpoints.from-xl {
+            grid: auto / 1fr 1fr 1fr;
+        }
+    }
+}

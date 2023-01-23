@@ -1,0 +1,38 @@
+@use '@/scss/common/layout';
+
+.record-list-item {
+    width: 100%;
+    background-color: white;
+    padding: layout.$spacing-default;
+    box-shadow: layout.$box-shadow-default;
+
+    p {
+        padding: 0;
+        margin: 0;
+    }
+
+    .sections {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: flex-start;
+    }
+
+    .section {
+        color: white;
+        padding: 0.7rem 1rem;
+        white-space: pre-line;
+    }
+
+    .image {
+        margin-bottom: layout.$spacing-default;
+        aspect-ratio: 1;
+
+        img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            aspect-ratio: 1;
+        }
+    }
+}

@@ -1,16 +1,13 @@
-import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Header from '@/components/gui/header/Header';
-import Footer from '@/components/gui/footer/Footer';
 
 function Root() {
     return (
-        <div className="root-inner">
+        <div className="container-responsive">
             <Header />
-            <main className="root container-responsive">
+            <main>
                 <Outlet />
             </main>
-            <Footer />
         </div>
     );
 }

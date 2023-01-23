@@ -1,12 +1,11 @@
-import React, { useEffect } from 'react';
-import Editor from '@/components/gui/editor/Editor';
 import { useLoaderData, useParams } from 'react-router-dom';
-import { BlogPostData } from '@/types/BlogPostData';
 import { useLogMountStatus } from '@/utils/dev/useLogMountStatus';
-import HomeButton from '../gui/common/HomeButton';
+import { RecordData } from '@/data/types/RecordData';
+import HomeButton from '../../gui/common/HomeButton';
+import Editor from '@/components/gui/editor/Editor';
 
-function AdminView() {
-    const items = useLoaderData() as BlogPostData[];
+function Admin() {
+    const items = useLoaderData() as RecordData[];
     const activeID = useParams().id;
 
     useLogMountStatus('admin view: ' + activeID);
@@ -14,9 +13,10 @@ function AdminView() {
     return (
         <div>
             <HomeButton />
+
             <Editor items={items} activeID={activeID} />
         </div>
     );
 }
 
-export default AdminView;
+export default Admin;

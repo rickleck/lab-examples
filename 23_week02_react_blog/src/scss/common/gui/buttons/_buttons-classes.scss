@@ -43,7 +43,6 @@
 .btn-outline {
     @extend .btn;
     border: 2px solid color.$light;
-    border-radius: layout.$border-radius-default;
     padding: 1rem 1.5rem;
     font-weight: 700;
     color: color.$light;

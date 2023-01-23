@@ -1,8 +1,12 @@
-import React from 'react';
+import { appRoutes } from '@/router/appRoutes';
 import { Link } from 'react-router-dom';
 
 function HomeButton() {
-    return <Link to={'/'}>Back</Link>;
+    return (
+        <p className="font-bold">
+            <Link to={appRoutes.ROOT}>Back</Link>
+        </p>
+    );
 }
 
 export default HomeButton;

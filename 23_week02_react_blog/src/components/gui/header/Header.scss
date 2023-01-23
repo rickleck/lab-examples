@@ -1,0 +1,17 @@
+@use '@/scss/common/layout';
+
+.header {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 1px solid darkgray;
+    padding-top: 2rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: layout.$spacing-default;
+
+    &-title {
+        font-size: 2.5rem;
+        line-height: 2.3rem;
+    }
+}
