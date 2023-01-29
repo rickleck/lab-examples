@@ -1,6 +1,7 @@
 @use '@/scss/common/layout';
 @use '@/scss/common/color';
 @use '@/scss/common/gui/loaders';
+@use '@/scss/common/gui/links';
 
 .header {
     .top-bar {
@@ -12,16 +13,12 @@
         .title {
             font-size: 2.5rem;
             margin-right: 2rem;
-            &:hover {
-                padding-inline: 1rem;
-            }
+            @include links.hover-anim-horz-padding(1rem);
         }
 
         .btn-admin {
             margin-bottom: 0.5rem;
-            &:hover {
-                padding-inline: 1rem;
-            }
+            @include links.hover-anim-horz-padding(1rem);
         }
     }
 
@@ -37,9 +34,8 @@
             align-items: center;
             gap: 0.3rem;
 
-            &:hover {
-                padding-inline: 0.7rem;
-            }
+            @include links.hover-anim-horz-padding(0.7rem);
+
             .icon {
                 font-size: 2rem;
             }
@@ -49,9 +45,8 @@
             margin-left: auto;
             font-weight: 700;
             font-size: 1.8rem;
-            &:hover {
-                padding-inline: 0.7rem;
-            }
+
+            @include links.hover-anim-horz-padding(0.7rem);
         }
 
         .loading {

@@ -1,4 +1,5 @@
 @use '../../color';
+@use '../../breakpoints';
 
 .link {
     cursor: pointer;
@@ -11,35 +12,40 @@
 
 .hover-anim-horz {
     position: relative;
-    transition: all 140ms ease;
-    &::before {
-        content: '';
-        position: absolute;
-        background: color.$primary;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        opacity: 0;
-        z-index: -1;
-        transition: all 200ms ease-in;
-        transform: scaleX(0);
-        transform-origin: left;
-    }
 
-    &:hover {
-        color: color.$light;
-
+    @include breakpoints.from-md {
+        transition: all 140ms ease;
         &::before {
-            transform: scaleX(1);
-            opacity: 1;
+            content: '';
+            position: absolute;
+            background: color.$primary;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            z-index: -1;
+            transition: all 200ms ease-in;
+            transform: scaleX(0);
+            transform-origin: left;
+        }
+
+        &:hover {
+            color: color.$light;
+
+            &::before {
+                transform: scaleX(1);
+                opacity: 1;
+            }
         }
     }
 
     &-from-right {
         @extend .hover-anim-horz;
-        &::before {
-            transform-origin: right;
+        @include breakpoints.from-md {
+            &::before {
+                transform-origin: right;
+            }
         }
     }
 }

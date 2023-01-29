@@ -19,6 +19,7 @@ function Login(): JSX.Element {
     const demoPassword = import.meta.env.VITE_DEMO_PW;
 
     useEffect(() => {
+        refEmail.current && refEmail.current.focus();
         return () => {
             dispatch(resetStatus());
         };
