@@ -43,7 +43,6 @@ function editorConfig(): EditorConfig {
             },
             {
                 id: 'addedDate',
-
                 label: 'Added Date',
                 type: 'date',
                 defaultValue: today().full,
