@@ -4,10 +4,6 @@ Rickard
 Frontend Lab Assignments  
 Lexicon
 
-## Status
-
-### Finished
-
 - [Week 36 Lab 0: Basics in HTML and CSS](00_week36_basics_html_css/)
 - [Week 36 Lab 1: CSS Positioning](01_week36_css_positioning/)  
 - [Week 37 Lab 2: Media Queries](02_week37_media_queries/)  
@@ -30,7 +26,4 @@ Lexicon
 - [Week 49 Lab 20: Vue.js Store](20_week49_vue_store)
 - [Week 52 Lab 21: React List](21_week52_react_list)
 - [Week 01 Lab 22: React Todo List](22_week01_react_todo_list)
-
-### In Progress
-
 - [Week 02 Lab 23: React Blog](23_week02_react_blog)
