@@ -1,13 +1,13 @@
 import './RecordList.scss';
 import { Link } from 'react-router-dom';
 import { appRoutes } from '@/router/appRouterConfig';
-import RecordListItem from '@/components/gui/recordlistitem/RecordListItem';
 import { getAll } from '@/app/features/records/recordsThunks';
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '@/app/storeHooks';
 import { RootState } from '@/app/storeTypes';
 import { RecordData } from '@/app/features/records/recordsTypes';
 import { motion } from 'framer-motion';
+import RecordListItem from '@/components/gui/recordlistitem/RecordListItem';
 
 /**
  *

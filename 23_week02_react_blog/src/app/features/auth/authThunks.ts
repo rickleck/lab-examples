@@ -1,6 +1,6 @@
 import { auth } from '@/firebase/firebaseConfig';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { signInWithEmailAndPassword, signOut, UserCredential } from 'firebase/auth';
+import { signInWithEmailAndPassword, signOut } from 'firebase/auth';
 
 /**
  *
