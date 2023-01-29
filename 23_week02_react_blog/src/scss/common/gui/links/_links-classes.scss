@@ -7,37 +7,40 @@
         opacity: 0.5;
         pointer-events: none;
     }
+}
 
-    &-primary {
-        color: color.$primary;
-        @extend .color-hover-to-primary-light;
+.hover-anim-horz {
+    position: relative;
+    transition: all 140ms ease;
+    &::before {
+        content: '';
+        position: absolute;
+        background: color.$primary;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        z-index: -1;
+        transition: all 200ms ease-in;
+        transform: scaleX(0);
+        transform-origin: left;
     }
 
-    &-primary-light {
-        color: color.$primary-light;
-        @extend .color-hover-to-secondary;
+    &:hover {
+        color: color.$light;
+
+        &::before {
+            transform: scaleX(1);
+            opacity: 1;
+        }
     }
 
-    &-secondary {
-        color: color.$secondary;
-        @extend .color-hover-to-secondary-light;
-    }
-
-    &-secondary-light {
-        color: color.$secondary-light;
-        @extend .color-hover-to-primary-light;
-    }
-
-    &-black,
-    &-dark {
-        color: color.$black;
-        @extend .color-hover-to-primary-light;
-    }
-
-    &-white,
-    &-light {
-        color: color.$white;
-        @extend .color-hover-to-primary-light;
+    &-from-right {
+        @extend .hover-anim-horz;
+        &::before {
+            transform-origin: right;
+        }
     }
 }
 
@@ -50,48 +53,6 @@
     }
     &:hover {
         text-decoration: underline;
-    }
-}
-
-.color-hover-to {
-    &-primary {
-        &:hover,
-        &.is-selected {
-            color: color.$primary;
-        }
-        &:active {
-            color: color.$primary-dark;
-        }
-    }
-
-    &-primary-light {
-        &:hover,
-        &.is-selected {
-            color: color.$primary-light;
-        }
-        &:active {
-            color: color.$primary;
-        }
-    }
-
-    &-secondary {
-        &:hover,
-        &.is-selected {
-            color: color.$secondary;
-        }
-        &:active {
-            color: color.$secondary-dark;
-        }
-    }
-
-    &-secondary-light {
-        &:hover,
-        &.is-selected {
-            color: color.$secondary-light;
-        }
-        &:active {
-            color: color.$secondary;
-        }
     }
 }
 

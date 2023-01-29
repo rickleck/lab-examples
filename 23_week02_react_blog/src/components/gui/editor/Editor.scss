@@ -1,18 +1,147 @@
+@use '@/scss/common/breakpoints';
+@use '@/scss/common/layout';
+@use '@/scss/common/color';
+
 .editor {
+    display: flex;
+    flex-direction: column;
+    gap: layout.$spacing-default * 2;
+
+    @include breakpoints.from-md {
+        display: grid;
+        grid: auto / 300px auto;
+    }
+
+    @include breakpoints.from-xl {
+        grid: auto / 450px auto;
+    }
+
+    .title {
+        font-size: 3rem;
+        font-weight: 700;
+        margin: 0;
+
+        @include breakpoints.from-md {
+            font-size: 4rem;
+        }
+    }
+
     .form {
         display: flex;
         flex-direction: column;
-        gap: 1rem;
-        input,
-        textarea {
-            border: 1px solid white;
-            padding: 0.5rem;
+        gap: layout.$spacing-default;
+
+        .element-group {
+            display: flex;
+            flex-direction: column;
+            gap: layout.$spacing-default;
+
+            .form-control-editor {
+                .image {
+                    aspect-ratio: 1;
+                    margin-bottom: layout.$spacing-default;
+                    border: 1px solid color.$dark;
+
+                    @include breakpoints.from-lg {
+                        width: 50%;
+                    }
+
+                    img {
+                        width: 100%;
+                        height: auto;
+                        object-fit: cover;
+                        aspect-ratio: 1;
+                    }
+                }
+
+                .color-field {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: layout.$spacing-default;
+                    align-items: center;
+                    input[type='color'] {
+                        appearance: none;
+                        padding: 0;
+                        margin: 0;
+                        outline: none;
+                        width: 100%;
+
+                        @include breakpoints.from-sm {
+                            width: 50%;
+                        }
+
+                        @include breakpoints.from-lg {
+                            width: 25%;
+                        }
+                    }
+                }
+            }
+        }
+
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: layout.$spacing-default;
+
+            @include breakpoints.from-md {
+                flex-direction: row;
+                justify-content: flex-end;
+            }
         }
     }
 
     &-menu {
-        .active {
-            color: red;
+        display: flex;
+        flex-direction: column;
+
+        @include breakpoints.from-md {
+            padding-top: 5.2rem;
+        }
+
+        .btn-new {
+            @include breakpoints.from-md {
+                align-self: flex-start;
+            }
+            &.active {
+                color: color.$primary;
+                border-color: color.$primary;
+                pointer-events: none;
+            }
+        }
+
+        .menu-list {
+            display: none;
+            @include breakpoints.from-md {
+                display: block;
+            }
+
+            padding-top: 2rem;
+            &-item {
+                position: relative;
+                display: block;
+                padding-block: 1rem;
+                border-bottom: layout.$divider-default;
+                &.active {
+                    color: color.$light;
+                    pointer-events: none;
+                    padding-left: 1rem;
+                    &::before {
+                        transform: scaleX(1);
+                        opacity: 1;
+                    }
+                }
+
+                &:hover {
+                    padding-left: 1rem;
+                }
+            }
+        }
+
+        .menu-select {
+            margin-top: layout.$spacing-default;
+            @include breakpoints.from-md {
+                display: none;
+            }
         }
     }
 }

@@ -1,41 +1,35 @@
 @use '../reset';
 @use '../fonts';
 @use '../layout';
-@use '../color';
 
 button {
     all: unset;
 }
 
 input,
-select,
-textarea {
+textarea,
+select {
     @include reset.input;
 }
 
 html {
     font-family: fonts.$font-family-default;
     font-size: fonts.$font-size-html-default;
+    color: black;
 }
 
 body {
     position: relative;
-    background: color.$dark;
+    min-height: 100vh;
+    background: rgb(230, 230, 230);
+    display: flex;
+    place-content: center;
+    padding-inline: layout.$spacing-default;
+    padding-block: layout.$spacing-default + 2rem;
     font-size: fonts.$font-size-body-default;
-    line-height: fonts.$line-height-default;
-    color: color.$light;
+    overflow-y: scroll;
+}
 
-    #root {
-        position: relative;
-        width: 100%;
-        display: flex;
-        place-content: center;
-        padding: 3rem layout.$spacing-default;
-
-        main {
-            position: relative;
-            width: 100%;
-            max-width: layout.$app-max-width;
-        }
-    }
+#root {
+    width: 100%;
 }

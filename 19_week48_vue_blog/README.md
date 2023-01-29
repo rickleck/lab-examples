@@ -5,7 +5,7 @@
 - Small blog app made with Vue.js 3 (Composition API), TypeScript and Sass.
 - To create and edit blog entries, click on "Admin" in the footer. 
 - Login:
-    - Email: leck-lex@email.com 
+    - Email: demo@email.com 
     - Password: enkattienhatt
 - Search searches blog entry titles.
 - Deployed to Firebase using Firestore DB for blog entries.

@@ -1,0 +1,18 @@
+.error-page {
+    display: flex;
+    place-content: center;
+
+    .content {
+        margin-top: 20%;
+        text-align: center;
+        .message {
+            font-size: 3rem;
+            font-weight: 700;
+        }
+
+        a {
+            font-size: 1.6rem;
+            text-decoration: underline;
+        }
+    }
+}
