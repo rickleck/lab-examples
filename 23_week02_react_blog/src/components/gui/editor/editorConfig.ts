@@ -21,7 +21,6 @@ function editorConfig(): EditorConfig {
                 label: 'Album',
                 type: 'textarea',
                 rows: 2,
-                focus: true,
             },
             {
                 id: 'artist',

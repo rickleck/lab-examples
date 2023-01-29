@@ -1,0 +1,9 @@
+@use '../../breakpoints';
+
+@mixin hover-anim-horz-padding($padding) {
+    @include breakpoints.from-md {
+        &:hover {
+            padding-inline: $padding;
+        }
+    }
+}
