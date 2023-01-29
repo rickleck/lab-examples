@@ -1,13 +1,13 @@
+import { WithLoadingState } from '@/utils/types/stateTypes';
+
 type RecordData = {
     readonly id: string;
+    readonly protected?: boolean;
     album: string;
     artist: string;
     year: number;
     label: string;
-    cover: {
-        front: string;
-        extra?: string;
-    };
+    cover: string;
     description: {
         text: string;
         srcUrl: string;
@@ -15,9 +15,14 @@ type RecordData = {
     addedDate: string;
     colorTheme: [string, string, string, string];
     discogsUrl: string;
+    modifiedAt?: string;
 };
 
 type RecordCreateData = Omit<RecordData, 'id'>;
 type RecordUpdateData = Partial<RecordCreateData>;
 
-export { type RecordData, type RecordCreateData, type RecordUpdateData };
+type RecordsState = WithLoadingState & {
+    items: RecordData[];
+};
+
+export { type RecordsState, type RecordData, type RecordCreateData, type RecordUpdateData };

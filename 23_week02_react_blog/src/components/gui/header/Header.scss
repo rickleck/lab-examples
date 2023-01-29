@@ -1,17 +1,61 @@
 @use '@/scss/common/layout';
+@use '@/scss/common/color';
+@use '@/scss/common/gui/loaders';
 
 .header {
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    border-bottom: 1px solid darkgray;
-    padding-top: 2rem;
-    padding-bottom: 0.5rem;
-    margin-bottom: layout.$spacing-default;
+    .top-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        border-bottom: layout.$divider-default;
 
-    &-title {
-        font-size: 2.5rem;
-        line-height: 2.3rem;
+        .title {
+            font-size: 2.5rem;
+            margin-right: 2rem;
+            &:hover {
+                padding-inline: 1rem;
+            }
+        }
+
+        .btn-admin {
+            margin-bottom: 0.5rem;
+            &:hover {
+                padding-inline: 1rem;
+            }
+        }
+    }
+
+    .bottom-bar {
+        display: flex;
+        align-items: center;
+        font-size: 1.8rem;
+        padding-top: 1rem;
+        padding-bottom: layout.$spacing-default;
+
+        .btn-home {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+
+            &:hover {
+                padding-inline: 0.7rem;
+            }
+            .icon {
+                font-size: 2rem;
+            }
+        }
+
+        .btn-logout {
+            margin-left: auto;
+            font-weight: 700;
+            font-size: 1.8rem;
+            &:hover {
+                padding-inline: 0.7rem;
+            }
+        }
+
+        .loading {
+            @include loaders.loader-dots(color.$dark);
+        }
     }
 }

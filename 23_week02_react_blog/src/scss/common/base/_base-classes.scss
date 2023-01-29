@@ -24,8 +24,10 @@ body {
     background: rgb(230, 230, 230);
     display: flex;
     place-content: center;
-    padding: layout.$spacing-default;
+    padding-inline: layout.$spacing-default;
+    padding-block: layout.$spacing-default + 2rem;
     font-size: fonts.$font-size-body-default;
+    overflow-y: scroll;
 }
 
 #root {

@@ -1,3 +1,5 @@
+@use '../color';
+
 $spacings-map: (
     'm-all': 'margin',
     'm-l': 'margin-left',
@@ -19,4 +21,6 @@ $spacing-default: 1.5rem;
 $list-item-max-width: 400px;
 
 //Boxes
-$box-shadow-default: 4px 4px 8px rgba(0, 0, 0, 0.25);
+$box-shadow-default: 4px 4px 12px rgba(0, 0, 0, 0.15);
+
+$divider-default: 1px solid rgba(color.$dark, $alpha: 0.3);

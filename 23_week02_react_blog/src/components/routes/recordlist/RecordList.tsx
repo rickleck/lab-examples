@@ -1,28 +1,52 @@
 import './RecordList.scss';
-import { useLoaderData } from 'react-router-dom';
-import { useLogMountStatus } from '@/utils/dev/useLogMountStatus';
-import { RecordData } from '@/data/types/RecordData';
 import { Link } from 'react-router-dom';
-import { appRoutes } from '@/router/appRoutes';
+import { appRoutes } from '@/router/appRouterConfig';
 import RecordListItem from '@/components/gui/recordlistitem/RecordListItem';
+import { getAll } from '@/app/features/records/recordsThunks';
+import { useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from '@/app/storeHooks';
+import { RootState } from '@/app/storeTypes';
+import { RecordData } from '@/app/features/records/recordsTypes';
+import { motion } from 'framer-motion';
 
+/**
+ *
+ */
 function RecordList(): JSX.Element {
-    const items = useLoaderData() as RecordData[];
+    const dispatch = useAppDispatch();
+    const { items, status } = useAppSelector((state: RootState) => state.records);
+    const variants = {
+        show: {
+            transition: {
+                staggerChildren: 0.07,
+                delayChildren: 0.1,
+            },
+        },
+    };
 
-    useLogMountStatus('start view');
-
-    const listItems = items.map(
-        (itemData: RecordData): JSX.Element => (
-            <Link to={appRoutes.RECORD_DETAILS + itemData.id} key={itemData.id}>
-                <RecordListItem {...itemData} />
-            </Link>
-        )
-    );
+    /**
+     *
+     */
+    useEffect(() => {
+        dispatch(getAll());
+    }, []);
 
     return (
         <div className="container-responsive record-list">
-            <p className="font-bold">Latest {items.length} records added.</p>
-            <div className="record-list-items">{listItems}</div>
+            <motion.div
+                initial="hidden"
+                animate={status !== 'loading' ? 'show' : ''}
+                variants={variants}
+                className="record-list-items"
+            >
+                {items.map(
+                    (itemData: RecordData): JSX.Element => (
+                        <Link to={appRoutes.RECORD_DETAILS + itemData.id} key={itemData.id}>
+                            <RecordListItem {...itemData} key={itemData.id} />
+                        </Link>
+                    )
+                )}
+            </motion.div>
         </div>
     );
 }

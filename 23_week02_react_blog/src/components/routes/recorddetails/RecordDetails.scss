@@ -14,6 +14,22 @@
 
     .image {
         aspect-ratio: 1;
+        clip-path: inset(0 0 0 100%);
+
+        &.animate {
+            animation-name: image-reveal;
+            animation-duration: 250ms;
+            animation-timing-function: ease;
+            animation-fill-mode: forwards;
+            animation-delay: 200ms;
+        }
+
+        @keyframes image-reveal {
+            to {
+                clip-path: inset(0 0 0 0);
+            }
+        }
+
         img {
             width: 100%;
             height: auto;
@@ -40,6 +56,7 @@
                 padding-block: 0.8rem;
                 padding-inline: 1.7rem;
                 margin: 0;
+                white-space: pre-line;
             }
             .album {
                 padding-block: 0.4rem;
@@ -58,6 +75,7 @@
                 text-decoration: underline;
                 font-weight: 700;
                 padding-block: layout.$spacing-default;
+                width: min-content;
             }
         }
     }

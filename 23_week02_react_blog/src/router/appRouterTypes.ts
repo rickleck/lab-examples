@@ -4,6 +4,7 @@ enum RouteID {
     RECORD_DETAILS = 'RECORD_DETAILS',
     ADMIN = 'ADMIN',
     LOGIN = 'LOGIN',
+    ERROR = 'ERROR',
 }
 
 export { RouteID };

@@ -1,4 +1,4 @@
-import { RouteID } from './types/RouteID';
+import { RouteID } from './appRouterTypes';
 
 const appRoutes: Record<RouteID, string> = {
     [RouteID.ROOT]: '/',
@@ -6,6 +6,7 @@ const appRoutes: Record<RouteID, string> = {
     [RouteID.RECORD_DETAILS]: '/record/',
     [RouteID.ADMIN]: '/admin/',
     [RouteID.LOGIN]: '/login',
+    [RouteID.ERROR]: '/*',
 };
 
 export { appRoutes };

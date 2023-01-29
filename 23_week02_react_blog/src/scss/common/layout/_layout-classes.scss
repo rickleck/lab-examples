@@ -13,8 +13,23 @@
     border: 1px solid white;
 }
 
-.w-100 {
-    width: 100%;
+.card {
+    background-color: white;
+    padding: vars.$spacing-default;
+    box-shadow: vars.$box-shadow-default;
+}
+
+.card-form {
+    background-color: white;
+    padding: vars.$spacing-default * 2;
+    box-shadow: vars.$box-shadow-default;
+}
+
+.elipsis-one-line {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
 }
 
 .container-responsive {

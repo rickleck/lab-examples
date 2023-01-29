@@ -22,7 +22,7 @@
     opacity: 0;
 
     & .path {
-        stroke: color.$secondary;
+        stroke: color.$primary;
         stroke-linecap: round;
         animation: spinner-dash 1.5s ease-in-out infinite;
     }
