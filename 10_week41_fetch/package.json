@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "clean": "rimraf dist",
-    "start": "npm run clean && npx parcel src/index.html",
+    "dev": "npm run clean && npx parcel src/index.html",
     "build": "npm run clean && npx parcel build src/index.html --no-cache"
   },
   "author": "",
