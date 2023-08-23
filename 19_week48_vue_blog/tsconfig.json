@@ -4,6 +4,7 @@
     "compilerOptions": {
         "baseUrl": "./src",
         "types": ["node"],
-        "lib": ["ESNext", "DOM", "DOM.Iterable"]
+        "lib": ["ESNext", "DOM", "DOM.Iterable"],
+        "ignoreDeprecations": "5.0"
     }
 }
